@@ -1,0 +1,10 @@
+from scenarios.cl_scenarios import cl_sc1
+
+if __name__ == "__main__":
+
+    # By creating scripts that return a factory, we can define infinite number of use cases and select them (in the
+    # future) through a UI.
+    factory = cl_sc1.create_factory()
+
+    for world in factory.worlds():
+        world.run()
