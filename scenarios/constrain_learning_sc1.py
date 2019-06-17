@@ -5,16 +5,19 @@ from environment.actions.move_actions import *
 from environment.actions.object_actions import *
 
 
-
 def create_factory():
     factory = WorldFactory(random_seed=1, shape=[10, 10], tick_duration=0.2)
 
-    # random_prop = RandomProperty(property_name="random_prop", values=["One", "Two"], distribution=[3, 1])
-    # factory.add_env_object(location=[0, 0], name="Wall 1")
-
+    #############################################
+    # Agent
+    #############################################
     agent = Agent()
     factory.add_agent(location=[1, 0], agent=agent, visualize_depth=5)
 
+
+    #############################################
+    # Human Agent
+    #############################################
 
     # usr input action map for human agent
     usrinp_action_map = {
@@ -31,6 +34,9 @@ def create_factory():
                 visualize_colour="#e9b92b", usrinp_action_map=usrinp_action_map)
 
 
+    #############################################
+    # Objects
+    #############################################
     factory.add_multiple_objects(locations=[[4, 4], [5, 5], [6, 6]])
 
     return factory
