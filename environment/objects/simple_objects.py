@@ -142,21 +142,23 @@ class Door(EnvObject):
 
 class Wall(EnvObject):
 
-    def __init__(self, location, name="Wall", visualization_colour="#000000"):
+    def __init__(self, location, name="Wall", visualize_colour="#000000"):
         """
         A simple Wall object. Is not traversable, the colour can be set but has otherwise the default EnvObject property
         values.
         :param location: The location of the wall.
         :param name: The name, default "Wall".
         """
+
+        print("init wall", visualize_colour)
         is_traversable = False  # All walls are always not traversable
-        super().__init__(name=name, location=location, visualize_colour=visualization_colour,
+        super().__init__(name=name, location=location, visualize_colour=visualize_colour,
                          is_traversable=is_traversable, class_callable=Wall)
 
 
 class Area(EnvObject):
 
-    def __init__(self, location, name="Area", visualization_colour="#8ca58c"):
+    def __init__(self, location, name="Area", visualize_colour="#8ca58c"):
         """
         A simple Area object. Is always traversable, the colour can be set but has otherwise the default EnvObject
         property values. Can be used to define different areas in the GridWorld.
@@ -164,5 +166,5 @@ class Area(EnvObject):
         :param name: The name, default "Area".
         """
         is_traversable = True  # Areas are always traversables
-        super().__init__(name=name, location=location, visualize_colour=visualization_colour,
+        super().__init__(name=name, location=location, visualize_colour=visualize_colour,
                          is_traversable=is_traversable, class_callable=Area)

@@ -48,12 +48,13 @@ $(document).ready(function(){
 
         // unpack received data
         grid_size = data.params.grid_size;
+        vis_bg = data.params.vis_bg;
         state = data.state;
         tick = data.params.tick;
 
         // draw the grid again
         requestAnimationFrame(function() {
-            doTick(grid_size, state, tick);
+            doTick(grid_size, vis_bg, state, tick);
         });
     });
 

@@ -17,7 +17,7 @@ TIME_FOCUS_SIMULATION_DURATION = 'aim_for_accurate_global_tick_duration'
 class GridWorld:
 
     def __init__(self, shape, tick_duration, simulation_goal=None, run_sail_api=True, run_visualization_server=True,
-                 time_focus=TIME_FOCUS_TICK_DURATION, rnd_seed=1):
+                 time_focus=TIME_FOCUS_TICK_DURATION, rnd_seed=1, vis_bg="#C2C2C2"):
         self.tick_duration = tick_duration
         self.registered_agents = OrderedDict()
         self.environment_objects = OrderedDict()
@@ -40,6 +40,7 @@ class GridWorld:
         self.visualizer = None
         self.is_initialized = False
         self.message_buffer = {} # dictionary of messages that need to be send to agents, with receiver ids as keys
+        self.vis_bg = vis_bg
 
     def initialize(self):
         # Only initialize when we did not already do so
@@ -48,7 +49,7 @@ class GridWorld:
             self.__update_grid()
 
             # Initialize the visualizer
-            self.visualizer = Visualizer(self.shape)
+            self.visualizer = Visualizer(self.shape, self.vis_bg)
 
             # Visualize already
             self.__initial_visualisation()

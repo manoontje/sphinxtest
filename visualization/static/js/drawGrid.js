@@ -128,13 +128,14 @@ function updateGridSize(grid_size) {
 /**
  * called when a new tick is received by the agent
  */
-function doTick(grid_size, state, curr_tick) {
+function doTick(grid_size, vis_bg, state, curr_tick) {
     // for the first time drawing the visualization, calculate the optimal
     // screen size based on the grid size
     if (firstDraw) {
         // console.log("First draw, resetting canvas and tile sizes");
         fixCanvasSize();
         firstDraw = false;
+        bgTileColour = vis_bg;
     }
 
     // console.log("\nNew tick", state);
