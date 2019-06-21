@@ -4,6 +4,7 @@ from scenario_manager.world_factory import RandomProperty, WorldFactory
 from environment.actions.move_actions import *
 from environment.actions.object_actions import *
 from environment.objects.simple_objects import *
+from environment.objects.cl_sc_objects import *
 import sys
 from itertools import chain, combinations
 
@@ -44,9 +45,27 @@ def create_factory():
     # Objects
     #############################################
 
-    locations = [[0,0], [0,1], [10,11], [11,11], [12,11], [12,12]]
-    factory.add_multiple_objects(locations=locations, names=["sand dune" for _ in range(len(locations))], \
-                callable_classes=[Wall for _ in range(len(locations))], visualize_colours=["#7a370a" for _ in range(len(locations))] )
+    # Obstacles
+    # locations = [[0,0], [0,1], [10,11], [11,11], [12,11], [12,12]]
+    # factory.add_multiple_objects(locations=locations, names=["sand dune" for _ in range(len(locations))], \
+    #             callable_classes=[Wall for _ in range(len(locations))], visualize_colours=["#7a370a" for _ in range(len(locations))] )
+
+
+    # Village
+    houseColour = "#7a370a"
+    locations = [[10,12], [12,13], [12,10], [14,11] ]
+    factory.add_multiple_objects(locations=locations, names=["house_base" for _ in range(len(locations))], \
+                callable_classes=[HouseBase for _ in range(len(locations))], visualize_colours=[houseColour for _ in range(len(locations))] )
+    locations = [[10,11], [12,12], [12,9],  [14,10]]
+    factory.add_multiple_objects(locations=locations, names=["house_roof" for _ in range(len(locations))], \
+                callable_classes=[HouseRoof for _ in range(len(locations))], visualize_colours=[houseColour for _ in range(len(locations))] )
+
+
+    # lake
+    locations = [[16,14], [23, 23]]
+    factory.add_multiple_objects(locations=locations, callable_classes=[Water for _ in range(len(locations))] )
+
+
 
    #  add_env_object(self, location, name, callable_class=None, customizable_properties=None,
    #                     is_traversable=None, is_movable=None,
