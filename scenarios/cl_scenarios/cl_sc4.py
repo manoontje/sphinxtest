@@ -8,10 +8,11 @@ import sys
 from itertools import chain, combinations
 
 
+# Scenario 4
+# Context. Area: desert, area secured: no, intel: hostiles spotted.
 
-# Desert scenario
 def create_factory():
-    factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2, vis_bg="#c2b280")
+    factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2, vis_bg="#d3ba90")
 
     #############################################
     # Agent
@@ -36,7 +37,7 @@ def create_factory():
 
     hu_ag = HumanAgent()
     factory.add_human_agent(location=[4, 0], agent=hu_ag, visualize_depth=5,
-                visualize_colour="#e9b92b", usrinp_action_map=usrinp_action_map)
+                visualize_colour="#5d6773", usrinp_action_map=usrinp_action_map)
 
 
     #############################################
@@ -45,7 +46,7 @@ def create_factory():
 
     locations = [[0,0], [0,1], [10,11], [11,11], [12,11], [12,12]]
     factory.add_multiple_objects(locations=locations, names=["sand dune" for _ in range(len(locations))], \
-                callable_classes=[Wall for _ in range(len(locations))], visualize_colours=["#e1bf92" for _ in range(len(locations))] )
+                callable_classes=[Wall for _ in range(len(locations))], visualize_colours=["#7a370a" for _ in range(len(locations))] )
 
    #  add_env_object(self, location, name, callable_class=None, customizable_properties=None,
    #                     is_traversable=None, is_movable=None,
