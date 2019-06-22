@@ -11,11 +11,13 @@ from numpy.random.mtrand import RandomState
 from agents.agent import Agent
 from agents.capabilities.capability import SenseCapability
 from agents.human_agent import HumanAgent
-from environment.gridworld import TIME_FOCUS_TICK_DURATION, GridWorld
+from environment.gridworld import GridWorld
 from environment.objects.agent_avatar import AgentAvatar
 from environment.objects.env_object import EnvObject
 from environment.objects.helper_functions import get_inheritence_path
-from scenario_manager.helper_functions import get_default_value
+from environment.objects.simple_objects import Wall, Door, AreaTile
+from environment.sim_goals.sim_goal import LimitedTimeGoal
+from scenario_manager.helper_functions import get_default_value, _get_line_coords
 
 ######
 # We do this so we are sure everything is imported and thus can be found
@@ -48,21 +50,36 @@ import visualization
 
 class WorldFactory:
 
-    def __init__(self, shape, tick_duration, random_seed=1, simulation_goal=None, run_sail_api=True,
-                 run_visualization_server=True, vis_bg="#C2C2C2", time_focus=TIME_FOCUS_TICK_DURATION):
+    def __init__(self, shape, tick_duration, random_seed=1, simulation_goal=1000, run_sail_api=True,
+                 vis_bg="#C2C2C2", run_visualization_server=True):
+        """
+        Create a WorldFactory who stores how you want the world to look like, and from which you can obtain infinite
+        instantions of that world.
+        :param shape: The grid size, (width, height)
+        :param tick_duration: The duration of a tick in seconds.
+        :param random_seed: The master random seed from which all other seeds are obtains
+        :param simulation_goal: The goal that denotes when the simulation ended. Can be a SimulationGoal, a list of
+         SimulationGoal, or an integer denoting the number of ticks the simulation runs.
+        :param run_sail_api: Boolean if the SAIL api server should be started (not yet implemented)
+        :param run_visualization_server: Boolean if the Visualisation server should be started (not yet implemented)
+        """
         # Set our random number generator
         self.rng = np.random.RandomState(random_seed)
         # Set our settings place holders
         self.agent_settings = []
         self.object_settings = []
+
+        # If simulation goal is an integer, we create a LimitedTimeGoal with that number of ticks
+        if isinstance(simulation_goal, int):
+            simulation_goal = LimitedTimeGoal(max_nr_ticks=simulation_goal)
+
         # Set our world settings
         self.world_settings = self.__set_world_settings(shape=shape,
                                                         tick_duration=tick_duration,
                                                         simulation_goal=simulation_goal,
                                                         run_sail_api=run_sail_api,
-                                                        run_visualization_server=run_visualization_server,
-                                                        time_focus=time_focus,
-                                                        vis_bg=vis_bg)
+                                                        vis_bg=vis_bg,
+                                                        run_visualization_server=run_visualization_server)
         # Keep track of the number of worlds we created
         self.worlds_created = 0
 
@@ -88,9 +105,8 @@ class WorldFactory:
         self.__reset_random()
         return world
 
-    def __set_world_settings(self, shape, tick_duration, simulation_goal=None, run_sail_api=True,
-                             run_visualization_server=True, time_focus=TIME_FOCUS_TICK_DURATION, rnd_seed=None,
-                             vis_bg="#C2C2C2"):
+    def __set_world_settings(self, shape, tick_duration, simulation_goal, run_sail_api=True,
+                             run_visualization_server=True, rnd_seed=None, vis_bg="#C2C2C2"):
 
         if rnd_seed is None:
             rnd_seed = self.rng.randint(0, 1000000)
@@ -100,9 +116,8 @@ class WorldFactory:
                           "simulation_goal": simulation_goal,
                           "run_sail_api": run_sail_api,
                           "run_visualization_server": run_visualization_server,
-                          "time_focus": time_focus,
-                          "rnd_seed": rnd_seed,
-                          "vis_bg": vis_bg}
+                          "vis_bg": vis_bg,
+                          "rnd_seed": rnd_seed}
 
         return world_settings
 
@@ -307,7 +322,6 @@ class WorldFactory:
                           }
         self.object_settings.append(object_setting)
 
-
     def add_env_object_prospect(self, location, name, probability, callable_class=None, customizable_properties=None,
                                 is_traversable=None,
                                 visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
@@ -330,8 +344,8 @@ class WorldFactory:
         # copy it in a list. A none value causes the default value to be loaded.
         if names is None:
             names = [None for _ in range(len(locations))]
-        elif isinstance(custom_properties, str):
-            names = [custom_properties for _ in range(len(locations))]
+        elif isinstance(names, str):
+            names = [names for _ in range(len(locations))]
 
         if is_movable is None:
             is_movable = [None for _ in range(len(locations))]
@@ -456,17 +470,122 @@ class WorldFactory:
 
         self.agent_settings.append(hu_ag_setting)
 
-    def add_area(self, area_corners, name, colour=None):
-        # TODO
-        pass
+    def add_area(self, top_left_location, width, height, name, customizable_properties=None, visualize_colour=None,
+                 **custom_properties):
+        # Check if width and height are large enough to make an actual room (with content)
+        if width < 1 or height < 1:
+            raise Exception(f"While adding area {name}; The width {width} and/or height {height} should both be larger"
+                            f" than 0.")
 
-    def add_line(self, start, end, name, colour=None):
-        # TODO
-        pass
+        # Get all locations in the rectangle
+        locs = []
+        min_x = top_left_location[0]
+        max_x = top_left_location[0] + width
+        min_y = top_left_location[1]
+        max_y = top_left_location[0] + height
 
-    def add_room(self, top_left_location, width, height, name, door_locations):
-        # TODO
-        pass
+        for x in range(min_x, max_x):
+            for y in range(min_y, max_y):
+                locs.append((x, y))
+
+        # Add all area objects
+        self.add_multiple_objects(locations=locs, callable_classes=AreaTile,
+                                  customizable_properties=customizable_properties, visualize_colours=visualize_colour,
+                                  **custom_properties)
+
+    def add_line(self, start, end, name, callable_class=None, customizable_properties=None,
+                 is_traversable=None, is_movable=None,
+                 visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
+                 **custom_properties):
+
+        # Get the coordinates on the given line
+        line_coords = _get_line_coords(start, end)
+
+        # Construct the names
+        names = [name for _ in line_coords]
+
+        # Add the actual properties
+        self.add_multiple_objects(locations=line_coords, names=names, callable_classes=callable_class,
+                                  custom_properties=custom_properties, customizable_properties=customizable_properties,
+                                  is_traversable=is_traversable, visualize_sizes=visualize_size,
+                                  visualize_shapes=visualize_shape, visualize_colours=visualize_colour,
+                                  visualize_depths=visualize_depth, is_movable=is_movable)
+
+    def add_room(self, top_left_location, width, height, name, door_locations=None, with_area_tiles=False,
+                 doors_open=False,
+                 wall_custom_properties=None, wall_customizable_properties=None,
+                 area_custom_properties=None, area_customizable_properties=None,
+                 area_visualize_colour=None):
+
+        # Check if width and height are large enough to make an actual room (with content)
+        if width <= 2 or height <= 2:
+            raise Exception(f"While adding room {name}; The width {width} and/or height {height} should both be larger"
+                            f" than 2.")
+
+        # Check if the with_area boolean is True when any area properties are given
+        if with_area_tiles is False and (
+                area_custom_properties is not None or
+                area_customizable_properties is not None or
+                area_visualize_colour is not None):
+            warnings.warn(f"While adding room {name}: The boolean with_area_tiles is set to {with_area_tiles} while "
+                          f"also providing specific area statements. Treating with_area_tiles as True.")
+            with_area_tiles = True
+
+        # Subtract 1 from both width and height, since the top left already counts as a size of 1,1
+        width -= 1
+        height -= 1
+
+        # Set corner coordinates
+        top_left = top_left_location
+        top_right = (top_left_location[0] + width, top_left_location[1])
+        bottom_left = (top_left_location[0], top_left_location[1] + height)
+        bottom_right = (top_left_location[0] + width, top_left_location[1] + height)
+
+        # Get all edge coordinates
+        top = _get_line_coords(top_left, top_right)
+        right = _get_line_coords(top_right, bottom_right)
+        bottom = _get_line_coords(bottom_left, bottom_right)
+        left = _get_line_coords(top_left, bottom_left)
+
+        # Combine in one and remove duplicates
+        all_ = top
+        all_.extend(right)
+        all_.extend(bottom)
+        all_.extend(left)
+        all_ = list(set(all_))
+
+        # Check if all door locations are at wall locations, if so remove those wall locations
+        door_locations = None if door_locations is None else door_locations
+        for door_loc in door_locations:
+            if door_loc in all_:
+                all_.remove(door_loc)
+            else:
+                raise Exception(f"While adding room {name}, the requested door location {door_loc} is not in a wall.")
+
+        # Add all walls
+        names = [f"{name} - wall@{loc}" for loc in all_]
+        self.add_multiple_objects(locations=all_, names=names, callable_classes=Wall,
+                                  custom_properties=wall_custom_properties,
+                                  customizable_properties=wall_customizable_properties)
+
+        # Add all doors
+        for door_loc in door_locations:
+            self.add_env_object(location=door_loc, name=f"{name} - door@{door_loc}", callable_class=Door,
+                                is_open=doors_open)
+
+        # Add all area tiles if required
+        if with_area_tiles:
+            area_top_left = (top_left[0] + 1, top_left[1] + 1)
+            area_width = width - 1
+            area_height = height - 1
+
+            # If properties happens to be none, set it to empty dict
+            if area_custom_properties is None:
+                area_custom_properties = {}
+
+            self.add_area(top_left_location=area_top_left, width=area_width, height=area_height, name=f"{name}_area",
+                          visualize_colour=area_visualize_colour, customizable_properties=area_customizable_properties,
+                          **area_custom_properties)
 
     def create_sense_capability(self, objects_to_perceive, range_to_perceive_them_in):
         # Check if range and objects are the same length
@@ -558,14 +677,15 @@ class WorldFactory:
             defaults = argspecs.defaults  # defaults (if any) of the last n elements in args
 
             # Now assign the default values to kwargs dictionary
-            args = OrderedDict({arg: None for arg in reversed(args[1:])})
-            for idx, default in enumerate(reversed(defaults)):
-                k = list(args.keys())[idx]
-                args[k] = default
+            args = OrderedDict({arg: "not_set" for arg in reversed(args[1:])})
+            if defaults is not None:
+                for idx, default in enumerate(reversed(defaults)):
+                    k = list(args.keys())[idx]
+                    args[k] = default
 
             # Check if all arguments are present (fails if a required argument without a default value is not given)
             for arg, default in args.items():
-                if arg not in custom_props.keys() and arg not in mandatory_props.keys() and default is None:
+                if arg not in custom_props.keys() and arg not in mandatory_props.keys() and default == "not_set":
                     raise Exception(f"Cannot create environment object of type {callable_class.__name__} with name "
                                     f"{mandatory_props['name']}, as its constructor requires the argument named {arg} "
                                     f"which is not given as a property.")

@@ -138,7 +138,7 @@ function doTick(grid_size, vis_bg, state, curr_tick) {
         bgTileColour = vis_bg;
     }
 
-    // console.log("\nNew tick", state);
+    // console.log("\n#####################################\nNew tick #", curr_tick);
 
     // calc the ticks per second
     highestTickSoFar = curr_tick;
@@ -167,20 +167,14 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
     // return in the case that the canvas has disappeared
 	if(ctx==null) { return; }
 
+    // console.log("Tick:", curr_tick, "highest tick:", highestTickSoFar);
+
     // return in case there is a new tick, and we are still updating the old tick
-    if (curr_tick < highestTickSoFar) {
-        highestTickSoFar = curr_tick;
+    if (curr_tick != highestTickSoFar) {
+        // console.log("Updating old tick, return");
         return;
     }
-
-    // console.log("\n Drawing grid");
-
-    // Check if we have gotten disconnected
-    // checkDisconnected();
-    // if (disconnected) {
-    //     console.log("Got disconnected, quit visualization");
-    //     return;
-    // }
+    // console.log("Drawing grid");
 
     calc_fps();
     updateGridSize(grid_size); // save the number of cells in x and y direction of the map
@@ -190,8 +184,6 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
     var obj_keys = Object.keys(state);
 
     // calculate a number of necessary variables for timing the movement animation
-    // if(animateMovement) { // Todo: if required add an property per object which
-    // determines if movement should be animated or not?
     if( true ) {
         // how many milliseconds should 1 frame take
         var msPerFrame = (1.0 / targetFPS) * 1000;

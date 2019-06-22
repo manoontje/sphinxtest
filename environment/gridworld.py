@@ -10,14 +10,10 @@ from environment.objects.env_object import *
 from visualization.visualizer import Visualizer
 
 
-TIME_FOCUS_TICK_DURATION = 'aim_for_constant_tick_duration'
-TIME_FOCUS_SIMULATION_DURATION = 'aim_for_accurate_global_tick_duration'
-
-
 class GridWorld:
 
-    def __init__(self, shape, tick_duration, simulation_goal=None, run_sail_api=True, run_visualization_server=True,
-                 time_focus=TIME_FOCUS_TICK_DURATION, rnd_seed=1, vis_bg="#C2C2C2"):
+    def __init__(self, shape, tick_duration, simulation_goal, run_sail_api=True, run_visualization_server=True,
+                 rnd_seed=1, vis_bg="#C2C2C2"):
         self.tick_duration = tick_duration
         self.registered_agents = OrderedDict()
         self.environment_objects = OrderedDict()
@@ -28,7 +24,6 @@ class GridWorld:
         self.shape = shape
         self.run_sail_api = run_sail_api
         self.run_visualization_server = run_visualization_server
-        self.time_focus = time_focus
         self.grid = np.array([[None for x in range(shape[0])] for y in range(shape[1])])
         self.is_done = False
         self.rnd_seed = rnd_seed
@@ -41,6 +36,7 @@ class GridWorld:
         self.is_initialized = False
         self.message_buffer = {} # dictionary of messages that need to be send to agents, with receiver ids as keys
         self.vis_bg = vis_bg
+
 
     def initialize(self):
         # Only initialize when we did not already do so
@@ -139,7 +135,7 @@ class GridWorld:
             return self.is_done, 0.
 
         # Set tick start of current tick
-        tick_start_time_current_tick = datetime.datetime.now()
+        start_time_current_tick = datetime.datetime.now()
 
         # Go over all agents, detect what each can detect, figure out what actions are possible and send these to
         # that agent. Then receive the action back and store the action in a buffer.
@@ -237,17 +233,15 @@ class GridWorld:
 
         # Check how much time the tick lasted already
         tick_end_time = datetime.datetime.now()
-        tick_duration = tick_end_time - tick_start_time_current_tick
-        self.curr_tick_duration = tick_duration.total_seconds()
-        total_time = (tick_end_time - self.tick_start_time)
-        self.sleep_duration = self.tick_duration * self.current_nr_ticks - total_time.total_seconds()
+        tick_duration = tick_end_time - start_time_current_tick
+        self.sleep_duration = self.tick_duration - tick_duration.total_seconds()
 
         # Sleep for the remaining time of self.tick_duration
         self.__sleep()
 
         # Compute the total time of our tick (including potential sleep)
         tick_end_time = datetime.datetime.now()
-        tick_duration = tick_end_time - tick_start_time_current_tick
+        tick_duration = tick_end_time - start_time_current_tick
         self.curr_tick_duration = tick_duration.total_seconds()
         print(f"Tick {self.current_nr_ticks} took {self.curr_tick_duration} seconds")
 
@@ -385,7 +379,7 @@ class GridWorld:
         else:
             self.__warn(
                 f"The average tick took longer than the set tick duration of {self.tick_duration}. "
-                f"Programm is to heavy to run real time")
+                f"Program is to heavy to run real time")
 
     def __update_grid(self):
         self.grid = np.array([[None for x in range(self.shape[0])] for y in range(self.shape[1])])
@@ -456,6 +450,10 @@ class GridWorld:
         if len(possible_actions) == 0:
             warn_str = f"No possible actions for agent {agent_id}."
             warnings.warn(self.__warn(warn_str))
+
+        # Sort alphabeticcelly, since the order was determined by the order of a dictionary we fix it now such that any
+        # random selection (e.g. through 'choice') makes sense.
+        possible_actions.sort()
 
         return possible_actions
 
