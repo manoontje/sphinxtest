@@ -4,6 +4,7 @@ import sys
 import warnings
 from collections import OrderedDict
 from typing import Callable
+from colour import Color as Colour
 
 import numpy as np
 from numpy.random.mtrand import RandomState
@@ -16,8 +17,10 @@ from environment.objects.agent_avatar import AgentAvatar
 from environment.objects.env_object import EnvObject
 from environment.objects.helper_functions import get_inheritence_path
 from environment.objects.simple_objects import Wall, Door, AreaTile, SmokeTile
+from environment.objects.cl_sc_objects import Water
 from environment.sim_goals.sim_goal import LimitedTimeGoal
 from scenario_manager.helper_functions import get_default_value, _get_line_coords
+
 
 ######
 # We do this so we are sure everything is imported and thus can be found
@@ -294,8 +297,8 @@ class WorldFactory:
         self.agent_settings[-1]['probability'] = probability
 
     def add_env_object(self, location, name, callable_class=None, customizable_properties=None,
-                       is_traversable=None, is_movable=None,
-                       visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
+                       is_traversable=None, is_movable=None, visualize_size=None,
+                       visualize_shape=None, visualize_colour=None, visualize_depth=None,
                        visualize_opacity=None, **custom_properties):
         if callable_class is None:
             callable_class = EnvObject
@@ -514,8 +517,8 @@ class WorldFactory:
         # Get all locations in the rectangle
         locs = self.__list_area_locs(top_left_location, width, height)
 
-        # get the opacities from a normal distribution for the smoke opacities
-        opacities = np.random.normal(loc=avg_visualize_opacity, scale=0.4, size=len(locs))
+        # get the opacities from a normal distribution for the smoke opacities, scale=std
+        opacities = np.random.normal(loc=avg_visualize_opacity, scale=0.2, size=len(locs))
         # make sure it is between 0.0 and 1.0
         opacities = np.clip(opacities, a_min=0.0, a_max=1.0)
 
@@ -523,6 +526,36 @@ class WorldFactory:
         for i, loc in enumerate(locs):
             self.add_env_object(location=loc, name=name, callable_class=SmokeTile, visualize_colour=visualize_colour, visualize_opacity=opacities[i], visualize_depth=visualize_depth)
 
+
+    def add_lake(self, name, top_left_location, width, height, dark_clr="#024a74", light_clr="#6c9cb5", fancy_colours=False):
+        """
+        Creates a lake with pretty colours (between dark_clr and light_clr) and a
+         "natural" shape in the specified area
+         """
+        groundClr = Colour(dark_clr)
+        # create a gradient from light to dark colours
+        lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
+
+        # get locations
+        locs = self.__list_area_locs(top_left_location, width, height)
+
+        # add water
+        for loc in locs:
+            clr = dark_clr if not fancy_colours else np.random.choice(lake_colours).hex
+            # add foggy area
+            self.add_env_object(location=loc, name="fog", callable_class=Water, visualize_colour=clr)
+
+
+    def add_buildings(self, top_left_location, width, height, density):
+        """
+        Place buildings in an area, with density as specified
+        """
+        # get locations
+        locs = self.__list_area_locs(top_left_location, width, height)
+
+        poss_locs = round(len(locs) / 2)
+
+        np.random.normal(loc=avg_visualize_opacity, scale=0.2, size=poss_locs)
 
 
     def __list_area_locs(self, top_left_location, width, height):

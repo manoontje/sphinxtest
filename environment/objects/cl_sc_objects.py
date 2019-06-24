@@ -28,11 +28,11 @@ class HouseRoof(EnvObject):
 
 class Water(EnvObject):
 
-    def __init__(self, location, name="Water"):
+    def __init__(self, location, name="Water", visualize_colour="#024a74"):
         """
         A simple Square object representing a house. Is always traversable
         :param location: The location of the wall.
         :param name: The name, default "Wall".
         """
-        super().__init__(name=name, location=location, visualize_colour="#024a74",
+        super().__init__(name=name, location=location, visualize_colour=visualize_colour,
                          visualize_shape=0, is_traversable=True, class_callable=Water)
