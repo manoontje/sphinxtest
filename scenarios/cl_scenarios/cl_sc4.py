@@ -37,19 +37,13 @@ def create_factory():
     }
 
     hu_ag = HumanAgent()
-    factory.add_human_agent(location=[23, 23], agent=hu_ag, visualize_depth=5,
-                visualize_colour="#5d6773", usrinp_action_map=usrinp_action_map)
+    factory.add_human_agent(location=[21, 21], agent=hu_ag, visualize_depth=5,
+                visualize_colour="#16e535", usrinp_action_map=usrinp_action_map)
 
 
     #############################################
     # Objects
     #############################################
-
-    # Obstacles
-    # locations = [[0,0], [0,1], [10,11], [11,11], [12,11], [12,12]]
-    # factory.add_multiple_objects(locations=locations, names=["sand dune" for _ in range(len(locations))], \
-    #             callable_classes=[Wall for _ in range(len(locations))], visualize_colours=["#7a370a" for _ in range(len(locations))] )
-
 
     # Village
     houseColour = "#7a370a"
@@ -71,8 +65,14 @@ def create_factory():
 
 
     # road
-    factory.add_area(top_left_location=[5, 21], width=15, height=2, name="road", visualize_colour="#5d6773")
-    # factory.add_line(start=[5, 21], end=[20, 21], name="road", callable_class=AreaTile, visualize_colour="#5d6773")
+    factory.add_area(top_left_location=[4, 21], width=17, height=1, name="road", visualize_colour="#999999") # south road
+    factory.add_area(top_left_location=[4, 3], width=1, height=18, name="road", visualize_colour="#999999") # west road
+    factory.add_area(top_left_location=[5, 3], width=17, height=1, name="road", visualize_colour="#999999") # north road
+    factory.add_area(top_left_location=[21, 3], width=1, height=6, name="road", visualize_colour="#999999") # north west road
+    factory.add_area(top_left_location=[21, 16], width=1, height=6, name="road", visualize_colour="#999999") # south west road
+    factory.add_area(top_left_location=[0, 12], width=4, height=1, name="road", visualize_colour="#999999") # east connection west road
+
+
 
 
     return factory

@@ -488,8 +488,6 @@ class WorldFactory:
             for y in range(min_y, max_y):
                 locs.append((x, y))
 
-        print("Area locs:", locs)
-
         # Add all area objects
         self.add_multiple_objects(locations=locs, callable_classes=AreaTile,
                                   customizable_properties=customizable_properties, visualize_colours=visualize_colour,
