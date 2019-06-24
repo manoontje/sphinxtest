@@ -45,16 +45,6 @@ def create_factory():
     # Objects
     #############################################
 
-    # Village
-    houseColour = "#7a370a"
-    house_base_locations = [[18, 11], [19, 13], [21, 14], [21, 11], [23, 12]]
-    factory.add_multiple_objects(locations=house_base_locations, names="house_base", \
-                callable_classes=HouseBase, visualize_colours=houseColour )
-    house_roof_locations = [[18, 10], [19, 12], [21, 13], [21, 10], [23, 11]]
-    factory.add_multiple_objects(locations=house_roof_locations, names="house_roof", \
-                callable_classes=HouseRoof, visualize_colours=houseColour )
-
-
     # lake
     factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8, height=6, fancy_colours=True)
 
@@ -72,21 +62,37 @@ def create_factory():
     # orange: #ffa500
     # red: #FF0000
     factory.add_multiple_objects(locations=[[0,23],[0,24],[1,23],[1,24]], names="NationalAlertStatus", \
-                visualize_colours="#ffa500" )
+                visualize_colours="#ffa500", is_traversable=True )
 
 
     # fog
-    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
-    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
-
+    factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
+    factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
 
 
     # goal
     # not secured = "#000000"
     # secured = "#00FF00"
     locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
-    factory.add_multiple_objects(callable_classes=EnvObject, locations=locs, visualize_colours="#000000")
+    factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True)
 
+    # Village
+    houseColour = "#7a370a"
+    house_base_locations = [[18, 11], [19, 13], [21, 14], [21, 11], [23, 12], [23, 15], [19,15], [17,15]]
+    factory.add_multiple_objects(locations=house_base_locations, names="house_base", \
+                callable_classes=HouseBase, visualize_colours=houseColour )
+    house_roof_locations = [[18, 10], [19, 12], [21, 13], [21, 10], [23, 11], [23, 14], [19,14], [17,14]]
+    factory.add_multiple_objects(locations=house_roof_locations, names="house_roof", \
+                callable_classes=HouseRoof, visualize_colours=houseColour )
+
+
+    # urbanize by placing houses
+    factory.add_buildings(top_left_location=[4,1], width=15, height=2, density=0.05, visualize_colour=houseColour, name="house") # north
+    factory.add_buildings(top_left_location=[4,5], width=15, height=3, density=0.05, visualize_colour=houseColour, name="house") # north 2
+    factory.add_buildings(top_left_location=[3,16], width=15, height=4, density=0.05, visualize_colour=houseColour, name="house") # bottom
+    factory.add_buildings(top_left_location=[3,23], width=18, height=2, density=0.05, visualize_colour=houseColour, name="house") # bottom 2
+    factory.add_buildings(top_left_location=[0,1], width=3, height=11, density=0.05, visualize_colour=houseColour, name="house") # north east
+    factory.add_buildings(top_left_location=[0,14], width=4, height=7, density=0.05, visualize_colour=houseColour, name="house") # south east
 
     return factory
 
@@ -95,19 +101,3 @@ def change_group_locations(loc, xIncr, yIncr):
     """ Can be used to transpose a group of locations all with a specific x and/or y value """
     print ("Base:", [[loc[0] + xIncr, loc[1] + yIncr] for loc in loc])
     print ("Base with y-1 (e.g. for house roof):", [[loc[0] + xIncr, loc[1] + yIncr - 1] for loc in loc])
-
-
-def fogify_area(factory, top_left_location, width, height, groundClr="#024a74", fogClr="#6c9cb5"):
-    """ Creates fog in a specific area """
-    groundClr = Colour(groundClr)
-    fog_colours = list(groundClr.range_to(Colour(fogClr), 10))
-
-    locs = []
-    min_x = top_left_location[0]
-    max_x = top_left_location[0] + width
-    min_y = top_left_location[1]
-    max_y = top_left_location[1] + height
-    for x in range(min_x, max_x):
-        for y in range(min_y, max_y):
-            # add foggy area
-            factory.add_env_object(location=[x,y], name="fog", visualize_colour=random.choice(fog_colours).hex)

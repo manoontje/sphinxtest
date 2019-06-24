@@ -110,6 +110,7 @@ class EnvObject:
         if is_movable is None:
             is_movable = get_default_value(class_name="EnvObject", property_name="is_movable")
 
+
         # Set the mandatory properties
         self.visualize_depth = visualize_depth
         self.visualize_colour = visualize_colour

@@ -17,7 +17,7 @@ from environment.objects.agent_avatar import AgentAvatar
 from environment.objects.env_object import EnvObject
 from environment.objects.helper_functions import get_inheritence_path
 from environment.objects.simple_objects import Wall, Door, AreaTile, SmokeTile
-from environment.objects.cl_sc_objects import Water
+from environment.objects.cl_sc_objects import Water, HouseBase, HouseRoof
 from environment.sim_goals.sim_goal import LimitedTimeGoal
 from scenario_manager.helper_functions import get_default_value, _get_line_coords
 
@@ -333,6 +333,7 @@ class WorldFactory:
                               "is_movable": is_movable,
                               "location": location}
                           }
+
         self.object_settings.append(object_setting)
 
     def add_env_object_prospect(self, location, name, probability, callable_class=None, customizable_properties=None,
@@ -546,16 +547,21 @@ class WorldFactory:
             self.add_env_object(location=loc, name="fog", callable_class=Water, visualize_colour=clr)
 
 
-    def add_buildings(self, top_left_location, width, height, density):
+    def add_buildings(self, top_left_location, width, height, density, name, visualize_colour):
         """
         Place buildings in an area, with density as specified
         """
-        # get locations
+        # get locations and choose a couple
         locs = self.__list_area_locs(top_left_location, width, height)
+        chosen_locs = np.random.choice( range(len(locs)), round(len(locs) *  density) )
 
-        poss_locs = round(len(locs) / 2)
+        for loc_i in chosen_locs:
+            # place housebase
+            self.add_env_object(location=locs[loc_i], callable_class=HouseBase, name=name, visualize_colour=visualize_colour)
 
-        np.random.normal(loc=avg_visualize_opacity, scale=0.2, size=poss_locs)
+            # place houseroof if possible
+            if locs[loc_i][1] != 0:
+                self.add_env_object(location=[locs[loc_i][0], locs[loc_i][1] - 1] , callable_class=HouseRoof, name=name, visualize_colour=visualize_colour)
 
 
     def __list_area_locs(self, top_left_location, width, height):
