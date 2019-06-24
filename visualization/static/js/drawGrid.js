@@ -128,14 +128,14 @@ function updateGridSize(grid_size) {
 /**
  * called when a new tick is received by the agent
  */
-function doTick(grid_size, vis_bg, state, curr_tick) {
+function doTick(grid_size, state, curr_tick, vis_bg_clr) {
     // for the first time drawing the visualization, calculate the optimal
     // screen size based on the grid size
     if (firstDraw) {
         // console.log("First draw, resetting canvas and tile sizes");
         fixCanvasSize();
         firstDraw = false;
-        bgTileColour = vis_bg;
+        bgTileColour = vis_bg_clr;
     }
 
     // console.log("\n#####################################\nNew tick #", curr_tick);
@@ -239,9 +239,12 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
                 }
             }
 
-            // get the object colour and size
-            clr = obj['visualization']['colour'];
+            // get the object  size
             sz = obj['visualization']['size'];
+            // get and convert the colour from hex to rgba
+            clr = obj['visualization']['colour'];
+            opacity = obj['visualization']['opacity'];
+            clr = hexToRgba(clr, opacity);
 
             // draw the object with the correct shape, size and colour
             if (obj['visualization']['shape'] == 0) {
@@ -434,4 +437,13 @@ function drawTriangle(x, y, tileW, tileH, clr, size) {
     // fill the shape with colour
     ctx.fillStyle = clr;
     ctx.fill();
+}
+
+/**
+ * Convert a hexadecimal colour code to an RGBA colour code
+ */
+function hexToRgba(hex, opacity) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? "rgba(" + parseInt(result[1], 16) + "," + parseInt(result[2], 16)
+                        + "," + parseInt(result[3], 16) + "," + opacity + ")" : null;
 }

@@ -51,10 +51,11 @@ $(document).ready(function(){
         vis_bg = data.params.vis_bg;
         state = data.state;
         tick = data.params.tick;
+        vis_bg_clr = data.params.vis_bg_clr;
 
         // draw the grid again
         requestAnimationFrame(function() {
-            doTick(grid_size, vis_bg, state, tick);
+            doTick(grid_size, state, tick, vis_bg_clr);
         });
     });
 

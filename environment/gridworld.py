@@ -7,13 +7,14 @@ from agents.agent import Agent
 from environment.actions.object_actions import *
 from environment.helper_functions import get_all_classes
 from environment.objects.env_object import *
+from environment.objects.simple_objects import AreaTile
 from visualization.visualizer import Visualizer
 
 
 class GridWorld:
 
     def __init__(self, shape, tick_duration, simulation_goal, run_sail_api=True, run_visualization_server=True,
-                 rnd_seed=1, vis_bg="#C2C2C2"):
+                 rnd_seed=1, visualization_bg_clr="#C2C2C2"):
         self.tick_duration = tick_duration
         self.registered_agents = OrderedDict()
         self.environment_objects = OrderedDict()
@@ -35,8 +36,7 @@ class GridWorld:
         self.visualizer = None
         self.is_initialized = False
         self.message_buffer = {} # dictionary of messages that need to be send to agents, with receiver ids as keys
-        self.vis_bg = vis_bg
-
+        self.visualization_bg_clr = visualization_bg_clr
 
     def initialize(self):
         # Only initialize when we did not already do so
@@ -45,7 +45,7 @@ class GridWorld:
             self.__update_grid()
 
             # Initialize the visualizer
-            self.visualizer = Visualizer(self.shape, self.vis_bg)
+            self.visualizer = Visualizer(self.shape, self.visualization_bg_clr)
 
             # Visualize already
             self.__initial_visualisation()
@@ -113,6 +113,11 @@ class GridWorld:
 
         # get the objects at the target object location
         objs_at_loc = self.get_objects_in_range(obj_loc, "*", 0)
+
+        # filter out areaTiles, which don't count
+        for key in list(objs_at_loc.keys()):
+            if AreaTile.__name__ in objs_at_loc[key].class_inheritance:
+                objs_at_loc.pop(key)
 
         # check how many of these objects are intraversable
         intraversable_objs = []

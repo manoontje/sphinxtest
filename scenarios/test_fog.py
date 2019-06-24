@@ -7,13 +7,13 @@ from environment.objects.simple_objects import *
 
 
 def create_factory():
-    factory = WorldFactory(random_seed=1, shape=[10, 10], tick_duration=0.2, simulation_goal=5000)
+    factory = WorldFactory(random_seed=1, shape=[10, 10], tick_duration=0.2, simulation_goal=5000, visualization_bg_clr="#6d1010")
 
     # random_prop = RandomProperty(values=["One", "Two"], distribution=[3, 1])
     # factory.add_env_object(location=[0, 0], name="Wall 1", random_prop=random_prop)
 
-    # agent = Agent()
-    # factory.add_agent(location=[1, 1], agent=agent, visualize_depth=5)
+    agent = Agent()
+    factory.add_agent(location=[1, 1], agent=agent, visualize_depth=5)
 
     # usr input action map for human agent
     usrinp_action_map = {
@@ -34,11 +34,14 @@ def create_factory():
     factory.add_env_object(location=[8, 1], name="Wall 2", is_traversable=True)
 
     # area
-    factory.add_env_object(location=[8,0], name="area1", callable_class=AreaTile, visualize_depth=5, is_movable=False)
+    factory.add_env_object(location=[8,0], name="area1", callable_class=AreaTile, is_movable=False)
 
+    # fog test
+    # factory.add_env_object(location=[9,0], name="fog", callable_class=SmokeTile, visualize_opacity=0.8, visualize_depth=101)
 
+    factory.add_smoke_area(top_left_location=[3,1], name="fog", width=6, height=8, avg_visualize_opacity=0.7, visualize_depth=101)
 
-    factory.add_line(start=(4, 4), end=(6, 9), name="Line")
+    factory.add_line(start=(4, 4), end=(6, 9), name="Line", is_movable=True)
     factory.add_room(top_left_location=(0, 0), width=3, height=3, name="room 1", door_locations=[(2, 1), (1, 2)],
                      area_visualize_colour="#af4848", doors_open=False)
 
