@@ -62,7 +62,6 @@ function fixTileSize(canvasW, canvasH) {
     // calc the pixel per cell ratio in the x and y direcetion
     var px_per_cell_x = Math.round(canvasW / mapW);
     var px_per_cell_y = Math.round(canvasH / mapH);
-    console.log("px_per_cell x:", px_per_cell_x, px_per_cell_y);
 
     // Use the smallest one as the width AND height of the cells to keep tiles square
     px_per_cell = Math.min(px_per_cell_x, px_per_cell_y);

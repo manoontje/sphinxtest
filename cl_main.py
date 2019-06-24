@@ -1,4 +1,4 @@
-from scenarios.cl_scenarios import cl_sc4 as sc
+from scenarios.cl_scenarios import base_sc as sc
 
 if __name__ == "__main__":
 
