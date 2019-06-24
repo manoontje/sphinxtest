@@ -37,7 +37,7 @@ def create_factory():
     }
 
     hu_ag = HumanAgent()
-    factory.add_human_agent(location=[4, 0], agent=hu_ag, visualize_depth=5,
+    factory.add_human_agent(location=[23, 23], agent=hu_ag, visualize_depth=5,
                 visualize_colour="#5d6773", usrinp_action_map=usrinp_action_map)
 
 
@@ -53,33 +53,31 @@ def create_factory():
 
     # Village
     houseColour = "#7a370a"
-    locations = [[10,12], [12,13], [12,10], [14,11] ]
-    factory.add_multiple_objects(locations=locations, names=["house_base" for _ in range(len(locations))], \
-                callable_classes=[HouseBase for _ in range(len(locations))], visualize_colours=[houseColour for _ in range(len(locations))] )
-    locations = [[10,11], [12,12], [12,9],  [14,10]]
-    factory.add_multiple_objects(locations=locations, names=["house_roof" for _ in range(len(locations))], \
-                callable_classes=[HouseRoof for _ in range(len(locations))], visualize_colours=[houseColour for _ in range(len(locations))] )
+    house_base_locations = [[19, 13], [21, 14], [21, 11], [23, 12]]
+    factory.add_multiple_objects(locations=house_base_locations, names=["house_base" for _ in range(len(house_base_locations))], \
+                callable_classes=[HouseBase for _ in range(len(house_base_locations))], visualize_colours=[houseColour for _ in range(len(house_base_locations))] )
+    house_roof_locations = [[19, 12], [21, 13], [21, 10], [23, 11]]
+    factory.add_multiple_objects(locations=house_roof_locations, names=["house_roof" for _ in range(len(house_roof_locations))], \
+                callable_classes=[HouseRoof for _ in range(len(house_roof_locations))], visualize_colours=[houseColour for _ in range(len(house_roof_locations))] )
 
 
     # lake
-    locations = [[16,14], [23, 23]]
-    factory.add_multiple_objects(locations=locations, callable_classes=[Water for _ in range(len(locations))] )
+    factory.add_line(start=[11, 10], end=[14, 10], name="lake", callable_class=Water)
+    factory.add_line(start=[10, 11], end=[15, 11], name="lake", callable_class=Water)
+    factory.add_line(start=[9, 12], end=[16, 12], name="lake", callable_class=Water)
+    factory.add_line(start=[9, 13], end=[16, 13], name="lake", callable_class=Water)
+    factory.add_line(start=[10, 14], end=[15, 14], name="lake", callable_class=Water)
+    factory.add_line(start=[10, 15], end=[14, 15], name="lake", callable_class=Water)
 
 
-
-   #  add_env_object(self, location, name, callable_class=None, customizable_properties=None,
-   #                     is_traversable=None, is_movable=None,
-   #                     visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
-   #                     **custom_properties):
-   #
-   # add_multiple_objects(self, locations, names=None, callable_classes=None, custom_properties=None,
-   #                          customizable_properties=None, is_traversable=None, visualize_sizes=None,
-   #                          visualize_shapes=None, visualize_colours=None, visualize_depths=None,
-                            # is_movable=None):
-
-    # factory.add_multiple_objects(locations=[[4, 4], [5, 5], [6, 6]])
-
-
+    # road
+    factory.add_area(top_left_location=[5, 21], width=15, height=2, name="road", visualize_colour="#5d6773")
+    # factory.add_line(start=[5, 21], end=[20, 21], name="road", callable_class=AreaTile, visualize_colour="#5d6773")
 
 
     return factory
+
+
+def change_group_locations(loc, xIncr, yIncr):
+    print ("Base:", [[loc[0] + xIncr, loc[1] + yIncr] for loc in loc])
+    print ("Roofs:", [[loc[0] + xIncr, loc[1] + yIncr - 1] for loc in loc])
