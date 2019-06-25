@@ -135,7 +135,6 @@ function doTick(grid_size, state, curr_tick, vis_bg_clr) {
         // console.log("First draw, resetting canvas and tile sizes");
         fixCanvasSize();
         firstDraw = false;
-        bgTileColour = vis_bg_clr;
     }
 
     // console.log("\n#####################################\nNew tick #", curr_tick);
@@ -147,6 +146,8 @@ function doTick(grid_size, state, curr_tick, vis_bg_clr) {
     // the tracked objects from last iteration are moved to a seperate list
     prevAnimatedObjects = animatedObjects;
     animatedObjects = {};
+    bgTileColour = vis_bg_clr;
+
 
     // console.log("Received state:", state);
 

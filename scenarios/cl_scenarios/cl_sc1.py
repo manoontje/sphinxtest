@@ -16,7 +16,7 @@ def create_factory():
     # Environment
     # Urban (default / none)
     # Desert #d3ba90
-    factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2, visualization_bg_clr="#d3ba90")
+    factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2)
 
     #############################################
     # Agent
@@ -65,12 +65,12 @@ def create_factory():
     # orange: #ffa500
     # red: #FF0000
     factory.add_multiple_objects(locations=[[0,23],[0,24],[1,23],[1,24]], names="NationalAlertStatus", \
-                visualize_colours="#00FF00", is_traversable=True )
+                visualize_colours="#ffa500", is_traversable=True )
 
 
     # fog
-    factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
-    factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
+    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
+    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
 
 
     # goal
@@ -80,9 +80,7 @@ def create_factory():
     factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True)
 
     # Village
-    # urban #545454
-    # desert 7a370a
-    houseColour = "#7a370a"
+    houseColour = "#545454"
     house_base_locations = [[18, 11], [19, 13], [21, 14], [21, 11], [23, 12], [23, 15], [19,15], [17,15]]
     factory.add_multiple_objects(locations=house_base_locations, names="house_base", \
                 callable_classes=HouseBase, visualize_colours=houseColour )

@@ -13,9 +13,6 @@ from colour import Color as Colour
 # Context. Area: desert, area secured: no, intel: hostiles spotted.
 
 def create_factory():
-    # Environment
-    # Urban (default / none)
-    # Desert #d3ba90
     factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2, visualization_bg_clr="#d3ba90")
 
     #############################################
@@ -69,8 +66,8 @@ def create_factory():
 
 
     # fog
-    factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
-    factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
+    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
+    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
 
 
     # goal
@@ -80,8 +77,6 @@ def create_factory():
     factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True)
 
     # Village
-    # urban #545454
-    # desert 7a370a
     houseColour = "#7a370a"
     house_base_locations = [[18, 11], [19, 13], [21, 14], [21, 11], [23, 12], [23, 15], [19,15], [17,15]]
     factory.add_multiple_objects(locations=house_base_locations, names="house_base", \
@@ -92,12 +87,12 @@ def create_factory():
 
 
     # urbanize by placing houses
-    factory.add_buildings(top_left_location=[4,1], width=15, height=2, density=0.05, visualize_colour=houseColour, name="house") # north
-    factory.add_buildings(top_left_location=[5,5], width=15, height=3, density=0.05, visualize_colour=houseColour, name="house") # north 2
-    factory.add_buildings(top_left_location=[5,16], width=15, height=4, density=0.05, visualize_colour=houseColour, name="house") # bottom
-    factory.add_buildings(top_left_location=[3,23], width=18, height=2, density=0.05, visualize_colour=houseColour, name="house") # bottom 2
-    factory.add_buildings(top_left_location=[0,1], width=3, height=11, density=0.05, visualize_colour=houseColour, name="house") # north east
-    factory.add_buildings(top_left_location=[0,14], width=4, height=7, density=0.05, visualize_colour=houseColour, name="house") # south east
+    # factory.add_buildings(top_left_location=[4,1], width=15, height=2, density=0.05, visualize_colour=houseColour, name="house") # north
+    # factory.add_buildings(top_left_location=[5,5], width=15, height=3, density=0.05, visualize_colour=houseColour, name="house") # north 2
+    # factory.add_buildings(top_left_location=[5,16], width=15, height=4, density=0.05, visualize_colour=houseColour, name="house") # bottom
+    # factory.add_buildings(top_left_location=[3,23], width=18, height=2, density=0.05, visualize_colour=houseColour, name="house") # bottom 2
+    # factory.add_buildings(top_left_location=[0,1], width=3, height=11, density=0.05, visualize_colour=houseColour, name="house") # north east
+    # factory.add_buildings(top_left_location=[0,14], width=4, height=7, density=0.05, visualize_colour=houseColour, name="house") # south east
 
     return factory
 

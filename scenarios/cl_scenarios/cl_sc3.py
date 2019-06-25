@@ -13,10 +13,7 @@ from colour import Color as Colour
 # Context. Area: desert, area secured: no, intel: hostiles spotted.
 
 def create_factory():
-    # Environment
-    # Urban (default / none)
-    # Desert #d3ba90
-    factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2, visualization_bg_clr="#d3ba90")
+    factory = WorldFactory(random_seed=1, shape=[25, 25], tick_duration=0.2)
 
     #############################################
     # Agent
@@ -69,20 +66,18 @@ def create_factory():
 
 
     # fog
-    factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
-    factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
+    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=24, height=24, avg_visualize_opacity=0.3, visualize_depth=101)
+    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, avg_visualize_opacity=0.5, visualize_depth=101)
 
 
     # goal
     # not secured = "#000000"
     # secured = "#00FF00"
     locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
-    factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True)
+    factory.add_multiple_objects(locations=locs, visualize_colours="#00FF00", is_traversable=True)
 
     # Village
-    # urban #545454
-    # desert 7a370a
-    houseColour = "#7a370a"
+    houseColour = "#545454"
     house_base_locations = [[18, 11], [19, 13], [21, 14], [21, 11], [23, 12], [23, 15], [19,15], [17,15]]
     factory.add_multiple_objects(locations=house_base_locations, names="house_base", \
                 callable_classes=HouseBase, visualize_colours=houseColour )
