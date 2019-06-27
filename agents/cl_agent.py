@@ -13,13 +13,32 @@ class CL_agent(Agent):
         super().__init__()
         print("Hello, I am cl_agent")
 
-        self.plan_library = {
+
+        self.possible_routes = {
             "route_left": [[4,21],[4,3],[21,3],[21,2]],
+            "route_left_reverse": [[21,2],[21, 3], [4, 3], [4, 21], [21, 21]],
             "route_middle": [[12,21],[12,13],[12,3],[21,3],[21,2]],
+            "route_middle_reverse": [[21,2],[21, 3],[12,3], [12, 13], [12, 21], [21, 21]],
             "route_right": [[21,12], [21,2]],
+            "route_right_reverse": [[21,2],[21,12], [21, 21]],
+            "surveillance": [[22,3], [22,1], [20,1], [20,3], [22,3], [22,1], [20,1], [20,3], [22,3], [22,1], [20,1], [20,3]],
         }
 
-        self.current_plan = self.plan_library["route_left"]
+        self.plan_library = {
+            0: {    "routes": ["route_left", "surveillance", "route_left_reverse"],
+                    "speed": 1},
+            1: {    "routes": ["route_middle", "surveillance", "route_middle_reverse"],
+                    "speed": 1},
+            2: {    "routes": ["route_right", "surveillance", "route_right_reverse"],
+                    "speed": 1}
+        }
+
+        # the plan the agent is executing
+        self.current_plan = 1
+
+        # the routes which the agent has to complete
+        self.routes_to_do = self.plan_library[self.current_plan]["routes"]
+        self.current_route = None
         self.checkpoints_done = 0
         self.grid_size = None
         self.grid = None
@@ -46,15 +65,17 @@ class CL_agent(Agent):
 
     def ooda_decide(self, state, possible_actions):
 
-        goal = self.current_plan[self.checkpoints_done]
+        # initialize the first route the first time
+        if self.current_route is None:
+            self.set_new_route()
+
+        goal = self.current_route[self.checkpoints_done]
         loc = state[self.agent_properties["obj_id"]]['location']
 
         # check if destination reached
-        if loc == tuple(self.current_plan[-1]):
-            print("Destination reached!")
+        if len(self.routes_to_do) == 0:
+            print("Plan completed!")
             return None, {}
-
-        print(f"\nCurrently at {loc} with goal {goal} with checkpoint goal {self.current_plan[self.checkpoints_done]}")
 
         # upon initialization, calculate a route to the first checkpoint
         if self.route_to_checkpoint is None:
@@ -62,17 +83,27 @@ class CL_agent(Agent):
             print(f"Calculated new route to next checkpoint towards {goal}, route: {self.route_to_checkpoint}")
 
         # check if checkpoint reached or no path yet calculated
-        if loc == tuple(self.current_plan[self.checkpoints_done]):
-            print(f'Completed checkpoint {self.current_plan[self.checkpoints_done]}!')
+        if loc == tuple(self.current_route[self.checkpoints_done]):
+            print(f'Completed checkpoint {self.current_route[self.checkpoints_done]}!')
+            self.checkpoints_done += 1
 
-            # check if destination reached
-            if loc == tuple(self.current_plan[-1]):
-                print("Destination reached!")
-                return None, {}
+            # check if route completed
+            if self.checkpoints_done == len(self.current_route):
+                print(f"Route {self.routes_to_do[0]} completed!")
+                # done with this route so delete it
+                del self.routes_to_do[0]
+
+                # check if plan completed
+                if len(self.routes_to_do) == 0:
+                    print("Plan completed!")
+                    self.checkpoints_done = 0
+                    return None, {}
+
+                self.set_new_route()
+
 
             # get a route to the next checkpoint
-            self.checkpoints_done += 1
-            goal = self.current_plan[self.checkpoints_done]
+            goal = self.current_route[self.checkpoints_done]
             self.route_to_checkpoint = astar(self.grid, loc, tuple(goal))
             self.route_progress = 0
             print(f"Calculated new route to next checkpoint towards {goal}, route: {self.route_to_checkpoint}")
@@ -82,7 +113,6 @@ class CL_agent(Agent):
         new_loc = self.route_to_checkpoint[self.route_progress]
         self.route_progress += 1
         action = self.move_to(loc, new_loc)
-        print(f"Taking action {action} to get from {loc} to {new_loc} towards checkpoint {goal}")
 
         # # Select a random action
         # if possible_actions:
@@ -92,6 +122,15 @@ class CL_agent(Agent):
 
         action_kwargs = {}
         return action, action_kwargs
+
+
+    def set_new_route(self):
+        """ Get the next route in the plan """
+        self.current_route = self.possible_routes[self.routes_to_do[0]]
+        self.checkpoints_done = 0
+        self.route_progress = 0
+        print(f"Starting new route {self.routes_to_do[0]}")
+
 
 
     def move_to(self, start, goal):

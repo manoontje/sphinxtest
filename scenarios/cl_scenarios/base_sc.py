@@ -108,7 +108,7 @@ def create_factory():
 
 
 
-    # Routes
+    # Routes visualization
     # locs = [[21,12], [21,2]]
     # factory.add_multiple_objects(locations=locs, names="waypoint_route1", visualize_colours="#00FF00", is_traversable=True )
     # locs = [[12,21],[12,13],[12,3],[21,3],[21,2]]
