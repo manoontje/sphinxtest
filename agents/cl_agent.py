@@ -40,7 +40,7 @@ class CL_agent(Agent):
         }
 
         # the plan the agent is executing
-        self.current_plan = 5
+        self.current_plan = 1
 
         # the routes which the agent has to complete
         self.routes_to_do = self.plan_library[self.current_plan]["routes"]

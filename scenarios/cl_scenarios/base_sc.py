@@ -72,8 +72,8 @@ def create_factory():
 
 
     # fog
-    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=25, height=25, visualize_depth=101, smoke_thickness_multiplier=0.8)
-    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, visualize_depth=101, smoke_thickness_multiplier=1)
+    factory.add_smoke_area(name="fog", top_left_location=[0,0], width=25, height=25, visualize_depth=101, smoke_thickness_multiplier=0.8)
+    factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, visualize_depth=101, smoke_thickness_multiplier=1)
 
 
     # goal
