@@ -6,7 +6,7 @@ from collections import OrderedDict
 from typing import Callable
 from colour import Color as Colour
 from noise import snoise2
-
+import math
 
 import numpy as np
 from numpy.random.mtrand import RandomState
@@ -576,18 +576,56 @@ class WorldFactory:
     def add_buildings(self, top_left_location, width, height, density, name, visualize_colour):
         """
         Place buildings in an area, with density as specified
+
+        :param density: density [0.0 - 1.0] of houses in that area
         """
-        # get locations and choose a couple
+        # get possible locations and randomly choose a number of locations to build on
         locs = self.__list_area_locs(top_left_location, width, height)
-        chosen_locs = np.random.choice( range(len(locs)), round(len(locs) *  density) )
 
-        for loc_i in chosen_locs:
-            # place housebase
-            self.add_env_object(location=locs[loc_i], callable_class=HouseBase, name=name, visualize_colour=visualize_colour)
+        # low density works best with random placement
+        if density <= 0.15:
+            i_chosen_locs = np.random.choice( range(len(locs)), round(len(locs) *  density) )
+            locs_chosen = [locs[i] for i in i_chosen_locs]
 
-            # place houseroof if possible
-            if locs[loc_i][1] != 0:
-                self.add_env_object(location=[locs[loc_i][0], locs[loc_i][1] - 1] , callable_class=HouseRoof, name=name, visualize_colour=visualize_colour)
+            for loc in locs_chosen:
+
+                # prevent building houses ontop of eachother
+                if (loc[0], loc[1] - 1) not in locs_chosen:
+
+                    # place housebase
+                    self.add_env_object(location=loc, callable_class=HouseBase, name=name, visualize_colour=visualize_colour)
+
+                    # place houseroof if possible
+                    if loc[1] != 0:
+                        self.add_env_object(location=[loc[0], loc[1] - 1] , callable_class=HouseRoof, name=name, visualize_colour=visualize_colour)
+
+        # for a higher building density we place them semi-random, with on average
+        # the maximum space between each building so it doesn't become one giant
+        # clutter (hopefully)
+        elif density > 0.15:
+            # number of houses to build
+            n_houses = round((len(locs) / 2.0) * density)
+            # avg house spacing
+            avg_house_spacing = math.floor(len(locs) / n_houses) if n_houses > 0 else 0
+            # semi random house spacing with as avg avg_house_spacing
+            house_spacing = np.random.normal(loc=avg_house_spacing, scale=avg_house_spacing * 0.25, size=n_houses)
+
+            i_loc = 0
+            for hs in house_spacing:
+
+                if i_loc >= len(locs):
+                    break
+
+                # place housebase
+                self.add_env_object(location=locs[i_loc], callable_class=HouseBase, name=name, visualize_colour=visualize_colour)
+
+                # place houseroof if possible
+                if locs[i_loc][1] != 0:
+                    self.add_env_object(location=[locs[i_loc][0], locs[i_loc][1] - 1] , callable_class=HouseRoof, name=name, visualize_colour=visualize_colour)
+
+                # get the next house location with a minimum of 2 blocks between houses
+                i_loc += int(max(round(hs), 2))
+
 
 
     def __list_area_locs(self, top_left_location, width, height):
