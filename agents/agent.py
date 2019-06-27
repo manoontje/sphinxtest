@@ -370,7 +370,7 @@ class Agent:
         :param action_args: The arguments for the selected action.
         :return: The decided action.
         """
-        print(action)
+        # print(action)
         return action, action_args
 
 

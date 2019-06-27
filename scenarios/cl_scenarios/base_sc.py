@@ -1,4 +1,5 @@
 from agents.agent import Agent
+from agents.cl_agent import CL_agent
 from agents.human_agent import HumanAgent
 from scenario_manager.world_factory import RandomProperty, WorldFactory
 from environment.actions.move_actions import *
@@ -21,8 +22,8 @@ def create_factory():
     #############################################
     # Agent
     #############################################
-    agent = Agent()
-    factory.add_agent(location=[21, 21], agent=agent)
+    agent = CL_agent()
+    factory.add_agent(location=[21, 21], agent=agent, possible_actions=[MoveNorth.__name__, MoveEast.__name__, MoveSouth.__name__, MoveWest.__name__])
 
 
     #############################################
@@ -47,6 +48,9 @@ def create_factory():
     #############################################
     # Objects
     #############################################
+
+    # info block with general info for agent
+    factory.add_env_object(location=[0,10], name="infoBlock", visualize_opacity=0, visualize_colour="#000000", is_traversable=True, grid_size=factory.world_settings["shape"])
 
     # lake
     factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8, height=6, fancy_colours=True)
@@ -101,6 +105,16 @@ def create_factory():
     factory.add_buildings(top_left_location=[3,23], width=18, height=2, density=0.2, visualize_colour=houseColour, name="house") # bottom 2
     factory.add_buildings(top_left_location=[2,1], width=1, height=11, density=0.2, visualize_colour=houseColour, name="house") # north east
     factory.add_buildings(top_left_location=[3,14], width=1, height=7, density=0.2, visualize_colour=houseColour, name="house") # south east
+
+
+
+    # Routes
+    # locs = [[21,12], [21,2]]
+    # factory.add_multiple_objects(locations=locs, names="waypoint_route1", visualize_colours="#00FF00", is_traversable=True )
+    # locs = [[12,21],[12,13],[12,3],[21,3],[21,2]]
+    # factory.add_multiple_objects(locations=locs, names="waypoint_route2", visualize_colours="#ffa500", is_traversable=True )
+    # locs = [[4,21],[4,3],[21,3],[21,2]]
+    # factory.add_multiple_objects(locations=locs, names="waypoint_route3", visualize_colours="#FF0000", is_traversable=True )
 
     return factory
 
