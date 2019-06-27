@@ -13,3 +13,6 @@ For documentation see the wiki at [https://ci.tno.nl/gitlab/SAIL-framework/testb
 - Water, traversable for drones but not cars?
 - add_multiple_objects location, colour, for all
 - auto refresh screen on new run
+
+# possible improvements
+- enable a multi-tick movement animation in the visualization for slow movements. Now it is just a couple ticks of waiting, and then in 1 tick the animation/movement.

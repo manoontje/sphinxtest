@@ -30,11 +30,17 @@ class CL_agent(Agent):
             1: {    "routes": ["route_middle", "surveillance", "route_middle_reverse"],
                     "speed": 1},
             2: {    "routes": ["route_right", "surveillance", "route_right_reverse"],
-                    "speed": 1}
+                    "speed": 1},
+            3: {    "routes": ["route_left", "surveillance", "route_left_reverse"],
+                    "speed": 3},
+            4: {    "routes": ["route_middle", "surveillance", "route_middle_reverse"],
+                    "speed": 3},
+            5: {    "routes": ["route_right", "surveillance", "route_right_reverse"],
+                    "speed": 3}
         }
 
         # the plan the agent is executing
-        self.current_plan = 1
+        self.current_plan = 5
 
         # the routes which the agent has to complete
         self.routes_to_do = self.plan_library[self.current_plan]["routes"]
@@ -46,6 +52,11 @@ class CL_agent(Agent):
         # initialize the first route to the first checkpoint
         self.route_to_checkpoint = None
         self.route_progress = 0
+
+        # keep track of speed, higher is slower. 1 is max
+        self.speed = self.plan_library[self.current_plan]["speed"]
+        self.track_speed = 0
+
 
 
     def ooda_observe(self, state):
@@ -64,8 +75,20 @@ class CL_agent(Agent):
 
 
     def ooda_decide(self, state, possible_actions):
+        """
+        The agent can execute one of multiple plans from its plan_library in a scenario.
+        A plan consists of one or more routes, and additional settings such as the speed.
+        Every route consists of checkpoints. Between checkpoints, a route is calculated
+        with the A* path planning algorithm.
+        """
 
-        # initialize the first route the first time
+        can_move = self.done_moving()
+
+        if not can_move:
+            # print("Waiting for completion of the previous movement")
+            return None, {}
+
+        # initialize the first route on the first execution of the agent
         if self.current_route is None:
             self.set_new_route()
 
@@ -77,7 +100,7 @@ class CL_agent(Agent):
             print("Plan completed!")
             return None, {}
 
-        # upon initialization, calculate a route to the first checkpoint
+        # upon first execution, calculate a path to the first checkpoint
         if self.route_to_checkpoint is None:
             self.route_to_checkpoint = astar(self.grid, loc, tuple(goal))
             print(f"Calculated new route to next checkpoint towards {goal}, route: {self.route_to_checkpoint}")
@@ -89,7 +112,7 @@ class CL_agent(Agent):
 
             # check if route completed
             if self.checkpoints_done == len(self.current_route):
-                print(f"Route {self.routes_to_do[0]} completed!")
+                print(f"Route '{self.routes_to_do[0]}' completed!")
                 # done with this route so delete it
                 del self.routes_to_do[0]
 
@@ -124,6 +147,23 @@ class CL_agent(Agent):
         return action, action_kwargs
 
 
+    def done_moving(self):
+        """
+        If we have an agent with slower speed, it takes longer to execute a movement,
+        that is, it may only execute that action every x (=speed setting value) ticks.
+        Returns True if an action can be executed, returns False if not
+        """
+        self.track_speed += 1
+
+        # we can execute an action!
+        if self.track_speed == self.speed:
+            self.track_speed = 0
+            return True
+
+        # agent still busy with previous movement, wait
+        return False
+
+
     def set_new_route(self):
         """ Get the next route in the plan """
         self.current_route = self.possible_routes[self.routes_to_do[0]]
@@ -134,7 +174,7 @@ class CL_agent(Agent):
 
 
     def move_to(self, start, goal):
-        """ Move in 1 position to the goal, by identifying which action to take and returning it """
+        """ Figure out which action we have to take to get to the next position """
 
         if goal[0] > start[0]:
             return "MoveEast"
