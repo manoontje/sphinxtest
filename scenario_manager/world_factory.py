@@ -582,8 +582,12 @@ class WorldFactory:
         # get possible locations and randomly choose a number of locations to build on
         locs = self.__list_area_locs(top_left_location, width, height)
 
+        # border when to use completely random (low density), and when to use
+        # pseudo-random, placing buildings as far apart as possible on average (higher density)
+        border = 0.01
+
         # low density works best with random placement
-        if density <= 0.15:
+        if density <= border:
             i_chosen_locs = np.random.choice( range(len(locs)), round(len(locs) *  density) )
             locs_chosen = [locs[i] for i in i_chosen_locs]
 
@@ -602,7 +606,7 @@ class WorldFactory:
         # for a higher building density we place them semi-random, with on average
         # the maximum space between each building so it doesn't become one giant
         # clutter (hopefully)
-        elif density > 0.15:
+        elif density > border:
             # number of houses to build
             n_houses = round((len(locs) / 2.0) * density)
             # avg house spacing

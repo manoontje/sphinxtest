@@ -55,10 +55,9 @@ def create_factory():
     factory.add_area(top_left_location=[4, 21], width=17, height=1, name="road", visualize_colour="#999999") # south road
     factory.add_area(top_left_location=[4, 3], width=1, height=18, name="road", visualize_colour="#999999") # west road
     factory.add_area(top_left_location=[5, 3], width=17, height=1, name="road", visualize_colour="#999999") # north road
-    factory.add_area(top_left_location=[21, 3], width=1, height=6, name="road", visualize_colour="#999999") # north west road
-    factory.add_area(top_left_location=[21, 16], width=1, height=6, name="road", visualize_colour="#999999") # south west road
+    factory.add_area(top_left_location=[21, 3], width=1, height=19, name="road", visualize_colour="#999999") # north east road
+    # factory.add_area(top_left_location=[21, 16], width=1, height=6, name="road", visualize_colour="#999999") # south east road
     factory.add_area(top_left_location=[0, 12], width=4, height=1, name="road", visualize_colour="#999999") # east connection west road
-
 
     # national alert status
     # green: #00FF00
@@ -83,16 +82,25 @@ def create_factory():
     # urban #545454
     # desert 7a370a
     houseColour = "#7a370a"
-    factory.add_buildings(top_left_location=[17,10], width=7, height=6, density=0.5, visualize_colour=houseColour, name="house") # village east
+    house_base_locations = [[17,10],[19,10],[20,10],[17,13],[19,13],[22,11],[23,9],[24,11],[22,14],[23,16],[24,14]]
+    factory.add_multiple_objects(locations=house_base_locations, names="house_base", \
+                callable_classes=HouseBase, visualize_colours=houseColour )
+    house_roof_locations = [[17,9],[19,9],[20,9],[17,12],[19,12],[22,10],[23,8],[24,10],[22,13],[23,15],[24,13]]
+    factory.add_multiple_objects(locations=house_roof_locations, names="house_roof", \
+                callable_classes=HouseRoof, visualize_colours=houseColour )
+    locs = [[17,11],[18,11],[19,11],[20,11],[17,14],[18,14],[19,14],[20,14],[22,12],[23,12],[23,11],[23,10],[23,13],[23,14]]
+    factory.add_multiple_objects(locations=locs, names="road", visualize_colours="#999999", is_traversable=True)
+
+    # factory.add_buildings(top_left_location=[17,10], width=7, height=6, density=0.5, visualize_colour=houseColour, name="house") # village east
 
 
     # urbanize by placing houses
-    factory.add_buildings(top_left_location=[4,1], width=15, height=2, density=0.1, visualize_colour=houseColour, name="house") # north
-    factory.add_buildings(top_left_location=[5,5], width=15, height=3, density=0.1, visualize_colour=houseColour, name="house") # north 2
-    factory.add_buildings(top_left_location=[5,16], width=15, height=4, density=0.1, visualize_colour=houseColour, name="house") # bottom
-    factory.add_buildings(top_left_location=[3,23], width=18, height=2, density=0.1, visualize_colour=houseColour, name="house") # bottom 2
-    factory.add_buildings(top_left_location=[0,1], width=3, height=11, density=0.1, visualize_colour=houseColour, name="house") # north east
-    factory.add_buildings(top_left_location=[0,14], width=4, height=7, density=0.1, visualize_colour=houseColour, name="house") # south east
+    factory.add_buildings(top_left_location=[4,2], width=15, height=1, density=0.2, visualize_colour=houseColour, name="house") # north
+    factory.add_buildings(top_left_location=[5,5], width=15, height=1, density=0.2, visualize_colour=houseColour, name="house") # north 2
+    factory.add_buildings(top_left_location=[5,19], width=15, height=2, density=0.2, visualize_colour=houseColour, name="house") # bottom
+    factory.add_buildings(top_left_location=[3,23], width=18, height=2, density=0.2, visualize_colour=houseColour, name="house") # bottom 2
+    factory.add_buildings(top_left_location=[2,1], width=1, height=11, density=0.2, visualize_colour=houseColour, name="house") # north east
+    factory.add_buildings(top_left_location=[3,14], width=1, height=7, density=0.2, visualize_colour=houseColour, name="house") # south east
 
     return factory
 
