@@ -40,7 +40,7 @@ class CL_agent(Agent):
         }
 
         # the plan the agent is executing
-        self.current_plan = 1
+        self.current_plan = 2
 
         # the routes which the agent has to complete
         self.routes_to_do = self.plan_library[self.current_plan]["routes"]
@@ -82,6 +82,8 @@ class CL_agent(Agent):
         with the A* path planning algorithm.
         """
 
+        target_area_checked = False
+
         can_move = self.done_moving()
 
         if not can_move:
@@ -113,6 +115,11 @@ class CL_agent(Agent):
             # check if route completed
             if self.checkpoints_done == len(self.current_route):
                 print(f"Route '{self.routes_to_do[0]}' completed!")
+
+                # change the colour of the target_area to green after surveillance
+                # has been completed
+                target_area_checked = True if self.routes_to_do[0] == "surveillance" else False
+
                 # done with this route so delete it
                 del self.routes_to_do[0]
 
@@ -132,16 +139,14 @@ class CL_agent(Agent):
             print(f"Calculated new route to next checkpoint towards {goal}, route: {self.route_to_checkpoint}")
 
 
+        # change target area to green if we completed surveillance in that area this iteration
+        if target_area_checked:
+            return "DeclareAreaChecked", {}
+
         # get our next step
         new_loc = self.route_to_checkpoint[self.route_progress]
         self.route_progress += 1
         action = self.move_to(loc, new_loc)
-
-        # # Select a random action
-        # if possible_actions:
-        #     action = self.rnd_gen.choice(possible_actions)
-        # else:
-        #     action = None
 
         action_kwargs = {}
         return action, action_kwargs

@@ -4,6 +4,7 @@ from agents.human_agent import HumanAgent
 from scenario_manager.world_factory import RandomProperty, WorldFactory
 from environment.actions.move_actions import *
 from environment.actions.object_actions import *
+from environment.actions.cl_actions import *
 from environment.objects.simple_objects import *
 from environment.objects.cl_sc_objects import *
 import sys
@@ -23,7 +24,7 @@ def create_factory():
     # Agent
     #############################################
     agent = CL_agent()
-    factory.add_agent(location=[21, 21], agent=agent, possible_actions=[MoveNorth.__name__, MoveEast.__name__, MoveSouth.__name__, MoveWest.__name__])
+    factory.add_agent(location=[21, 21], agent=agent, possible_actions=[MoveNorth.__name__, MoveEast.__name__, MoveSouth.__name__, MoveWest.__name__, DeclareAreaChecked.__name__])
 
 
     #############################################
@@ -55,6 +56,9 @@ def create_factory():
     # lake
     factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8, height=6, fancy_colours=True)
 
+    # rubber ducky
+    factory.add_env_object(location=[10,13], name="rubber_duck", visualize_colour="#efff01", visualize_size=0.2, is_traversable=True)
+
     # road
     factory.add_area(top_left_location=[4, 21], width=17, height=1, name="road", visualize_colour="#999999") # south road
     factory.add_area(top_left_location=[4, 3], width=1, height=18, name="road", visualize_colour="#999999") # west road
@@ -72,15 +76,15 @@ def create_factory():
 
 
     # fog
-    factory.add_smoke_area(name="fog", top_left_location=[0,0], width=25, height=25, visualize_depth=101, smoke_thickness_multiplier=0.8)
-    factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, visualize_depth=101, smoke_thickness_multiplier=1)
+    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=25, height=25, visualize_depth=101, smoke_thickness_multiplier=0.8)
+    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, visualize_depth=101, smoke_thickness_multiplier=1)
 
 
     # goal
     # not secured = "#000000"
     # secured = "#00FF00"
     locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
-    factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True)
+    factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True, names="target_area")
 
     # Village
     # urban #545454

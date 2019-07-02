@@ -16,6 +16,11 @@ A taskable agent which can learn the intention of the human on how the provided 
 
 ### Future improvements
 - enable a multi-tick movement animation in the visualization for slow movements. Now it is just a couple ticks of waiting, and then in 1 tick the animation/movement.
+- shark
+
+# Open issues:
+- action result format?
+
 
 # Context variables:
 see constraint learning repository
