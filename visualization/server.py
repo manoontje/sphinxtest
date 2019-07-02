@@ -33,6 +33,7 @@ userinput = {}
 # only socket handlers have the socketio context necessary to call the plain emit().
 
 
+
 ###############################################
 # Routes initialization
 ###############################################
@@ -49,6 +50,17 @@ def init_GUI():
     print("Testbed GUI intialization received. Grid size:", grid_sz , " Visualization BG colour:", vis_bg_clr)
 
     return ""
+
+
+
+###############################################
+# Routes Scenario Manager
+###############################################
+@app.route('/scenario-manager')
+def sm():
+    return render_template('scenario_manager.html')
+
+
 
 
 ###############################################

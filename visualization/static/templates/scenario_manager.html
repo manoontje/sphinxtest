@@ -1,8 +1,7 @@
 <html>
   <head>
     <title>Testbed GUI</title>
-    <link href="/static/style.css" rel="stylesheet">
-    <script src="/socket.io/socket.io.js"></script>
+    <link href="/static/css/sm_style.css" rel="stylesheet">
   </head>
 
 
@@ -34,7 +33,7 @@
                              </div>
 
                              <div class="list-item-buttons">
-                                 <button id="button" type="button">Start</button>
+                                 <button id="button" class="scenario-1" type="button">Start</button>
                              </div>
                          </div>
                      </li>
@@ -46,7 +45,7 @@
                              </div>
 
                              <div class="list-item-buttons">
-                                 <button id="button" type="button">Start</button>
+                                 <button id="button" class="scenario-2" type="button">Start</button>
                              </div>
                          </div>
                      </li>
@@ -68,29 +67,52 @@
           <div id="block-content">
               <hr></hr>
 
-               <a href="God"><button class="green-btn">God view</button></a>
-
               <ul id="list">
+
+                  <li>
+                      <div id="list-item-content" class="god">
+                          <div class="list-item-txt">
+                             God
+                          </div>
+
+                          <div class="list-item-buttons">
+                              <a href="god"><button id="button" type="button" class="btn-blocked">View</button></a>
+                          </div>
+                      </div>
+                  </li>
+
                  <li>
-                     <div id="list-item-content">
+                     <div id="list-item-content" class="god">
                          <div class="list-item-txt">
                             Agent 1
                          </div>
 
-                         <div class="list-item-buttons">
-                             <button id="button" type="button">View</button>
+                         <div class="list-item-buttons" class="agent-1">
+                             <a href="#"><button id="button" type="button" class="btn-blocked">View</button></a>
                          </div>
                      </div>
                  </li>
 
                  <li>
-                     <div id="list-item-content">
+                     <div id="list-item-content" class="agent-2">
                          <div class="list-item-txt">
                             Agent 2
                          </div>
 
                          <div class="list-item-buttons">
-                             <button id="button" type="button">View</button>
+                             <a href="#"><button id="button" type="button" class="btn-blocked">View</button></a>
+                         </div>
+                     </div>
+                 </li>
+
+                 <li>
+                     <div id="list-item-content" class="hu_ag-1">
+                         <div class="list-item-txt">
+                            Human Agent 1
+                         </div>
+
+                         <div class="list-item-buttons">
+                             <a href="#"><button id="button" type="button" class="btn-blocked">View</button></a>
                          </div>
                      </div>
                  </li>
@@ -102,6 +124,8 @@
 
   </body>
 
+  <script type="text/javascript" src="/static/dist/jquery/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="/static/dist/socket.io/1.3.5/socket.io.min.js"></script>
+  <script type="text/javascript" src="/static/js/scenario_manager.js"></script>
 
-  <script src="/static/scenario_manager/logic.js"></script>
 </html>
