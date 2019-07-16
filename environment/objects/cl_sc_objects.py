@@ -36,3 +36,24 @@ class Water(EnvObject):
         """
         super().__init__(name=name, location=location, visualize_colour=visualize_colour,
                          visualize_shape=0, is_traversable=True, class_callable=Water)
+
+class Radar(EnvObject):
+
+    def __init__(self, location, name="Radar"):
+        """
+        An object which represents a radar which can map a wide area (hypothetically).
+        In reality does nothing.
+        """
+        super().__init__(name=name, location=location, visualize_colour="#000000",
+                         visualize_shape=0, is_traversable=False, class_callable=Radar)
+
+class AA_gun(EnvObject):
+
+    def __init__(self, location, name="AA_gun"):
+        """
+        An object which represents a Anti-Aircraft gun which can shoot down
+        flying agents in its vicinity (hypothetically).
+        In reality does nothing.
+        """
+        super().__init__(name=name, location=location, visualize_colour="#000000",
+                         visualize_shape=0, is_traversable=False, class_callable=AA_gun)

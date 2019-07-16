@@ -157,6 +157,15 @@ def create_factory(file, scenario_n):
                 visualize_colour="#000000", nighttime=0.4, visualize_depth=105)
 
 
+    ############## (Intel) AA gun at x ###################
+    if settings['intel_anti-air_at_x']:
+        factory.add_env_object(location=[3,4], name="AA_gun", callable_class=AA_gun)
+
+
+    ############## (Intel) Radar at x ###################
+    if settings['intel_radar_at_x']:
+        factory.add_env_object(location=[3,3], name="radar", callable_class=Radar)
+
 
     ############## Area Secured ###################
     # goal
