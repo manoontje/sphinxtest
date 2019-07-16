@@ -374,6 +374,7 @@ function drawRectangle(x, y, tileW, tileH, clr, size) {
     ctx.fillRect( top_left_x, top_left_y, w, h);
 }
 
+
 /**
  * Draw a circle on screen
  *

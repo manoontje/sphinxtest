@@ -50,16 +50,18 @@ def create_factory():
     # Objects
     #############################################
 
-    # info block with general info for agent
+    ############## General environment objects ###################
+
+    ## info block with general info for agent
     factory.add_env_object(location=[0,10], name="infoBlock", visualize_opacity=0, visualize_colour="#000000", is_traversable=True, grid_size=factory.world_settings["shape"])
 
-    # lake
+    ## lake
     factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8, height=6, fancy_colours=True)
 
-    # rubber ducky
+    ## rubber ducky
     factory.add_env_object(location=[10,13], name="rubber_duck", visualize_colour="#efff01", visualize_size=0.2, is_traversable=True)
 
-    # road
+    ## road
     factory.add_area(top_left_location=[4, 21], width=17, height=1, name="road", visualize_colour="#999999") # south road
     factory.add_area(top_left_location=[4, 3], width=1, height=18, name="road", visualize_colour="#999999") # west road
     factory.add_area(top_left_location=[5, 3], width=17, height=1, name="road", visualize_colour="#999999") # north road
@@ -67,26 +69,7 @@ def create_factory():
     # factory.add_area(top_left_location=[21, 16], width=1, height=6, name="road", visualize_colour="#999999") # south east road
     factory.add_area(top_left_location=[0, 12], width=4, height=1, name="road", visualize_colour="#999999") # east connection west road
 
-    # national alert status
-    # green: #00FF00
-    # orange: #ffa500
-    # red: #FF0000
-    factory.add_multiple_objects(locations=[[0,23],[0,24],[1,23],[1,24]], names="NationalAlertStatus", \
-                visualize_colours="#00FF00", is_traversable=True )
-
-
-    # fog
-    # factory.add_smoke_area(name="fog", top_left_location=[0,0], width=25, height=25, visualize_depth=101, smoke_thickness_multiplier=0.8)
-    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10, visualize_depth=101, smoke_thickness_multiplier=1)
-
-
-    # goal
-    # not secured = "#000000"
-    # secured = "#00FF00"
-    locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
-    factory.add_multiple_objects(locations=locs, visualize_colours="#000000", is_traversable=True, names="target_area")
-
-    # Village
+    ## Village
     # urban #545454
     # desert 7a370a
     houseColour = "#7a370a"
@@ -102,6 +85,48 @@ def create_factory():
     # factory.add_buildings(top_left_location=[17,10], width=7, height=6, density=0.5, visualize_colour=houseColour, name="house") # village east
 
 
+    ############## Estimated Environment Threat Level ###################
+    ## national alert status
+    # green: #00FF00
+    # orange: #ffa500
+    # red: #FF0000
+    locs = [[0,23],[0,24],[1,23],[1,24]]
+    factory.add_multiple_objects(locations=locs,
+                names="NationalAlertStatus", visualize_colours="#00FF00",
+                is_traversable=True, visualize_depths=[105]*len(locs) )
+
+
+    ############## Weather ###################
+    ## fog
+    # factory.add_smoke_area(name="fog", top_left_location=[0,0],
+    #             width=factory.world_settings["shape"][0],
+    #             height=factory.world_settings["shape"][1], visualize_depth=101,
+    #             smoke_thickness_multiplier=0.8)
+    # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10,
+    #             visualize_depth=101, smoke_thickness_multiplier=1)
+
+    ## heavy winds
+
+
+
+    ############## Nighttime ###################
+    # 0.0 = clear day, 1.0 = night (pitch black)
+    # factory.time_of_day(top_left_location=[0,0], width=factory.world_settings["shape"][0],
+    #             height=factory.world_settings["shape"][1], name="dark_of_the_night",
+    #             visualize_colour="#000000", nighttime=0.4, visualize_depth=105)
+
+
+
+    ############## Area Secured ###################
+    # goal
+    # not secured = "#000000"
+    # secured = "#00FF00"
+    locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
+    factory.add_multiple_objects(locations=locs, visualize_colours="#00FF00",
+                is_traversable=True, names="target_area")
+
+
+    ############## Area Type: Urban ###################
     # urbanize by placing houses
     factory.add_buildings(top_left_location=[4,2], width=15, height=1, density=0.2, visualize_colour=houseColour, name="house") # north
     factory.add_buildings(top_left_location=[5,5], width=15, height=1, density=0.2, visualize_colour=houseColour, name="house") # north 2

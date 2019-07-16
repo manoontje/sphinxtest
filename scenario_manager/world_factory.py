@@ -551,7 +551,9 @@ class WorldFactory:
                 opacity = np.clip(opacity * smoke_thickness_multiplier, 0, 1)
 
                 # add the smokeTile
-                self.add_env_object(location=[x,y], name=name, callable_class=SmokeTile, visualize_colour=visualize_colour, visualize_opacity=opacity, visualize_depth=visualize_depth)
+                self.add_env_object(location=[x,y], name=name, callable_class=SmokeTile,
+                visualize_colour=visualize_colour, visualize_opacity=opacity,
+                visualize_depth=visualize_depth, **custom_properties)
 
 
     def add_lake(self, name, top_left_location, width, height, dark_clr="#024a74", light_clr="#6c9cb5", fancy_colours=False):
@@ -569,8 +571,27 @@ class WorldFactory:
         # add water
         for loc in locs:
             clr = dark_clr if not fancy_colours else np.random.choice(lake_colours).hex
-            # add foggy area
+            # add water object
             self.add_env_object(location=loc, name="fog", callable_class=Water, visualize_colour=clr)
+
+
+    def time_of_day(self, top_left_location, width, height, name, visualize_colour=None,
+                 nighttime=0.0, visualize_depth=None, **custom_properties):
+        '''
+        Set the time of day, and make the environment darker
+
+        :param nighttime: how deep into the night it is. Between 0 and 1. 0 is
+        middle of the day (clear), 1=middle of the night (dark)
+        '''
+        # get locations
+        locs = self.__list_area_locs(top_left_location, width, height)
+
+        # add dark areas
+        for loc in locs:
+            # add dark semi transparent object
+            self.add_env_object(location=loc, name=name, callable_class=SmokeTile,
+                    visualize_colour=visualize_colour, visualize_opacity=nighttime,
+                    visualize_depth=visualize_depth)
 
 
     def add_buildings(self, top_left_location, width, height, density, name, visualize_colour):
