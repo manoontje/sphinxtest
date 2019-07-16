@@ -4,7 +4,9 @@ from time import sleep, time
 import numpy as np
 import json
 import datetime
-
+import os, sys
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+from visualization.index_scenarios import get_all_scenarios
 
 '''
 This file holds the code for the Flask (Python) webserver, which listens to grid updates
@@ -58,6 +60,8 @@ def init_GUI():
 ###############################################
 @app.route('/scenario-manager')
 def sm():
+    print(get_all_scenarios())
+
     return render_template('scenario_manager.html')
 
 
