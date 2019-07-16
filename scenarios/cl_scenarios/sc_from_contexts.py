@@ -157,6 +157,13 @@ def create_factory(file, scenario_n):
                 visualize_colour="#000000", nighttime=0.4, visualize_depth=105)
 
 
+
+    ############## (Intel) VIP inbound at x ###################
+    if settings['intel_vip_inbound']:
+        factory.add_env_object(location=[1,12], name="VIP_inbound_notification",
+                callable_class=VIP_inbound_notification, visualize_size=2.0)
+
+
     ############## (Intel) AA gun at x ###################
     if settings['intel_anti-air_at_x']:
         factory.add_env_object(location=[3,4], name="AA_gun", callable_class=AA_gun)

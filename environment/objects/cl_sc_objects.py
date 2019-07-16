@@ -57,3 +57,17 @@ class AA_gun(EnvObject):
         """
         super().__init__(name=name, location=location, visualize_colour="#000000",
                          visualize_shape=0, is_traversable=False, class_callable=AA_gun)
+
+class VIP_inbound_notification(EnvObject):
+
+    def __init__(self, location, name="VIP_inbound_notification", visualize_depth=None,
+            visualize_size=1.0):
+        """
+        An object which represents a Anti-Aircraft gun which can shoot down
+        flying agents in its vicinity (hypothetically).
+        In reality does nothing.
+        """
+        super().__init__(name=name, location=location, visualize_colour="#ffff00",
+                         visualize_shape=2, is_traversable=True,
+                         class_callable=VIP_inbound_notification, visualize_depth=visualize_depth,
+                         visualize_size=visualize_size)
