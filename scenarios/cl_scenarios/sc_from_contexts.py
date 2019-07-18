@@ -45,7 +45,8 @@ def create_factory(file, scenario_n):
     # Agent
     #############################################
     agent = CL_agent()
-    factory.add_agent(location=[21, 21], agent=agent, name="drone",
+    factory.add_agent(location=[21, 21], agent=agent, name="drone", visualize_shape="img",
+                img_name="drone.png",
                 possible_actions=[  MoveNorth.__name__, MoveEast.__name__,
                                     MoveSouth.__name__, MoveWest.__name__,
                                     DeclareAreaChecked.__name__])
