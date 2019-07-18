@@ -59,7 +59,7 @@ class CL_agent(AgentBrain):
 
 
 
-    def ooda_observe(self, state):
+    def filter_observations(self, state):
 
         # get the grid size from the hidden info block on startup
         if self.grid_size == None:
@@ -74,7 +74,7 @@ class CL_agent(AgentBrain):
         return state
 
 
-    def ooda_decide(self, state, possible_actions):
+    def decide_on_action(self, state, possible_actions):
         """
         The agent can execute one of multiple plans from its plan_library in a scenario.
         A plan consists of one or more routes, and additional settings such as the speed.

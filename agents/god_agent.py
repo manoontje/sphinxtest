@@ -15,12 +15,12 @@ class God_agent(AgentBrain):
         # duration of the current gust of wind, decreases over time
         self.wind_duration = 0
         # chance for a gust of wind
-        self.wind_probability = 0.3
+        self.wind_probability = 0.5
         # minimum and maximum possible duration for a gust of wind
-        self.wind_gust_length = [1,2]
+        self.wind_gust_length = [1,7]
 
 
-    def ooda_decide(self, state, possible_actions):
+    def decide_on_action(self, state, possible_actions):
         action = None
 
         if self.wind_duration <= 0:

@@ -71,7 +71,7 @@ class StirWater(Action):
         groundClr = Colour(dark_clr)
         # create a gradient from light to dark colours
         self.lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
-        self.water_change_prob = 0.05
+        self.water_change_prob = 0.1
 
     def mutate(self, grid_world, agent_id, **kwargs):
 
@@ -80,7 +80,7 @@ class StirWater(Action):
         # set new colour for water
         for ID, waterObj in waterObjs.items():
             # randomly determine if this specific blob of water will change
-            if np.random.random_sample() > self.water_change_prob:
+            if np.random.random_sample() < self.water_change_prob:
                 waterObj.visualize_colour = np.random.choice(self.lake_colours).hex
 
         return StirWaterActionResult(DACActionResult.ACTION_SUCCEEDED, True)
