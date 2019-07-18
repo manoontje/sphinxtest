@@ -50,11 +50,6 @@ def create_factory(file, scenario_n):
                                     MoveSouth.__name__, MoveWest.__name__,
                                     DeclareAreaChecked.__name__])
 
-    # God agent doing god things (e.g. stirring water because of winds)
-    agent = God_agent()
-    factory.add_agent(location=[21, 21], agent=agent, name="god", is_traversable=True,
-                visualize_opacity=0.0, possible_actions=[StirWater.__name__])
-
 
     #############################################
     # Human Agent
@@ -152,6 +147,10 @@ def create_factory(file, scenario_n):
                 visualize_depth=101, smoke_thickness_multiplier=1)
 
     ## heavy winds
+    # God agent doing god things (i.e. stirring water to simulate wind)
+    agent = God_agent()
+    factory.add_agent(location=[21, 21], agent=agent, name="god", is_traversable=True,
+                visualize_opacity=0.0, possible_actions=[StirWater.__name__])
 
 
 
@@ -167,7 +166,8 @@ def create_factory(file, scenario_n):
     ############## (Intel) VIP inbound at x ###################
     if settings['intel_vip_inbound']:
         factory.add_env_object(location=[1,12], name="VIP_inbound_notification",
-                callable_class=VIP_inbound_notification, visualize_size=2.0)
+                callable_class=VIP_inbound_notification, visualize_size=2.0,
+                visualize_shape="img", )
 
 
     ############## (Intel) AA gun at x ###################
