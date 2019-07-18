@@ -1,13 +1,13 @@
 import numpy as np
 import heapq
-from agents.agent import Agent
+from agents.agent_brain import AgentBrain
 
 from environment.actions.object_actions import RemoveObject
 from environment.actions.object_actions import GrabAction
 from environment.actions.door_actions import *
 
 
-class CL_agent(Agent):
+class CL_agent(AgentBrain):
 
     def __init__(self):
         super().__init__()

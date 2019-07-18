@@ -1,17 +1,10 @@
 from flask import Flask, request, render_template, jsonify
-from flask_socketio import SocketIO, join_room, emit
-from time import sleep, time
-import numpy as np
-import json
-import datetime
-
+from flask_socketio import SocketIO, join_room
 
 '''
 This file holds the code for the Flask (Python) webserver, which listens to grid updates
 via a restful API, and forwards these to the specific viewpoint (god, agent, human-agent).
 '''
-
-
 
 # Using PyCharm:
 # runfile('visualization/server.py')
@@ -25,6 +18,7 @@ debug = False
 # overwritten by settings from simulator
 grid_sz = [4, 4]
 vis_bg_clr = "#C2C2C2"
+vis_bg_img = None
 
 # can't be None, otherwise Flask flips out when returning it
 userinput = {}
@@ -42,11 +36,12 @@ def init_GUI():
     # pass testbed init to clients / GUIs
     data = request.json
 
-    global grid_sz, vis_bg_clr
+    global grid_sz, vis_bg_clr, vis_bg_img
     grid_sz = data["params"]["grid_size"]
     vis_bg_clr = data["params"]["vis_bg_clr"]
-
-    print("Testbed GUI intialization received. Grid size:", grid_sz , " Visualization BG colour:", vis_bg_clr)
+    vis_bg_img = data["params"]["vis_bg_img"]
+    print("Testbed GUI intialization received. Grid size:", grid_sz , " Visualization BG colour:", vis_bg_clr,
+          " Visualization BG image:", vis_bg_img)
 
     return ""
 
@@ -68,20 +63,20 @@ def update_GUI():
     tick = data['tick']
 
     # send update to god
-    new_data = {'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr}, 'state': god}
+    new_data = {'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img}, 'state': god}
     socketio.emit('update', new_data, namespace="/god")
 
 
     # send updates to agents
     for agent_id in agent_states:
-        new_data = {'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr}, 'state': agent_states[agent_id]}
+        new_data = {'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img}, 'state': agent_states[agent_id]}
         room = f"/agent/{agent_id.lower()}"
         # print(f"Sending to agent {agent_id} {room}")
         socketio.emit('update', new_data, room=room, namespace="/agent")
 
     # send updates to human agents
     for hu_ag_id in hu_ag_states:
-        new_data = {'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr}, 'state': hu_ag_states[hu_ag_id]}
+        new_data = {'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr,  "vis_bg_img": vis_bg_img}, 'state': hu_ag_states[hu_ag_id]}
         room = f"/humanagent/{hu_ag_id.lower()}"
         # print(f"Sending to human agent {hu_ag_id} {room}")
         socketio.emit('update', new_data, room=room, namespace="/humanagent")
@@ -124,6 +119,14 @@ def god_view():
     return render_template('god.html')
 
 
+###############################################
+# Routes Images
+###############################################
+
+# route for agent picture
+@app.route('/avatars')
+def image():
+    return render_template('avatars.html')
 
 ###############################################
 # Managing rooms (connections for a specific agent)
@@ -134,9 +137,6 @@ def god_view():
 def join(message):
     join_room(message['room'].lower())
     print("Added client to room:", message["room"].lower())
-
-
-
 
 ###############################################
 # User input handling for human agent
@@ -162,13 +162,13 @@ def handle_usr_inp(input):
     if debug:
         print(f"Userinput:{userinput[id]}")
 
-
-
-@socketio.on('connect')
-def test_connect():
-    print('A client has connected')
+# @socketio.on('connect')
+# def test_connect():
+#     print('A client has connected')
 
 
 if __name__ == "__main__":
+    if debug:
+        print(f"Userinput:{userinput[id]}")
     print("Server running")
     socketio.run(app, host='0.0.0.0', port=3000)

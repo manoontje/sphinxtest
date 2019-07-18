@@ -2,7 +2,7 @@ import inspect
 import warnings
 
 from environment.objects.helper_functions import *
-from scenario_manager.helper_functions import get_default_value
+from world_factory.helper_functions import get_default_value
 
 
 class EnvObject:
@@ -141,8 +141,6 @@ class EnvObject:
         :return: The new properties.
         """
 
-        pass  # Implement this
-
         # Make sure that you return properties, and not simply return custom_properties as you will miss all mandatory
         # properties in that case.
         return self.properties
@@ -156,7 +154,7 @@ class EnvObject:
         """
 
         # We check if it is a custom property and if so change it simply in the dictionary
-        if property_name in self.custom_properties.keys():
+        if property_name in self.customazable_properties.keys():
             self.custom_properties[property_name] = property_value
         else:  # else we need to check if property_name is a mandatory class attribute that is also a property
             if property_name == "is_traversable":

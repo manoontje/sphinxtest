@@ -1,5 +1,4 @@
 from environment.objects.env_object import EnvObject
-from scenario_manager.helper_functions import get_default_value
 
 
 class SquareBlock(EnvObject):

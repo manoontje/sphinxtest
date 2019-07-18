@@ -3,7 +3,6 @@ import collections, math
 from colour import Color as Colour
 
 from environment.actions.action import Action, ActionResult
-from environment.objects.agent_avatar import AgentAvatar
 from environment.objects.simple_objects import AreaTile
 from environment.objects.cl_sc_objects import Water
 import copy

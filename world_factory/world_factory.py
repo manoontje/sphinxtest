@@ -11,17 +11,17 @@ import math
 import numpy as np
 from numpy.random.mtrand import RandomState
 
-from agents.agent import Agent
+from agents.agent_brain import AgentBrain
 from agents.capabilities.capability import SenseCapability
-from agents.human_agent import HumanAgent
+from agents.human_agent_brain import HumanAgentBrain
 from environment.gridworld import GridWorld
-from environment.objects.agent_avatar import AgentAvatar
+from environment.objects.agent_body import AgentBody
 from environment.objects.env_object import EnvObject
 from environment.objects.helper_functions import get_inheritence_path
 from environment.objects.simple_objects import Wall, Door, AreaTile, SmokeTile
 from environment.objects.cl_sc_objects import Water, HouseBase, HouseRoof
 from environment.sim_goals.sim_goal import LimitedTimeGoal
-from scenario_manager.helper_functions import get_default_value, _get_line_coords
+from world_factory.helper_functions import get_default_value, _get_line_coords
 
 
 ######
@@ -45,7 +45,7 @@ import environment.actions.object_actions
 # noinspection PyUnresolvedReferences
 import environment.actions.move_actions
 # noinspection PyUnresolvedReferences
-import scenario_manager
+import world_factory
 # noinspection PyUnresolvedReferences
 import visualization
 
@@ -56,7 +56,7 @@ import visualization
 class WorldFactory:
 
     def __init__(self, shape, tick_duration, random_seed=1, simulation_goal=1000, run_sail_api=True,
-                 run_visualization_server=True, visualization_bg_clr="#C2C2C2"):
+                 run_visualization_server=True, visualization_bg_clr="#C2C2C2", visualization_bg_img=None, verbose=False):
         """
         Create a WorldFactory who stores how you want the world to look like, and from which you can obtain infinite
         instantions of that world.
@@ -74,6 +74,9 @@ class WorldFactory:
         self.agent_settings = []
         self.object_settings = []
 
+        # Whether the world factory and evrything else should print stuff
+        self.verbose = verbose
+
         # If simulation goal is an integer, we create a LimitedTimeGoal with that number of ticks
         if isinstance(simulation_goal, int):
             simulation_goal = LimitedTimeGoal(max_nr_ticks=simulation_goal)
@@ -84,7 +87,10 @@ class WorldFactory:
                                                         simulation_goal=simulation_goal,
                                                         run_sail_api=run_sail_api,
                                                         run_visualization_server=run_visualization_server,
-                                                        visualization_bg_clr=visualization_bg_clr)
+                                                        visualization_bg_clr=visualization_bg_clr,
+                                                        visualization_bg_img=visualization_bg_img,
+                                                        verbose=self.verbose,
+                                                        rnd_seed=random_seed)
         # Keep track of the number of worlds we created
         self.worlds_created = 0
 
@@ -110,8 +116,8 @@ class WorldFactory:
         self.__reset_random()
         return world
 
-    def __set_world_settings(self, shape, tick_duration, simulation_goal, run_sail_api=True,
-                             run_visualization_server=True, rnd_seed=None, visualization_bg_clr="#C2C2C2"):
+    def __set_world_settings(self, shape, tick_duration, simulation_goal, run_sail_api,
+                             run_visualization_server, rnd_seed, visualization_bg_clr, visualization_bg_img, verbose):
 
         if rnd_seed is None:
             rnd_seed = self.rng.randint(0, 1000000)
@@ -122,18 +128,26 @@ class WorldFactory:
                           "run_sail_api": run_sail_api,
                           "run_visualization_server": run_visualization_server,
                           "rnd_seed": rnd_seed,
-                          "visualization_bg_clr": visualization_bg_clr}
+                          "visualization_bg_clr": visualization_bg_clr,
+                          "visualization_bg_img": visualization_bg_img,
+                          "verbose": verbose}
 
         return world_settings
 
     def add_agent(self, location, agent, name="Agent", customizable_properties=None, sense_capability=None,
                   is_traversable=None, team=None, agent_speed_in_ticks=None, possible_actions=None, is_movable=None,
-                  visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None, visualize_opacity=None,
+                  visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
+                  visualize_opacity=None,
                   **custom_properties):
 
         # Check if location and agent are of correct type
         assert isinstance(location, list) or isinstance(location, tuple)
-        assert isinstance(agent, Agent)
+        assert isinstance(agent, AgentBrain)
+
+        #Check if the agent name is unique
+        for existingAgent in self.agent_settings:
+            if existingAgent["mandatory_properties"]["name"] == name:
+                raise Exception(f"An agent with the name {name} was already added. Agent names should be unique.", name)
 
         # Load the defaults for any variable that is not defined
         # Obtain any defaults from the defaults.json file if not set already.
@@ -202,7 +216,7 @@ class WorldFactory:
                                  sense_capabilities=sense_capability, customizable_properties=customizable_properties,
                                  is_traversable=is_traversable, agent_speeds_in_ticks=agent_speed_in_ticks,
                                  teams=team_name, visualize_sizes=visualize_size, visualize_shapes=visualize_shape,
-                                 visualize_colours=visualize_colour, visualize_opacity=visualize_opacity)
+                                 visualize_colours=visualize_colour, visualize_opacities=visualize_opacity)
 
     def add_multiple_agents(self, agents, locations, custom_properties=None,
                             sense_capabilities=None, customizable_properties=None,
@@ -358,11 +372,6 @@ class WorldFactory:
 
         # If any of the lists are not given, fill them with None and if they are a single value of its expected type we
         # copy it in a list. A none value causes the default value to be loaded.
-        if names is None:
-            names = [None for _ in range(len(locations))]
-        elif isinstance(names, str):
-            names = [names for _ in range(len(locations))]
-
         if is_movable is None:
             is_movable = [None for _ in range(len(locations))]
         elif isinstance(is_movable, bool):
@@ -372,6 +381,11 @@ class WorldFactory:
             callable_classes = [EnvObject for _ in range(len(locations))]
         elif isinstance(callable_classes, Callable):
             callable_classes = [callable_classes for _ in range(len(locations))]
+
+        if names is None:
+            names = [callable_class.__name__ for callable_class in callable_classes]
+        elif isinstance(names, str):
+            names = [names for _ in range(len(locations))]
 
         if custom_properties is None:
             custom_properties = [{} for _ in range(len(locations))]
@@ -430,8 +444,11 @@ class WorldFactory:
 
         # Check if location and agent are of correct type
         assert isinstance(location, list) or isinstance(location, tuple)
-        assert isinstance(agent, HumanAgent)
+        assert isinstance(agent, HumanAgentBrain)
 
+        for existingAgent in self.agent_settings:
+            if existingAgent["mandatory_properties"]["name"] == name:
+                raise Exception(f"A human agent with the name {name} was already added. Agent names should be unique.", name)
         # Load the defaults for any variable that is not defined
         # Obtain any defaults from the defaults.json file if not set already.
         if is_traversable is None:
@@ -509,17 +526,16 @@ class WorldFactory:
                                   customizable_properties=customizable_properties, visualize_colours=visualize_colour,
                                   visualize_opacities=visualize_opacity, **custom_properties)
 
-
     def add_smoke_area(self, top_left_location, width, height, name, visualize_colour=None,
-                 smoke_thickness_multiplier=1.0, visualize_depth=None, **custom_properties):
+                       smoke_thickness_multiplier=1.0, visualize_depth=None, **custom_properties):
         # Check if width and height are large enough to make an actual room (with content)
         if width < 1 or height < 1:
             raise Exception(f"While adding area {name}; The width {width} and/or height {height} should both be larger"
                             f" than 0.")
 
         # See https://www.redblobgames.com/maps/terrain-from-noise/#elevation
-        octaves = 8 # small noiseyness
-        freq = 5 # large noiseyness
+        octaves = 8  # small noiseyness
+        freq = 5  # large noiseyness
 
         # Get all locations in the rectangle
         min_x = top_left_location[0]
@@ -658,7 +674,6 @@ class WorldFactory:
 
         return locs
 
-
     def add_line(self, start, end, name, callable_class=None, customizable_properties=None,
                  is_traversable=None, is_movable=None,
                  visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
@@ -675,7 +690,8 @@ class WorldFactory:
                                   custom_properties=custom_properties, customizable_properties=customizable_properties,
                                   is_traversable=is_traversable, visualize_sizes=visualize_size,
                                   visualize_shapes=visualize_shape, visualize_colours=visualize_colour,
-                                  visualize_opacities=visualize_opacity, visualize_depths=visualize_depth, is_movable=is_movable)
+                                  visualize_opacities=visualize_opacity, visualize_depths=visualize_depth,
+                                  is_movable=is_movable)
 
     def add_room(self, top_left_location, width, height, name, door_locations=None, with_area_tiles=False,
                  doors_open=False,
@@ -795,11 +811,11 @@ class WorldFactory:
 
         # Register all objects (including checks)
         for env_object in objs:
-            world.register_env_object(env_object)
+            world._register_env_object(env_object)
 
         # Register all agents (including checks)
         for agent, agent_avatar in avatars:
-            world.register_agent(agent, agent_avatar)
+            world._register_agent(agent, agent_avatar)
 
         # Return the (successful/stable) world
         return world
@@ -893,19 +909,21 @@ class WorldFactory:
         mandatory_props = settings['mandatory_properties']
 
         args = {**mandatory_props,
+                'isAgent': True,
                 'sense_capability': sense_capability,
                 'class_callable': agent.__class__,
-                'callback_agent_get_action': agent.get_action,
-                'callback_agent_set_action_result': agent.set_action_result,
-                'callback_agent_observe': agent.ooda_observe,
-                'callback_agent_get_messages': agent.get_messages,
-                'callback_agent_set_messages': agent.set_messages,
+                'callback_agent_get_action': agent._get_action,
+                'callback_agent_set_action_result': agent._set_action_result,
+                'callback_agent_observe': agent.filter_observations,
+                'callback_agent_get_messages': agent._get_messages,
+                'callback_agent_set_messages': agent._set_messages,
+                'callback_agent_initialize': agent.initialize,
                 'customizable_properties': customizable_props,
                 **custom_props}
 
         # Parse arguments and create the AgentAvatar
         args = self.__instantiate_random_properties(args)
-        avatar = AgentAvatar(**args)
+        avatar = AgentBody(**args)
 
         # We return the agent and avatar (as we will complete the initialisation of the agent when we register it)
         return agent, avatar
