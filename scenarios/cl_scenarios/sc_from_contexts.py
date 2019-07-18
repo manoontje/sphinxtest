@@ -1,6 +1,7 @@
 import pandas as pd
 from agents.agent import Agent
 from agents.cl_agent import CL_agent
+from agents.god_agent import God_agent
 from agents.human_agent import HumanAgent
 from scenario_manager.world_factory import RandomProperty, WorldFactory
 from environment.actions.move_actions import *
@@ -48,6 +49,11 @@ def create_factory(file, scenario_n):
                 possible_actions=[  MoveNorth.__name__, MoveEast.__name__,
                                     MoveSouth.__name__, MoveWest.__name__,
                                     DeclareAreaChecked.__name__])
+
+    # God agent doing god things (e.g. stirring water because of winds)
+    agent = God_agent()
+    factory.add_agent(location=[21, 21], agent=agent, is_traversable=True,
+                visualize_opacity=0.0, possible_actions=[StirWater.__name__])
 
 
     #############################################

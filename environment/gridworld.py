@@ -130,6 +130,7 @@ class GridWorld:
             raise Exception(f"Invalid placement. Could not place object {env_object.obj_id} in grid, location already "
                             f"occupied by intraversable object {intraversable_objs} at location {obj_loc}")
 
+
     def step(self):
 
         # Check if we are done based on our global goal assessment function
@@ -270,6 +271,7 @@ class GridWorld:
                 obj = self.environment_objects[requested_id]
 
         return obj
+
 
     def get_objects_in_range(self, agent_loc, object_type, sense_range):
         """
