@@ -30,17 +30,24 @@ class CL_agent(AgentBrain):
             1: {    "routes": ["route_middle", "surveillance", "route_middle_reverse"],
                     "speed": 1},
             2: {    "routes": ["route_right", "surveillance", "route_right_reverse"],
-                    "speed": 1},
-            3: {    "routes": ["route_left", "surveillance", "route_left_reverse"],
-                    "speed": 3},
-            4: {    "routes": ["route_middle", "surveillance", "route_middle_reverse"],
-                    "speed": 3},
-            5: {    "routes": ["route_right", "surveillance", "route_right_reverse"],
-                    "speed": 3}
+                    "speed": 1}
+        }
+
+
+        constraints = {   "time_limit": "not_set",
+            "flying_speed": "not_set",
+            "notify_more_often": False,
+            "people_min_distance": "not_set",
+            "prohibit_flying_over_water": "not_set",
+            "dist_to_anti-air": "not_set",
+            "dist_to_radar": "not_set"
         }
 
         # the plan the agent is executing
-        self.current_plan = 2
+        self.current_plan, self.speed = self.interpret_constraints(constraints)
+
+        print(f"plan: {self.current_plan}, speed:{self.speed}")
+
 
         # the routes which the agent has to complete
         self.routes_to_do = self.plan_library[self.current_plan]["routes"]
@@ -54,8 +61,100 @@ class CL_agent(AgentBrain):
         self.route_progress = 0
 
         # keep track of speed, higher is slower. 1 is max
-        self.speed = self.plan_library[self.current_plan]["speed"]
+        # self.speed = self.plan_library[self.current_plan]["speed"]
         self.track_speed = 0
+
+
+    def interpret_constraints(self, constraints):
+        """
+        An ultra simple agent planning algorithm based on constraintsselfself.
+        Assumes the agent is based on the bottom right, and the goal on the top right.
+        Agent can take three paths  towards the goal, via the left, middle or right.
+
+        Below is the assumed version of the constraints on which the passed
+        constraints should be based:
+        constraints_simple = {
+            # task specific constra ints
+            "time_limit": ["not_set", "short", "long"], # short= 1-60 -> only short route, long=61-120 -> only short or medium route
+
+            # drone configuration constraints
+            "flying_speed": ["not_set", "low", "high"], # speed setting, low=1-5, high=6-10, default=5
+            "notify_more_often": [False, True], # False = not_set, True = more often than default, default=once every x ticks
+            # "notify_threshold": ["not_set", "low", "high"], # level = low=1-5, high=6-10, default=5
+
+            # route constraints
+            "people_min_distance": ["not_set", "medium", "high"], # % total size, also for houses, low=1-5, high=6-10, default=no/0
+            "prohibit_flying_over_water": [False, True], # (default) False=not prohibited, True=prohibit, default=False
+            "dist_to_anti-air": ["not_set", "low", "high"], # % (binned numerical value) low=1-5=50%chance crash, high=6-10=0%crash, default=high
+            "dist_to_radar": ["not_set", "low", "high"] # (binned numerical value) low=1-5=50%chance detect, high=6-10=0%detect, default=high
+        }
+
+        To check:
+        - default slow or high flying speed?
+        - notify?
+        - defaults of other constraints
+        """
+
+        # the three possible paths the agent can take, respectively left, middle and right
+        plans = [0,1,2]
+        loc_AA = 0 # location of the anti-air gun, indicating the option along which it stands
+        loc_radar = 0 # location of the anti-air gun, indicating the option along which it stands
+        loc_lake = 1 # location of the lake, indicating the option along which it stands
+        loc_village = 2 # location of the village, indicating the option along which it stands
+
+        # set speed constraint
+        speed = 3 if constraints["flying_speed"] == "high" else 1
+
+        # long time limit, we won't make the long route
+        if constraints["time_limit"] == "long":
+            plans = self.__remove_option([0],plans)
+
+            # if we also fly slow, we won't make the medium length route as well
+            if constraints["flying_speed"] == "slow":
+                plans = self.__remove_option([0],plans)
+
+        # only short or medium routes possible with short time limit
+        elif constraints["time_limit"] == "short":
+            plans = self.__remove_option([0,1],plans)
+
+            # no route possible if we also fly slow
+            if constraints["flying_speed"] == "slow":
+                plans = self.__remove_option([0,1,2],plans)
+
+
+        if constraints["prohibit_flying_over_water"]:
+            plans = self.__remove_option(loc_lake, plans)
+
+        if constraints["dist_to_anti-air"] == "high":
+            plans = self.__remove_option(loc_AA, plans)
+
+        if constraints["dist_to_radar"] == "high":
+            plans = self.__remove_option(loc_radar, plans)
+
+        if constraints["people_min_distance"] == "high":
+            plans = self.__remove_option(loc_village, plans)
+
+
+        # check if there are any options left
+        if len(plans) == 0:
+            raise Exception("No possible path to the goal complying with the constraints")
+
+        # take the shortest path to the goal which complies with the constraints
+        else:
+            return plans[-1], speed
+
+
+
+    def __remove_option(self, option, plans):
+        """ Remove a possible plan from the possible plans """
+        if type(option) == list:
+            for opt in option:
+                if opt in option:
+                    plans.remove(opt)
+        else:
+            if option in plans:
+                plans.remove(option)
+        return plans
 
 
 
