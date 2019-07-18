@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     # By creating scripts that return a factory, we can define infinite number of use cases and select them (in the
     # future) through a UI.
-    factory = sc.create_factory(file=fl, scenario_n=242)
+    factory = sc.create_factory(file=fl, scenario_n=194)
 
 
     for world in factory.worlds():

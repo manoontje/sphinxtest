@@ -517,23 +517,9 @@ class WorldFactory:
             raise Exception(f"While adding area {name}; The width {width} and/or height {height} should both be larger"
                             f" than 0.")
 
-        # # Get all locations in the rectangle
-        # avg_visualize_opacity = 0.3
-        # locs = self.__list_area_locs(top_left_location, width, height)
-        #
-        # # get the opacities from a normal distribution for the smoke opacities, scale=std
-        # opacities = np.random.normal(loc=avg_visualize_opacity, scale=0.2, size=len(locs))
-        # # make sure it is between 0.0 and 1.0
-        # opacities = np.clip(opacities, a_min=0.0, a_max=1.0)
-        #
-        # # create smokeTiles for every location in the smokey / foggy area
-        # for i, loc in enumerate(locs):
-        #     self.add_env_object(location=loc, name=name, callable_class=SmokeTile, visualize_colour=visualize_colour, visualize_opacity=opacities[i], visualize_depth=visualize_depth)
-
         # See https://www.redblobgames.com/maps/terrain-from-noise/#elevation
         octaves = 8 # small noiseyness
         freq = 5 # large noiseyness
-        # clrRange = 100 # shades of grey
 
         # Get all locations in the rectangle
         min_x = top_left_location[0]
