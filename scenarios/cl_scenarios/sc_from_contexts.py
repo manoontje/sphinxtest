@@ -46,7 +46,7 @@ def create_factory(file, scenario_n):
     #############################################
     agent = CL_agent()
     factory.add_agent(location=[21, 21], agent=agent, name="drone", visualize_shape="img",
-                img_name="drone.png",
+                img_name="drone.png", visualize_depth=103,
                 possible_actions=[  MoveNorth.__name__, MoveEast.__name__,
                                     MoveSouth.__name__, MoveWest.__name__,
                                     DeclareAreaChecked.__name__])
@@ -124,7 +124,6 @@ def create_factory(file, scenario_n):
 
 
     ############## Estimated Environment Threat Level ###################
-    ## national alert status
     # code_green: #00FF00 - code_orange: #ffa500 - code_red: #FF0000
     clr = "#00FF00"
     if settings['estimated_threat_env'] == "code_orange":
@@ -142,7 +141,7 @@ def create_factory(file, scenario_n):
     if settings['weather'] == "fog":
         factory.add_smoke_area(name="fog", top_left_location=[0,0],
                 width=factory.world_settings["shape"][0],
-                height=factory.world_settings["shape"][1], visualize_depth=101,
+                height=factory.world_settings["shape"][1], visualize_depth=104,
                 smoke_thickness_multiplier=0.8)
         factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10,
                 visualize_depth=101, smoke_thickness_multiplier=1)
@@ -166,19 +165,24 @@ def create_factory(file, scenario_n):
 
     ############## (Intel) VIP inbound at x ###################
     if settings['intel_vip_inbound']:
+        print("Adding VIP inbound notification")
         factory.add_env_object(location=[1,12], name="VIP_inbound_notification",
-                callable_class=VIP_inbound_notification, visualize_size=2.0,
-                visualize_shape="img", )
+                callable_class=VIP_inbound_notification, visualize_size=3.0,
+                visualize_shape="img", img_name="incoming_vip.png")
 
 
     ############## (Intel) AA gun at x ###################
     if settings['intel_anti-air_at_x']:
-        factory.add_env_object(location=[3,4], name="AA_gun", callable_class=AA_gun)
+        factory.add_env_object(location=[2,5], name="AA_gun", callable_class=AA_gun,
+                visualize_shape="img", img_name="AA.png", visualize_size=2.0,
+                visualize_depth=101)
 
 
     ############## (Intel) Radar at x ###################
     if settings['intel_radar_at_x']:
-        factory.add_env_object(location=[3,3], name="radar", callable_class=Radar)
+        factory.add_env_object(location=[2,7], name="radar", callable_class=Radar,
+                visualize_shape="img", img_name="radar.png", visualize_size=2.0,
+                visualize_depth=101)
 
 
     ############## Area Secured ###################

@@ -39,35 +39,53 @@ class Water(EnvObject):
 
 class Radar(EnvObject):
 
-    def __init__(self, location, name="Radar"):
+    def __init__(self, location, visualize_shape=0, visualize_size=1.0,
+            name="Radar", img_name=None, visualize_depth=100):
         """
         An object which represents a radar which can map a wide area (hypothetically).
         In reality does nothing.
         """
+        custom_properties = {}
+        if img_name is not None:
+            custom_properties['img_name'] = img_name
         super().__init__(name=name, location=location, visualize_colour="#000000",
-                         visualize_shape=0, is_traversable=False, class_callable=Radar)
+                         visualize_shape=visualize_shape, is_traversable=False,
+                         class_callable=Radar, visualize_size=visualize_size,
+                         visualize_depth=visualize_depth, **custom_properties)
 
 class AA_gun(EnvObject):
 
-    def __init__(self, location, name="AA_gun"):
+    def __init__(self, location, visualize_shape=0, visualize_size=1.0,
+            name="AA_gun", img_name=None, visualize_depth=100):
         """
         An object which represents a Anti-Aircraft gun which can shoot down
         flying agents in its vicinity (hypothetically).
         In reality does nothing.
         """
+        custom_properties = {}
+        if img_name is not None:
+            custom_properties['img_name'] = img_name
         super().__init__(name=name, location=location, visualize_colour="#000000",
-                         visualize_shape=0, is_traversable=False, class_callable=AA_gun)
+                          is_traversable=False, class_callable=AA_gun,
+                         visualize_shape=visualize_shape, visualize_size=visualize_size,
+                         visualize_depth=visualize_depth, **custom_properties)
 
 class VIP_inbound_notification(EnvObject):
 
     def __init__(self, location, name="VIP_inbound_notification", visualize_depth=None,
-            visualize_size=1.0):
+            visualize_size=1.0, visualize_shape=2, img_name=None):
         """
         An object which represents a Anti-Aircraft gun which can shoot down
         flying agents in its vicinity (hypothetically).
         In reality does nothing.
         """
+        custom_properties = {}
+        if img_name is not None:
+            custom_properties['img_name'] = img_name
+
+        print("Initializing VIP inbound notification with custom properties:", custom_properties)
+
         super().__init__(name=name, location=location, visualize_colour="#ffff00",
-                         visualize_shape=2, is_traversable=True,
+                         visualize_shape=visualize_shape, is_traversable=True,
                          class_callable=VIP_inbound_notification, visualize_depth=visualize_depth,
-                         visualize_size=visualize_size)
+                         visualize_size=visualize_size, **custom_properties)
