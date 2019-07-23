@@ -24,3 +24,12 @@ A taskable agent which can learn the intention of the human on how the provided 
 
 # Context variables:
 see constraint learning repository
+
+
+# fixes
+- wind vertically moving
+- lake natural shape
+- what is the view you are seeing
+- fly height instead of flight speed
+- not specify path, but how
+- intel village not possible 
