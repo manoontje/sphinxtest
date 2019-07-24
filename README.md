@@ -26,10 +26,13 @@ A taskable agent which can learn the intention of the human on how the provided 
 see constraint learning repository
 
 
-# fixes
-- wind vertically moving
-- lake natural shape
-- what is the view you are seeing
+# conceptual fixes
 - fly height instead of flight speed
+- intel village not possible
+
+# aesthetics fixes
+- wind vertically moving
+
+# story
+- what is the view you are seeing
 - not specify path, but how
-- intel village not possible 

@@ -558,23 +558,24 @@ class WorldFactory:
                 visualize_depth=visualize_depth, **custom_properties)
 
 
-    def add_lake(self, name, top_left_location, width, height, dark_clr="#024a74", light_clr="#6c9cb5", fancy_colours=False):
-        """
-        Creates a lake with pretty colours (between dark_clr and light_clr) and a
-         "natural" shape in the specified area
-         """
-        groundClr = Colour(dark_clr)
-        # create a gradient from light to dark colours
-        lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
+    # def add_lake(self, name, top_left_location, width, height, dark_clr="#024a74", light_clr="#6c9cb5", fancy_colours=False):
+    #     """
+    #     Creates a lake with pretty colours (between dark_clr and light_clr) and a
+    #      "natural" shape in the specified area
+    #      """
+    #     groundClr = Colour(dark_clr)
+    #     # create a gradient from light to dark colours
+    #     lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
+    #
+    #     # get locations
+    #     locs = self.__list_area_locs(top_left_location, width, height)
+    #
+    #     # add water
+    #     for loc in locs:
+    #         clr = dark_clr if not fancy_colours else np.random.choice(lake_colours).hex
+    #         # add water object
+    #         self.add_env_object(location=loc, name="fog", callable_class=Water, visualize_colour=clr)
 
-        # get locations
-        locs = self.__list_area_locs(top_left_location, width, height)
-
-        # add water
-        for loc in locs:
-            clr = dark_clr if not fancy_colours else np.random.choice(lake_colours).hex
-            # add water object
-            self.add_env_object(location=loc, name="fog", callable_class=Water, visualize_colour=clr)
 
 
     def time_of_day(self, top_left_location, width, height, name, visualize_colour=None,

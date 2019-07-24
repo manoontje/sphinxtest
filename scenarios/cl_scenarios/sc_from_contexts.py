@@ -82,9 +82,16 @@ def create_factory(file, scenario_n):
                 visualize_opacity=0, visualize_colour="#000000", is_traversable=True,
                 grid_size=factory.world_settings["shape"])
 
-    ## lake
-    factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8,
-                height=6, fancy_colours=True)
+    ## lake [9,9]-[15,14]
+    factory.add_line(start=[12,9], end=[13,9], name="laceMacLakeFace", callable_class=Water)
+    factory.add_line(start=[9,10], end=[14,10], name="laceMacLakeFace", callable_class=Water)
+    factory.add_line(start=[8,11], end=[14,11], name="laceMacLakeFace", callable_class=Water)
+    factory.add_line(start=[8,12], end=[15,12], name="laceMacLakeFace", callable_class=Water)
+    factory.add_line(start=[9,13], end=[15,13], name="laceMacLakeFace", callable_class=Water)
+    factory.add_line(start=[10,14], end=[14,14], name="laceMacLakeFace", callable_class=Water)
+    # factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8,
+                # height=6, fancy_colours=True)
+                
 
     ## rubber ducky
     factory.add_env_object(location=[10,13], name="rubber_duck",

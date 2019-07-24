@@ -1,6 +1,7 @@
 from environment.objects.env_object import EnvObject
 from world_factory.helper_functions import get_default_value
-
+from colour import Color as Colour
+import numpy as np
 
 class HouseBase(EnvObject):
 
@@ -34,6 +35,14 @@ class Water(EnvObject):
         :param location: The location of the wall.
         :param name: The name, default "Wall".
         """
+        dark_clr="#024a74"
+        light_clr="#6c9cb5"
+        groundClr = Colour(dark_clr)
+        lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
+        visualize_colour = np.random.choice(lake_colours).hex
+
+        print(visualize_colour)
+
         super().__init__(name=name, location=location, visualize_colour=visualize_colour,
                          visualize_shape=0, is_traversable=True, class_callable=Water)
 
