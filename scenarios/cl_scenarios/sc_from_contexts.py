@@ -82,6 +82,16 @@ def create_factory(file, scenario_n):
                 visualize_opacity=0, visualize_colour="#000000", is_traversable=True,
                 grid_size=factory.world_settings["shape"])
 
+    ## Barracks
+    factory.add_env_object(location=[23, 22], name="Barracks", visualize_size=3.0,
+            visualize_shape="img", img_name="barracks.png", visualize_depth=102)
+    # road to barracks
+    factory.add_area(top_left_location=[21, 21], width=1, height=3, name="road",
+                visualize_colour="#999999") # bit down
+    factory.add_area(top_left_location=[21, 24], width=3, height=1, name="road",
+                visualize_colour="#999999") # to the right
+
+
     ## lake [9,9]-[15,14]
     factory.add_line(start=[12,9], end=[13,9], name="laceMacLakeFace", callable_class=Water)
     factory.add_line(start=[9,10], end=[14,10], name="laceMacLakeFace", callable_class=Water)
@@ -91,7 +101,7 @@ def create_factory(file, scenario_n):
     factory.add_line(start=[10,14], end=[14,14], name="laceMacLakeFace", callable_class=Water)
     # factory.add_lake(name="lakeMacLakeFace", top_left_location=[8,9], width=8,
                 # height=6, fancy_colours=True)
-                
+
 
     ## rubber ducky
     factory.add_env_object(location=[10,13], name="rubber_duck",
@@ -166,7 +176,7 @@ def create_factory(file, scenario_n):
     if settings['nighttime']:
         factory.time_of_day(top_left_location=[0,0], width=factory.world_settings["shape"][0],
                 height=factory.world_settings["shape"][1], name="dark_of_the_night",
-                visualize_colour="#000000", nighttime=0.4, visualize_depth=105)
+                visualize_colour="#000000", nighttime=0.6, visualize_depth=105)
 
 
 
@@ -195,7 +205,7 @@ def create_factory(file, scenario_n):
     ############## Area Secured ###################
     # goal
     # not secured = "#000000" -  secured = "#00FF00"
-    clr = "#000000" if settings['area_secured'] else "#00FF00"
+    clr = "#000000" # if settings['area_secured'] else "#00FF00"
     locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
     factory.add_multiple_objects(locations=locs, visualize_colours=clr,
                 is_traversable=True, names="target_area")
@@ -234,8 +244,6 @@ def change_group_locations(loc, xIncr, yIncr):
     """ Can be used to transpose a group of locations all with a specific x and/or y value """
     print ("Base:", [[loc[0] + xIncr, loc[1] + yIncr] for loc in loc])
     print ("Base with y-1 (e.g. for house roof):", [[loc[0] + xIncr, loc[1] + yIncr - 1] for loc in loc])
-
-
 
 
 

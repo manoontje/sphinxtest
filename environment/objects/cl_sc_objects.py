@@ -41,8 +41,6 @@ class Water(EnvObject):
         lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
         visualize_colour = np.random.choice(lake_colours).hex
 
-        print(visualize_colour)
-
         super().__init__(name=name, location=location, visualize_colour=visualize_colour,
                          visualize_shape=0, is_traversable=True, class_callable=Water)
 
