@@ -36,8 +36,11 @@ def create_factory(file, scenario_n):
     print("creating factory with settings:\n", settings)
 
     # Environment
-    # BG colour: Urban (grey, default this colour) - Desert #d3ba90
-    bg_colour = "#d3ba90" if settings['area_type'] == "Desert" else "#C2C2C2"
+    road_colour = "#838383" if settings['area_type'] == "mountainous" else "#999999"
+    houseColour = "#2f2f2f" if settings['area_type'] == "mountainous" else "#545454"
+
+    # BG colour: Urban #C2C2C2 - Desert #d3ba90 - mountaineous #556732
+    bg_colour = "#556732" if settings['area_type'] == "mountainous" else "#C2C2C2"
     factory = WorldFactory( random_seed=1, shape=[25, 25], tick_duration=0.2,
                 visualization_bg_clr=bg_colour)
 
@@ -87,9 +90,9 @@ def create_factory(file, scenario_n):
             visualize_shape="img", img_name="barracks.png", visualize_depth=102)
     # road to barracks
     factory.add_area(top_left_location=[21, 21], width=1, height=3, name="road",
-                visualize_colour="#999999") # bit down
+                visualize_colour=road_colour) # bit down
     factory.add_area(top_left_location=[21, 24], width=3, height=1, name="road",
-                visualize_colour="#999999") # to the right
+                visualize_colour=road_colour) # to the right
 
 
     ## lake [9,9]-[15,14]
@@ -109,19 +112,23 @@ def create_factory(file, scenario_n):
 
     ## road
     factory.add_area(top_left_location=[4, 21], width=17, height=1, name="road",
-                visualize_colour="#999999") # south road
+                visualize_colour=road_colour) # south road
     factory.add_area(top_left_location=[4, 3], width=1, height=18, name="road",
-                visualize_colour="#999999") # west road
+                visualize_colour=road_colour) # west road
     factory.add_area(top_left_location=[5, 3], width=17, height=1, name="road",
-                visualize_colour="#999999") # north road
+                visualize_colour=road_colour) # north road
     factory.add_area(top_left_location=[21, 3], width=1, height=19, name="road",
-                visualize_colour="#999999") # north east road
+                visualize_colour=road_colour) # north east road
     factory.add_area(top_left_location=[0, 12], width=4, height=1, name="road",
-                visualize_colour="#999999") # east connection west road
+                visualize_colour=road_colour) # east connection west road
+
+
+    ############## Estimated intel_hostiles_in_village ###################
+    # orange: #ffa500 - red: #FF0000
+    # houseColour = "#ffa500" if settings['intel_hostiles_in_village'] else "#545454"
+    #
 
     ## Village
-    # House colour: urban #545454 - desert 7a370a
-    houseColour = "#d3ba90" if settings['area_type'] == "Desert" else "#545454"
     house_base_locations = [[17,10],[19,10],[20,10],[17,13],[19,13],[22,11],
                             [23,9],[24,11],[22,14],[23,16],[24,14]]
     factory.add_multiple_objects(locations=house_base_locations, names="house_base",
@@ -135,22 +142,23 @@ def create_factory(file, scenario_n):
     locs = [[17,11],[18,11],[19,11],[20,11],[17,14],[18,14],[19,14],[20,14],
             [22,12],[23,12],[23,11],[23,10],[23,13],[23,14]]
     factory.add_multiple_objects(locations=locs, names="road",
-                 visualize_colours="#999999", is_traversable=True)
+                 visualize_colours=road_colour, is_traversable=True)
 
     # factory.add_buildings(top_left_location=[17,10], width=7, height=6, density=0.5, visualize_colour=houseColour, name="house") # village east
 
 
+
     ############## Estimated Environment Threat Level ###################
     # code_green: #00FF00 - code_orange: #ffa500 - code_red: #FF0000
-    clr = "#00FF00"
-    if settings['estimated_threat_env'] == "code_orange":
-        clr = "#ffa500"
-    elif settings['estimated_threat_env'] == "code_red":
-        clr = "#FF0000"
-    locs = [[0,23],[0,24],[1,23],[1,24]]
-    factory.add_multiple_objects(locations=locs,
-                names="NationalAlertStatus", visualize_colours=clr,
-                is_traversable=True, visualize_depths=[105]*len(locs) )
+    # clr = "#00FF00"
+    # if settings['estimated_threat_env'] == "code_orange":
+    #     clr = "#ffa500"
+    # elif settings['estimated_threat_env'] == "code_red":
+    #     clr = "#FF0000"
+    # locs = [[0,23],[0,24],[1,23],[1,24]]
+    # factory.add_multiple_objects(locations=locs,
+    #             names="NationalAlertStatus", visualize_colours=clr,
+    #             is_traversable=True, visualize_depths=[105]*len(locs) )
 
 
     ############## Weather ###################
@@ -160,8 +168,8 @@ def create_factory(file, scenario_n):
                 width=factory.world_settings["shape"][0],
                 height=factory.world_settings["shape"][1], visualize_depth=104,
                 smoke_thickness_multiplier=0.8)
-        factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10,
-                visualize_depth=101, smoke_thickness_multiplier=1)
+        # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10,
+        #         visualize_depth=101, smoke_thickness_multiplier=1)
 
     ## heavy winds
     # God agent doing god things (i.e. stirring water to simulate wind)
@@ -199,6 +207,13 @@ def create_factory(file, scenario_n):
     if settings['intel_radar_at_x']:
         factory.add_env_object(location=[2,7], name="radar", callable_class=Radar,
                 visualize_shape="img", img_name="radar.png", visualize_size=2.0,
+                visualize_depth=101)
+
+
+    ############## (Intel) hostiles_in_village ###################
+    if settings['intel_hostiles_in_village']:
+        factory.add_env_object(location=[21,12], name="Yellow warning", is_traversable=True,
+                visualize_shape="img", img_name="yellow_warning.png", visualize_size=2.0,
                 visualize_depth=101)
 
 

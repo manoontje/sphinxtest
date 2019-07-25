@@ -116,3 +116,11 @@ Note: This helps you to be consistent!
     - Note: Try to be consistent!
 
 - Real experiment. Do all scenarios in random order.
+
+# To do
+- (show contexts tutorial)
+- (make drone emit light / or not )
+- rewrite story to make it about teaching the drone 
+- should show contexts during experiment as text as well: daytime / weather / environment / intels
+- should show constraints
+- show task / priorities as well?

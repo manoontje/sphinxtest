@@ -15,9 +15,9 @@ class God_agent(AgentBrain):
         # duration of the current gust of wind, decreases over time
         self.wind_duration = 0
         # chance for a gust of wind
-        self.wind_probability = 0.5
+        self.wind_probability = 0.6
         # minimum and maximum possible duration for a gust of wind
-        self.wind_gust_length = [1,7]
+        self.wind_gust_length = [1,3]
 
 
     def decide_on_action(self, state, possible_actions):

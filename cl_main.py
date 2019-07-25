@@ -4,10 +4,13 @@ if __name__ == "__main__":
 
     fl = "../tasking-constraint-learning/demo_dataset/v2/contexts.csv"
 
+    # Used as example of commander user interface
+    factory = sc.create_factory(file=fl, scenario_n=79)
 
-    # By creating scripts that return a factory, we can define infinite number of use cases and select them (in the
-    # future) through a UI.
-    factory = sc.create_factory(file=fl, scenario_n=45)
+
+
+
+    # factory = sc.create_factory(file=fl, scenario_n=45)
 
 
     for world in factory.worlds():

@@ -71,7 +71,7 @@ class StirWater(Action):
         groundClr = Colour(dark_clr)
         # create a gradient from light to dark colours
         self.lake_colours = list(groundClr.range_to(Colour(light_clr), 10))
-        self.water_change_prob = 0.1
+        self.water_change_prob = 0.06
 
     def mutate(self, grid_world, agent_id, **kwargs):
 
