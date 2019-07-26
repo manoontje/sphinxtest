@@ -107,8 +107,8 @@ def create_factory(file, scenario_n):
 
 
     ## rubber ducky
-    factory.add_env_object(location=[10,13], name="rubber_duck",
-                visualize_colour="#efff01", visualize_size=0.2, is_traversable=True)
+    # factory.add_env_object(location=[10,13], name="rubber_duck",
+                # visualize_colour="#efff01", visualize_size=0.2, is_traversable=True)
 
     ## road
     factory.add_area(top_left_location=[4, 21], width=17, height=1, name="road",

@@ -1,0 +1,54 @@
+<html>
+
+
+    <head>
+        <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="static/css/style_teaching_UI.css">
+    </head>
+
+    <body>
+
+        <h3> Trial {{ trial }} / 128 </h3>
+
+        <br>
+
+        <b>Mission priorities</b><br>
+        <hr>
+        <ol>
+            <li>Don't let the drone be destroyed (highest priority)</li>
+            <li>Complete the mission (medium priority)</li>
+            <li>Don't let the drone be discovered (lowest priority)</li>
+        </ol>
+
+        <br>
+
+
+        <b>Constraints</b><br>
+        <hr>
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            {% for field in form %}
+
+                {% if field.type == "RadioField" %}
+                    {{ field.label }}
+                    <div class="constraint_options">
+                        <!-- Display radio options behind eachother  -->
+                        {% for subfield in field %}
+                            {{ subfield }}{{subfield.label}} &nbsp;&nbsp;
+                        {% endfor %}
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+
+            {{ form.submit() }}
+
+        </form>
+
+    </body>
+
+    <script type="text/javascript" src="/static/dist/jquery/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/make_required.js"></script>
+
+</html>

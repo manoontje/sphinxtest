@@ -1,0 +1,57 @@
+
+* {
+    font-size: 18px;
+    line-height: 25px;
+    font-family: "Georgia", serif;
+    overflow: hidden;
+}
+
+body {
+    margin: 20px 50px 50px 50px;
+}
+
+h3 {
+    display: inline-block;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+button, #submit {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #008CBA;
+    cursor: pointer;
+    float: right;
+}
+
+
+
+label {
+	float: left;
+	text-align: right;
+	margin-right: 15px;
+	width: 225px;
+}
+
+.space {
+    height:10px;
+}
+
+.constraint_options label {
+    float:none;
+    text-align:left;
+    margin: none;
+    width: auto;
+}
+
+.constraint_options {
+    margin-bottom: 10px;
+}
