@@ -48,11 +48,18 @@ def create_factory(file, scenario_n):
     # Agent
     #############################################
     agent = CL_agent()
-    factory.add_agent(location=[21, 21], agent=agent, name="drone", visualize_shape="img",
-                img_name="drone.png", visualize_depth=103,
-                possible_actions=[  MoveNorth.__name__, MoveEast.__name__,
-                                    MoveSouth.__name__, MoveWest.__name__,
-                                    DeclareAreaChecked.__name__])
+    if not settings['nighttime']:
+        factory.add_agent(location=[21, 21], agent=agent, name="drone", visualize_shape="img",
+                    img_name="drone.png", visualize_depth=103,
+                    possible_actions=[  MoveNorth.__name__, MoveEast.__name__,
+                                        MoveSouth.__name__, MoveWest.__name__,
+                                        DeclareAreaChecked.__name__])
+    else:
+        factory.add_agent(location=[21, 21], agent=agent, name="drone", visualize_shape="img",
+                    img_name="drone_night.png", visualize_depth=110, visualize_size=2.0,
+                    possible_actions=[  MoveNorth.__name__, MoveEast.__name__,
+                                        MoveSouth.__name__, MoveWest.__name__,
+                                        DeclareAreaChecked.__name__])
 
 
     #############################################
@@ -87,7 +94,7 @@ def create_factory(file, scenario_n):
 
     ## Barracks
     factory.add_env_object(location=[23, 22], name="Barracks", visualize_size=3.0,
-            visualize_shape="img", img_name="barracks.png", visualize_depth=102)
+            visualize_shape="img", img_name="barracks.png", visualize_depth=106)
     # road to barracks
     factory.add_area(top_left_location=[21, 21], width=1, height=3, name="road",
                 visualize_colour=road_colour) # bit down
@@ -163,11 +170,18 @@ def create_factory(file, scenario_n):
 
     ############## Weather ###################
     ## fog
+    fog_depth = 111 if settings['nighttime'] else 104
+    smoke_thickness_multiplier = 0.6
+    if settings['nighttime']:
+        smoke_thickness_multiplier = 0.4
+    elif settings['area_type'] == 'urban':
+        smoke_thickness_multiplier = 1.2
+
     if settings['weather'] == "fog":
         factory.add_smoke_area(name="fog", top_left_location=[0,0],
                 width=factory.world_settings["shape"][0],
-                height=factory.world_settings["shape"][1], visualize_depth=104,
-                smoke_thickness_multiplier=0.8)
+                height=factory.world_settings["shape"][1], visualize_depth=fog_depth,
+                smoke_thickness_multiplier=smoke_thickness_multiplier)
         # factory.add_smoke_area(name="fog", top_left_location=[6,7], width=12, height=10,
         #         visualize_depth=101, smoke_thickness_multiplier=1)
 
@@ -181,10 +195,14 @@ def create_factory(file, scenario_n):
 
     ############## Nighttime ###################
     # 0.0 = clear day, 1.0 = night (pitch black)
+    intel_depth = 106
     if settings['nighttime']:
         factory.time_of_day(top_left_location=[0,0], width=factory.world_settings["shape"][0],
                 height=factory.world_settings["shape"][1], name="dark_of_the_night",
                 visualize_colour="#000000", nighttime=0.6, visualize_depth=105)
+        intel_depth = 106
+
+
 
 
 
@@ -193,28 +211,28 @@ def create_factory(file, scenario_n):
         print("Adding VIP inbound notification")
         factory.add_env_object(location=[1,12], name="VIP_inbound_notification",
                 callable_class=VIP_inbound_notification, visualize_size=3.0,
-                visualize_shape="img", img_name="incoming_vip.png")
+                visualize_shape="img", img_name="incoming_vip.png", visualize_depth=intel_depth)
 
 
     ############## (Intel) AA gun at x ###################
     if settings['intel_anti-air_at_x']:
         factory.add_env_object(location=[2,5], name="AA_gun", callable_class=AA_gun,
                 visualize_shape="img", img_name="AA.png", visualize_size=2.0,
-                visualize_depth=101)
+                visualize_depth=intel_depth)
 
 
     ############## (Intel) Radar at x ###################
     if settings['intel_radar_at_x']:
         factory.add_env_object(location=[2,7], name="radar", callable_class=Radar,
                 visualize_shape="img", img_name="radar.png", visualize_size=2.0,
-                visualize_depth=101)
+                visualize_depth=intel_depth)
 
 
     ############## (Intel) hostiles_in_village ###################
     if settings['intel_hostiles_in_village']:
         factory.add_env_object(location=[21,12], name="Yellow warning", is_traversable=True,
                 visualize_shape="img", img_name="yellow_warning.png", visualize_size=2.0,
-                visualize_depth=101)
+                visualize_depth=intel_depth)
 
 
     ############## Area Secured ###################
@@ -222,7 +240,7 @@ def create_factory(file, scenario_n):
     # not secured = "#000000" -  secured = "#00FF00"
     clr = "#000000" # if settings['area_secured'] else "#00FF00"
     locs = [[20,1], [20,3], [21,2], [22,1], [22,3]]
-    factory.add_multiple_objects(locations=locs, visualize_colours=clr,
+    factory.add_multiple_objects(locations=locs, visualize_colours=clr, visualize_depths=[intel_depth]*len(locs),
                 is_traversable=True, names="target_area")
 
 

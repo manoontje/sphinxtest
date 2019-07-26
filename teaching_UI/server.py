@@ -48,6 +48,7 @@ class constraintsForm(FlaskForm):
 def start():
     return redirect('/1')
 
+
 # the teaching interface with the constraints form for experiment number x
 @app.route('/<trial>', methods=['GET', 'POST'])
 def teaching_UI(trial):
@@ -61,7 +62,6 @@ def teaching_UI(trial):
 
     if consForm.errors != {}:
         print("Form errors:", consForm.errors)
-
 
     return render_template('teaching_UI.html', trial=trial, form=consForm)
 
