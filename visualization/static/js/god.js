@@ -31,7 +31,7 @@ $(document).ready(function(){
      * receive an update from the python server
      */
     socket.on('update', function(data){
-        // console.log("Received an update from the server:", data);
+        console.log("Received an update from the server:", data);
 
         // Only perform the GUI update if it is in the foreground, as the
         // background tabs are often throttled after which the browser cannot

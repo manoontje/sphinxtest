@@ -109,7 +109,7 @@ def write_result_to_csv(form, trial):
 
         # write to file
         f.write(f"{usr_constraints.replace(' ','')}\n")
-        print(f"Appended trial {trial} data to {fl}")
+        print(f"Appended trial {trial} data to {fl}\n")
 
 
 
