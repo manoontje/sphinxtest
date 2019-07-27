@@ -16,3 +16,20 @@ A taskable agent which can learn the intention of the human on how the provided 
 
 # Context variables:
 see constraint learning repository
+
+# Installation
+`pip3 install -r requirements.txt`
+
+# Runing the code
+
+## running the experiment
+- from the root of the repository, run: `python3 start_experiment.py`
+- This will start the experiment introduction, at ...
+
+
+
+
+## Only running the simulator (MATRXS)
+- in `cl_main.py`, define a scenario number (between 0 and 126)
+- `python3 cl_main.py`
+- Go to `localhost:3000/god` to see the simulation run
