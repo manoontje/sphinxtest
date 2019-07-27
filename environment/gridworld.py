@@ -69,6 +69,7 @@ class GridWorld:
         is_done = False
         while not is_done:
             is_done, tick_duration = self.__step()
+        print("Simulation stopped")
 
     def get_env_object(self, requested_id, obj_type=None):
         obj = None

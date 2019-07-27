@@ -18,13 +18,22 @@ A taskable agent which can learn the intention of the human on how the provided 
 see constraint learning repository
 
 # Installation
-`pip3 install -r requirements.txt`
+- Requires python 3.6 or higher
+- Run: `pip3 install -r requirements.txt`
 
 # Runing the code
 
 ## running the experiment
-- from the root of the repository, run: `python3 start_experiment.py`
-- This will start the experiment introduction, at ...
+- `cd visualization` and run `python3 server.py`
+- open two internet browser screens (side by side)
+- point browser 1 to the url `localhost:3000`. This is the simulator view.
+
+- In `run_experiment.py`, specify the name of the test subject and the folder to write the results to.
+- Open a second terminal in the root of the repository and run: `python3 run_experiment.py`
+- in the second internet browser, go to `localhost:3001`. This view shows the constraints which the user can teach to the drone.
+
+- The experiment will now begin and go through all scenarios in a random order. Data will be saved in a subject_name.csv file in the folder you specified.
+
 
 
 

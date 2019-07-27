@@ -106,7 +106,7 @@ class WorldFactory:
 
         warnings.showwarning = _warning
 
-    def worlds(self, nr_of_worlds=10):
+    def worlds(self, nr_of_worlds=1):
         while self.worlds_created < nr_of_worlds:
             yield self.get_world()
 

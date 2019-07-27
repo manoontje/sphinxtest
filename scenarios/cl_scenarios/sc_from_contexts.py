@@ -29,7 +29,7 @@ from colour import Color as Colour
 # }
 
 
-def create_factory(file, scenario_n):
+def create_factory(file, scenario_n, simulation_goal=0):
     # get scenario
     settings = fetch_settings(file, scenario_n)
 
@@ -41,7 +41,13 @@ def create_factory(file, scenario_n):
 
     # BG colour: Urban #C2C2C2 - Desert #d3ba90 - mountaineous #556732
     bg_colour = "#556732" if settings['area_type'] == "mountainous" else "#C2C2C2"
-    factory = WorldFactory( random_seed=1, shape=[25, 25], tick_duration=0.2,
+
+    # create the world with a simulation goal or not, depending on user settings
+    if simulation_goal > 0:
+        factory = WorldFactory( random_seed=1, shape=[25, 25], tick_duration=0.2,
+                visualization_bg_clr=bg_colour, simulation_goal=simulation_goal)
+    else:
+        factory = WorldFactory( random_seed=1, shape=[25, 25], tick_duration=0.2,
                 visualization_bg_clr=bg_colour)
 
     #############################################

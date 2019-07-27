@@ -4,21 +4,31 @@ from flask_wtf import FlaskForm
 from wtforms import RadioField, SubmitField
 from wtforms.validators import Required, InputRequired, DataRequired
 
+# relative import pointing to parent folder
+from sim import create_world
+
 '''
 Teaching User Interface
 '''
 
 
-app = Flask(__name__, template_folder='static/templates')
+app = Flask(__name__, template_folder='teaching_UI2/static/templates')
 app.config['SECRET_KEY'] = 'secret!'
 
 
-name = "subject1"
+# name of file in which to save user data
+subject_name = "subject1"
+# path to save user data to
+folder_path = "../tasking-constraint-learning/demo_dataset/user_data/"
 
-
-
+# These are the constraints used, if you want to change this, also change the fields
+# in the form below
 constraint_names = ["time_limit", "flying_speed", "update_freq", "fly_village", "fly_water", "tank_dist", "radar_dist"]
-folder_path = "../../tasking-constraint-learning/demo_dataset/user_data/"
+
+# the file with scenarios in randomized order
+contexts_fl = "../tasking-constraint-learning/demo_dataset/gen/contexts_randomized.csv"
+
+
 
 # constraints form
 class constraintsForm(FlaskForm):
@@ -54,16 +64,20 @@ def start():
 
 
 # the teaching interface with the constraints form, for a specific trial
-@app.route('/<trial>', methods=['GET', 'POST'])
+@app.route('/<int:trial>', methods=['GET', 'POST'])
 def teaching_UI(trial):
-    # create form
+
+    # create scenario and run simulation for 1 tick
+    create_world(scenario_n=trial-1, contexts_file=contexts_fl)
+
+    # create user constraints form
     consForm = constraintsForm()
 
-    # received form data
+    # check if this page was received form data
     if consForm.validate_on_submit():
-        print('Form submitted with data')
-        write_result_to_csv(consForm, int(trial))
-        return redirect('/' + str(int(trial) + 1))
+        print(f'Trial {trial}. Form submitted with data')
+        write_result_to_csv(consForm, trial)
+        return redirect('/' + str(trial + 1))
 
     if consForm.errors != {}:
         print("Form errors:", consForm.errors)
@@ -79,7 +93,7 @@ def write_result_to_csv(form, trial):
     '''
 
     # create and open file
-    fl = folder_path + name + ".csv"
+    fl = folder_path + subject_name + ".csv"
     mode = 'w' if trial == 1 else 'a+'
     with open(fl, mode) as f:
 
