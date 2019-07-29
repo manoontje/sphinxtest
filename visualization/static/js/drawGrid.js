@@ -15,13 +15,16 @@ var currentSecondFrames = 0, fpsCount = 0, framesListSecond = 0;
 var lastTickSecond = 0;
 var firstDraw = true;
 
+// time of latest reset
+start_time = false;
+
 // Colour of the default BG tile
 var bgTileColour = "#C2C2C2";
 var highestTickSoFar = 0;
 
 var prevAnimatedObjects = {};
 var animatedObjects = {};
-var targetFPS = 60;
+var targetFPS = 10;
 // how long should the animation of the movement be, in percentage with respect to
 // the maximum number of time available between ticks 1 = max duration between ticks, 0.001 min (no animation)
 var animationDurationPerc = 1;
@@ -155,26 +158,26 @@ function doTick(grid_size, state, curr_tick, vis_bg_clr, vis_bg_img) {
 
     // if we have less than X ticks per second (by default 60), animate the movement
     if (ticksLastSecond < targetFPS && ticksLastSecond > 0) {
-        drawSim(grid_size, state, curr_tick, true);
+        drawSim(grid_size, state, curr_tick, true, start_time);
     }
     else {
-        drawSim(grid_size, state, curr_tick, false);
+        drawSim(grid_size, state, curr_tick, false, start_time);
     }
 }
 
 /**
  * Draw the grid on screen
  */
-function drawSim(grid_size, state, curr_tick, animateMovement) {
+function drawSim(grid_size, state, curr_tick, animateMovement, sim_started_at) {
 
     // return in the case that the canvas has disappeared
 	if(ctx==null) { return; }
 
-    // console.log("Tick:", curr_tick, "highest tick:", highestTickSoFar);
+    // console.log("Tick:", curr_tick, "highest tick:", highestTickSoFar, " sim started", sim_started_at, " latest sim:", start_time);
 
     // return in case there is a new tick, and we are still updating the old tick
-    if (curr_tick != highestTickSoFar) {
-        // console.log("Updating old tick, return");
+    if (curr_tick != highestTickSoFar || sim_started_at != start_time) {
+        // console.log("Updating old tick / simulation, return");
         return;
     }
     // console.log("Drawing grid");
@@ -274,7 +277,7 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
         // console.log("Calling draw recursively at:", Date.now(), " with delay in ms: ", msPerFrame);
 
         // call the draw function again after a short sleep to get to desired number of fps in milliseconds
-        setTimeout(function() { drawSim(grid_size, state, curr_tick, animateMovement); }, msPerFrame);
+        setTimeout(function() { drawSim(grid_size, state, curr_tick, animateMovement, sim_started_at); }, msPerFrame);
     }
 }
 

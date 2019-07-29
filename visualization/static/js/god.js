@@ -24,14 +24,24 @@ $(document).ready(function(){
      * Event handler for new connections.
      */
     socket.on('connect', function() {
+        var d = new Date();
+        start_time = d.getTime();
         console.log("Connected");
+    });
+
+    /**
+     * Reset visualization when new simulation has started
+     */
+    socket.on('reset', function(data) {
+        start_time = data.params.start_time;
+        // console.log("reset, start_time:", start_time);
     });
 
     /**
      * receive an update from the python server
      */
     socket.on('update', function(data){
-        console.log("Received an update from the server:", data);
+        // console.log("Received an update from the server:", data);
 
         // Only perform the GUI update if it is in the foreground, as the
         // background tabs are often throttled after which the browser cannot

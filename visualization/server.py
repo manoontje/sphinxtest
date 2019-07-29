@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 from flask_socketio import SocketIO, join_room
-
+import time
 '''
 This file holds the code for the Flask (Python) webserver, which listens to grid updates
 via a restful API, and forwards these to the specific viewpoint (god, agent, human-agent).
@@ -36,14 +36,21 @@ def init_GUI():
     # pass testbed init to clients / GUIs
     data = request.json
 
+    # fetch received initialization  data
     global grid_sz, vis_bg_clr, vis_bg_img
     grid_sz = data["params"]["grid_size"]
     vis_bg_clr = data["params"]["vis_bg_clr"]
     vis_bg_img = data["params"]["vis_bg_img"]
     print("Testbed GUI intialization received. Grid size:", grid_sz , " Visualization BG colour:", vis_bg_clr,
-          " Visualization BG image:", vis_bg_img)
+        " Visualization BG image:", vis_bg_img)
+
+    # send start time to god view (only thing used for constraint learning experiment)
+    new_data = {'params': {"start_time": int(round(time.time() * 1000))}}
+    socketio.emit('reset', new_data, namespace="/god")
+
 
     return ""
+
 
 
 ###############################################
