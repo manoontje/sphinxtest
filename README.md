@@ -29,7 +29,8 @@ see constraint learning repository
 - point browser 1 to the url `localhost:3000`. This is the simulator view.
 
 - In `run_experiment.py`, specify the name of the test subject and the folder to write the results to.
-- Open a second terminal in the root of the repository and run: `python3 run_experiment.py`
+- Open a second terminal in the root of the repository and run: `export FLASK_APP=run_experiment.py`
+- `flask run -p 3001`
 - in the second internet browser, go to `localhost:3001`. This view shows the constraints which the user can teach to the drone.
 
 - The experiment will now begin and go through all scenarios in a random order. Data will be saved in a subject_name.csv file in the folder you specified.
