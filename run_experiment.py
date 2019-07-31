@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 # name of file in which to save user data
-subject_name = "subject1"
+subject_name = "sophie"
 # path to save user data to
 folder_path = "../tasking-constraint-learning/demo_dataset/user_data/"
 
@@ -26,7 +26,7 @@ folder_path = "../tasking-constraint-learning/demo_dataset/user_data/"
 constraint_names = ["time_limit", "flying_speed", "update_freq", "fly_village", "fly_water", "tank_dist", "radar_dist"]
 
 # the file with scenarios in randomized order
-contexts_fl = "../tasking-constraint-learning/demo_dataset/gen/contexts_randomized.csv"
+contexts_fl = "../tasking-constraint-learning/demo_dataset/scenarios/contexts_randomized.csv"
 
 
 
