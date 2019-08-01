@@ -23,7 +23,10 @@ class SenseCapability(Capability):
                 self.__detectable_objects = {"*": sense_range}  # hence all other object types in there have no effect
                 break  # as such we break this loop
             else:
-                self.__detectable_objects[obj_type] = sense_range
+                if sense_range > 0:
+                    self.__detectable_objects[obj_type] = sense_range
+                else:
+                    self.__detectable_objects[obj_type] = np.inf
 
     def get_capabilities(self):
         return self.__detectable_objects

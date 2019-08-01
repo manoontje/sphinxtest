@@ -7,7 +7,7 @@ from matrxs.objects.env_object import EnvObject
 class AgentBody(EnvObject):
 
     def __init__(self, location, possible_actions, sense_capability, class_callable,
-                 callback_agent_get_action, callback_agent_set_action_result, callback_agent_observe,
+                 callback_agent_get_action, callback_agent_set_action_result, callback_agent_get_filtered_state,
                  callback_agent_get_messages, callback_agent_set_messages, callback_agent_initialize,
                  visualize_size, visualize_shape, visualize_colour, visualize_depth, visualize_opacity,
                  is_traversable, team, agent_speed_in_ticks, name, is_movable,
@@ -94,7 +94,7 @@ class AgentBody(EnvObject):
         # Save the other attributes the GridWorld expects an Agent's body to have access to an Agent's brain
         self.get_action_func = callback_agent_get_action
         self.set_action_result_func = callback_agent_set_action_result
-        self.filter_observations = callback_agent_observe
+        self.get_filtered_state = callback_agent_get_filtered_state
         self.get_messages_func = callback_agent_get_messages
         self.set_messages_func = callback_agent_set_messages
         self.brain_initialize_func = callback_agent_initialize

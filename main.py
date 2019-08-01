@@ -1,10 +1,10 @@
-import test_scenario
+import demo
 
 if __name__ == "__main__":
 
     # By creating scripts that return a factory, we can define infinite number of use cases and select them (in the
     # future) through a UI.
-    factory = test_scenario.create_factory()
+    builder = demo.create_builder()
 
-    for world in factory.worlds():
+    for world in builder.worlds():
         world.run()

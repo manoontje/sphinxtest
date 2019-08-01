@@ -16,6 +16,9 @@ class AgentBrain:
         self.previous_action = None
         self.previous_action_result = None
 
+        # Variable for tracking the observed and filtered state
+        self.__filtered_state = {}
+
         # A list of messages that may be filled by this agent, which is retrieved by the GridWorld and send towards the
         # appropriate agents.
         self.messages_to_send = []
@@ -269,6 +272,9 @@ class AgentBrain:
         # Call the filter method to filter the observation
         filtered_state = self.filter_observations(state)
 
+        # Set the filtered state
+        self.__filtered_state = filtered_state
+
         # Call the method that decides on an action
         action, action_kwargs = self.decide_on_action(filtered_state, possible_actions)
 
@@ -348,6 +354,15 @@ class AgentBrain:
 
             # Add the message object to the received messages
             self.received_messages.append(message_object)
+
+    def _get_filtered_state(self):
+        """
+
+        Returns
+        -------
+
+        """
+        return self.__filtered_state
 
 
 class Message:

@@ -94,7 +94,8 @@ class Wall(EnvObject):
 
 class AreaTile(EnvObject):
 
-    def __init__(self, location, name="AreaTile", visualize_colour="#8ca58c", visualize_depth=None, visualize_opacity=1.0):
+    def __init__(self, location, name="AreaTile", visualize_colour="#8ca58c", visualize_depth=None,
+                 visualize_opacity=1.0):
         """
         A simple AreaTile object. Is always traversable, not movable, the colour can be set but has otherwise the default EnvObject
         property values. Can be used to define different areas in the GridWorld.
@@ -108,7 +109,8 @@ class AreaTile(EnvObject):
 
 
 class SmokeTile(AreaTile):
-    def __init__(self, location, name="SmokeTile", visualize_colour="#b7b7b7", visualize_opacity=0.8, visualize_depth=101):
+    def __init__(self, location, name="SmokeTile", visualize_colour="#b7b7b7", visualize_opacity=0.8,
+                 visualize_depth=101):
         """
         An object representing one tile of smoke. Is always traversable, not movable,
         and square shaped. Can be transparent.
@@ -120,4 +122,36 @@ class SmokeTile(AreaTile):
         """
         visualize_depth = 101 if visualize_depth is None else visualize_depth
         super().__init__(name=name, location=location, visualize_colour=visualize_colour,
-                        visualize_opacity=visualize_opacity, visualize_depth=visualize_depth)
+                         visualize_opacity=visualize_opacity, visualize_depth=visualize_depth)
+
+
+class Tree(EnvObject):
+
+    def __init__(self, location, name="Tree", visualize_colour="#008204", is_traversable=False, visualize_opacity=1.0,
+                 img_name=None):
+        """
+        A simple object that represents a Tree.
+        Parameters
+        ----------
+        location: list or tuple
+            The x and y position on the grid of this object.
+        name: str, Optional
+            The name of this object. Defaults to "Tree".
+        visualize_colour: str, Optional
+            The visualisation colour of this object. Defaults to "#008204" (dark green).
+        is_traversable: bool, Optional
+            Whether other objects (such as agents) can move over this object. Defaults to False.
+        visualize_opacity: float, Optional
+            The opacity of this object's visualisation. Defaults to 1.0 (fully opaque)
+        img_name: str, Optional
+            The image name with which this object is visualized. Defaults to None (no image, use a circle)
+        """
+
+        if img_name is not None:
+            visualize_shape = "img"
+        else:
+            visualize_shape = 2
+
+        super().__init__(name=name, location=location, visualize_colour=visualize_colour,
+                         is_traversable=is_traversable, class_callable=Tree, visualize_opacity=visualize_opacity,
+                         img_name=img_name, visualize_shape=visualize_shape)

@@ -294,7 +294,7 @@ class WorldBuilder:
         """
 
         # Check if location and agent are of correct type
-        if not isinstance(location, list) or not isinstance(location, tuple) and len(location) != 2:
+        if not (isinstance(location, list) and isinstance(location, tuple)) and len(location) != 2:
             raise ValueError(f"The given location {location} while adding the agent with name {name} is not a list, "
                              f"tuple or  of length two.")
 
@@ -574,12 +574,12 @@ class WorldBuilder:
         self.object_settings.append(object_setting)
 
     def add_object_prospect(self, location, name, probability, callable_class=None, customizable_properties=None,
-                            is_traversable=None,
+                            is_traversable=None, is_movable=None,
                             visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
                             visualize_opacity=None, **custom_properties):
         # Add object as normal
         self.add_object(location, name, callable_class, customizable_properties,
-                        is_traversable,
+                        is_traversable, is_movable,
                         visualize_size, visualize_shape, visualize_colour, visualize_depth,
                         visualize_opacity, **custom_properties)
 
@@ -1018,7 +1018,7 @@ class WorldBuilder:
                 'class_callable': agent.__class__,
                 'callback_agent_get_action': agent._get_action,
                 'callback_agent_set_action_result': agent._set_action_result,
-                'callback_agent_observe': agent.filter_observations,
+                'callback_agent_get_filtered_state': agent._get_filtered_state,
                 'callback_agent_get_messages': agent._get_messages,
                 'callback_agent_set_messages': agent._set_messages,
                 'callback_agent_initialize': agent.initialize,

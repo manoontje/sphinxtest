@@ -103,7 +103,7 @@ class GridWorld:
             distance = get_distance(coordinates, agent_loc)
 
             # check if the env object is of the specified type, and within range
-            if (object_type is None or object_type == "*" or isinstance(env_obj, object_type)) and \
+            if (object_type is None or object_type == "*" or type(env_obj).__name__ == object_type.__name__) and \
                     distance <= sense_range:
                 env_objs[obj_id] = env_obj
 
@@ -287,7 +287,7 @@ class GridWorld:
             # go to the next agent, if this agent is still busy performing an action
             if agent_obj._check_agent_busy(curr_tick=self.current_nr_ticks):
                 # only do the observe and orient of the OODA loop to update the GUI
-                filtered_agent_state = agent_obj.filter_observations(state)
+                filtered_agent_state = agent_obj.get_filtered_state()
                 self.__visualizer._save_state(inheritance_chain=agent_obj.class_inheritance, id=agent_id,
                                               state=filtered_agent_state)
                 continue
@@ -452,7 +452,7 @@ class GridWorld:
             env_objs = self.get_objects_in_range(agent_loc, obj_type, sense_range)
             objs_in_range.update(env_objs)
 
-        state = {}
+        state = {agent_obj.obj_id: agent_obj.properties}
         # Save all properties of the sensed objects in a state dictionary
         for env_obj in objs_in_range:
             state[env_obj] = objs_in_range[env_obj].properties
@@ -576,10 +576,10 @@ class GridWorld:
     def __initial_visualisation(self):
         # Loop through all agents, apply their observe to get their state for the gui
         for agent_id, agent_obj in self.registered_agents.items():
-            # Get the state
-            state = self.__get_agent_state(agent_obj)
-            # only do the observe and orient of the OODA loop to update the GUI
-            filtered_agent_state = agent_obj.filter_observations(state)
+            # TODO the agent's filtered state is now empty as it has not yet performed an action. Fill it or forget
+            # TODO about initializing the agent views?
+            # Obtain the agent's filtered state
+            filtered_agent_state = agent_obj.get_filtered_state()
             # Save the state
             self.__visualizer._save_state(inheritance_chain=agent_obj.class_inheritance, id=agent_id,
                                           state=filtered_agent_state)

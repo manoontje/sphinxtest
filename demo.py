@@ -44,15 +44,14 @@ def create_builder():
     ############
     # Add Agents
     ############
-    communicate_state_to_team = True
+    communicate_state_to_team = False
 
     # Add patrolling UGV's
-    nr_patrol_ugvs = 3
-    starts = [(22, 14), (29, 14), (25, 19)]
+    starts = [(22, 14)] #, (29, 14), (25, 19)]
     patrol_points = [[(25, 9), (33, 9), (33, 23), (18, 23), (18, 9)],
                      [(17, 8), (17, 22), (32, 22), (32, 8), (24, 8)],
                      [(35, 4), (35, 28)]]
-    for nr in range(nr_patrol_ugvs):
+    for nr in range(len(starts)):
         patrol_agent = PatrollingAgentBrain(waypoints=patrol_points[nr], knowledge_decay=100,
                                             communicate_state_to_team=communicate_state_to_team)
         sense_capability = SenseCapability({objects.Wall: -1, objects.Door: -1, objects.Tree: 10,
