@@ -74,14 +74,14 @@ class Navigator:
         # Check if the state tracker is for the right agent
         assert state_tracker.agent_id == self.__agent_id
 
-        route = self.__get_route(state_tracker)
+        self.current_route = self.__get_route(state_tracker)
 
         agent_loc = state_tracker.get_memorized_state()[self.__agent_id]['location']
 
-        if len(route) == 0 and self.is_done:
+        if len(self.current_route) == 0 and self.is_done:
             return None
-        elif agent_loc in route:
-            move_action = route[agent_loc]
+        elif agent_loc in self.current_route:
+            move_action = self.current_route[agent_loc]
         else:
             agent_id = self.__agent_id
             raise Exception(f"Something went wrong with the path planning. The location {agent_loc} of agent "

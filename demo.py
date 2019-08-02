@@ -49,10 +49,10 @@ def create_builder():
     builder.add_area(top_left_location=(38, 0), width=1, height=31, name="Road 2", visualize_colour="#878787")
 
     # Add neutrals that drive on the road
-    nr_neutrals = 8  # maximum, double start positions could result in less
+    nr_neutrals = 0  # maximum, double start positions could result in less
     patrol_points_left = [(37, 31), (38, 31), (38, 0), (37, 0)]
     patrol_points_right = [(38, 0), (37, 0), (37, 31), (38, 31)]
-    starts = list(set([(np.random.randint(37, 39), np.random.randint(0, 31)) for _ in range(nr_neutrals)]))
+    starts = list(set([(np.random.randint(37, 38), np.random.randint(0, 31)) for _ in range(nr_neutrals)]))
     for n_neutral, start in enumerate(starts):
 
         if start[0] == 37:
