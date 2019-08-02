@@ -10,7 +10,7 @@ def create_builder():
     seed = 1
     np.random.seed(seed)
 
-    builder = WorldBuilder(random_seed=seed, shape=[51, 31], tick_duration=0.1, verbose=True)
+    builder = WorldBuilder(random_seed=seed, shape=[51, 31], tick_duration=0.1, verbose=True, simulation_goal=1000)
 
     builder.add_room(top_left_location=(21, 12), width=10, height=9, name="Compound",
                      door_locations=[(25, 12), (26, 12)], doors_open=True)
@@ -41,13 +41,38 @@ def create_builder():
                                             probability=tree_prob, is_traversable=True, visualize_shape='img',
                                             img_name="tree.png", visualize_opacity=rnd_opacity)
 
+    ###########
+    # Add roads
+    ###########
+    # Add roads
+    builder.add_area(top_left_location=(37, 0), width=1, height=31, name="Road 1", visualize_colour="#878787")
+    builder.add_area(top_left_location=(38, 0), width=1, height=31, name="Road 2", visualize_colour="#878787")
+
+    # Add neutrals that drive on the road
+    nr_neutrals = 8  # maximum, double start positions could result in less
+    patrol_points_left = [(37, 31), (38, 31), (38, 0), (37, 0)]
+    patrol_points_right = [(38, 0), (37, 0), (37, 31), (38, 31)]
+    starts = list(set([(np.random.randint(37, 39), np.random.randint(0, 31)) for _ in range(nr_neutrals)]))
+    for n_neutral, start in enumerate(starts):
+
+        if start[0] == 37:
+            patrol_points = patrol_points_left
+        else:
+            patrol_points = patrol_points_right
+
+        patrol_agent = PatrollingAgentBrain(waypoints=patrol_points, knowledge_decay=100,
+                                            communicate_state_to_team=False)
+        builder.add_agent(location=start, agent_brain=patrol_agent, name=f"Car_{n_neutral}",
+                          agent_speed_in_ticks=2, is_traversable=False,
+                          visualize_shape='img', img_name="car.png", team="patrol")
+
     ############
     # Add Agents
     ############
-    communicate_state_to_team = False
+    communicate_state_to_team = True
 
     # Add patrolling UGV's
-    starts = [(22, 14)] #, (29, 14), (25, 19)]
+    starts = [(22, 14), (29, 14), (25, 19)]
     patrol_points = [[(25, 9), (33, 9), (33, 23), (18, 23), (18, 9)],
                      [(17, 8), (17, 22), (32, 22), (32, 8), (24, 8)],
                      [(35, 4), (35, 28)]]
