@@ -1,3 +1,5 @@
+import warnings
+
 from flask import Flask, request, render_template, jsonify
 from flask_socketio import SocketIO, join_room
 
@@ -10,7 +12,7 @@ via a restful API, and forwards these to the specific viewpoint (god, agent, hum
 # runfile('visualization/server.py')
 
 app = Flask(__name__, template_folder='static/templates')
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'MATRXS'
 socketio = SocketIO(app)
 
 debug = False
@@ -165,6 +167,27 @@ def handle_usr_inp(input):
 # @socketio.on('connect')
 # def test_connect():
 #     print('A client has connected')
+
+
+def __start_server():
+    try:
+        socketio.run(app, host='0.0.0.0', port=3000, debug=debug, use_reloader=False)
+
+        if debug:
+            print("Server running")
+
+    except OSError as err:
+        if "port" in err.strerror:
+            if debug:
+                warnings.warn("Visualisation server is already running, not starting another visualisation server "
+                              "thread.")
+            return
+        else:
+            raise err
+
+
+def run_visualisation_server():
+    thread = socketio.start_background_task(__start_server)
 
 
 if __name__ == "__main__":
