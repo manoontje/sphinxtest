@@ -12,12 +12,17 @@ Teaching User Interface
 '''
 
 
-app = Flask(__name__, template_folder='teaching_UI2/static/templates')
+app = Flask(__name__, template_folder='teaching_UI/static/templates')
 app.config['SECRET_KEY'] = 'secret!'
 
+# config file has STATIC_FOLDER='/core/static'
+app.static_url_path = "/teaching_UI/static/"
+
+# set the absolute path to the static folder
+app.static_folder = app.root_path + app.static_url_path
 
 # name of file in which to save user data
-subject_name = "sophie"
+subject_name = "test"
 # path to save user data to
 folder_path = "../tasking-constraint-learning/demo_dataset/user_data/"
 
@@ -39,11 +44,11 @@ class constraintsForm(FlaskForm):
     flying_speed = RadioField('Drone flying speed:',
             choices=[('slow','Slow'), ('fast','Fast')])
 
-    update_freq = RadioField('Frequency of sending updates:',
+    update_freq = RadioField('Drone notifcation frequency with mission updates:',
             choices=[('low','Low'), ('high','High')])
 
-    fly_village = RadioField('People min distance:',
-            choices=[('low','Low'), ('high','High')])
+    fly_village = RadioField('Prohibit flying over the village:',
+            choices=[('no','No'), ('yes','Yes')])
 
     fly_water = RadioField('Prohibit flying over water:',
             choices=[('no','No'), ('yes','Yes')])
@@ -117,5 +122,16 @@ def write_result_to_csv(form, trial):
 
 
 if __name__ == "__main__":
+    # app.config.from_object('config')
+    #
+    # # config file has STATIC_FOLDER='/core/static'
+    # app.static_url_path = "/teaching_UI/static/"
+    #
+    # # set the absolute path to the static folder
+    # app.static_folder = app.root_path + app.static_url_path
+    #
+    # print(app.static_url_path)
+    # print(app.static_folder)
+
     print("Server running")
     socketio.run(app, port=3001)

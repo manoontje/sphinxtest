@@ -39,6 +39,7 @@ label {
 	text-align: right;
 	margin-right: 15px;
 	width: 225px;
+    clear: left;
 }
 
 .space {
@@ -52,6 +53,13 @@ label {
     width: auto;
 }
 
+.block {
+    clear: both;
+    height:5px;
+    margin: 0px;
+}
+
 .constraint_options {
     margin-bottom: 10px;
+    /* display: inline-block; */
 }
