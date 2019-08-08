@@ -23,7 +23,7 @@ app.static_url_path = "/teaching_UI/static/"
 app.static_folder = app.root_path + app.static_url_path
 
 # name of file in which to save user data
-subject_name = "test"
+subject_name = "anne"
 # path to save user data to
 folder_path = "../tasking-constraint-learning/demo_dataset/user_data/"
 
