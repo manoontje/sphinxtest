@@ -31,11 +31,17 @@
             {% for field in form %}
 
                 {% if field.type == "RadioField" %}
+
                     {{ field.label }}
+
                     <div class="constraint_options">
                         <!-- Display radio options behind eachother  -->
                         {% for subfield in field %}
-                            {{ subfield }}{{subfield.label}} &nbsp;&nbsp;
+                            {% if (field.name == "tank_dist" and not tank) or (field.name == "radar_dist" and not radar) %}
+                                {{ subfield(disabled=True) }}{{subfield.label}} &nbsp;&nbsp;
+                            {% else %}
+                                {{ subfield(required=True) }}{{subfield.label}} &nbsp;&nbsp;
+                            {% endif %}
                         {% endfor %}
                     </div>
                     <div class="block"></div>
@@ -50,6 +56,6 @@
     </body>
 
     <script type="text/javascript" src="/static/dist/jquery/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="/static/js/make_required.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/make_required.js"></script> -->
 
 </html>

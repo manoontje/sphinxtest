@@ -222,7 +222,7 @@ def create_factory(file, scenario_n, simulation_goal=0):
 
     ############## (Intel) AA gun at x ###################
     if settings['intel_anti-air_at_x']:
-        if not settings['nighttime'] or settings['weather'] == "fog":
+        if not (settings['nighttime'] or settings['weather'] == "fog"):
             factory.add_env_object(location=[2,5], name="AA_gun", callable_class=AA_gun,
                     visualize_shape="img", img_name="AA.png", visualize_size=2.0,
                     visualize_depth=intel_depth)
@@ -233,7 +233,7 @@ def create_factory(file, scenario_n, simulation_goal=0):
 
     ############## (Intel) Radar at x ###################
     if settings['intel_radar_at_x']:
-        if not settings['nighttime'] or settings['weather'] == "fog":
+        if not (settings['nighttime'] or settings['weather'] == "fog"):
             factory.add_env_object(location=[2,7], name="radar", callable_class=Radar,
                     visualize_shape="img", img_name="radar.png", visualize_size=2.0,
                     visualize_depth=intel_depth)

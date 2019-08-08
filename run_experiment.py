@@ -2,7 +2,8 @@ from flask import Flask, flash, request, render_template, jsonify, redirect
 from flask_socketio import socketio
 from flask_wtf import FlaskForm
 from wtforms import RadioField, SubmitField
-from wtforms.validators import Required, InputRequired, DataRequired
+from wtforms.validators import Required, InputRequired, DataRequired, Optional
+import pandas as pd
 
 # relative import pointing to parent folder
 from sim import create_world
@@ -54,10 +55,10 @@ class constraintsForm(FlaskForm):
             choices=[('no','No'), ('yes','Yes')])
 
     tank_dist = RadioField('Minimum distance to tank:',
-            choices=[('low','Low'), ('high','High')])
+            choices=[('low','Low'), ('high','High')], validators=[Optional()])
 
     radar_dist = RadioField('Minimum distance to radar:',
-            choices=[('low','Low'), ('high','High')])
+            choices=[('low','Low'), ('high','High')], validators=[Optional()])
 
     submit = SubmitField('Next')
 
@@ -74,6 +75,7 @@ def teaching_UI(trial):
 
     # create scenario and run simulation for 1 tick
     create_world(scenario_n=trial-1, contexts_file=contexts_fl)
+    settings = fetch_settings(contexts_fl, trial-1)
 
     # create user constraints form
     consForm = constraintsForm()
@@ -87,7 +89,8 @@ def teaching_UI(trial):
     if consForm.errors != {}:
         print("Form errors:", consForm.errors)
 
-    return render_template('teaching_UI.html', trial=trial, form=consForm)
+    return render_template('teaching_UI.html', trial=trial, form=consForm,
+            tank=settings['intel_anti-air_at_x'], radar=settings['intel_radar_at_x'])
 
 
 
@@ -119,19 +122,14 @@ def write_result_to_csv(form, trial):
 
 
 
+def fetch_settings(fl, scenario_n):
+    ''' read in data of that specific scenario '''
+    df = pd.read_csv(fl)
+    settings = df.iloc[scenario_n,:]
+    return settings
+
 
 
 if __name__ == "__main__":
-    # app.config.from_object('config')
-    #
-    # # config file has STATIC_FOLDER='/core/static'
-    # app.static_url_path = "/teaching_UI/static/"
-    #
-    # # set the absolute path to the static folder
-    # app.static_folder = app.root_path + app.static_url_path
-    #
-    # print(app.static_url_path)
-    # print(app.static_folder)
-
     print("Server running")
     socketio.run(app, port=3001)
