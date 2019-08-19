@@ -48,10 +48,10 @@ class constraintsForm(FlaskForm):
     update_freq = RadioField('Drone notifcation frequency with mission updates:',
             choices=[('low','Low'), ('high','High')])
 
-    fly_village = RadioField('Prohibit flying over the village:',
+    fly_village = RadioField('Allow flying over the village:',
             choices=[('no','No'), ('yes','Yes')])
 
-    fly_water = RadioField('Prohibit flying over water:',
+    fly_water = RadioField('Allow flying over water:',
             choices=[('no','No'), ('yes','Yes')])
 
     tank_dist = RadioField('Minimum distance to tank:',
