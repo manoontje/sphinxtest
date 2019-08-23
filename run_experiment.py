@@ -23,7 +23,7 @@ app.static_url_path = "/teaching_UI/static/"
 app.static_folder = app.root_path + app.static_url_path
 
 # name of file in which to save user data
-subject_name = "test"
+subject_name = "ts4"
 # path to save user data to
 folder_path = "../tasking-constraint-learning/demo_dataset/user_data/"
 
@@ -45,7 +45,7 @@ class constraintsForm(FlaskForm):
     flying_speed = RadioField('Drone flying speed:',
             choices=[('slow','Slow'), ('fast','Fast')])
 
-    update_freq = RadioField('Drone notifcation frequency with mission updates:',
+    update_freq = RadioField('Drone notification frequency with mission updates:',
             choices=[('low','Low'), ('high','High')])
 
     fly_village = RadioField('Allow flying over the village:',
