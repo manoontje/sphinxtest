@@ -24,7 +24,7 @@ var highestTickSoFar = 0;
 
 var prevAnimatedObjects = {};
 var animatedObjects = {};
-var targetFPS = 10;
+var targetFPS = 60;
 // how long should the animation of the movement be, in percentage with respect to
 // the maximum number of time available between ticks 1 = max duration between ticks, 0.001 min (no animation)
 var animationDurationPerc = 1;

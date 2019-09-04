@@ -6,7 +6,7 @@ def create_world(scenario_n, contexts_file):
 
 
     # Used as example of commander user interface
-    factory = sc.create_factory(file=contexts_file, scenario_n=scenario_n, simulation_goal=1)
+    factory = sc.create_factory(file=contexts_file, scenario_n=scenario_n, simulation_goal=3)
 
 
     # factory = sc.create_factory(file=fl, scenario_n=45)
@@ -17,5 +17,5 @@ def create_world(scenario_n, contexts_file):
 
 
 if __name__ == "__main__":
-    fl = "../tasking-constraint-learning/demo_dataset/gen/contexts_ordered.csv"
-    create_world(111, fl)
+    fl = "../tasking-constraint-learning/demo_dataset/scenarios/contexts_randomized.csv"
+    create_world(0, fl)

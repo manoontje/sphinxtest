@@ -110,16 +110,16 @@ class CL_agent(AgentBrain):
             plans = self.__remove_option([0],plans)
 
             # if we also fly slow, we won't make the medium length route as well
-            if constraints["flying_speed"] == "slow":
-                plans = self.__remove_option([0],plans)
+            # if constraints["flying_speed"] == "slow":
+            #     plans = self.__remove_option([0],plans)
 
         # only short or medium routes possible with short time limit
         elif constraints["time_limit"] == "short":
             plans = self.__remove_option([0,1],plans)
 
             # no route possible if we also fly slow
-            if constraints["flying_speed"] == "slow":
-                plans = self.__remove_option([0,1,2],plans)
+            # if constraints["flying_speed"] == "slow":
+            #     plans = self.__remove_option([0,1,2],plans)
 
 
         if constraints["prohibit_flying_over_water"]:
