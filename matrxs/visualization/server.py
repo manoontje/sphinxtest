@@ -1,8 +1,11 @@
 import logging
 import warnings
-import gevent
-from gevent import monkey, sleep
-monkey.patch_all()
+# import gevent
+# from gevent import monkey, sleep
+# monkey.patch_all()
+import eventlet
+from eventlet import sleep
+eventlet.monkey_patch()
 from flask import Flask, request, render_template, jsonify
 from flask_socketio import SocketIO, join_room
 import threading
@@ -22,7 +25,7 @@ grid_sz = None  # [4, 4]
 vis_bg_clr = None  # "#C2C2C2"
 vis_bg_img = None
 user_input = {}  # can't be None, otherwise Flask flips out when returning it
-async_mode = "gevent" # gevent (preferred) or eventlet.
+async_mode = "eventlet" # gevent (preferred) or eventlet.
 
 def create_app():
     #current_folder = os.path.dirname(os.path.abspath(__file__)) # alternative: os.getcwd()

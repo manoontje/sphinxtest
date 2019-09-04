@@ -1,0 +1,576 @@
+09/04/2019 04:12:07 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:07 PM     0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:07 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:07 PM         0 
+09/04/2019 04:12:08 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:08 PM     1 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         0 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:08 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:08 PM         1 
+09/04/2019 04:12:09 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:09 PM     2 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         2 
+09/04/2019 04:12:09 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:09 PM     3 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         0 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:09 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:09 PM         3 
+09/04/2019 04:12:10 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:10 PM     4 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         4 
+09/04/2019 04:12:10 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:10 PM     5 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         0 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:10 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:10 PM         5 
+09/04/2019 04:12:11 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:11 PM     6 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         6 
+09/04/2019 04:12:11 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:11 PM     7 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         0 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:11 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:11 PM         7 
+09/04/2019 04:12:12 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:12 PM     8 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         8 
+09/04/2019 04:12:12 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:12 PM     9 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         0 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:12 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:12 PM         9 
+09/04/2019 04:12:13 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:13 PM     10 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         0 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:13 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:13 PM         10 
+09/04/2019 04:12:14 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:14 PM     11 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         11 
+09/04/2019 04:12:14 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:14 PM     12 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         0 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:14 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:14 PM         12 
+09/04/2019 04:12:15 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:15 PM     13 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         13 
+09/04/2019 04:12:15 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:15 PM     14 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         0 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:15 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:15 PM         14 
+09/04/2019 04:12:16 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:16 PM     16 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         0 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:16 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:16 PM         16 
+09/04/2019 04:12:17 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:17 PM     17 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         0 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:17 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:17 PM         17 
+09/04/2019 04:12:18 PM ['_GridWorld__visualizer', 'tick']
+09/04/2019 04:12:18 PM     18 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 11_36', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 13_38', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 1_26', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 3_28', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 5_30', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 7_32', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'human 9_34', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         0 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 0_25', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 10_35', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 12_37', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 14_39', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 2_27', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 4_29', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 6_31', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 
+09/04/2019 04:12:18 PM ['registered_agents', 'navigate 8_33', 'last_action', 'tick']
+09/04/2019 04:12:18 PM         18 

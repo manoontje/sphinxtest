@@ -1,0 +1,895 @@
+_GridWorld__all_actions
+  CloseDoorAction <class 'actions.door_actions.CloseDoorAction'> 
+  DropObject <class 'actions.object_actions.DropObject'> 
+  GrabObject <class 'actions.object_actions.GrabObject'> 
+  Move <class 'matrxs.actions.move_actions.Move'> 
+  MoveEast <class 'actions.move_actions.MoveEast'> 
+  MoveNorth <class 'actions.move_actions.MoveNorth'> 
+  MoveNorthEast <class 'actions.move_actions.MoveNorthEast'> 
+  MoveNorthWest <class 'matrxs.actions.move_actions.MoveNorthWest'> 
+  MoveSouth <class 'actions.move_actions.MoveSouth'> 
+  MoveSouthEast <class 'matrxs.actions.move_actions.MoveSouthEast'> 
+  MoveSouthWest <class 'matrxs.actions.move_actions.MoveSouthWest'> 
+  MoveWest <class 'matrxs.actions.move_actions.MoveWest'> 
+  OpenDoorAction <class 'actions.door_actions.OpenDoorAction'> 
+  RemoveObject <class 'actions.object_actions.RemoveObject'> 
+_GridWorld__curr_tick_duration 0.0 
+_GridWorld__is_initialized False 
+_GridWorld__message_buffer
+_GridWorld__rnd_gen
+  bit_generator MT19937 
+  gauss 0.0 
+  has_gauss 0 
+  state
+    key None 
+    pos 15 
+_GridWorld__rnd_seed 1 
+_GridWorld__run_sail_api False 
+_GridWorld__run_visualization_server True 
+_GridWorld__verbose True 
+_GridWorld__visualisation_process True 
+_GridWorld__visualization_bg_clr #C2C2C2 
+_GridWorld__visualization_bg_img None 
+_GridWorld__visualizer
+  _Visualizer__agent_states
+  _Visualizer__god_state
+  _Visualizer__hu_ag_states
+  _Visualizer__server_running True 
+  _Visualizer__verbose True 
+  _userinputs
+current_nr_ticks 0 
+environment_objects
+  N_10
+    _EnvObject__location [6, 2] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_10 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_11
+    _EnvObject__location [7, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_11 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_12
+    _EnvObject__location [8, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_12 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_13
+    _EnvObject__location [8, 2] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_13 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_14
+    _EnvObject__location [8, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_14 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_15
+    _EnvObject__location [8, 4] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_15 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_6
+    _EnvObject__location [5, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_6 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_7
+    _EnvObject__location [5, 2] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_7 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_8
+    _EnvObject__location [5, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_8 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  N_9
+    _EnvObject__location [5, 4] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id N_9 
+    obj_name N 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_16
+    _EnvObject__location [11, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_16 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_17
+    _EnvObject__location [12, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_17 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_18
+    _EnvObject__location [10, 2] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_18 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_19
+    _EnvObject__location [10, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_19 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_20
+    _EnvObject__location [11, 4] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_20 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_21
+    _EnvObject__location [12, 4] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_21 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_22
+    _EnvObject__location [13, 2] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_22 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  O_23
+    _EnvObject__location [13, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id O_23 
+    obj_name O 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  Object_24
+    _EnvObject__location [4, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+      img_name fire.gif 
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id Object_24 
+    obj_name Object 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  T_0
+    _EnvObject__location [1, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id T_0 
+    obj_name T 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  T_1
+    _EnvObject__location [2, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id T_1 
+    obj_name T 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  T_2
+    _EnvObject__location [3, 1] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id T_2 
+    obj_name T 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  T_3
+    _EnvObject__location [2, 2] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id T_3 
+    obj_name T 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  T_4
+    _EnvObject__location [2, 3] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id T_4 
+    obj_name T 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  T_5
+    _EnvObject__location [2, 4] 
+    carried_by [] 
+    class_inheritance ['EnvObject', 'object'] 
+    custom_properties
+    customizable_properties [] 
+    is_movable True 
+    is_traversable False 
+    obj_id T_5 
+    obj_name T 
+    visualize_colour #4286f4 
+    visualize_depth 80 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+grid None 
+is_done False 
+registered_agents
+  human 11_36
+    _AgentBody__location [11, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 11_36 
+    obj_name human 11 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 11_36 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  human 13_38
+    _AgentBody__location [13, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 13_38 
+    obj_name human 13 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 13_38 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  human 1_26
+    _AgentBody__location [1, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 1_26 
+    obj_name human 1 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 1_26 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  human 3_28
+    _AgentBody__location [3, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 3_28 
+    obj_name human 3 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 3_28 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  human 5_30
+    _AgentBody__location [5, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 5_30 
+    obj_name human 5 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 5_30 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  human 7_32
+    _AgentBody__location [7, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 7_32 
+    obj_name human 7 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 7_32 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  human 9_34
+    _AgentBody__location [9, 5] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['HumanAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      img_name transparent.png 
+      isAgent True 
+      usrinp_action_map
+        a MoveWest 
+        d MoveEast 
+        s MoveSouth 
+        w MoveNorth 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent True 
+    is_movable True 
+    is_traversable False 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id human 9_34 
+    obj_name human 9 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team human 9_34 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape img 
+    visualize_size 1.0 
+  navigate 0_25
+    _AgentBody__location [0, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 0_25 
+    obj_name navigate 0 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 0_25 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 10_35
+    _AgentBody__location [10, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 10_35 
+    obj_name navigate 10 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 10_35 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 12_37
+    _AgentBody__location [12, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 12_37 
+    obj_name navigate 12 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 12_37 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 14_39
+    _AgentBody__location [14, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 14_39 
+    obj_name navigate 14 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 14_39 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 2_27
+    _AgentBody__location [2, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 2_27 
+    obj_name navigate 2 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 2_27 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 4_29
+    _AgentBody__location [4, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 4_29 
+    obj_name navigate 4 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 4_29 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 6_31
+    _AgentBody__location [6, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 6_31 
+    obj_name navigate 6 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 6_31 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+  navigate 8_33
+    _AgentBody__location [8, 0] 
+    action_set ['MoveEast', 'MoveSouth', 'MoveNorth', 'DropObject', 'CloseDoorAction', 'GrabObject', 'RemoveObject', 'MoveSouthWest', 'MoveWest', 'MoveSouthEast', 'MoveNorthEast', 'OpenDoorAction', 'Move', 'MoveNorthWest'] 
+    agent_speed_in_ticks 1 
+    blocked False 
+    carried_by [] 
+    class_inheritance ['PatrollingAgentBrain', 'AgentBrain', 'object'] 
+    custom_properties
+      has_menu True 
+      isAgent True 
+    customizable_properties [] 
+    is_carrying [] 
+    is_human_agent False 
+    is_movable True 
+    is_traversable True 
+    last_action
+      duration_in_ticks 0 
+      tick 0 
+    obj_id navigate 8_33 
+    obj_name navigate 8 
+    sense_capability
+      _SenseCapability__detectable_objects
+        * inf 
+    team navigate 8_33 
+    visualize_colour #92f441 
+    visualize_depth 100 
+    visualize_opacity 1.0 
+    visualize_shape 0 
+    visualize_size 1.0 
+shape [15, 6] 
+simulation_goal
+  is_done False 
+  max_nr_ticks 1000 
+tick_duration 0.5 
