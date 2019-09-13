@@ -346,7 +346,8 @@ class GridWorld:
         self.__visualizer._save_state(inheritance_chain="god", id="god", state=self.__get_complete_state())
 
         # update the visualizations of all (human)agents and god
-        self.__visualizer._update_guis(tick=self.current_nr_ticks)
+        self.__visualizer._update_guis(tick=self.current_nr_ticks,agents=self.registered_agents)
+
 
         # Perform the actions in the order of the action_buffer (which is filled in order of registered agents
         for agent_id, action in action_buffer.items():
@@ -589,7 +590,7 @@ class GridWorld:
 
     def __initial_visualisation(self):
 
-        # Perform the initiali visualisation of the process is set and the boolean for running it is true
+        # Perform the initial visualisation of the process is set and the boolean for running it is true
         if self.__run_visualization_server and self.__visualisation_process is None:
             # Loop through all agents, apply their observe to get their state for the gui
             for agent_id, agent_obj in self.registered_agents.items():
@@ -605,7 +606,7 @@ class GridWorld:
             self.__visualizer._save_state(inheritance_chain="god", id="god", state=self.__get_complete_state())
 
             # update the visualizations of all (human)agents and god
-            self.__visualizer._update_guis(tick=self.current_nr_ticks)
+            self.__visualizer._update_guis(tick=self.current_nr_ticks, agents=self.registered_agents)
 
     def __start_visualisation_server(self):
         # bool to denote whether we succeeded in starting the visualisation server

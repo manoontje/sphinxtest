@@ -4,6 +4,8 @@ $(document).ready(function() {
     $(".hamburger").click(function() {
     $(".menu").slideToggle( "slow", function() {
     $(".hamburger").hide();
+    $(".play").hide();
+    $(".pause").hide();
     $(".cross").show();
     });
 });
@@ -12,6 +14,8 @@ $(".cross").click(function() {
     $(".menu").slideToggle( "slow", function() {
     $(".cross").hide();
     $(".hamburger").show();
+    $(".play").show();
+    $(".pause").show();
     });
     });
 });

@@ -1,8 +1,8 @@
-/*html, body {
+html, body {
     margin: 0;
     padding: 0;
-    overflow:hidden;
-}*/
+    /*overflow:hidden*/;
+}
 
 body{
   font-family: 'Noto Sans', sans-serif;
@@ -19,6 +19,36 @@ header{
 	height:60px;
 	line-height:60px;
 	border-bottom:1px solid #dddddd;
+}
+.play{
+  background:none;
+  position:absolute;
+  top:-1;
+  right:60;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#4bb34b;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000;
+}
+.pause{
+  background:none;
+  position:absolute;
+  top:-2;
+  right:30;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#b31414;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:1000000000;
 }
 .hamburger{
   background:none;
@@ -50,6 +80,130 @@ header{
   outline:none;
   z-index:10000000000000;
 }
+ {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: absolute;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  z-index:10000000000000;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+   z-index:10000000000000
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 100px;
+   z-index:10000000000000
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+  z-index:10000000000000
+}
+
+/* Set a style for the submit/login button */
+.form-container .send-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+   z-index:10000000000000
+}
+
+/* Add a red background color to the cancel button */
+.form-container .btn-cancel {
+  background-color: red;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+   z-index:10000000000000
+}
+
+/* Add some hover effects to buttons */
+.form-container .send-button:hover, .open-button:hover {
+  opacity: 1;
+   z-index:10000000000000
+}
+
+span.msg-block {
+  display: none; /* the default for span */
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;
+  background-color: yellow;
+}
+
+.chat-box {
+  max-width: 200px;
+  max-height: 200px;
+  border-style: dotted;
+  border-color: black;
+  position:absolute;
+  top:50px;
+  right:10px;
+  background-color: white;
+  overflow-y: scroll;
+  opacity: 0.8;
+  z-index:100000
+}
+
+.clear-button{
+  background-color: #eb5834;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+   z-index:10000000000000
+}
+
+
+
+
+
 .menu{z-index:1000000; font-weight:bold; font-size:0.8em; width:20%; background:#f1f1f1;  position:absolute; text-align:center; font-size:12px; right:5%}
 .menu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
 .menu li {display: block;   padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}

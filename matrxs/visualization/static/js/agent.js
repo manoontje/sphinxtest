@@ -53,13 +53,14 @@ $(document).ready(function(){
         tick = data.params.tick;
         vis_bg_clr = data.params.vis_bg_clr;
         vis_bg_img = data.params.vis_bg_img;
+        agent_info = data.agent_info;
         if(isFirstCall){
             isFirstCall=false;
             populateMenu(state, id);
             parseGifs(state);}
         // draw the grid again
         requestAnimationFrame(function() {
-            doTick(grid_size, state, tick, vis_bg_clr,vis_bg_img);
+            doTick(grid_size, state, tick, vis_bg_clr,vis_bg_img, agent_info);
         });
     });
 

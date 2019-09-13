@@ -27,7 +27,8 @@ var targetFPS = 60;
 // how long should the animation of the movement be, in percentage with respect to
 // the maximum number of time available between ticks 1 = max duration between ticks, 0.001 min (no animation)
 var animationDurationPerc = 1;
-
+var agentInfo = '';
+var selected = false;
 
 window.onload = function()
 {
@@ -35,6 +36,7 @@ window.onload = function()
 	ctx = canvas.getContext("2d");
 
 	ctx.font = "bold 10pt sans-serif";
+
 };
 
 /**
@@ -163,7 +165,7 @@ function parseGifs(state){
 /**
  * called when a new tick is received by the agent
  */
-function doTick(grid_size, state, curr_tick, vis_bg_clr, vis_bg_img) {
+function doTick(grid_size, state, curr_tick, vis_bg_clr, vis_bg_img, agent_info) {
     // for the first time drawing the visualization, calculate the optimal
     // screen size based on the grid size
     if (firstDraw) {
@@ -172,10 +174,10 @@ function doTick(grid_size, state, curr_tick, vis_bg_clr, vis_bg_img) {
         firstDraw = false;
         bgTileColour = vis_bg_clr;
         bgImage=vis_bg_img;
+
     }
-
     // console.log("\n#####################################\nNew tick #", curr_tick);
-
+    agentInfo = agent_info;
     // calc the ticks per second
     highestTickSoFar = curr_tick;
     lastTickSecond = Date.now();
@@ -293,7 +295,15 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
                 drawCircle(x, y, px_per_cell, px_per_cell, clr, sz);
             }
             else if (obj['visualization']['shape'] == 'img') {
+                if(window.location.hash.indexOf(obj['name']) > -1){
+                    selected = true;
+                }
+                if(selected){
+                    drawRectangle(x-1, y-1, px_per_cell+2, px_per_cell+2, clr, sz);
+                    drawRectangle(x+1, y+1, px_per_cell - 2, px_per_cell - 2, bgTileColour, sz);}
+
                 drawImage(obj['img_name'],x, y, px_per_cell, px_per_cell, sz);
+                ctx.fillText(obj['name'], x+18, y - 3);
             }
         })
     });
@@ -448,6 +458,7 @@ function drawCircle(x, y, tileW, tileH, clr, size) {
     ctx.fill();
 }
 
+
 function drawImage(imgName, x, y, tileW, tileH, size)
 {
     var img = new Image();
@@ -468,6 +479,8 @@ function drawImage(imgName, x, y, tileW, tileH, size)
          parsedGifs[src]["currFrame"]=currFrame;
     }
     ctx.drawImage(img, top_left_x, top_left_y, w, h);  // DRAW THE IMAGE TO THE CANVAS.
+
+
 }
 
 /**

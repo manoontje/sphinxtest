@@ -180,11 +180,13 @@ class AppFlask:
             agent_states = data["agent_states"]
             hu_ag_states = data["hu_ag_states"]
             tick = data['tick']
+            agent_info = data['agents']
 
             # send update to god view
-            new_data = {
+            for agent in agent_info:
+                new_data = {
                 'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img},
-                'state': god_state}
+                'state': god_state, 'agent_info': agent_info[agent]}
 
             self.socketio.emit('update', new_data, namespace="/god")
             sleep()
@@ -192,7 +194,7 @@ class AppFlask:
             for agent_id in agent_states:
                 new_data = {
                     'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img},
-                    'state': agent_states[agent_id]}
+                    'state': agent_states[agent_id], 'agent_info': agent_info[agent_id]}
                 room = f"/agent/{agent_id.lower()}"
                 # print(f"Sending to agent {agent_id} {room}")
                 self.socketio.emit('update', new_data, room=room, namespace="/agent")
@@ -202,7 +204,7 @@ class AppFlask:
             for hu_ag_id in hu_ag_states:
                 new_data = {
                      'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img},
-                     'state': hu_ag_states[hu_ag_id]}
+                     'state': hu_ag_states[hu_ag_id], 'agent_info': agent_info}
                 room = f"/humanagent/{hu_ag_id.lower()}"
                 # print(f"Sending to human agent {hu_ag_id} {room}")
                 self.socketio.emit('update', new_data, room=room, namespace="/humanagent")

@@ -5,6 +5,7 @@
 
  var doVisualUpdates = true;
  var isFirstCall=true;
+ var pause = false;
 
 /**
  * Check if the current tab is in focus or not
@@ -19,6 +20,14 @@ $(document).ready(function(){
 
     // make connection with python server via socket
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+
+    $(".pause").click(function() {
+        pause = true;
+    });
+
+    $(".play").click(function() {
+        pause = false;
+    });
 
     /**
      * Event handler for new connections.
@@ -53,6 +62,7 @@ $(document).ready(function(){
         tick = data.params.tick;
         vis_bg_clr = data.params.vis_bg_clr;
         vis_bg_img = data.params.vis_bg_img;
+        agent_info = data.agent_info;
         //draw the menu if it is the first call
         if(isFirstCall){
             isFirstCall=false;
@@ -60,7 +70,11 @@ $(document).ready(function(){
             parseGifs(state);}
         // draw the grid again
         requestAnimationFrame(function() {
-            doTick(grid_size, state, tick, vis_bg_clr,vis_bg_img, parsedGifs);
+            if(pause){
+
+            }
+            else{
+                doTick(grid_size, state, tick, vis_bg_clr,vis_bg_img, parsedGifs, agent_info);}
         });
     });
 });

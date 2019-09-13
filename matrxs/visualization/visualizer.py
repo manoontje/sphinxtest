@@ -8,6 +8,7 @@ import requests
 from matrxs.agents.agent_brain import AgentBrain
 from matrxs.agents.human_agent_brain import HumanAgentBrain
 
+from collections import OrderedDict
 
 class Visualizer:
     """
@@ -137,7 +138,7 @@ class Visualizer:
 
         return sorted_state
 
-    def _update_guis(self, tick):
+    def _update_guis(self, tick, agents):
         """
         Update the (human)agent and god views, by sending the updated filtered
         state of each to the Visualizer webserver which will update the
@@ -145,19 +146,28 @@ class Visualizer:
         """
         self.tick = tick
         # send the update to the webserver
-        self.__send_gui_update()
+        self.__send_gui_update(agents)
 
-    def __send_gui_update(self):
+    def __send_gui_update(self, registered_agents):
         """
         Send the states of all (human)agents and god to the webserver for updating of the GUI
         """
+
+        agent_names = {}
+
+        for ID, agent_obj in registered_agents.items():
+            # print(f"ID {ID} name {agent_obj.obj_name}")
+            agent_names[ID] = agent_obj.obj_name
+
+
+
         # If the server is not running, we skip visualisation.
         if not self.__server_running:
             return
 
         # put data in a json array
         data = {'god': self.__god_state, 'agent_states': self.__agent_states, 'hu_ag_states': self.__hu_ag_states,
-                'tick': self.tick}
+                'tick': self.tick, 'agents': agent_names}
         url = 'http://localhost:3000/update'
 
         tick_start_time = datetime.datetime.now()
