@@ -10,6 +10,7 @@ body{
 	width:100%;
 	height:100vh;
   	background:#ffffff;
+  	padding-top: 45px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -20,11 +21,54 @@ header{
 	line-height:60px;
 	border-bottom:1px solid #dddddd;
 }
+
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  height: 45px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar button {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  cursor:pointer;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* Change background on mouse-over */
+.navbar button:hover {
+  background: #ddd;
+  cursor:pointer;
+  color: black;
+}
+
 .play{
   background:none;
   position:absolute;
-  top:-1;
-  right:60;
+  top:-15px;
+  right:100;
   line-height:45px;
   padding:5px 15px 0px 15px;
   color:#4bb34b;
@@ -38,8 +82,8 @@ header{
 .pause{
   background:none;
   position:absolute;
-  top:-2;
-  right:30;
+  top:-17px;
+  right:50;
   line-height:45px;
   padding:5px 15px 0px 15px;
   color:#b31414;
@@ -53,7 +97,7 @@ header{
 .hamburger{
   background:none;
   position:absolute;
-  top:0;
+  top:-15px;
   right:0;
   line-height:45px;
   padding:5px 15px 0px 15px;
@@ -68,7 +112,7 @@ header{
 .cross{
   background:none;
   position:absolute;
-  top:0px;
+  top:-15px;
   right:0;
   padding:7px 15px 0px 15px;
   color:#999;
@@ -80,10 +124,42 @@ header{
   outline:none;
   z-index:10000000000000;
 }
+.zoomin{
+  background:none;
+  position:absolute;
+  top:-15px;
+  right:200;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#4bb34b;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000;
+}
+.zoomout{
+  background:none;
+  position:absolute;
+  top:-15px;
+  right:150;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#4bb34b;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000;
+}
+
+
  {box-sizing: border-box;}
 
 /* Button used to open the chat form - fixed at the bottom of the page */
-.open-button {
+/*.open-button {
   background-color: #555;
   color: white;
   padding: 16px 20px;
@@ -95,7 +171,7 @@ header{
   right: 28px;
   width: 280px;
   z-index:10000000000000;
-}
+}*/
 
 /* The popup chat - hidden by default */
 .chat-popup {
@@ -103,7 +179,7 @@ header{
   position: absolute;
   bottom: 0;
   right: 15px;
-  border: 3px solid #f1f1f1;;
+  border: 3px solid #e6e6e6;;
 }
 
 /* Add styles to the form container */
@@ -177,9 +253,9 @@ span.msg-block {
 .chat-box {
   max-width: 200px;
   max-height: 200px;
-  border-style: dotted;
-  border-color: black;
-  position:absolute;
+  border-style: solid;
+  border-color: #e6e6e6;
+  position:fixed;
   top:50px;
   right:10px;
   background-color: white;

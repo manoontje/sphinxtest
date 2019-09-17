@@ -37,7 +37,76 @@ window.onload = function()
 
 	ctx.font = "bold 10pt sans-serif";
 
+    $(".zoomin").click(function() {
+        px_per_cell = px_per_cell + 10;
+        clear();
+    });
+
+    $(".zoomout").click(function() {
+        px_per_cell = px_per_cell - 10;
+        clear();
+    });
+    var global = {
+	scale	: 1,
+	offset	: {
+		x : 0,
+		y : 0,
+	},
 };
+var pan = {
+	start : {
+		x : null,
+		y : null,
+	},
+	offset : {
+		x : 0,
+		y : 0,
+	},
+};
+
+function draw() {
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.translate(pan.offset.x, pan.offset.y);
+
+}
+
+draw();
+
+canvas.addEventListener("mousedown", startPan);
+canvas.addEventListener("mouseleave", endPan);
+canvas.addEventListener("mouseup", endPan);
+
+function startPan(e) {
+	canvas.addEventListener("mousemove", trackMouse);
+	canvas.addEventListener("mousemove", draw);
+	pan.start.x = e.clientX;
+	pan.start.y = e.clientY;
+}
+
+function endPan(e) {
+	canvas.removeEventListener("mousemove", trackMouse);
+	canvas.removeEventListener("mousemove", draw);
+	pan.start.x = null;
+	pan.start.y = null;
+	global.offset.x = pan.offset.x;
+	global.offset.y = pan.offset.y;
+}
+
+function trackMouse(e) {
+	var offsetX  = e.clientX - pan.start.x;
+	var offsetY  = e.clientY - pan.start.y;
+	pan.offset.x = global.offset.x + offsetX;
+	pan.offset.y = global.offset.y + offsetY;
+}
+
+};
+
+function clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
 
 /**
  * Changes the size of the canvas on a window resize such that it is always fullscreen
@@ -295,18 +364,56 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
                 drawCircle(x, y, px_per_cell, px_per_cell, clr, sz);
             }
             else if (obj['visualization']['shape'] == 'img') {
-                if(window.location.hash.indexOf(obj['name']) > -1){
-                    selected = true;
-                }
-                if(selected){
-                    drawRectangle(x-1, y-1, px_per_cell+2, px_per_cell+2, clr, sz);
-                    drawRectangle(x+1, y+1, px_per_cell - 2, px_per_cell - 2, bgTileColour, sz);}
+//                canvas.addEventListener("click", function(e){
+//                    var xPos = e.clientX;
+//                    var yPos = e.clientY;
+//                    var roundedX = Math.round(xPos/px_per_cell);
+//                    var roundedY = Math.round(yPos/px_per_cell);
+////                    console.log([roundedX, roundedY], obj['location']);
+//                    if(arraysEqual([roundedX, roundedY], obj['location'])){
+//                        selected = true;
+//                    }
+//                    else{ selected = false; }
+//                    if(selected){
+//                        drawRectangle(x-1, y-1, px_per_cell+2, px_per_cell+2, clr , sz);
+//                        drawRectangle(x+1, y+1, px_per_cell - 2, px_per_cell - 2, bgTileColour, sz);
+//
+//                       }
+//                  console.log(selected);
+//
+//                });
 
                 drawImage(obj['img_name'],x, y, px_per_cell, px_per_cell, sz);
                 ctx.fillText(obj['name'], x+18, y - 3);
+
             }
         })
     });
+
+//    function getClickPosition(e){
+//        var xPos = e.clientX;
+//        var yPos = e.clientY;
+//        var roundedX = Math.round(xPos/px_per_cell);
+//        var roundedY = Math.round(yPos/px_per_cell);
+//        console.log([roundedX, roundedY], obj['location']);
+//        if(arraysEqual([roundedX, roundedY], obj['location'])){
+//              selected = true;
+//             }
+//        if(selected){
+//             drawRectangle(x-1, y-1, px_per_cell+2, px_per_cell+2, '#64ff21' , sz);
+//             drawRectangle(x+1, y+1, px_per_cell - 2, px_per_cell - 2, bgTileColour, sz);}
+//        return xPos, yPos;
+//        }
+
+    function arraysEqual(arr1, arr2) {
+        if(arr1.length !== arr2.length)
+            return false;
+        for(var i = arr1.length; i--;) {
+            if(arr1[i] !== arr2[i])
+                return false;
+        }
+        return true;
+    }
 
     // Draw the FPS to the canvas as last so it's drawn on top
 	ctx.fillStyle = "#ff0000";
@@ -526,3 +633,5 @@ function hexToRgba(hex, opacity) {
     return result ? "rgba(" + parseInt(result[1], 16) + "," + parseInt(result[2], 16)
                         + "," + parseInt(result[3], 16) + "," + opacity + ")" : null;
 }
+
+

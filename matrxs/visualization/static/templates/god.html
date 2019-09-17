@@ -2,10 +2,10 @@
     <head>
         <link rel="shortcut icon" href="#" />
         <title>God view</title>
-        <button class="play menuButton">&#9654;</button>
-        <button class="pause menuButton">&#9208;</button>
-        <button class="hamburger menuButton">&#9776;</button>
-        <button class="cross menuButton">&#735;</button>
+<!--        <button class="play menuButton">&#9654;</button>-->
+<!--        <button class="pause menuButton">&#9208;</button>-->
+<!--        <button class="hamburger menuButton">&#9776;</button>-->
+<!--        <button class="cross menuButton">&#735;</button>-->
         <link href="/static/css/sim.css" rel="stylesheet">
 
     </head>
@@ -15,8 +15,23 @@
         </div>
 
     <canvas id="grid" width="400" height="400"></canvas>
-        <span style="display:none" id="id">{{ id }}</span>
-    <button id="chat-button" type="button" class="open-button" onclick="openForm()">Chat</button>
+     <span style="display:none" id="id">{{ id }}</span>
+
+        <div class="navbar">
+            <button class="play menuButton">&#9654;</button>
+            <button class="pause menuButton">&#9208;</button>
+            <button class="hamburger menuButton">&#9776;</button>
+            <button class="cross menuButton">&#735;</button>
+            <button class="zoomin menuButton">+</button>
+            <button class="zoomout menuButton">-</button>
+
+            <a href="http://localhost:3000/god">God view</a>
+
+            <a id="chat-button" type="button" class="open-button" onclick="openForm()" style="cursor:pointer">Chat</a>
+
+        </div>
+
+<!--    <button id="chat-button" type="button" class="open-button" onclick="openForm()">Chat</button>-->
      <div class="chat-popup" id="myForm">
 
         <div class="form-container">
@@ -42,7 +57,7 @@
 
         function openForm() {
             document.getElementById("myForm").style.display = "block";
-            document.getElementById("chat-button").style.display = "none";
+            <!--document.getElementById("chat-button").style.display = "none";-->
         }
 
         function closeForm() {
@@ -60,6 +75,7 @@
             document.getElementById("textmessage").style.display = "block";
             var user_str = "User: ";
             chat_now.innerHTML = chat_now.innerHTML + "<br />" +  user_str.bold() + chat_message;
+            document.getElementById("messageId").value = '';
         }
 
     </script>
