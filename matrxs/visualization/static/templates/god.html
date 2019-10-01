@@ -29,7 +29,17 @@
 
             <a id="chat-button" type="button" class="open-button" onclick="openForm()" style="cursor:pointer">Chat</a>
 
+            <form class="rangeslider" >
+                 <input type="range" min="0" max="1" step= "0.1" value="0.5"
+                     class="tickslider" id="sliderRange" name="tickslider" method="POST" >
+                <p> <span class="tickvalue" id="tickspeed" name="tickspeed" style="color:white"></span></p>
+            </form>
+
+
         </div>
+
+
+
 
 <!--    <button id="chat-button" type="button" class="open-button" onclick="openForm()">Chat</button>-->
      <div class="chat-popup" id="myForm">
@@ -77,6 +87,7 @@
             chat_now.innerHTML = chat_now.innerHTML + "<br />" +  user_str.bold() + chat_message;
             document.getElementById("messageId").value = '';
         }
+
 
     </script>
     </body>

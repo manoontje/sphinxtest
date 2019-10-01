@@ -7,6 +7,7 @@ import requests
 
 from matrxs.agents.agent_brain import AgentBrain
 from matrxs.agents.human_agent_brain import HumanAgentBrain
+import matrxs.visualization.server as server
 
 from collections import OrderedDict
 
@@ -138,7 +139,7 @@ class Visualizer:
 
         return sorted_state
 
-    def _update_guis(self, tick, agents):
+    def _update_guis(self, tick, agents, tick_speed):
         """
         Update the (human)agent and god views, by sending the updated filtered
         state of each to the Visualizer webserver which will update the
@@ -146,9 +147,9 @@ class Visualizer:
         """
         self.tick = tick
         # send the update to the webserver
-        self.__send_gui_update(agents)
+        self.__send_gui_update(agents, tick_speed)
 
-    def __send_gui_update(self, registered_agents):
+    def __send_gui_update(self, registered_agents, tick_speed):
         """
         Send the states of all (human)agents and god to the webserver for updating of the GUI
         """
@@ -167,7 +168,7 @@ class Visualizer:
 
         # put data in a json array
         data = {'god': self.__god_state, 'agent_states': self.__agent_states, 'hu_ag_states': self.__hu_ag_states,
-                'tick': self.tick, 'agents': agent_names}
+                'tick': self.tick, 'tick_speed' : tick_speed, 'agents': agent_names}
         url = 'http://localhost:3000/update'
 
         tick_start_time = datetime.datetime.now()
@@ -205,3 +206,12 @@ class Visualizer:
 
         # otherwise return the userinput
         self._userinputs = repl
+
+    def get_api_updates(self):
+
+        # TODO #1 retrieve tick speed from server
+        speed = requests.get("../god/tick_speed")
+
+        # TODO #2 create format that the grid world can read
+
+        # TODO #3 return the data

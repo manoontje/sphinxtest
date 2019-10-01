@@ -13,6 +13,7 @@ body{
   	padding-top: 45px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
 }
 header{
 	width:100%;
@@ -57,11 +58,20 @@ header{
   color: black;
 }
 
+
 /* Change background on mouse-over */
 .navbar button:hover {
   background: #ddd;
   cursor:pointer;
   color: black;
+}
+
+.tickvalue{
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
+    top:-1px;
+    left:175px;
 }
 
 .play{
@@ -143,7 +153,7 @@ header{
   background:none;
   position:absolute;
   top:-15px;
-  right:150;
+  right:160;
   line-height:45px;
   padding:5px 15px 0px 15px;
   color:#4bb34b;
@@ -154,6 +164,43 @@ header{
   outline:none;
   z-index:10000000000;
 }
+
+.rangeslider{
+    width: 50%;
+    position:absolute;
+    float:center;
+    display: block;
+    left: 250px;
+    top: 12px;
+    z-index:10000000000;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+.tickslider {
+    -webkit-appearance: none;
+    position:absolute;
+    width: 20%;
+    height: 20px;
+    left: 250px;
+    padding:5px 15px 0px 15px;
+    z-index:10000000000;
+   }
+
+.tickslider:hover {
+    opacity: 1;
+}
+
+.tickslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: pointer;
+    background: #34495E  ;
+    width: 5%;
+    height: 20px;
+}
+
+
+
 
 
  {box-sizing: border-box;}

@@ -37,16 +37,25 @@ window.onload = function()
 
 	ctx.font = "bold 10pt sans-serif";
 
-    $(".zoomin").click(function() {
-        px_per_cell = px_per_cell + 10;
-        clear();
-    });
+    canvas.addEventListener("mousedown", startPan);
+    canvas.addEventListener("mouseup", endPan);
 
-    $(".zoomout").click(function() {
-        px_per_cell = px_per_cell - 10;
-        clear();
-    });
-    var global = {
+};
+
+$(".zoomin").click(function() {
+    px_per_cell = px_per_cell + 10;
+    clear();
+});
+
+$(".zoomout").click(function() {
+    px_per_cell = px_per_cell - 10;
+    clear();
+});
+
+
+
+
+var global = {
 	scale	: 1,
 	offset	: {
 		x : 0,
@@ -64,33 +73,34 @@ var pan = {
 	},
 };
 
-function draw() {
+/*
+    Translation of the canvas.
+    */
+function panning() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 	ctx.translate(pan.offset.x, pan.offset.y);
 
 }
 
-draw();
-
-canvas.addEventListener("mousedown", startPan);
-canvas.addEventListener("mouseleave", endPan);
-canvas.addEventListener("mouseup", endPan);
+panning();
 
 function startPan(e) {
 	canvas.addEventListener("mousemove", trackMouse);
-	canvas.addEventListener("mousemove", draw);
+	canvas.addEventListener("mousemove", panning);
 	pan.start.x = e.clientX;
 	pan.start.y = e.clientY;
 }
 
 function endPan(e) {
 	canvas.removeEventListener("mousemove", trackMouse);
-	canvas.removeEventListener("mousemove", draw);
+	canvas.removeEventListener("mousemove", panning);
 	pan.start.x = null;
 	pan.start.y = null;
 	global.offset.x = pan.offset.x;
 	global.offset.y = pan.offset.y;
+	//ctx.clearRect(-1000, -1000, canvas.width+2000, canvas.height+2000);
 }
 
 function trackMouse(e) {
@@ -100,13 +110,10 @@ function trackMouse(e) {
 	pan.offset.y = global.offset.y + offsetY;
 }
 
-};
-
+/*Clear the background*/
 function clear() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(-50, -50, canvas.width+100, canvas.height+100);
 }
-
-
 
 /**
  * Changes the size of the canvas on a window resize such that it is always fullscreen
@@ -231,10 +238,11 @@ function parseGifs(state){
         }})
             })
 }
+
 /**
  * called when a new tick is received by the agent
  */
-function doTick(grid_size, state, curr_tick, vis_bg_clr, vis_bg_img, agent_info) {
+function doTick(grid_size, state, curr_tick, tick_speed, vis_bg_clr, vis_bg_img, agent_info) {
     // for the first time drawing the visualization, calculate the optimal
     // screen size based on the grid size
     if (firstDraw) {
@@ -247,6 +255,7 @@ function doTick(grid_size, state, curr_tick, vis_bg_clr, vis_bg_img, agent_info)
     }
     // console.log("\n#####################################\nNew tick #", curr_tick);
     agentInfo = agent_info;
+//    tick_speed = rangeslider.oninput; // HIER MOET JE NOG IETS MEE
     // calc the ticks per second
     highestTickSoFar = curr_tick;
     lastTickSecond = Date.now();
@@ -364,56 +373,18 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
                 drawCircle(x, y, px_per_cell, px_per_cell, clr, sz);
             }
             else if (obj['visualization']['shape'] == 'img') {
-//                canvas.addEventListener("click", function(e){
-//                    var xPos = e.clientX;
-//                    var yPos = e.clientY;
-//                    var roundedX = Math.round(xPos/px_per_cell);
-//                    var roundedY = Math.round(yPos/px_per_cell);
-////                    console.log([roundedX, roundedY], obj['location']);
-//                    if(arraysEqual([roundedX, roundedY], obj['location'])){
-//                        selected = true;
-//                    }
-//                    else{ selected = false; }
-//                    if(selected){
-//                        drawRectangle(x-1, y-1, px_per_cell+2, px_per_cell+2, clr , sz);
-//                        drawRectangle(x+1, y+1, px_per_cell - 2, px_per_cell - 2, bgTileColour, sz);
-//
-//                       }
-//                  console.log(selected);
-//
-//                });
-
                 drawImage(obj['img_name'],x, y, px_per_cell, px_per_cell, sz);
-                ctx.fillText(obj['name'], x+18, y - 3);
+
 
             }
+
+            if(obj['isAgent']){
+                 ctx.fillText(obj['name'], x+18, y - 3);
+             }
+
         })
     });
 
-//    function getClickPosition(e){
-//        var xPos = e.clientX;
-//        var yPos = e.clientY;
-//        var roundedX = Math.round(xPos/px_per_cell);
-//        var roundedY = Math.round(yPos/px_per_cell);
-//        console.log([roundedX, roundedY], obj['location']);
-//        if(arraysEqual([roundedX, roundedY], obj['location'])){
-//              selected = true;
-//             }
-//        if(selected){
-//             drawRectangle(x-1, y-1, px_per_cell+2, px_per_cell+2, '#64ff21' , sz);
-//             drawRectangle(x+1, y+1, px_per_cell - 2, px_per_cell - 2, bgTileColour, sz);}
-//        return xPos, yPos;
-//        }
-
-    function arraysEqual(arr1, arr2) {
-        if(arr1.length !== arr2.length)
-            return false;
-        for(var i = arr1.length; i--;) {
-            if(arr1[i] !== arr2[i])
-                return false;
-        }
-        return true;
-    }
 
     // Draw the FPS to the canvas as last so it's drawn on top
 	ctx.fillStyle = "#ff0000";
@@ -426,8 +397,8 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
         // call the draw function again after a short sleep to get to desired number of fps in milliseconds
         setTimeout(function() { drawSim(grid_size, state, curr_tick, animateMovement); }, msPerFrame);
     }
-}
 
+}
 
 /**
  * Converts a list of [x,y] cell coordinates to [x,y] pixel values
@@ -624,6 +595,8 @@ function drawTriangle(x, y, tileW, tileH, clr, size) {
     ctx.fillStyle = clr;
     ctx.fill();
 }
+
+
 
 /**
  * Convert a hexadecimal colour code to an RGBA colour code

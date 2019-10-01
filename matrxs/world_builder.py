@@ -10,6 +10,7 @@ import numpy as np
 from numpy.random.mtrand import RandomState
 
 from matrxs.agents.agent_brain import AgentBrain
+import matrxs.visualization.server as server
 from matrxs.agents.capabilities.capability import SenseCapability
 from matrxs.agents.human_agent_brain import HumanAgentBrain
 from matrxs.grid_world import GridWorld
@@ -20,8 +21,9 @@ from matrxs.objects.simple_objects import Wall, Door, AreaTile, SmokeTile
 from matrxs.sim_goals.sim_goal import LimitedTimeGoal, SimulationGoal
 
 class WorldBuilder:
+    server.AppFlask.tickspeed = server.AppFlask.tickspeed
 
-    def __init__(self, shape, tick_duration=0.5, random_seed=1, simulation_goal=1000, run_sail_api=False,
+    def __init__(self, shape, tick_duration=server.AppFlask.tickspeed, random_seed=1, simulation_goal=1000, run_sail_api=False,
                  run_visualization_server=True, visualization_bg_clr="#C2C2C2", visualization_bg_img=None,
                  verbose=False):
         """

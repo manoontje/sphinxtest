@@ -2,18 +2,22 @@ from matrxs.agents.human_agent_brain import HumanAgentBrain
 from matrxs.agents.patrolling_agent import PatrollingAgentBrain
 from matrxs.world_builder import WorldBuilder
 from matrxs.actions.move_actions import *
+from matrxs.actions.object_actions import *
+import matrxs.visualization.server as server
 
 
-def create_factory():
-    factory = WorldBuilder(random_seed=1, shape=[8, 8], tick_duration=0.5, verbose=True,
-                           run_visualization_server=True)
+
+def create_factory(tick_duration):
+    factory = WorldBuilder(random_seed=1, shape=[22, 10],  verbose=True,
+                           run_visualization_server=True, tick_duration=tick_duration)
     human_agent = HumanAgentBrain()
 
     usrinp_action_map = {
         'w': MoveNorth.__name__,
         'd': MoveEast.__name__,
         's': MoveSouth.__name__,
-        'a': MoveWest.__name__
+        'a': MoveWest.__name__,
+        'p': GrabObject.__name__
     }
 
     factory.add_human_agent([1,1], human_agent, name="Sam",
@@ -35,4 +39,13 @@ def create_factory():
     factory.add_agent([7, 0], PatrollingAgentBrain(waypoints=[(7, 0), (7, 7)]), name="U4V",
                       visualize_shape='img', has_menu=True, img_name="uav.png")
 
+    factory.add_object((4, 6),"Object",is_traversable=True,is_movable=True,  visualize_shape='img', img_name="fire.gif")
+
+
+
     return factory
+
+# def setValue(newValue):
+#     server.AppFlask.tickspeed = newValue
+#     create_factory()
+#     return newValue

@@ -2,11 +2,12 @@ from matrxs.agents.human_agent_brain import HumanAgentBrain
 from matrxs.agents.patrolling_agent import PatrollingAgentBrain
 from matrxs.world_builder import WorldBuilder
 from matrxs.actions.move_actions import *
+from matrxs.actions.object_actions import *
 
 
 def create_factory():
-    factory = WorldBuilder(random_seed=1, shape=[15, 6], tick_duration=0.5, verbose=True,
-                           run_visualization_server=True, simulation_goal=5)
+    factory = WorldBuilder(random_seed=1, shape=[20, 6], tick_duration=0.5, verbose=True,
+                           run_visualization_server=True)
 
     even = True
     for x in range(15):

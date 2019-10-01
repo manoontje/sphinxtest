@@ -1,3 +1,5 @@
+
+
 /**
  * This is the file which handles the socketIO connection for the god view,
  * requesting a redraw of the grid when a socketIO update has been received.
@@ -42,11 +44,31 @@ $(document).ready(function(){
     console.log(err);
     });
 
+
+
     /**
      * receive an update from the python server
      */
     socket.on('update', function(data){
          console.log("Received an update from the server:", data);
+
+        var rangeslider = document.getElementById("sliderRange");
+        var slider_output = document.getElementById("tickspeed");
+        slider_output.innerHTML = rangeslider.value;
+
+        rangeslider.oninput = function() {
+            slider_output.innerHTML = this.value;
+            console.log("PRINT", slider_output.innerHTML);
+            }
+
+        $.ajax({
+          type: "POST",
+          contentType: "application/json;charset=utf-8",
+          url: "/god/tick_speed",
+          traditional: "true",
+          data: JSON.stringify(slider_output.innerHTML),
+          dataType: "json"
+          });
 
         // Only perform the GUI update if it is in the foreground, as the
         // background tabs are often throttled after which the browser cannot
@@ -60,6 +82,7 @@ $(document).ready(function(){
         grid_size = data.params.grid_size;
         state = data.state;
         tick = data.params.tick;
+        tick_speed = data.params.tick_speed;
         vis_bg_clr = data.params.vis_bg_clr;
         vis_bg_img = data.params.vis_bg_img;
         agent_info = data.agent_info;
@@ -74,7 +97,10 @@ $(document).ready(function(){
 
             }
             else{
-                doTick(grid_size, state, tick, vis_bg_clr,vis_bg_img, parsedGifs, agent_info);}
+                data.params.tick_speed = slider_output.innerHTML;
+                tick_speed = data.params.tick_speed;
+                doTick(grid_size, state, tick, tick_speed, vis_bg_clr,vis_bg_img, parsedGifs, agent_info);}
+                console.log("Tick speed is ", tick_speed);
         });
     });
 });

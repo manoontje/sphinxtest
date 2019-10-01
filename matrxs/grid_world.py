@@ -346,7 +346,9 @@ class GridWorld:
         self.__visualizer._save_state(inheritance_chain="god", id="god", state=self.__get_complete_state())
 
         # update the visualizations of all (human)agents and god
-        self.__visualizer._update_guis(tick=self.current_nr_ticks,agents=self.registered_agents)
+        self.__visualizer._update_guis(tick=self.current_nr_ticks,agents=self.registered_agents, tick_speed= self.tick_duration)
+
+        print("Tick duration is ", self.tick_duration)
 
 
         # Perform the actions in the order of the action_buffer (which is filled in order of registered agents
@@ -606,7 +608,7 @@ class GridWorld:
             self.__visualizer._save_state(inheritance_chain="god", id="god", state=self.__get_complete_state())
 
             # update the visualizations of all (human)agents and god
-            self.__visualizer._update_guis(tick=self.current_nr_ticks, agents=self.registered_agents)
+            self.__visualizer._update_guis(tick=self.current_nr_ticks, agents=self.registered_agents, tick_speed= self.tick_duration)
 
     def __start_visualisation_server(self):
         # bool to denote whether we succeeded in starting the visualisation server

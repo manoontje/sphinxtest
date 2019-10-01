@@ -6,6 +6,7 @@ monkey.patch_all()
 from flask import Flask, request, render_template, jsonify
 from flask_socketio import SocketIO, join_room
 import threading
+import json
 
 import os
 
@@ -23,6 +24,9 @@ vis_bg_clr = None  # "#C2C2C2"
 vis_bg_img = None
 user_input = {}  # can't be None, otherwise Flask flips out when returning it
 async_mode = "gevent" # gevent (preferred) or eventlet.
+
+
+
 
 def create_app():
     #current_folder = os.path.dirname(os.path.abspath(__file__)) # alternative: os.getcwd()
@@ -130,7 +134,12 @@ if __name__ == "__main__":
 
 
 class AppFlask:
+
+    tickspeed = 0.4
+
+
     def __init__(self):
+
         self.app, self.socketio = create_app()
         print("Creating socketio app in server.py")
 
@@ -159,6 +168,15 @@ class AppFlask:
                       " Visualization BG image:", vis_bg_img)
             return ""
 
+        @self.app.route('/god/tick_speed', methods=['POST'])
+        def get_tick_speed():
+            if request.method == 'POST':
+                speed = request.json
+                print("speed is ", speed)
+                global tickspeed
+                tickspeed = speed
+            return speed
+
         @self.app.route('/update', methods=['POST'])
         def update_gui():
             """
@@ -174,18 +192,20 @@ class AppFlask:
             if debug:
                 print("Received update from MATRXS")
 
+
             # Fetch data from message
             data = request.json
             god_state = data["god"]
             agent_states = data["agent_states"]
             hu_ag_states = data["hu_ag_states"]
             tick = data['tick']
+            tick_speed = data['tick_speed']
             agent_info = data['agents']
 
             # send update to god view
             for agent in agent_info:
                 new_data = {
-                'params': {"grid_size": grid_sz, "tick": tick, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img},
+                'params': {"grid_size": grid_sz, "tick": tick, "tick_speed": tick_speed, "vis_bg_clr": vis_bg_clr, "vis_bg_img": vis_bg_img},
                 'state': god_state, 'agent_info': agent_info[agent]}
 
             self.socketio.emit('update', new_data, namespace="/god")
@@ -336,3 +356,5 @@ class AppFlask:
 
             if debug:
                 print(f"User input: {user_input[id]}")
+
+
