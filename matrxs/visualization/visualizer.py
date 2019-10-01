@@ -23,6 +23,7 @@ class Visualizer:
         self.__agent_states = {}
         self.__hu_ag_states = {}
         self.__god_state = {}
+        self.__tick_duration = {}
         self.__verbose = verbose
         self.__server_running = server_running
         self._userinputs = {}
@@ -148,6 +149,7 @@ class Visualizer:
         self.tick = tick
         # send the update to the webserver
         self.__send_gui_update(agents, tick_speed)
+        self.get_api_updates()
 
     def __send_gui_update(self, registered_agents, tick_speed):
         """
@@ -210,7 +212,35 @@ class Visualizer:
     def get_api_updates(self):
 
         # TODO #1 retrieve tick speed from server
-        speed = requests.get("../god/tick_speed")
+        params = {"tick_duration": self.__tick_duration}
+        session = requests.session()
+        url = "http://localhost:3000/god/tick_speed"
+
+        try:
+            r = session.get(url)
+        except requests.exceptions.ConnectionError:
+            self.__server_running = False  # If connection fails, we stop trying it again
+            raise requests.exceptions.ConnectionError("Connection error; the visualisation server is likely not "
+                                                      "running or has crashed. Please start this first by running /visualisation/"
+                                                      "server.py")
+
+        if 'json' in r.headers.get('Content-Type'):
+            print("Type, ", r.headers.get('Content-Type'))
+            js = r.json()
+        else:
+            print('Response content is not in JSON format.')
+            print("Type, ", r.headers.get('Content-Type'))
+            js = 'spam'
+
+        print("geprinte tick data", r.text)
+
+        if js == {}:
+            self.__tick_duration = {}
+        elif self.__verbose:
+            print(f"@{os.path.basename(__file__)}: Tick input received:", js, file=sys.stderr)
+
+        # otherwise return the userinput
+       # self.__tick_duration = js
 
         # TODO #2 create format that the grid world can read
 

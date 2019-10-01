@@ -9,7 +9,7 @@ import matrxs.visualization.server as server
 
 def create_factory(tick_duration):
     factory = WorldBuilder(random_seed=1, shape=[22, 10],  verbose=True,
-                           run_visualization_server=True, tick_duration=tick_duration)
+                           run_visualization_server=True)
     human_agent = HumanAgentBrain()
 
     usrinp_action_map = {

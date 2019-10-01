@@ -58,15 +58,15 @@ $(document).ready(function(){
 
         rangeslider.oninput = function() {
             slider_output.innerHTML = this.value;
-            console.log("PRINT", slider_output.innerHTML);
+            console.log("PRINT", JSON.stringify(slider_output.innerHTML));
             }
 
         $.ajax({
-          type: "POST",
-          contentType: "application/json;charset=utf-8",
+          type: "GET",
+          contentType: "application/json",
           url: "/god/tick_speed",
           traditional: "true",
-          data: JSON.stringify(slider_output.innerHTML),
+          data: slider_output.innerHTML,
           dataType: "json"
           });
 
