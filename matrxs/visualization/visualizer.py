@@ -224,20 +224,12 @@ class Visualizer:
                                                       "running or has crashed. Please start this first by running /visualisation/"
                                                       "server.py")
 
-        if 'json' in r.headers.get('Content-Type'):
-            print("Type, ", r.headers.get('Content-Type'))
-            js = r.json()
-        else:
-            print('Response content is not in JSON format.')
-            print("Type, ", r.headers.get('Content-Type'))
-            js = 'spam'
+        print("geprinte tick data", r.request)
 
-        print("geprinte tick data", r.text)
-
-        if js == {}:
+        if r.json() == {}:
             self.__tick_duration = {}
         elif self.__verbose:
-            print(f"@{os.path.basename(__file__)}: Tick input received:", js, file=sys.stderr)
+            print(f"@{os.path.basename(__file__)}: Tick input received:", r.json(), file=sys.stderr)
 
         # otherwise return the userinput
        # self.__tick_duration = js

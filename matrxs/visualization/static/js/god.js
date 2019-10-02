@@ -44,15 +44,8 @@ $(document).ready(function(){
     console.log(err);
     });
 
-
-
-    /**
-     * receive an update from the python server
-     */
-    socket.on('update', function(data){
-         console.log("Received an update from the server:", data);
-
-        var rangeslider = document.getElementById("sliderRange");
+    socket.on('/god/tick_speed', function(data){
+    var rangeslider = document.getElementById("sliderRange");
         var slider_output = document.getElementById("tickspeed");
         slider_output.innerHTML = rangeslider.value;
 
@@ -62,13 +55,29 @@ $(document).ready(function(){
             }
 
         $.ajax({
-          type: "GET",
+          type: "POST",
           contentType: "application/json",
           url: "/god/tick_speed",
           traditional: "true",
-          data: slider_output.innerHTML,
-          dataType: "json"
+          data: JSON.stringify(slider_output.innerHTML),
+          dataType: "json",
+          success: function(data){
+            console.log("Your tick speed is " + data);
+            },
+          error: function(data) {
+            console.log("ERROR, data is: " + data.text);
+            }
           });
+
+    });
+
+    /**
+     * receive an update from the python server
+     */
+    socket.on('update', function(data){
+         console.log("Received an update from the server:", data);
+
+
 
         // Only perform the GUI update if it is in the foreground, as the
         // background tabs are often throttled after which the browser cannot

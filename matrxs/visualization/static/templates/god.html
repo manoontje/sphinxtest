@@ -30,9 +30,9 @@
             <a id="chat-button" type="button" class="open-button" onclick="openForm()" style="cursor:pointer">Chat</a>
 
             <form class="rangeslider" >
-                 <input type="range" min="0" max="1" step= "0.1" value="0.5"
-                     class="tickslider" id="sliderRange" name="tickslider" method="GET" >
-                <p> <span class="tickvalue" id="tickspeed" name="tickspeed" style="color:white"></span></p>
+                 <input action="/god/tick_speed" type="range" min="0" max="1" step= "0.1" value= "0.5"
+                     class="tickslider" id="sliderRange" name="tickslider" method="POST">
+                <p> <span class="tickvalue" id="tickspeed" name="tickspeed" style="color:white" method="POST"></span></p>
             </form>
 
 

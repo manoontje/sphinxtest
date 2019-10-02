@@ -6,6 +6,7 @@ monkey.patch_all()
 from flask import Flask, request, render_template, jsonify
 from flask_socketio import SocketIO, join_room
 import threading
+import requests
 import json
 
 import os
@@ -168,13 +169,12 @@ class AppFlask:
                       " Visualization BG image:", vis_bg_img)
             return ""
 
-        @self.app.route('/god/tick_speed', methods=['POST', 'GET'])
+        @self.app.route('/god/tick_speed', methods=['GET'])
         def get_tick_speed():
-            if request.method == 'GET':
-                speed = request.json
-                print("speed is ", speed)
-            else:
-                speed = 0.5
+            speed = request.form.get('tickspeed')
+            print("speed is ", speed)
+            #else:
+                #speed = 0.5
             return jsonify(speed)
 
         @self.app.route('/update', methods=['POST'])
