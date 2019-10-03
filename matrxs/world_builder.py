@@ -20,6 +20,7 @@ from matrxs.utils.utils import get_inheritence_path, get_default_value, _get_lin
 from matrxs.objects.simple_objects import Wall, Door, AreaTile, SmokeTile
 from matrxs.sim_goals.sim_goal import LimitedTimeGoal, SimulationGoal
 
+
 class WorldBuilder:
     server.AppFlask.tickspeed = server.AppFlask.tickspeed
 

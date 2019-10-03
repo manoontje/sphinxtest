@@ -3,6 +3,16 @@ from matrxs.objects.agent_body import AgentBody
 
 
 def act_move(grid_world, agent_id, dx, dy):
+    """
+    Moves the agent over the given distance.
+
+    :param grid_world: A pointer to the actual world object.
+    :param agent_id: The id known in the grid world as an agent that peforms this action.
+    :param dx: Distance to be moved over the x-axis.
+    :param dy: Distance to be moved over the y-axis.
+    :return: An action result depicting the action's success or failure and reason/description of that result.
+    """
+
     agent_avatar = grid_world.get_env_object(agent_id, obj_type=AgentBody)
     loc = agent_avatar.location
     new_loc = [loc[0] + dx, loc[1] + dy]
@@ -12,11 +22,27 @@ def act_move(grid_world, agent_id, dx, dy):
 
 
 def is_possible_movement(grid_world, agent_id, dx, dy):
+    """
+    Checks whether the movement action is possible.
+
+    :param grid_world:
+    :param agent_id:
+    :param dx:
+    :param dy:
+    :return:
+    """
     return possible_movement(grid_world, agent_id, dx, dy)
 
 
 def possible_movement(grid_world, agent_id, dx, dy):
+    """
 
+    :param grid_world:
+    :param agent_id:
+    :param dx:
+    :param dy:
+    :return:
+    """
     agent_avatar = grid_world.get_env_object(agent_id, obj_type=AgentBody)
     assert agent_avatar is not None
 
@@ -73,11 +99,22 @@ class MoveActionResult(ActionResult):
 
 class Move(Action):
     def __init__(self, duration_in_ticks=1):
+        """
+
+        :param duration_in_ticks: The time expressed in ticks the move action takes.
+        """
         super().__init__(duration_in_ticks)
         self.dx = 0
         self.dy = 0
 
     def is_possible(self, grid_world, agent_id, **kwargs):
+        """
+        Checks whether the action is a possible movement.
+        :param grid_world:  A pointer to the actual world object.
+        :param agent_id: The id known in the grid world as an agent that peforms this action.
+        :param kwargs:
+        :return: An action result depicting the action's success or failure and reason/description of that result.
+        """
         result = is_possible_movement(grid_world, agent_id=agent_id, dx=self.dx, dy=self.dy)
         return result
 
@@ -87,6 +124,9 @@ class Move(Action):
 
 class MoveNorth(Move):
     def __init__(self):
+        """
+        Moving North.
+        """
         super().__init__()
         self.dx = 0
         self.dy = -1
@@ -95,6 +135,9 @@ class MoveNorth(Move):
 class MoveNorthEast(Move):
 
     def __init__(self):
+        """
+        Moving North-East.
+        """
         super().__init__()
         self.dx = +1
         self.dy = -1
@@ -103,6 +146,9 @@ class MoveNorthEast(Move):
 class MoveEast(Move):
 
     def __init__(self):
+        """
+        Moving East.
+        """
         super().__init__()
         self.dx = +1
         self.dy = 0
@@ -111,6 +157,9 @@ class MoveEast(Move):
 class MoveSouthEast(Move):
 
     def __init__(self):
+        """
+        Moving South-East.
+        """
         super().__init__()
         self.dx = +1
         self.dy = +1
@@ -119,6 +168,9 @@ class MoveSouthEast(Move):
 class MoveSouth(Move):
 
     def __init__(self):
+        """
+        Moving South.
+        """
         super().__init__()
         self.dx = 0
         self.dy = +1
@@ -127,6 +179,9 @@ class MoveSouth(Move):
 class MoveSouthWest(Move):
 
     def __init__(self):
+        """
+        Moving South-West.
+        """
         super().__init__()
         self.dx = -1
         self.dy = +1
@@ -135,6 +190,9 @@ class MoveSouthWest(Move):
 class MoveWest(Move):
 
     def __init__(self):
+        """
+        Moving West.
+        """
         super().__init__()
         self.dx = -1
         self.dy = 0
@@ -143,6 +201,9 @@ class MoveWest(Move):
 class MoveNorthWest(Move):
 
     def __init__(self):
+        """
+        Moving North-West.
+        """
         super().__init__()
         self.dx = -1
         self.dy = -1

@@ -6,14 +6,32 @@
 Welcome to MATRXS's documentation!
 ==================================
 
+Man-Agent Teaming; Rapid Experimentation Software (MATRXS) is a 2D-discrete testbed to facilitate Human Agent Teaming (HAT) research. The original use case in MATRXS is an urban search and rescue operation in which pairs of a human and an autonomous system have to locate and rescue victims. However, MATRXS is very versatile and can, therefore, also be used in many other cases.
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :titlesonly:
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+Resources
+=========
+* `TNO <https://tno.nl>`_
+
+
+Classes and methods
+===================
 
 
 .. autosummary::
-   :toctree: _generated_autodoc
 
+
+   matrxs.actions.action.Action
    matrxs.world_builder.WorldBuilder
    matrxs.grid_world.GridWorld
    matrxs.agents.agent_brain.AgentBrain
@@ -37,9 +55,14 @@ Welcome to MATRXS's documentation!
 
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+
+
+
+
+
+
+
+
+

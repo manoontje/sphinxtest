@@ -24,9 +24,11 @@
 import os
 import sys
 
+import sphinx_rtd_theme
+
 sys.path.insert(0, os.path.abspath("."))
-sys.path.insert(0, os.path.abspath('../matrxs'))
 sys.path.insert(0, os.path.abspath("../.."))
+
 print("\n\n -- System Path --> \n")
 for p in sys.path:
     print(f"{p}")
@@ -52,6 +54,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'numpydoc',
+    'sphinx_rtd_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,13 +74,21 @@ autodoc_default_options = {
 }
 autosummary_generate = True
 
+html_theme_options = {
+    'prev_next_buttons_location': 'bottom',
+    # Toc options
+    'sticky_navigation': True,
+    'logo_only': True,
+    'titles_only': True,
+}
 
+html_logo = 'testlogo.png'
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'nature'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
