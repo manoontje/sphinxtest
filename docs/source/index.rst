@@ -2,15 +2,73 @@
    sphinx-quickstart on Fri Jul 26 09:03:28 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+   https://raw.githubusercontent.com/tobiasHeinke/Blender-Manual/master/blender_docs/resources/theme/css/theme_overrides.css
 
-Welcome to MATRXS's documentation!
-==================================
+.. figure:: /_static/images/tno_banner.png
+   :width: 150%
 
-Man-Agent Teaming; Rapid Experimentation Software (MATRXS) is a 2D-discrete testbed to facilitate Human Agent Teaming (HAT) research. The original use case in MATRXS is an urban search and rescue operation in which pairs of a human and an autonomous system have to locate and rescue victims. However, MATRXS is very versatile and can, therefore, also be used in many other cases.
+MATRXS's documentation
+======================
+
+Welcome! This is the documentation for Man-Agent Teaming; Rapid Experimentation Software (MATRXS).
+
+MATRXS a 2D-discrete testbed to facilitate Human Agent Teaming (HAT) research. The original use case in MATRXS is an urban search and rescue operation in which pairs of a human and an autonomous system have to locate and rescue victims. However, MATRXS is very versatile and can, therefore, also be used in many other cases.
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
+   :caption: Contents:
+
+   about_matrxs
+
+.. autosummary::
+   :toctree: _generated_autodoc
+
+
+Getting started
+===============
+
++------------------------------------------+-----------------------------------------------+
+| `About MATRXS <html/about.html>`_        | `Installing MATRXS <html/installation.html>`_ |
++------------------------------------------+-----------------------------------------------+
+| `MATRXS Tutorials <html/tutorial.html>`_ |                                               |
++------------------------------------------+-----------------------------------------------+
+
+Sections
+========
+.. The image ratio is: width: 350px; height: 350/4 + (2x5) ~= 98px
+
+.. only:: builder_html and (not singlehtml)
+
+   .. container:: tocdescr
+
+      .. container:: descr
+
+         .. figure:: /_static/images/contents_animation.jpg
+            :target: html/about.html
+
+         :doc:`html/about.html`
+            An introduction to Blender's window system, widgets and tools.
+
+      .. container:: descr
+
+         .. figure:: /_static/images/contents_animation.jpg
+            :target: html/about.html
+
+         :doc:`html/about.html`
+            An introduction to Blender's window system, widgets and tools.
+
+      .. container:: descr
+
+         .. figure:: /_static/images/contents_animation.jpg
+            :target: html/about.html
+
+         :doc:`html/about.html`
+            An introduction to Blender's window system, widgets and tools.
+
+
+Resources
+=========
+* `TNO <https://tno.nl>`_
 
 Indices and tables
 ==================
@@ -19,39 +77,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Resources
-=========
-* `TNO <https://tno.nl>`_
-
-
-Classes and methods
-===================
-
-
-.. autosummary::
-
-
-   matrxs.actions.action.Action
-   matrxs.world_builder.WorldBuilder
-   matrxs.grid_world.GridWorld
-   matrxs.agents.agent_brain.AgentBrain
-   matrxs.agents.human_agent_brain.HumanAgentBrain
-   matrxs.agents.patrolling_agent.PatrollingAgentBrain
-   matrxs.agents.capabilities.capability.SenseCapability
-   matrxs.objects.env_object.EnvObject
-   matrxs.objects.simple_objects.Wall
-   matrxs.objects.simple_objects.Door
-   matrxs.objects.simple_objects.SquareBlock
-   matrxs.objects.simple_objects.AreaTile
-   matrxs.objects.simple_objects.SmokeTile
-   matrxs.objects.agent_body.AgentBody
-   matrxs.objects.advanced_objects.Battery
-   matrxs.sim_goals.sim_goal.SimulationGoal
-   matrxs.sim_goals.sim_goal.LimitedTimeGoal
-   matrxs.utils.utils
-   matrxs.utils.agent_utils.state_tracker.StateTracker
-   matrxs.utils.agent_utils.navigator.Navigator
-   matrxs.utils.agent_utils.task_manager.TaskManager
 
 
 
