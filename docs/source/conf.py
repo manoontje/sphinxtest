@@ -79,6 +79,7 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     # Toc options
     'sticky_navigation': True,
+    'includehidden': False,
 }
 
 html_logo = 'matrxslogo.png'
