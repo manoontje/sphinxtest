@@ -79,10 +79,9 @@ html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     # Toc options
     'sticky_navigation': True,
-    'logo_only': True,
 }
 
-html_logo = 'testlogo.png'
+html_logo = 'matrxslogo.png'
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
