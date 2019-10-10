@@ -1,6 +1,8 @@
-####################
-Action documentation
-####################
+.. _Actions
+
+#######
+Actions
+#######
 
 .. toctree::
    :maxdepth: 2

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>matrxs.actions.move_actions &mdash; MATRXS 0.0.1 documentation</title>
+  <title>matrxs.actions.move_actions &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
   
 
   
@@ -51,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> MATRXS
+            <a href="../../index.html" class="icon icon-home"> MATRXS 0.0.1 Manual
           
 
           
@@ -84,11 +84,32 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/aboutmatrxs.html">About MATRXS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/FAQ.html">F.A.Q.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../worlds.html">World building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../actions.html">Actions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.action.Action.html">matrxs.actions.action.Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.action.ActionResult.html">matrxs.actions.action.ActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorAction.html">matrxs.actions.door_actions.OpenDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorAction.html">matrxs.actions.door_actions.CloseDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorActionResult.html">matrxs.actions.door_actions.CloseDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorActionResult.html">matrxs.actions.door_actions.OpenDoorActionResult</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">matrxs.actions.move_actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.object_actions.html">matrxs.actions.object_actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../brains.html">Brains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects.html">Object placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simgoals.html">Simulation goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visuals.html">Visualization</a></li>
 </ul>
 
             
@@ -103,7 +124,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">MATRXS</a>
+          <a href="../../index.html">MATRXS 0.0.1 Manual</a>
         
       </nav>
 
@@ -134,7 +155,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../actions.html">Action documentation</a> &raquo;</li>
+          <li><a href="../actions.html">Actions</a> &raquo;</li>
         
       <li>matrxs.actions.move_actions</li>
     
@@ -227,6 +248,98 @@
 </tr>
 </tbody>
 </table>
+<dl class="function">
+<dt id="matrxs.actions.move_actions.act_move">
+<code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">act_move</code><span class="sig-paren">(</span><em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.act_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves the agent over the given distance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid_world</strong> – A pointer to the actual world object.</p></li>
+<li><p><strong>agent_id</strong> – The id known in the grid world as an agent that peforms this action.</p></li>
+<li><p><strong>dx</strong> – Distance to be moved over the x-axis.</p></li>
+<li><p><strong>dy</strong> – Distance to be moved over the y-axis.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An action result depicting the action’s success or failure and reason/description of that result.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="matrxs.actions.move_actions.is_possible_movement">
+<code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">is_possible_movement</code><span class="sig-paren">(</span><em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.is_possible_movement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the movement action is possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid_world</strong> – </p></li>
+<li><p><strong>agent_id</strong> – </p></li>
+<li><p><strong>dx</strong> – </p></li>
+<li><p><strong>dy</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="matrxs.actions.move_actions.possible_movement">
+<code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">possible_movement</code><span class="sig-paren">(</span><em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.possible_movement" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid_world</strong> – </p></li>
+<li><p><strong>agent_id</strong> – </p></li>
+<li><p><strong>dx</strong> – </p></li>
+<li><p><strong>dy</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="matrxs.actions.move_actions.MoveActionResult">
+<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveActionResult</code><span class="sig-paren">(</span><em class="sig-param">result</em>, <em class="sig-param">succeeded</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_NO_MOVE">
+<code class="sig-name descname">RESULT_NO_MOVE</code><em class="property"> = 'Move action resulted in a new location with the agent already present.'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_NO_MOVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_SUCCESS">
+<code class="sig-name descname">RESULT_SUCCESS</code><em class="property"> = 'Move action success'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_OUT_OF_BOUNDS">
+<code class="sig-name descname">RESULT_OUT_OF_BOUNDS</code><em class="property"> = 'Move action out of bounds'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_OUT_OF_BOUNDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_OCCUPIED">
+<code class="sig-name descname">RESULT_OCCUPIED</code><em class="property"> = 'Move action towards occupied space'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_OCCUPIED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_NOT_PASSABLE_OBJECT">
+<code class="sig-name descname">RESULT_NOT_PASSABLE_OBJECT</code><em class="property"> = 'Move action toward space which is not traversable by agent due object'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_NOT_PASSABLE_OBJECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="matrxs.actions.move_actions.MoveActionResult.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">result</em>, <em class="sig-param">succeeded</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="matrxs.actions.move_actions.Move">
 <em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">Move</code><span class="sig-paren">(</span><em class="sig-param">duration_in_ticks=1</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.Move" title="Permalink to this definition">¶</a></dt>
@@ -293,68 +406,6 @@ omitted here since that method is always called before mutate.
 </dd></dl>
 
 <dl class="class">
-<dt id="matrxs.actions.move_actions.MoveActionResult">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveActionResult</code><span class="sig-paren">(</span><em class="sig-param">result</em>, <em class="sig-param">succeeded</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_NOT_PASSABLE_OBJECT">
-<code class="sig-name descname">RESULT_NOT_PASSABLE_OBJECT</code><em class="property"> = 'Move action toward space which is not traversable by agent due object'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_NOT_PASSABLE_OBJECT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_NO_MOVE">
-<code class="sig-name descname">RESULT_NO_MOVE</code><em class="property"> = 'Move action resulted in a new location with the agent already present.'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_NO_MOVE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_OCCUPIED">
-<code class="sig-name descname">RESULT_OCCUPIED</code><em class="property"> = 'Move action towards occupied space'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_OCCUPIED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_OUT_OF_BOUNDS">
-<code class="sig-name descname">RESULT_OUT_OF_BOUNDS</code><em class="property"> = 'Move action out of bounds'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_OUT_OF_BOUNDS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.move_actions.MoveActionResult.RESULT_SUCCESS">
-<code class="sig-name descname">RESULT_SUCCESS</code><em class="property"> = 'Move action success'</em><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.RESULT_SUCCESS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="matrxs.actions.move_actions.MoveActionResult.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">result</em>, <em class="sig-param">succeeded</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveActionResult.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="matrxs.actions.move_actions.MoveEast">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveEast</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveEast" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_possible</span></code>(self, grid_world, agent_id, …)</p></td>
-<td><p>Checks whether the action is a possible movement.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mutate</span></code>(self, grid_world, agent_id, \*\*kwargs)</p></td>
-<td><p>The core of an action.</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="matrxs.actions.move_actions.MoveEast.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveEast.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moving East.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="matrxs.actions.move_actions.MoveNorth">
 <em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveNorth</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveNorth" title="Permalink to this definition">¶</a></dt>
 <dd><p class="rubric">Methods</p>
@@ -407,8 +458,8 @@ omitted here since that method is always called before mutate.
 </dd></dl>
 
 <dl class="class">
-<dt id="matrxs.actions.move_actions.MoveNorthWest">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveNorthWest</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveNorthWest" title="Permalink to this definition">¶</a></dt>
+<dt id="matrxs.actions.move_actions.MoveEast">
+<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveEast</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveEast" title="Permalink to this definition">¶</a></dt>
 <dd><p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -425,35 +476,9 @@ omitted here since that method is always called before mutate.
 </tbody>
 </table>
 <dl class="method">
-<dt id="matrxs.actions.move_actions.MoveNorthWest.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveNorthWest.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moving North-West.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="matrxs.actions.move_actions.MoveSouth">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveSouth</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveSouth" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_possible</span></code>(self, grid_world, agent_id, …)</p></td>
-<td><p>Checks whether the action is a possible movement.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mutate</span></code>(self, grid_world, agent_id, \*\*kwargs)</p></td>
-<td><p>The core of an action.</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="matrxs.actions.move_actions.MoveSouth.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveSouth.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moving South.</p>
+<dt id="matrxs.actions.move_actions.MoveEast.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveEast.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moving East.</p>
 </dd></dl>
 
 </dd></dl>
@@ -480,6 +505,32 @@ omitted here since that method is always called before mutate.
 <dt id="matrxs.actions.move_actions.MoveSouthEast.__init__">
 <code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveSouthEast.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Moving South-East.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="matrxs.actions.move_actions.MoveSouth">
+<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveSouth</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveSouth" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_possible</span></code>(self, grid_world, agent_id, …)</p></td>
+<td><p>Checks whether the action is a possible movement.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mutate</span></code>(self, grid_world, agent_id, \*\*kwargs)</p></td>
+<td><p>The core of an action.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="matrxs.actions.move_actions.MoveSouth.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveSouth.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moving South.</p>
 </dd></dl>
 
 </dd></dl>
@@ -536,60 +587,30 @@ omitted here since that method is always called before mutate.
 
 </dd></dl>
 
-<dl class="function">
-<dt id="matrxs.actions.move_actions.act_move">
-<code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">act_move</code><span class="sig-paren">(</span><em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.act_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moves the agent over the given distance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>grid_world</strong> – A pointer to the actual world object.</p></li>
-<li><p><strong>agent_id</strong> – The id known in the grid world as an agent that peforms this action.</p></li>
-<li><p><strong>dx</strong> – Distance to be moved over the x-axis.</p></li>
-<li><p><strong>dy</strong> – Distance to be moved over the y-axis.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An action result depicting the action’s success or failure and reason/description of that result.</p>
-</dd>
-</dl>
+<dl class="class">
+<dt id="matrxs.actions.move_actions.MoveNorthWest">
+<em class="property">class </em><code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">MoveNorthWest</code><a class="headerlink" href="#matrxs.actions.move_actions.MoveNorthWest" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_possible</span></code>(self, grid_world, agent_id, …)</p></td>
+<td><p>Checks whether the action is a possible movement.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mutate</span></code>(self, grid_world, agent_id, \*\*kwargs)</p></td>
+<td><p>The core of an action.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="matrxs.actions.move_actions.MoveNorthWest.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.MoveNorthWest.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moving North-West.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="matrxs.actions.move_actions.is_possible_movement">
-<code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">is_possible_movement</code><span class="sig-paren">(</span><em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.is_possible_movement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks whether the movement action is possible.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>grid_world</strong> – </p></li>
-<li><p><strong>agent_id</strong> – </p></li>
-<li><p><strong>dx</strong> – </p></li>
-<li><p><strong>dy</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="matrxs.actions.move_actions.possible_movement">
-<code class="sig-prename descclassname">matrxs.actions.move_actions.</code><code class="sig-name descname">possible_movement</code><span class="sig-paren">(</span><em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.move_actions.possible_movement" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>grid_world</strong> – </p></li>
-<li><p><strong>agent_id</strong> – </p></li>
-<li><p><strong>dx</strong> – </p></li>
-<li><p><strong>dy</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
 </dd></dl>
 
 </div>

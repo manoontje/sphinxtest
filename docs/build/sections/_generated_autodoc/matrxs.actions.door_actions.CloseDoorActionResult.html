@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>matrxs.actions.door_actions.CloseDoorActionResult &mdash; MATRXS 0.0.1 documentation</title>
+  <title>matrxs.actions.door_actions.CloseDoorActionResult &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
   
 
   
@@ -51,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> MATRXS
+            <a href="../../index.html" class="icon icon-home"> MATRXS 0.0.1 Manual
           
 
           
@@ -84,11 +84,32 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/aboutmatrxs.html">About MATRXS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/FAQ.html">F.A.Q.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../worlds.html">World building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../actions.html">Actions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.action.Action.html">matrxs.actions.action.Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.action.ActionResult.html">matrxs.actions.action.ActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorAction.html">matrxs.actions.door_actions.OpenDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorAction.html">matrxs.actions.door_actions.CloseDoorAction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">matrxs.actions.door_actions.CloseDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorActionResult.html">matrxs.actions.door_actions.OpenDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.move_actions.html">matrxs.actions.move_actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.object_actions.html">matrxs.actions.object_actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../brains.html">Brains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects.html">Object placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simgoals.html">Simulation goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visuals.html">Visualization</a></li>
 </ul>
 
             
@@ -103,7 +124,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">MATRXS</a>
+          <a href="../../index.html">MATRXS 0.0.1 Manual</a>
         
       </nav>
 
@@ -134,7 +155,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../actions.html">Action documentation</a> &raquo;</li>
+          <li><a href="../actions.html">Actions</a> &raquo;</li>
         
       <li>matrxs.actions.door_actions.CloseDoorActionResult</li>
     
@@ -233,6 +254,31 @@
 </tbody>
 </table>
 <dl class="attribute">
+<dt id="matrxs.actions.door_actions.CloseDoorActionResult.RESULT_SUCCESS">
+<code class="sig-name descname">RESULT_SUCCESS</code><em class="property"> = 'Door was succesfully closed.'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.RESULT_SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.door_actions.CloseDoorActionResult.NO_DOORS_IN_RANGE">
+<code class="sig-name descname">NO_DOORS_IN_RANGE</code><em class="property"> = 'No door found in range'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NO_DOORS_IN_RANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.door_actions.CloseDoorActionResult.NOT_IN_RANGE">
+<code class="sig-name descname">NOT_IN_RANGE</code><em class="property"> = 'Specified door is not within range.'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NOT_IN_RANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.door_actions.CloseDoorActionResult.NOT_A_DOOR">
+<code class="sig-name descname">NOT_A_DOOR</code><em class="property"> = &quot;CloseDoor action could not be performed, as object isn't a door&quot;</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NOT_A_DOOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.door_actions.CloseDoorActionResult.RESULT_UNKNOWN_OBJECT_TYPE">
+<code class="sig-name descname">RESULT_UNKNOWN_OBJECT_TYPE</code><em class="property"> = 'obj_id is no Agent and no Object, unknown what to do'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.RESULT_UNKNOWN_OBJECT_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="matrxs.actions.door_actions.CloseDoorActionResult.DOOR_ALREADY_CLOSED">
 <code class="sig-name descname">DOOR_ALREADY_CLOSED</code><em class="property"> = &quot;Can't close door, door is already closed.&quot;</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.DOOR_ALREADY_CLOSED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -243,33 +289,8 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="matrxs.actions.door_actions.CloseDoorActionResult.NOT_A_DOOR">
-<code class="sig-name descname">NOT_A_DOOR</code><em class="property"> = &quot;CloseDoor action could not be performed, as object isn't a door&quot;</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NOT_A_DOOR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.door_actions.CloseDoorActionResult.NOT_IN_RANGE">
-<code class="sig-name descname">NOT_IN_RANGE</code><em class="property"> = 'Specified door is not within range.'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NOT_IN_RANGE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.door_actions.CloseDoorActionResult.NO_DOORS_IN_RANGE">
-<code class="sig-name descname">NO_DOORS_IN_RANGE</code><em class="property"> = 'No door found in range'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NO_DOORS_IN_RANGE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="matrxs.actions.door_actions.CloseDoorActionResult.NO_OBJECT_SPECIFIED">
 <code class="sig-name descname">NO_OBJECT_SPECIFIED</code><em class="property"> = 'No object_id of a door specified to close.'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.NO_OBJECT_SPECIFIED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.door_actions.CloseDoorActionResult.RESULT_SUCCESS">
-<code class="sig-name descname">RESULT_SUCCESS</code><em class="property"> = 'Door was succesfully closed.'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.RESULT_SUCCESS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.door_actions.CloseDoorActionResult.RESULT_UNKNOWN_OBJECT_TYPE">
-<code class="sig-name descname">RESULT_UNKNOWN_OBJECT_TYPE</code><em class="property"> = 'obj_id is no Agent and no Object, unknown what to do'</em><a class="headerlink" href="#matrxs.actions.door_actions.CloseDoorActionResult.RESULT_UNKNOWN_OBJECT_TYPE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

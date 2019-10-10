@@ -1,6 +1,8 @@
-##############################
-Object placement documentation
-##############################
+.. _Object placement
+
+################
+Object placement
+################
 
 .. toctree::
    :maxdepth: 2

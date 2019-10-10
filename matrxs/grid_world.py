@@ -596,8 +596,8 @@ class GridWorld:
         if self.__run_visualization_server and self.__visualisation_process is None:
             # Loop through all agents, apply their observe to get their state for the gui
             for agent_id, agent_obj in self.registered_agents.items():
-                # TODO the agent's filtered state is now empty as it has not yet performed an action. Fill it or forget
-                # TODO about initializing the agent views?
+                # TO DO the agent's filtered state is now empty as it has not yet performed an action. Fill it or forget
+                # TO DO about initializing the agent views?
                 # Obtain the agent's filtered state
                 filtered_agent_state = agent_obj.get_filtered_state()
                 # Save the state
@@ -615,7 +615,7 @@ class GridWorld:
         succeeded = True
 
         # Set the server to debug mode if we are verbose
-        # TODO Enable this when the debugging of the visualisation is correct (see issue #124)
+        # TO DO Enable this when the debugging of the visualisation is correct (see issue #124)
         # server.debug = self.__verbose
 
         # Create the process and run it

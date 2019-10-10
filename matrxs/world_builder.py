@@ -22,7 +22,6 @@ from matrxs.sim_goals.sim_goal import LimitedTimeGoal, SimulationGoal
 
 
 class WorldBuilder:
-    server.AppFlask.tickspeed = server.AppFlask.tickspeed
 
     def __init__(self, shape, tick_duration=0.5, random_seed=1, simulation_goal=1000, run_sail_api=False,
                  run_visualization_server=True, visualization_bg_clr="#C2C2C2", visualization_bg_img=None,
@@ -199,8 +198,6 @@ class WorldBuilder:
 
         See Also
         --------
-
-        TODO Refer to GridWorld.run()
 
         """
         self.worlds_created += 1
@@ -1053,8 +1050,8 @@ class WorldBuilder:
         return args
 
     def __reset_random(self):
-        # TODO resets all RandomProperty and RandomLocation, is called after creating a world so all duplicates can be
-        # TODO selected again.
+        # TO DO resets all RandomProperty and RandomLocation, is called after creating a world so all duplicates can be
+        # TO DO selected again.
         pass
 
 

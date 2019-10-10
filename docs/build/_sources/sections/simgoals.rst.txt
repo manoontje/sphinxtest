@@ -1,6 +1,8 @@
-####################
-Action documentation
-####################
+.. _Simulation goals
+
+################
+Simulation goals
+################
 
 .. toctree::
    :maxdepth: 2

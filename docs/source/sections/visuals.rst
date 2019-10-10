@@ -1,6 +1,8 @@
-###########################
-Visualization documentation
-###########################
+.. _Visualization
+
+#############
+Visualization
+#############
 
 .. toctree::
    :maxdepth: 2

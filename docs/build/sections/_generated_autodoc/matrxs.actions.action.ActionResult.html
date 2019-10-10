@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>matrxs.actions.action.ActionResult &mdash; MATRXS 0.0.1 documentation</title>
+  <title>matrxs.actions.action.ActionResult &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
   
 
   
@@ -51,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> MATRXS
+            <a href="../../index.html" class="icon icon-home"> MATRXS 0.0.1 Manual
           
 
           
@@ -84,11 +84,32 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/aboutmatrxs.html">About MATRXS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/FAQ.html">F.A.Q.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../worlds.html">World building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../actions.html">Actions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.action.Action.html">matrxs.actions.action.Action</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">matrxs.actions.action.ActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorAction.html">matrxs.actions.door_actions.OpenDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorAction.html">matrxs.actions.door_actions.CloseDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorActionResult.html">matrxs.actions.door_actions.CloseDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorActionResult.html">matrxs.actions.door_actions.OpenDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.move_actions.html">matrxs.actions.move_actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.object_actions.html">matrxs.actions.object_actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../brains.html">Brains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects.html">Object placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simgoals.html">Simulation goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visuals.html">Visualization</a></li>
 </ul>
 
             
@@ -103,7 +124,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">MATRXS</a>
+          <a href="../../index.html">MATRXS 0.0.1 Manual</a>
         
       </nav>
 
@@ -134,7 +155,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../actions.html">Action documentation</a> &raquo;</li>
+          <li><a href="../actions.html">Actions</a> &raquo;</li>
         
       <li>matrxs.actions.action.ActionResult</li>
     
@@ -209,18 +230,8 @@
 </tbody>
 </table>
 <dl class="attribute">
-<dt id="matrxs.actions.action.ActionResult.ACTION_NOT_POSSIBLE">
-<code class="sig-name descname">ACTION_NOT_POSSIBLE</code><em class="property"> = 'The `is_possible(...)` method returned False. Signalling that the action was not possible.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.ACTION_NOT_POSSIBLE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.action.ActionResult.ACTION_SUCCEEDED">
-<code class="sig-name descname">ACTION_SUCCEEDED</code><em class="property"> = 'The action succeeded.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.ACTION_SUCCEEDED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.actions.action.ActionResult.AGENT_NOT_CAPABLE">
-<code class="sig-name descname">AGENT_NOT_CAPABLE</code><em class="property"> = 'The action could not be performed, as the agent is not capable of performing this action.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.AGENT_NOT_CAPABLE" title="Permalink to this definition">¶</a></dt>
+<dt id="matrxs.actions.action.ActionResult.IDLE_ACTION">
+<code class="sig-name descname">IDLE_ACTION</code><em class="property"> = 'The action is None, hence the agent will idle which always succeeds.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.IDLE_ACTION" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -229,18 +240,28 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="matrxs.actions.action.ActionResult.IDLE_ACTION">
-<code class="sig-name descname">IDLE_ACTION</code><em class="property"> = 'The action is None, hence the agent will idle which always succeeds.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.IDLE_ACTION" title="Permalink to this definition">¶</a></dt>
+<dt id="matrxs.actions.action.ActionResult.ACTION_SUCCEEDED">
+<code class="sig-name descname">ACTION_SUCCEEDED</code><em class="property"> = 'The action succeeded.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.ACTION_SUCCEEDED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="matrxs.actions.action.ActionResult.NO_ACTION_GIVEN">
-<code class="sig-name descname">NO_ACTION_GIVEN</code><em class="property"> = 'There was no action given to perform, automatic succeed.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.NO_ACTION_GIVEN" title="Permalink to this definition">¶</a></dt>
+<dt id="matrxs.actions.action.ActionResult.ACTION_NOT_POSSIBLE">
+<code class="sig-name descname">ACTION_NOT_POSSIBLE</code><em class="property"> = 'The `is_possible(...)` method returned False. Signalling that the action was not possible.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.ACTION_NOT_POSSIBLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.action.ActionResult.AGENT_NOT_CAPABLE">
+<code class="sig-name descname">AGENT_NOT_CAPABLE</code><em class="property"> = 'The action could not be performed, as the agent is not capable of performing this action.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.AGENT_NOT_CAPABLE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="matrxs.actions.action.ActionResult.UNKNOWN_ACTION">
 <code class="sig-name descname">UNKNOWN_ACTION</code><em class="property"> = 'The action is not known to the environment.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.UNKNOWN_ACTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="matrxs.actions.action.ActionResult.NO_ACTION_GIVEN">
+<code class="sig-name descname">NO_ACTION_GIVEN</code><em class="property"> = 'There was no action given to perform, automatic succeed.'</em><a class="headerlink" href="#matrxs.actions.action.ActionResult.NO_ACTION_GIVEN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

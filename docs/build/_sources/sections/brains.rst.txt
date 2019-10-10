@@ -1,6 +1,8 @@
-############################
-Brain building documentation
-############################
+.. _Brains
+
+######
+Brains
+######
 
 .. toctree::
    :maxdepth: 2

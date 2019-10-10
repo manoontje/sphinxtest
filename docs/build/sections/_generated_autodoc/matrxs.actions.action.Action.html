@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>matrxs.actions.action.Action &mdash; MATRXS 0.0.1 documentation</title>
+  <title>matrxs.actions.action.Action &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="matrxs.actions.action.ActionResult" href="matrxs.actions.action.ActionResult.html" />
-    <link rel="prev" title="Action documentation" href="../actions.html" /> 
+    <link rel="prev" title="Actions" href="../actions.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,7 +51,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> MATRXS
+            <a href="../../index.html" class="icon icon-home"> MATRXS 0.0.1 Manual
           
 
           
@@ -84,11 +84,32 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/aboutmatrxs.html">About MATRXS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/FAQ.html">F.A.Q.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../worlds.html">World building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../actions.html">Actions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">matrxs.actions.action.Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.action.ActionResult.html">matrxs.actions.action.ActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorAction.html">matrxs.actions.door_actions.OpenDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorAction.html">matrxs.actions.door_actions.CloseDoorAction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.CloseDoorActionResult.html">matrxs.actions.door_actions.CloseDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.door_actions.OpenDoorActionResult.html">matrxs.actions.door_actions.OpenDoorActionResult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.move_actions.html">matrxs.actions.move_actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrxs.actions.object_actions.html">matrxs.actions.object_actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../brains.html">Brains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects.html">Object placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simgoals.html">Simulation goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visuals.html">Visualization</a></li>
 </ul>
 
             
@@ -103,7 +124,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">MATRXS</a>
+          <a href="../../index.html">MATRXS 0.0.1 Manual</a>
         
       </nav>
 
@@ -134,7 +155,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../actions.html">Action documentation</a> &raquo;</li>
+          <li><a href="../actions.html">Actions</a> &raquo;</li>
         
       <li>matrxs.actions.action.Action</li>
     
@@ -232,6 +253,31 @@ blocks the user, you should assign a custom duration in the constructor of your 
 </dd></dl>
 
 <dl class="method">
+<dt id="matrxs.actions.action.Action.mutate">
+<code class="sig-name descname">mutate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.action.Action.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The core of an action. This method needs to be overridden and performs the actual action in the world.
+As such the mutate receives the entire world as a pointer, the agent_id who performs the action and potential
+keyword arguments unique for a specific action (e.g., an object id for the RemoveObject action).</p>
+<p>The mutate should always return an ActionResult, or a class that inherits from ActionResult.</p>
+<p>The mutate will only be called when action.is_possible(…) returns True. The grid world is responsible for
+translating an agent’s returned action class name, to an action object, check if it is a possible action and
+then call this mutate method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid_world</strong> – A pointer to the actual world object.</p></li>
+<li><p><strong>agent_id</strong> – The id known in the grid world as an agent that peforms this action.</p></li>
+<li><p><strong>kwargs</strong> – Optional arguments for the action. You should document what these arguments are in your Python</p></li>
+</ul>
+</dd>
+</dl>
+<p>doc, and ALWAYS check whether these are present and otherwise raise an exception! This eases the debugging
+process for everyone. This check can be done in the is_possible method of the action. If done there, it can be
+omitted here since that method is always called before mutate.
+:return: An action result depicting the action’s success or failure and reason/description of that result.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="matrxs.actions.action.Action.is_possible">
 <code class="sig-name descname">is_possible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.action.Action.is_possible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the action is possible in the world when performed by the given agent. This method needs to be
@@ -266,31 +312,6 @@ depending on your agent implementation.</p>
 action is used in the ActionResult. If the action is possible (the boolean is True), this string is ignored.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="matrxs.actions.action.Action.mutate">
-<code class="sig-name descname">mutate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">grid_world</em>, <em class="sig-param">agent_id</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.actions.action.Action.mutate" title="Permalink to this definition">¶</a></dt>
-<dd><p>The core of an action. This method needs to be overridden and performs the actual action in the world.
-As such the mutate receives the entire world as a pointer, the agent_id who performs the action and potential
-keyword arguments unique for a specific action (e.g., an object id for the RemoveObject action).</p>
-<p>The mutate should always return an ActionResult, or a class that inherits from ActionResult.</p>
-<p>The mutate will only be called when action.is_possible(…) returns True. The grid world is responsible for
-translating an agent’s returned action class name, to an action object, check if it is a possible action and
-then call this mutate method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>grid_world</strong> – A pointer to the actual world object.</p></li>
-<li><p><strong>agent_id</strong> – The id known in the grid world as an agent that peforms this action.</p></li>
-<li><p><strong>kwargs</strong> – Optional arguments for the action. You should document what these arguments are in your Python</p></li>
-</ul>
-</dd>
-</dl>
-<p>doc, and ALWAYS check whether these are present and otherwise raise an exception! This eases the debugging
-process for everyone. This check can be done in the is_possible method of the action. If done there, it can be
-omitted here since that method is always called before mutate.
-:return: An action result depicting the action’s success or failure and reason/description of that result.</p>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -306,7 +327,7 @@ omitted here since that method is always called before mutate.
         <a href="matrxs.actions.action.ActionResult.html" class="btn btn-neutral float-right" title="matrxs.actions.action.ActionResult" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../actions.html" class="btn btn-neutral float-left" title="Action documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../actions.html" class="btn btn-neutral float-left" title="Actions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

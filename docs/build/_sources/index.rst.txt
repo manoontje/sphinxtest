@@ -3,6 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    https://raw.githubusercontent.com/tobiasHeinke/Blender-Manual/master/blender_docs/resources/theme/css/theme_overrides.css
+.. only:: builder_html
+
+   .. |vertical_separator| unicode:: U+02758
 
 .. figure:: /_static/images/tno_banner.png
    :width: 150%
@@ -18,8 +21,17 @@ MATRXS a 2D-discrete testbed to facilitate Human Agent Teaming (HAT) research. T
 Getting started
 ===============
 
++---------------------+---------------------+---------------------+
+| :ref:`About MATRXS` | :ref:`Installation` |  :ref:`genindex`    |
++---------------------+---------------------+---------------------+
+| :ref:`Tutorials`    |  :ref:`F.A.Q.`      |  :ref:`modindex`    |
++---------------------+---------------------+---------------------+
+
+
 .. toctree::
    :maxdepth: 2
+   :caption: Getting started
+   :hidden:
 
    about/aboutmatrxs.rst
    installation/installing.rst
@@ -27,10 +39,15 @@ Getting started
    about/FAQ.rst
 
 
+
+
+
 Sections
 ========
 .. The image ratio is: width: 350px; height: 350/4 + (2x5) ~= 98px
 .. toctree::
+   :maxdepth: 2
+   :caption: Sections
    :hidden:
 
    sections/worlds.rst
@@ -51,7 +68,7 @@ Sections
          .. figure:: /_static/images/world_scrshot.jpg
             :target: sections/worlds.html
 
-         :doc:`Worlds`
+         :ref:`World building`
             Learn MATRXS' way of creating worlds.
 
       .. container:: descr
@@ -59,7 +76,7 @@ Sections
          .. figure:: /_static/images/agentbrain.jpg
             :target: sections/brains.html
 
-         :doc:`Brains`
+         :ref:`Brains`
             The agents in MATRXS have brains. Check this section for a piece of their minds.
 
       .. container:: descr
@@ -67,7 +84,7 @@ Sections
          .. figure:: /_static/images/vormen.jpg
             :target: sections/objects.html
 
-         :doc:`Objects`
+         :ref:`Object placement`
             Make the world more worldlike by placing objects in it.
 
       .. container:: descr
@@ -75,7 +92,7 @@ Sections
          .. figure:: /_static/images/think_robot.jpg
             :target: sections/actions.html
 
-         :doc:`Actions`
+         :ref:`Actions`
             Agents can perform actions.
 
       .. container:: descr
@@ -83,7 +100,7 @@ Sections
          .. figure:: /_static/images/finish.jpg
             :target: sections/simgoals.html
 
-         :doc:`Simulation goals`
+         :ref:`Simulation goals`
             A certain goal is set for the simulation to end.
 
       .. container:: descr
@@ -91,7 +108,7 @@ Sections
          .. figure:: /_static/images/utilities.jpg
             :target: sections/utils.html
 
-         :doc:`Utils`
+         :ref:`Utils`
             Useful functions.
 
       .. container:: descr
@@ -99,7 +116,7 @@ Sections
          .. figure:: /_static/images/server.jpg
             :target: sections/visuals.html
 
-         :doc:`Visualization`
+         :ref:`Visualization`
             Visualization by using a Flask server.
 
 
@@ -108,12 +125,11 @@ Resources
 =========
 * `TNO <https://tno.nl>`_
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. Indices and tables
+   ==================
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
 
 
 

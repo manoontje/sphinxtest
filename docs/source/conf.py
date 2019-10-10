@@ -23,8 +23,8 @@
 #
 import os
 import sys
-
 import sphinx_rtd_theme
+
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath("../.."))
@@ -35,13 +35,14 @@ for p in sys.path:
 print("\n\n")
 
 # -- Project information -----------------------------------------------------
+# The full version, including alpha/beta/rc tags
+release = '0.0.1'
 
-project = 'MATRXS'
+project = 'MATRXS %s Manual' % release
 copyright = '2019, The MATRXS Team at TNO.nl'
 author = 'The MATRXS Team at TNO.nl'
 
-# The full version, including alpha/beta/rc tags
-release = '0.0.1'
+
 
 
 # -- General configuration ---------------------------------------------------
@@ -56,6 +57,7 @@ extensions = [
     'numpydoc',
     'sphinx_rtd_theme',
     'sphinx.ext.autosectionlabel',
+    'sphinx.ext.todo',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -69,21 +71,27 @@ exclude_patterns = []
 # Auto generate the TOC elements for when using this autodoc flag (e.g. 'members')
 autodoc_default_options = {
     'members': True,
-    'member-order': 'alphabetical',
+    'member-order': 'bysource',
     'special-members': '__init__',
     'undoc-members': True
 }
+
 autosummary_generate = True
 
 html_theme_options = {
     'prev_next_buttons_location': 'bottom',
     # Toc options
     'sticky_navigation': True,
-    'includehidden': False,
+    'includehidden': True,
 }
 
 html_logo = 'matrxslogo.png'
 # -- Options for HTML output -------------------------------------------------
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'sphinx'
+
+# By default, highlight as Python 3.
+highlight_language = 'python3'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -93,7 +101,7 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
 
 def setup(app):
     app.add_stylesheet("css/theme_overrides.css")

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>matrxs.visualization.server &mdash; MATRXS 0.0.1 documentation</title>
+  <title>matrxs.visualization.server &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../_static/css/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Visualization documentation" href="../visuals.html" /> 
+    <link rel="prev" title="Visualization" href="../visuals.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -50,7 +50,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> MATRXS
+            <a href="../../index.html" class="icon icon-home"> MATRXS 0.0.1 Manual
           
 
           
@@ -83,11 +83,25 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../about/aboutmatrxs.html">About MATRXS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation/installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../about/FAQ.html">F.A.Q.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../worlds.html">World building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brains.html">Brains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../objects.html">Object placement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simgoals.html">Simulation goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../visuals.html">Visualization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">matrxs.visualization.server</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -102,7 +116,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">MATRXS</a>
+          <a href="../../index.html">MATRXS 0.0.1 Manual</a>
         
       </nav>
 
@@ -133,7 +147,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../visuals.html">Visualization documentation</a> &raquo;</li>
+          <li><a href="../visuals.html">Visualization</a> &raquo;</li>
         
       <li>matrxs.visualization.server</li>
     
@@ -192,51 +206,10 @@
 </tr>
 </tbody>
 </table>
-<dl class="class">
-<dt id="matrxs.visualization.server.AppFlask">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">AppFlask</code><a class="headerlink" href="#matrxs.visualization.server.AppFlask" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="matrxs.visualization.server.AppFlask.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.AppFlask.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="matrxs.visualization.server.AppFlask.tickspeed">
-<code class="sig-name descname">tickspeed</code><em class="property"> = 0.4</em><a class="headerlink" href="#matrxs.visualization.server.AppFlask.tickspeed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="function">
 <dt id="matrxs.visualization.server.create_app">
 <code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">create_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.create_app" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="function">
-<dt id="matrxs.visualization.server.flaskThread">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">flaskThread</code><span class="sig-paren">(</span><em class="sig-param">app</em>, <em class="sig-param">socket</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.flaskThread" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="matrxs.visualization.server.handle_usr_inp">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">handle_usr_inp</code><span class="sig-paren">(</span><em class="sig-param">input</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.handle_usr_inp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fetch user input messages sent from human agents</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>input</strong></dt><dd><p>The user input.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>None</dt><dd><p>…</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="function">
 <dt id="matrxs.visualization.server.join">
@@ -259,9 +232,50 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="matrxs.visualization.server.handle_usr_inp">
+<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">handle_usr_inp</code><span class="sig-paren">(</span><em class="sig-param">input</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.handle_usr_inp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch user input messages sent from human agents</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>input</strong></dt><dd><p>The user input.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd><p>…</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="matrxs.visualization.server.flaskThread">
+<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">flaskThread</code><span class="sig-paren">(</span><em class="sig-param">app</em>, <em class="sig-param">socket</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.flaskThread" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="matrxs.visualization.server.run_visualisation_server">
 <code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">run_visualisation_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.run_visualisation_server" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="class">
+<dt id="matrxs.visualization.server.AppFlask">
+<em class="property">class </em><code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">AppFlask</code><a class="headerlink" href="#matrxs.visualization.server.AppFlask" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="matrxs.visualization.server.AppFlask.tickspeed">
+<code class="sig-name descname">tickspeed</code><em class="property"> = 0.4</em><a class="headerlink" href="#matrxs.visualization.server.AppFlask.tickspeed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="matrxs.visualization.server.AppFlask.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.AppFlask.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 
@@ -274,7 +288,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../visuals.html" class="btn btn-neutral float-left" title="Visualization documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../visuals.html" class="btn btn-neutral float-left" title="Visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
