@@ -171,6 +171,7 @@ class AppFlask:
 
         @self.app.route('/god/tick_speed', methods=['GET'])
         def get_tick_speed():
+            # USE SOCKET IPV AJAX
             speed = request.form.get('tickspeed')
             print("speed is ", speed)
             #else:

@@ -9,12 +9,6 @@ class Capability:
 class SenseCapability(Capability):
 
     def __init__(self, detectable_objects):
-        """Blabla
-
-        Parameters
-        ----------
-        detectable_objects
-        """
         super().__init__()
         self.__detectable_objects = {}
         for obj_type, sense_range in detectable_objects.items():
