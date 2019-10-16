@@ -11,8 +11,10 @@ Actions
    :toctree: _generated_autodoc
 
 
+    matrxs.actions.action.
     matrxs.actions.action.Action
     matrxs.actions.action.ActionResult
+    matrxs.actions.door_actions
     matrxs.actions.door_actions.OpenDoorAction
     matrxs.actions.door_actions.CloseDoorAction
     matrxs.actions.door_actions.CloseDoorActionResult

@@ -24,6 +24,7 @@
 import os
 import sys
 import sphinx_rtd_theme
+from mock import Mock as MagicMock
 
 
 sys.path.insert(0, os.path.abspath("."))
@@ -52,12 +53,8 @@ author = 'The MATRXS Team at TNO.nl'
 # ones.
 extensions = [
     'sphinx.ext.autosummary',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.coverage',
-    'numpydoc',
     'sphinx_rtd_theme',
     'sphinx.ext.autosectionlabel',
-    'sphinx.ext.todo',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -105,3 +102,11 @@ html_theme = 'sphinx_rtd_theme'
 
 def setup(app):
     app.add_stylesheet("css/theme_overrides.css")
+
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls, name):
+        return MagicMock()
+
+MOCK_MODULES = ['numpy', 'scipy', 'scipy.linalg', 'scipy.signal']
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)

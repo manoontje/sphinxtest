@@ -21,11 +21,11 @@ MATRXS a 2D-discrete testbed to facilitate Human Agent Teaming (HAT) research. T
 Getting started
 ===============
 
-+---------------------+---------------------+---------------------+
-| :ref:`About MATRXS` | :ref:`Installation` |  :ref:`genindex`    |
-+---------------------+---------------------+---------------------+
-| :ref:`Tutorials`    |  :ref:`F.A.Q.`      |  :ref:`modindex`    |
-+---------------------+---------------------+---------------------+
++---------------------+---------------------+---------------------+---------------------+
+| :ref:`About MATRXS` | :ref:`Installation` |  :ref:`Reference`   |  :ref:`genindex`    |
++---------------------+---------------------+---------------------+---------------------+
+| :ref:`Tutorials`    |  :ref:`F.A.Q.`      |  :ref:`search`      |  :ref:`modindex`    |
++---------------------+---------------------+---------------------+---------------------+
 
 
 .. toctree::
@@ -37,6 +37,7 @@ Getting started
    installation/installing.rst
    about/tutorials.rst
    about/FAQ.rst
+
 
 
 
