@@ -68,6 +68,10 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# If true, the current module name will be prepended to all description
+# unit titles (such as .. function::).
+add_module_names = False
+
 # Auto generate the TOC elements for when using this autodoc flag (e.g. 'members')
 autodoc_default_options = {
     'members': True,
@@ -108,7 +112,4 @@ def setup(app):
     app.add_stylesheet("css/theme_overrides.css")
 
 
-# If true, the current module name will be prepended to all description
-# unit titles (such as .. function::).
-add_module_names = False
 

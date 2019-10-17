@@ -139,6 +139,9 @@ if __name__ == "__main__":
 
 
 class AppFlask:
+    """
+    Creation of the Flask application.
+    """
 
     tickspeed = 0.4
 
