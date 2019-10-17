@@ -2,6 +2,9 @@ from matrxs.objects.env_object import EnvObject
 
 
 class Battery(EnvObject):
+    """
+    The class used to represent a battery
+    """
 
     def __init__(self, location, name="Battery", start_energy_level=1.0, energy_decay=0.01):
         """

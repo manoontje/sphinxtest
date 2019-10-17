@@ -63,7 +63,7 @@ class OpenDoorAction(Action):
 
 class CloseDoorAction(Action):
     """
-    Action to open a Door
+    Action to close a Door
     """
 
     def __init__(self, duration_in_ticks=1):
@@ -119,6 +119,9 @@ class CloseDoorAction(Action):
 
 
 class CloseDoorActionResult(ActionResult):
+    """
+    Result of trying to close a door.
+    """
     RESULT_SUCCESS = "Door was succesfully closed."
     NO_DOORS_IN_RANGE = "No door found in range"
     NOT_IN_RANGE = "Specified door is not within range."
@@ -133,6 +136,9 @@ class CloseDoorActionResult(ActionResult):
 
 
 class OpenDoorActionResult(ActionResult):
+    """
+    Result of trying to open a door.
+    """
     RESULT_SUCCESS = "Door was successfully opened."
     NO_DOORS_IN_RANGE = "No door found in range"
     NOT_IN_RANGE = "Specified door is not within range."

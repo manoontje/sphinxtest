@@ -4,6 +4,8 @@ from matrxs.utils.agent_utils.state_tracker import StateTracker
 
 
 class PatrollingAgentBrain(AgentBrain):
+    """This is the PatrollingAgentBrain class.
+    """
 
     def __init__(self, waypoints):
         super().__init__()
@@ -12,6 +14,10 @@ class PatrollingAgentBrain(AgentBrain):
         self.waypoints = waypoints
 
     def initialize(self):
+        """
+        Initialization of the agent's state tracker.
+        :return:
+        """
         # Initialize this agent's state tracker
         self.state_tracker = StateTracker(agent_id=self.agent_id)
 
@@ -21,10 +27,20 @@ class PatrollingAgentBrain(AgentBrain):
         self.navigator.add_waypoints(self.waypoints, is_circular=True)
 
     def filter_observations(self, state):
+        """
+        Filtering the agent's observations.
+        :param state:
+        :return:
+        """
         self.state_tracker.update(state)
         return state
 
     def decide_on_action(self, state):
+        """
+        Decision of which action to perform.
+        :param state:
+        :return:
+        """
 
         move_action = self.navigator.get_move_action(self.state_tracker)
 

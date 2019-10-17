@@ -5,6 +5,8 @@ from matrxs.actions.door_actions import *
 
 
 class HumanAgentBrain(AgentBrain):
+    """This is the HumanAgentBrain class.
+    """
 
     def __init__(self):
         """

@@ -30,6 +30,10 @@ async_mode = "gevent" # gevent (preferred) or eventlet.
 
 
 def create_app():
+    """
+    Creation of the application.
+    :return:
+    """
     #current_folder = os.path.dirname(os.path.abspath(__file__)) # alternative: os.getcwd()
     #template_folder = os.path.join(current_folder, "static", "templates")
     #app = Flask("matrxs", template_folder=template_folder)

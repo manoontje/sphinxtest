@@ -64,6 +64,14 @@ class RemoveObject(Action):
                                   .replace('object_id'.upper(), str(object_id)), False)
 
     def is_possible(self, grid_world, agent_id, **kwargs):
+        """
+        Checks whether to given deletion of the object is possible.
+
+        :param grid_world:
+        :param agent_id:
+        :param kwargs:
+        :return:
+        """
         agent_avatar = grid_world.get_env_object(agent_id, obj_type=AgentBody)  # get ourselves
         assert agent_avatar is not None  # check if we actually exist
         agent_loc = agent_avatar.location  # get our location
@@ -85,6 +93,10 @@ class RemoveObject(Action):
 
 
 class RemoveObjectResult(ActionResult):
+    """
+    The result of trying to remove an object.
+    """
+
     NO_OBJECTS_IN_RANGE = "No objects were in `REMOVE_RANGE`."
     OBJECT_ID_NOT_WITHIN_RANGE = "The object with id `OBJECT_ID` is not within the range of `REMOVE_RANGE`."
     OBJECT_REMOVED = "The object with id `OBJECT_ID` is removed."
@@ -167,6 +179,9 @@ class GrabObject(Action):
         return GrabObjectResult(GrabObjectResult.RESULT_SUCCESS, True)
 
     def is_possible_grab(self, grid_world, agent_id, object_id, grab_range, max_objects):
+        """
+                This function checks if grabbing an object is possible.
+        """
         reg_ag = grid_world.registered_agents[agent_id]  # Registered Agent
         loc_agent = reg_ag.location  # Agent location
 
@@ -221,6 +236,9 @@ class GrabObject(Action):
 
 
 class GrabObjectResult(ActionResult):
+    """
+    The result of trying to grab an object.
+    """
     FAILED_TO_REMOVE_OBJECT_FROM_WORLD = 'Grab action failed; could not remove object with id {OBJECT_ID} from grid.'
     RESULT_SUCCESS = 'Grab action success'
     NOT_IN_RANGE = 'Object not in range'
@@ -236,7 +254,9 @@ class GrabObjectResult(ActionResult):
 
 
 class DropObject(Action):
-    
+    """
+    The action class for dropping objects.
+    """
     def __init__(self, duration_in_ticks=1):
         super().__init__(duration_in_ticks)
 
@@ -386,6 +406,14 @@ class DropObject(Action):
             return True
 
     def possible_drop(self, grid_world, agent_id, obj_id, drop_range):
+        """
+        Check for the status of the drop action.
+        :param grid_world:
+        :param agent_id:
+        :param obj_id:
+        :param drop_range:
+        :return:
+        """
         reg_ag = grid_world.registered_agents[agent_id]  # Registered Agent
         loc_agent = reg_ag.location
         loc_obj_ids = grid_world.grid[loc_agent[1], loc_agent[0]]
@@ -407,6 +435,9 @@ class DropObject(Action):
 
 
 class DropObjectResult(ActionResult):
+    """
+    The result of trying to drop an object.
+    """
     RESULT_SUCCESS = 'Drop action success'
     RESULT_NO_OBJECT = 'The item is not carried'
     RESULT_NONE_GIVEN = "'None' used as input id"

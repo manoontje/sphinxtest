@@ -2,6 +2,9 @@ from matrxs.objects.env_object import EnvObject
 
 
 class SquareBlock(EnvObject):
+    """
+    A simple object class.
+    """
 
     def __init__(self, location, name="Block"):
         """
@@ -17,6 +20,9 @@ class SquareBlock(EnvObject):
 
 
 class Door(EnvObject):
+    """
+    A class representing the door object.
+    """
 
     def __init__(self, location, is_open, name="Door", open_colour="#006400", closed_colour="#640000"):
         """
@@ -79,6 +85,9 @@ class Door(EnvObject):
 
 
 class Wall(EnvObject):
+    """
+    A class representing the wall object.
+    """
 
     def __init__(self, location, name="Wall", visualize_colour="#000000"):
         """
@@ -93,6 +102,9 @@ class Wall(EnvObject):
 
 
 class AreaTile(EnvObject):
+    """
+    A class representing the area tile object.
+    """
 
     def __init__(self, location, name="AreaTile", visualize_colour="#8ca58c", visualize_depth=None, visualize_opacity=1.0):
         """
@@ -108,6 +120,8 @@ class AreaTile(EnvObject):
 
 
 class SmokeTile(AreaTile):
+    """
+    A class representing a smoke tile object. """
     def __init__(self, location, name="SmokeTile", visualize_colour="#b7b7b7", visualize_opacity=0.8, visualize_depth=101):
         """
         An object representing one tile of smoke. Is always traversable, not movable,

@@ -5,6 +5,8 @@ from matrxs.actions.object_actions import *
 
 
 class AgentBrain:
+    """The class for creating agent brains.
+    """
 
     def __init__(self):
         """
@@ -205,6 +207,12 @@ class AgentBrain:
             self.messages_to_send.append(message)
 
     def is_action_possible(self, action, action_kwargs):
+        """
+        Check whether the action is possible.
+        :param action:
+        :param action_kwargs:
+        :return:
+        """
         action_result = self.__callback_is_action_possible(self.agent_id, action, action_kwargs)
 
         return action_result.succeeded, action_result

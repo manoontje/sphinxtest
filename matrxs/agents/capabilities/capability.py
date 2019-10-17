@@ -2,11 +2,16 @@ import numpy as np
 
 
 class Capability:
+    """
+    The class containing an agent/object capability.
+    """
     def __init__(self):
         pass
 
 
 class SenseCapability(Capability):
+    """This is the SenseCapability class.
+    """
 
     def __init__(self, detectable_objects):
         super().__init__()

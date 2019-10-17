@@ -1,6 +1,9 @@
 
 
 class Action:
+    """
+    The class for actions that can be performed in the MATRXS world.
+    """
 
     def __init__(self, duration_in_ticks=1):
         """

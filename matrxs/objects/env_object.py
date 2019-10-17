@@ -3,6 +3,9 @@ from matrxs.utils.utils import next_obj_id, get_inheritence_path
 
 
 class EnvObject:
+    """
+    The basic class for all objects in the world.
+    """
 
     def __init__(self, location, name, class_callable, customizable_properties=None,
                  is_traversable=None, is_movable=None,

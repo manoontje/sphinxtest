@@ -7,6 +7,8 @@ from matrxs.actions.move_actions import *
 
 
 class Navigator:
+    """
+    A navigator class."""
     A_STAR_ALGORITHM = "a_star"
 
     def __init__(self, agent_id, action_set, algorithm=A_STAR_ALGORITHM, is_circular=False):

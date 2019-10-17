@@ -172,8 +172,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.agent_brain.AgentBrain.html#matrxs.agents.agent_brain.AgentBrain" title="matrxs.agents.agent_brain.AgentBrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AgentBrain</span></code></a>()</p></td>
-<td><p><p class="rubric">Methods</p>
-</p></td>
+<td><p>The class for creating agent brains.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.agents.agent_brain.Message" title="matrxs.agents.agent_brain.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a>(content, from_id[, to_id])</p></td>
 <td><p>A simple object representing a communication message.</p></td>
@@ -182,8 +181,9 @@
 </table>
 <dl class="class">
 <dt id="matrxs.agents.agent_brain.AgentBrain">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.agents.agent_brain.</code><code class="sig-name descname">AgentBrain</code><a class="headerlink" href="#matrxs.agents.agent_brain.AgentBrain" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
+<em class="property">class </em><code class="sig-name descname">AgentBrain</code><a class="headerlink" href="#matrxs.agents.agent_brain.AgentBrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class for creating agent brains.</p>
+<p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -199,19 +199,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.agent_brain.AgentBrain.html#matrxs.agents.agent_brain.AgentBrain.initialize" title="matrxs.agents.agent_brain.AgentBrain.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize</span></code></a>(self)</p></td>
 <td><p>Method called the very first time this AgentBrain is called from the world.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.agent_brain.AgentBrain.html#matrxs.agents.agent_brain.AgentBrain.send_message" title="matrxs.agents.agent_brain.AgentBrain.send_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_message</span></code></a>(self, message_content, dict], …)</p></td>
-<td><p>Method that allows you to construct a message that will be send to either a specified agent, a team of agents or all agents.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.agent_brain.AgentBrain.html#matrxs.agents.agent_brain.AgentBrain.is_action_possible" title="matrxs.agents.agent_brain.AgentBrain.is_action_possible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_action_possible</span></code></a>(self, action, action_kwargs)</p></td>
+<td><p>Check whether the action is possible.</p></td>
 </tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 69%" />
-<col style="width: 31%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>is_action_possible</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.agent_brain.AgentBrain.html#matrxs.agents.agent_brain.AgentBrain.send_message" title="matrxs.agents.agent_brain.AgentBrain.send_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_message</span></code></a>(self, message_content, dict], …)</p></td>
+<td><p>Method that allows you to construct a message that will be send to either a specified agent, a team of agents or all agents.</p></td>
 </tr>
 </tbody>
 </table>
@@ -295,13 +287,17 @@ agent IDs when it is a list of strings. When set to None, the message is send to
 <dl class="method">
 <dt id="matrxs.agents.agent_brain.AgentBrain.is_action_possible">
 <code class="sig-name descname">is_action_possible</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">action</em>, <em class="sig-param">action_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.agent_brain.AgentBrain.is_action_possible" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check whether the action is possible.
+:param action:
+:param action_kwargs:
+:return:</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="matrxs.agents.agent_brain.Message">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.agents.agent_brain.</code><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param">content</em>, <em class="sig-param">from_id</em>, <em class="sig-param">to_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.agent_brain.Message" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param">content</em>, <em class="sig-param">from_id</em>, <em class="sig-param">to_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.agent_brain.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple object representing a communication message. An agent can create such a Message object by stating the
 content, its own id as the sender and (optinal) a receiver. If a receiver is not given it is a message to all
 agents, including the sender.</p>

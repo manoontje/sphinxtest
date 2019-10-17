@@ -181,7 +181,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.visualization.server.create_app" title="matrxs.visualization.server.create_app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_app</span></code></a>()</p></td>
-<td><p></p></td>
+<td><p>Creation of the application.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.visualization.server.flaskThread" title="matrxs.visualization.server.flaskThread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flaskThread</span></code></a>(app, socket)</p></td>
 <td><p></p></td>
@@ -211,12 +211,14 @@
 </table>
 <dl class="function">
 <dt id="matrxs.visualization.server.create_app">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">create_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.create_app" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">create_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.create_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creation of the application.
+:return:</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="matrxs.visualization.server.join">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">join</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.join" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">join</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.join" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add client to a room for their specific (human) agent ID</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -236,7 +238,7 @@
 
 <dl class="function">
 <dt id="matrxs.visualization.server.handle_usr_inp">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">handle_usr_inp</code><span class="sig-paren">(</span><em class="sig-param">input</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.handle_usr_inp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">handle_usr_inp</code><span class="sig-paren">(</span><em class="sig-param">input</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.handle_usr_inp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch user input messages sent from human agents</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -256,17 +258,17 @@
 
 <dl class="function">
 <dt id="matrxs.visualization.server.flaskThread">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">flaskThread</code><span class="sig-paren">(</span><em class="sig-param">app</em>, <em class="sig-param">socket</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.flaskThread" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">flaskThread</code><span class="sig-paren">(</span><em class="sig-param">app</em>, <em class="sig-param">socket</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.flaskThread" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="matrxs.visualization.server.run_visualisation_server">
-<code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">run_visualisation_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.run_visualisation_server" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">run_visualisation_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.visualization.server.run_visualisation_server" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
 <dt id="matrxs.visualization.server.AppFlask">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.visualization.server.</code><code class="sig-name descname">AppFlask</code><a class="headerlink" href="#matrxs.visualization.server.AppFlask" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">AppFlask</code><a class="headerlink" href="#matrxs.visualization.server.AppFlask" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="matrxs.visualization.server.AppFlask.tickspeed">
 <code class="sig-name descname">tickspeed</code><em class="property"> = 0.4</em><a class="headerlink" href="#matrxs.visualization.server.AppFlask.tickspeed" title="Permalink to this definition">¶</a></dt>

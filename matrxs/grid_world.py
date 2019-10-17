@@ -15,6 +15,9 @@ from matrxs.objects.env_object import EnvObject
 
 
 class GridWorld:
+    """
+    A representation of the MATRXS world as a grid.
+    """
 
     def __init__(self, shape, tick_duration, simulation_goal, run_sail_api=True, run_visualization_server=True,
                  rnd_seed=1, visualization_bg_clr="#C2C2C2", visualization_bg_img=None, verbose=False):

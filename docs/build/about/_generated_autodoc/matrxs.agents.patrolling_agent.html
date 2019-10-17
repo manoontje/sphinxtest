@@ -172,15 +172,15 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.patrolling_agent.PatrollingAgentBrain.html#matrxs.agents.patrolling_agent.PatrollingAgentBrain" title="matrxs.agents.patrolling_agent.PatrollingAgentBrain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PatrollingAgentBrain</span></code></a>(waypoints)</p></td>
-<td><p><p class="rubric">Methods</p>
-</p></td>
+<td><p>This is the PatrollingAgentBrain class.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="matrxs.agents.patrolling_agent.PatrollingAgentBrain">
-<em class="property">class </em><code class="sig-prename descclassname">matrxs.agents.patrolling_agent.</code><code class="sig-name descname">PatrollingAgentBrain</code><span class="sig-paren">(</span><em class="sig-param">waypoints</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.patrolling_agent.PatrollingAgentBrain" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
+<em class="property">class </em><code class="sig-name descname">PatrollingAgentBrain</code><span class="sig-paren">(</span><em class="sig-param">waypoints</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.patrolling_agent.PatrollingAgentBrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the PatrollingAgentBrain class.</p>
+<p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -188,27 +188,19 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.patrolling_agent.PatrollingAgentBrain.html#matrxs.agents.patrolling_agent.PatrollingAgentBrain.decide_on_action" title="matrxs.agents.patrolling_agent.PatrollingAgentBrain.decide_on_action"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decide_on_action</span></code></a>(self, state)</p></td>
-<td><p>In this method you compute your action.</p></td>
+<td><p>Decision of which action to perform.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.patrolling_agent.PatrollingAgentBrain.html#matrxs.agents.patrolling_agent.PatrollingAgentBrain.filter_observations" title="matrxs.agents.patrolling_agent.PatrollingAgentBrain.filter_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_observations</span></code></a>(self, state)</p></td>
-<td><p>In this method you filter the state to only those properties and objects the agent is actually SUPPOSED to see.</p></td>
+<td><p>Filtering the agent’s observations.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../sections/_generated_autodoc/matrxs.agents.patrolling_agent.PatrollingAgentBrain.html#matrxs.agents.patrolling_agent.PatrollingAgentBrain.initialize" title="matrxs.agents.patrolling_agent.PatrollingAgentBrain.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize</span></code></a>(self)</p></td>
-<td><p>Method called the very first time this AgentBrain is called from the world.</p></td>
+<td><p>Initialization of the agent’s state tracker.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_message</span></code>(self, message_content, dict], …)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_action_possible</span></code>(self, action, action_kwargs)</p></td>
+<td><p>Check whether the action is possible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_message</span></code>(self, message_content, dict], …)</p></td>
 <td><p>Method that allows you to construct a message that will be send to either a specified agent, a team of agents or all agents.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 69%" />
-<col style="width: 31%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>is_action_possible</strong></p></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -222,47 +214,24 @@ simply randomly selects an action from the possible actions it can do. BLABLA</p
 <dl class="method">
 <dt id="matrxs.agents.patrolling_agent.PatrollingAgentBrain.initialize">
 <code class="sig-name descname">initialize</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.patrolling_agent.PatrollingAgentBrain.initialize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method called the very first time this AgentBrain is called from the world. Here you can initialize everything
-you need for your agent to work since you can’t do much in the constructor as the brain needs to be connected to
-a GridWorld first in most cases (e.g. to get an AgentID, its random seed, etc.)</p>
+<dd><p>Initialization of the agent’s state tracker.
+:return:</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="matrxs.agents.patrolling_agent.PatrollingAgentBrain.filter_observations">
 <code class="sig-name descname">filter_observations</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">state</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.patrolling_agent.PatrollingAgentBrain.filter_observations" title="Permalink to this definition">¶</a></dt>
-<dd><p>In this method you filter the state to only those properties and objects the agent is actually SUPPOSED to see.
-Since the grid world returns ALL properties of ALL objects within a certain range(s), but perhaps some objects
-are obscured because they are behind walls, or an agent is not able to see some properties an certain objects.</p>
-<p>This method is separated from the decide_on_action() method because it is also used by the GridWorld to make
-sure all UI’s</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> – A state description containing all properties of EnvObject that are within a certain range as</p>
-</dd>
-</dl>
-<p>defined by self.sense_capability. It is a list of properties in a dictionary
-:return: A filtered state.</p>
+<dd><p>Filtering the agent’s observations.
+:param state:
+:return:</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="matrxs.agents.patrolling_agent.PatrollingAgentBrain.decide_on_action">
 <code class="sig-name descname">decide_on_action</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">state</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.agents.patrolling_agent.PatrollingAgentBrain.decide_on_action" title="Permalink to this definition">¶</a></dt>
-<dd><p>In this method you compute your action.</p>
-<p>For example, this default agent randomly selects an action from the possible_actions list. However,
-for smarter agents you need the state representation for example to know what a good action is. In addition
-you should also return a dictionary of potential keyword arguments your intended action may require. You can
-set this to an empty dictionary if there are none. Though if you do not provide a required keyword argument
-(or wrongly name it), the action will throw an Exception and the environment will crash.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> – A state description containing all properties of EnvObject that are within a certain range as</p>
-</dd>
-</dl>
-<p>defined by self.sense_capability. It is a list of properties in a dictionary
-:return: An action string of the class name of an action that is also in self.action_set. You should also return
-a dictionary of action arguments the world might need to perform this action. See the implementation of the
-action to know which keyword arguments it requires. For example if you want to remove an object, you should
-provide it object ID with a specific key (e.g. ‘object_id’ = some_object_id_agent_should_remove).</p>
+<dd><p>Decision of which action to perform.
+:param state:
+:return:</p>
 </dd></dl>
 
 </dd></dl>

@@ -98,6 +98,10 @@ class MoveActionResult(ActionResult):
 
 
 class Move(Action):
+    """
+    A class for the types of moves.
+    """
+
     def __init__(self, duration_in_ticks=1):
         """
 
@@ -123,6 +127,10 @@ class Move(Action):
 
 
 class MoveNorth(Move):
+    """
+    The class for moving to the North.
+    """
+
     def __init__(self):
         """
         Moving North.
@@ -133,6 +141,9 @@ class MoveNorth(Move):
 
 
 class MoveNorthEast(Move):
+    """
+    The class for moving to the North-East.
+    """
 
     def __init__(self):
         """
@@ -144,6 +155,9 @@ class MoveNorthEast(Move):
 
 
 class MoveEast(Move):
+    """
+    The class for moving to the East.
+    """
 
     def __init__(self):
         """
@@ -155,6 +169,9 @@ class MoveEast(Move):
 
 
 class MoveSouthEast(Move):
+    """
+    The class for moving to the South-East.
+    """
 
     def __init__(self):
         """
@@ -166,6 +183,9 @@ class MoveSouthEast(Move):
 
 
 class MoveSouth(Move):
+    """
+    The class for moving to the South.
+    """
 
     def __init__(self):
         """
@@ -177,6 +197,9 @@ class MoveSouth(Move):
 
 
 class MoveSouthWest(Move):
+    """
+    The class for moving to the South-West.
+    """
 
     def __init__(self):
         """
@@ -188,6 +211,9 @@ class MoveSouthWest(Move):
 
 
 class MoveWest(Move):
+    """
+    The class for moving to the West.
+    """
 
     def __init__(self):
         """
@@ -199,6 +225,9 @@ class MoveWest(Move):
 
 
 class MoveNorthWest(Move):
+    """
+    The class for moving to the North-West.
+    """
 
     def __init__(self):
         """

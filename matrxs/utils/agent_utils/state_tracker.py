@@ -4,6 +4,7 @@ from matrxs.utils.utils import get_distance
 
 
 class StateTracker:
+    """ A class tracking the state."""
 
     def __init__(self, agent_id, knowledge_decay=10):
 

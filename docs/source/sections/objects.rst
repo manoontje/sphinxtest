@@ -4,6 +4,8 @@
 Object placement
 ================
 
+The world of MATRXS can contain a various amount of objects. Below such object classes can be found.
+
 .. toctree::
    :maxdepth: 2
 

@@ -20,8 +20,8 @@ Classes
 .. autosummary::
    :toctree: _generated_autodoc
 
-   matrxs.world_builder
-   matrxs.grid_world
+   matrxs.world_builder.WorldBuilder
+   matrxs.grid_world.GridWorld
 
 Functions
 ---------
@@ -47,10 +47,10 @@ Classes
 .. autosummary::
    :toctree: _generated_autodoc
 
-   matrxs.agents.agent_brain
-   matrxs.agents.human_agent_brain
-   matrxs.agents.patrolling_agent
-   matrxs.agents.capabilities.capability
+   matrxs.agents.agent_brain.AgentBrain
+   matrxs.agents.human_agent_brain.HumanAgentBrain
+   matrxs.agents.patrolling_agent.PatrollingAgentBrain
+   matrxs.agents.capabilities.capability.SenseCapability
 
 Functions
 ---------

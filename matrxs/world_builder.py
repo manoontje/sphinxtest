@@ -22,13 +22,14 @@ from matrxs.sim_goals.sim_goal import LimitedTimeGoal, SimulationGoal
 
 
 class WorldBuilder:
+    """
+    A builder to create one or more worlds.
+    """
 
     def __init__(self, shape, tick_duration=0.5, random_seed=1, simulation_goal=1000, run_sail_api=False,
                  run_visualization_server=True, visualization_bg_clr="#C2C2C2", visualization_bg_img=None,
                  verbose=False):
         """
-        A builder to create one or more worlds.
-
         With the constructor you can set a number of general properties and from the resulting instance you can call
         numerous methods to add new objects and/or agents.
 

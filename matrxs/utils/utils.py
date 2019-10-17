@@ -10,6 +10,10 @@ object_counter = 0
 
 
 def next_obj_id():
+    """
+    Function for returning id of the next object.
+    :return:
+    """
     global object_counter
     res = object_counter
     object_counter += 1
@@ -17,6 +21,11 @@ def next_obj_id():
 
 
 def get_inheritence_path(callable_class):
+    """
+    Function for getting the inheritence path.
+    :param callable_class:
+    :return:
+    """
     parents = callable_class.mro()
     parents = [str(p.__name__) for p in parents]
     return parents
@@ -47,6 +56,11 @@ def get_all_classes(class_, omit_super_class=False):
 
 
 def get_all_inherited_classes(super_type):
+    """
+    Function for getting al inherited classes.
+    :param super_type:
+    :return:
+    """
     all_classes = {super_type}
     work = [super_type]
     while work:
@@ -71,6 +85,12 @@ def get_distance(coord1, coord2):
 
 
 def get_default_value(class_name, property_name):
+    """
+    Function for getting the default value.
+    :param class_name:
+    :param property_name:
+    :return:
+    """
     defaults = __load_defaults()
 
     if class_name in defaults:
@@ -84,21 +104,41 @@ def get_default_value(class_name, property_name):
 
 
 def __load_defaults():
+    """
+    Function for laoding the defaults.
+    :return:
+    """
     file_path = "matrxs/scenarios/defaults.json"
     return load_json(file_path)
 
 
 def load_scenario(scenario_file):
+    """
+    Function for loading the scenario.
+    :param scenario_file:
+    :return:
+    """
     raise NotImplementedError
 
 
 def load_json(file_path):
+    """
+    Function for loading a json-file.
+    :param file_path:
+    :return:
+    """
     with open(file_path, "r") as read_file:
         json_dict = json.load(read_file)
     return json_dict
 
 
 def _get_line_coords(p1, p2):
+    """
+    Function for getting the coordinates of a line.
+    :param p1:
+    :param p2:
+    :return:
+    """
     line_coords = []
 
     x1 = int(p1[0])
@@ -180,6 +220,12 @@ def _get_hull_and_volume_coords(corner_coords):
 
 
 def create_sense_capability(objects_to_perceive, range_to_perceive_them_in):
+    """
+    Function for creating a sense capability.
+    :param objects_to_perceive:
+    :param range_to_perceive_them_in:
+    :return:
+    """
     # Check if range and objects are the same length
     assert len(objects_to_perceive) == len(range_to_perceive_them_in)
 

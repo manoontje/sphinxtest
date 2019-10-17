@@ -5,6 +5,9 @@ from matrxs.objects.env_object import EnvObject
 
 
 class AgentBody(EnvObject):
+    """
+    The class representing the agent body.
+    """
 
     def __init__(self, location, possible_actions, sense_capability, class_callable,
                  callback_agent_get_action, callback_agent_set_action_result, callback_agent_observe,
