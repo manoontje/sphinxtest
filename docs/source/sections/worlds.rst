@@ -1,22 +1,19 @@
-.. _World building
+.. _Worlds
 
-
-##############
-World building
-##############
+======
+Worlds
+======
 
 
 .. toctree::
    :maxdepth: 2
-
+   :hidden:
 
 .. autosummary::
    :toctree: _generated_autodoc
 
    matrxs.world_builder
-   matrxs.world_builder.WorldBuilder
    matrxs.grid_world
-   matrxs.grid_world.GridWorld
 
 
 

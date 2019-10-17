@@ -2,7 +2,7 @@ import logging
 import warnings
 import gevent
 from gevent import monkey, sleep
-monkey.patch_all()
+#monkey.patch_all()
 from flask import Flask, request, render_template, jsonify
 from flask_socketio import SocketIO, join_room
 import threading

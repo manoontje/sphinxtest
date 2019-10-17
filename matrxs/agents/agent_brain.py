@@ -9,7 +9,7 @@ class AgentBrain:
     def __init__(self):
         """
         Creates an Agent. All other agents should inherit from this class if you want smarter agents. This agent
-        simply randomly selects an action from the possible actions it can do.
+        simply randomly selects an action from the possible actions it can do. BLABLA
         """
 
         # Class variables for tracking the past action and its result

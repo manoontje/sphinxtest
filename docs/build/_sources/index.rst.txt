@@ -42,7 +42,6 @@ Getting started
 
 
 
-
 Sections
 ========
 .. The image ratio is: width: 350px; height: 350/4 + (2x5) ~= 98px
@@ -69,7 +68,7 @@ Sections
          .. figure:: /_static/images/world_scrshot.jpg
             :target: sections/worlds.html
 
-         :ref:`World building`
+         :ref:`Worlds`
             Learn MATRXS' way of creating worlds.
 
       .. container:: descr
