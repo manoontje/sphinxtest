@@ -432,26 +432,22 @@ class WorldBuilder:
                             teams=None, visualize_sizes=None, visualize_shapes=None,
                             visualize_colours=None, visualize_opacities=None, visualize_depths=None):
         """
+        Adding multiple agents to the world.
 
-        Parameters
-        ----------
-        agents
-        locations
-        custom_properties
-        sense_capabilities
-        customizable_properties
-        is_traversable
-        agent_speeds_in_ticks
-        teams
-        visualize_sizes
-        visualize_shapes
-        visualize_colours
-        visualize_opacities
-        visualize_depths
-
-        Returns
-        -------
-
+        :param agents:
+        :param locations:
+        :param custom_properties:
+        :param sense_capabilities:
+        :param customizable_properties:
+        :param is_traversable:
+        :param agent_speeds_in_ticks:
+        :param teams:
+        :param visualize_sizes:
+        :param visualize_shapes:
+        :param visualize_colours:
+        :param visualize_opacities:
+        :param visualize_depths:
+        :return:
         """
 
         # If any of the lists are not given, fill them with None and if they are a single value of its expected type we
@@ -532,6 +528,28 @@ class WorldBuilder:
                            is_movable=None,
                            visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_opacity=None,
                            visualize_depth=None, **custom_properties):
+        """
+        Add an agent's prospect.
+
+        :param location:
+        :param agent:
+        :param probability:
+        :param name:
+        :param customizable_properties:
+        :param sense_capability:
+        :param is_traversable:
+        :param team:
+        :param agent_speed_in_ticks:
+        :param possible_actions:
+        :param is_movable:
+        :param visualize_size:
+        :param visualize_shape:
+        :param visualize_colour:
+        :param visualize_opacity:
+        :param visualize_depth:
+        :param custom_properties:
+        :return:
+        """
 
         # Add agent as normal
         self.add_agent(location, agent, name, customizable_properties, sense_capability,
@@ -546,6 +564,23 @@ class WorldBuilder:
                    is_traversable=None, is_movable=None,
                    visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
                    visualize_opacity=None, **custom_properties):
+        """
+        Adds an object.
+
+        :param location:
+        :param name:
+        :param callable_class:
+        :param customizable_properties:
+        :param is_traversable:
+        :param is_movable:
+        :param visualize_size:
+        :param visualize_shape:
+        :param visualize_colour:
+        :param visualize_depth:
+        :param visualize_opacity:
+        :param custom_properties:
+        :return:
+        """
         if callable_class is None:
             callable_class = EnvObject
 
@@ -585,6 +620,23 @@ class WorldBuilder:
                             is_traversable=None,
                             visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
                             visualize_opacity=None, **custom_properties):
+        """
+        Adds an object's prospect.
+
+        :param location:
+        :param name:
+        :param probability:
+        :param callable_class:
+        :param customizable_properties:
+        :param is_traversable:
+        :param visualize_size:
+        :param visualize_shape:
+        :param visualize_colour:
+        :param visualize_depth:
+        :param visualize_opacity:
+        :param custom_properties:
+        :return:
+        """
         # Add object as normal
         self.add_object(location, name, callable_class, customizable_properties,
                         is_traversable,
@@ -598,6 +650,23 @@ class WorldBuilder:
                              customizable_properties=None, is_traversable=None, visualize_sizes=None,
                              visualize_shapes=None, visualize_colours=None, visualize_depths=None,
                              visualize_opacities=None, is_movable=None):
+        """
+        Adding multiple objects.
+
+        :param locations:
+        :param names:
+        :param callable_classes:
+        :param custom_properties:
+        :param customizable_properties:
+        :param is_traversable:
+        :param visualize_sizes:
+        :param visualize_shapes:
+        :param visualize_colours:
+        :param visualize_depths:
+        :param visualize_opacities:
+        :param is_movable:
+        :return:
+        """
 
         # If any of the lists are not given, fill them with None and if they are a single value of its expected type we
         # copy it in a list. A none value causes the default value to be loaded.
@@ -670,6 +739,28 @@ class WorldBuilder:
                         is_movable=None,
                         visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
                         visualize_opacity=None, usrinp_action_map=None, **custom_properties):
+        """
+        Adding a human agent.
+
+        :param location:
+        :param agent:
+        :param name:
+        :param customizable_properties:
+        :param sense_capability:
+        :param is_traversable:
+        :param team:
+        :param agent_speed_in_ticks:
+        :param possible_actions:
+        :param is_movable:
+        :param visualize_size:
+        :param visualize_shape:
+        :param visualize_colour:
+        :param visualize_depth:
+        :param visualize_opacity:
+        :param usrinp_action_map:
+        :param custom_properties:
+        :return:
+        """
 
         # Check if location and agent are of correct type
         assert isinstance(location, list) or isinstance(location, tuple)
@@ -743,6 +834,19 @@ class WorldBuilder:
 
     def add_area(self, top_left_location, width, height, name, customizable_properties=None, visualize_colour=None,
                  visualize_opacity=None, **custom_properties):
+        """
+        Adding an area.
+
+        :param top_left_location:
+        :param width:
+        :param height:
+        :param name:
+        :param customizable_properties:
+        :param visualize_colour:
+        :param visualize_opacity:
+        :param custom_properties:
+        :return:
+        """
         # Check if width and height are large enough to make an actual room (with content)
         if width < 1 or height < 1:
             raise Exception(f"While adding area {name}; The width {width} and/or height {height} should both be larger"
@@ -758,6 +862,19 @@ class WorldBuilder:
 
     def add_smoke_area(self, top_left_location, width, height, name, visualize_colour=None,
                        smoke_thickness_multiplier=1.0, visualize_depth=None, **custom_properties):
+        """
+        Adding a smoke area.
+
+        :param top_left_location:
+        :param width:
+        :param height:
+        :param name:
+        :param visualize_colour:
+        :param smoke_thickness_multiplier:
+        :param visualize_depth:
+        :param custom_properties:
+        :return:
+        """
         # Check if width and height are large enough to make an actual room (with content)
         if width < 1 or height < 1:
             raise Exception(f"While adding area {name}; The width {width} and/or height {height} should both be larger"
@@ -810,6 +927,24 @@ class WorldBuilder:
                  is_traversable=None, is_movable=None,
                  visualize_size=None, visualize_shape=None, visualize_colour=None, visualize_depth=None,
                  visualize_opacity=None, **custom_properties):
+        """
+        Adding a line.
+
+        :param start:
+        :param end:
+        :param name:
+        :param callable_class:
+        :param customizable_properties:
+        :param is_traversable:
+        :param is_movable:
+        :param visualize_size:
+        :param visualize_shape:
+        :param visualize_colour:
+        :param visualize_depth:
+        :param visualize_opacity:
+        :param custom_properties:
+        :return:
+        """
 
         # Get the coordinates on the given line
         line_coords = _get_line_coords(start, end)
@@ -830,6 +965,24 @@ class WorldBuilder:
                  wall_custom_properties=None, wall_customizable_properties=None,
                  area_custom_properties=None, area_customizable_properties=None,
                  area_visualize_colour=None, area_visualize_opacity=None):
+        """
+        Adding a room.
+
+        :param top_left_location:
+        :param width:
+        :param height:
+        :param name:
+        :param door_locations:
+        :param with_area_tiles:
+        :param doors_open:
+        :param wall_custom_properties:
+        :param wall_customizable_properties:
+        :param area_custom_properties:
+        :param area_customizable_properties:
+        :param area_visualize_colour:
+        :param area_visualize_opacity:
+        :return:
+        """
 
         # Check if width and height are large enough to make an actual room (with content)
         if width <= 2 or height <= 2:
@@ -904,7 +1057,11 @@ class WorldBuilder:
 
 
     def __create_world(self):
+        """
+        Creating the world.
 
+        :return:
+        """
         # Create the world
         world = self.__create_grid_world()
 
@@ -934,12 +1091,18 @@ class WorldBuilder:
         return world
 
     def __create_grid_world(self):
+        """
+        Creating the grid world.
+        :return:
+        """
         args = self.world_settings
         world = GridWorld(**args)
         return world
 
     def __create_env_object(self, settings):
-
+        """
+        Creating an environment object.
+        """
         # First we check if this settings represent a probabilistic object, because then we expect settings to contain
         # a probability setting.
         if 'probability' in settings.keys():
@@ -1005,6 +1168,12 @@ class WorldBuilder:
         return env_object
 
     def __create_agent_avatar(self, settings):
+        """
+        Creating the agent's avatar.
+
+        :param settings:
+        :return:
+        """
 
         agent = settings['agent']
 
@@ -1042,6 +1211,12 @@ class WorldBuilder:
         return agent, avatar
 
     def __instantiate_random_properties(self, args):
+        """
+        Instantiating random properties.
+
+        :param args:
+        :return:
+        """
         # Checks if all given arguments in the dictionary are not None, and if they are of RandomProperty or
         # RandomLocation, their (random) value is retrieved.
         for k, v in args.items():
@@ -1057,6 +1232,9 @@ class WorldBuilder:
 
 
 class RandomProperty:
+    """
+    A class for random properties.
+    """
 
     def __init__(self, values, distribution=None, allow_duplicates=True):
 
@@ -1078,6 +1256,13 @@ class RandomProperty:
         self.selected_values = set()
 
     def _get_property(self, rng: RandomState, size=None):
+        """
+        Returns the random property.
+
+        :param rng:
+        :param size:
+        :return:
+        """
         vals = self.values.copy()
         if not self.allow_duplicates:
             for it in self.selected_values:
@@ -1087,4 +1272,8 @@ class RandomProperty:
         return choice
 
     def reset(self):
+        """
+        A resetting function.
+        :return:
+        """
         self.selected_values = set()

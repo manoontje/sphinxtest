@@ -7,7 +7,7 @@ import matrxs.visualization.server as server
 
 
 
-def create_factory(tick_duration):
+def create_factory():
     factory = WorldBuilder(random_seed=1, shape=[22, 10],  verbose=True,
                            run_visualization_server=True)
     human_agent = HumanAgentBrain()

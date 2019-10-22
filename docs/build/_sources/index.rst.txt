@@ -77,7 +77,7 @@ Sections
             :target: sections/brains.html
 
          :ref:`Brains`
-            The agents in MATRXS have brains. Check this section for a piece of their minds.
+           Check this section for a piece of the agents' minds.
 
       .. container:: descr
 

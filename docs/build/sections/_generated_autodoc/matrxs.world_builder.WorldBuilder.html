@@ -186,56 +186,44 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_agent" title="matrxs.world_builder.WorldBuilder.add_agent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_agent</span></code></a>(self, location, list], …)</p></td>
 <td><p>The helper method within a WorldFactory instance to add a single agent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_multiple_agents" title="matrxs.world_builder.WorldBuilder.add_multiple_agents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_agents</span></code></a>(self, agents, locations)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_agent_prospect" title="matrxs.world_builder.WorldBuilder.add_agent_prospect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_agent_prospect</span></code></a>(self, location, agent, …)</p></td>
+<td><p>Add an agent’s prospect.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_team" title="matrxs.world_builder.WorldBuilder.add_team"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_team</span></code></a>(self, agent_brains, tuple], …[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_area" title="matrxs.world_builder.WorldBuilder.add_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_area</span></code></a>(self, top_left_location, width, …)</p></td>
+<td><p>Adding an area.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_human_agent" title="matrxs.world_builder.WorldBuilder.add_human_agent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_human_agent</span></code></a>(self, location, agent[, …])</p></td>
+<td><p>Adding a human agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_line" title="matrxs.world_builder.WorldBuilder.add_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_line</span></code></a>(self, start, end, name[, …])</p></td>
+<td><p>Adding a line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_multiple_agents" title="matrxs.world_builder.WorldBuilder.add_multiple_agents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_agents</span></code></a>(self, agents, locations)</p></td>
+<td><p>Adding multiple agents to the world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_multiple_objects" title="matrxs.world_builder.WorldBuilder.add_multiple_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_objects</span></code></a>(self, locations[, …])</p></td>
+<td><p>Adding multiple objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_object" title="matrxs.world_builder.WorldBuilder.add_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_object</span></code></a>(self, location, name[, …])</p></td>
+<td><p>Adds an object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_object_prospect" title="matrxs.world_builder.WorldBuilder.add_object_prospect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_object_prospect</span></code></a>(self, location, name, …)</p></td>
+<td><p>Adds an object’s prospect.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_room" title="matrxs.world_builder.WorldBuilder.add_room"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_room</span></code></a>(self, top_left_location, width, …)</p></td>
+<td><p>Adding a room.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_smoke_area" title="matrxs.world_builder.WorldBuilder.add_smoke_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_smoke_area</span></code></a>(self, top_left_location, …)</p></td>
+<td><p>Adding a smoke area.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_team" title="matrxs.world_builder.WorldBuilder.add_team"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_team</span></code></a>(self, agent_brains, tuple], …[, …])</p></td>
 <td><p>Adds a group of agents as a single team (meaning that their ‘team’ property all have the given team name).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.get_world" title="matrxs.world_builder.WorldBuilder.get_world"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_world</span></code></a>(self)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.get_world" title="matrxs.world_builder.WorldBuilder.get_world"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_world</span></code></a>(self)</p></td>
 <td><p>Creates a single GridWorld instance based on the current state of this WorldFactor instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.worlds" title="matrxs.world_builder.WorldBuilder.worlds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">worlds</span></code></a>(self, nr_of_worlds)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.worlds" title="matrxs.world_builder.WorldBuilder.worlds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">worlds</span></code></a>(self, nr_of_worlds)</p></td>
 <td><p>Returns a Generator of GridWorld instance for the specified number of worlds.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 71%" />
-<col style="width: 29%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>add_agent_prospect</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>add_area</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>add_human_agent</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>add_line</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>add_multiple_objects</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>add_object</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>add_object_prospect</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>add_room</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>add_smoke_area</strong></p></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -309,38 +297,34 @@ master random seed;</p>
 <td><p>The helper method within a WorldFactory instance to add a single agent.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_agent_prospect" title="matrxs.world_builder.WorldBuilder.add_agent_prospect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_agent_prospect</span></code></a>(self, location, agent, …)</p></td>
-<td><p></p></td>
+<td><p>Add an agent’s prospect.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_area" title="matrxs.world_builder.WorldBuilder.add_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_area</span></code></a>(self, top_left_location, width, …)</p></td>
-<td><p></p></td>
+<td><p>Adding an area.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_human_agent" title="matrxs.world_builder.WorldBuilder.add_human_agent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_human_agent</span></code></a>(self, location, agent[, …])</p></td>
-<td><p></p></td>
+<td><p>Adding a human agent.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_line" title="matrxs.world_builder.WorldBuilder.add_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_line</span></code></a>(self, start, end, name[, …])</p></td>
-<td><p></p></td>
+<td><p>Adding a line.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_multiple_agents" title="matrxs.world_builder.WorldBuilder.add_multiple_agents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_agents</span></code></a>(self, agents, locations)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Adding multiple agents to the world.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_multiple_objects" title="matrxs.world_builder.WorldBuilder.add_multiple_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_objects</span></code></a>(self, locations[, …])</p></td>
-<td><p></p></td>
+<td><p>Adding multiple objects.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_object" title="matrxs.world_builder.WorldBuilder.add_object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_object</span></code></a>(self, location, name[, …])</p></td>
-<td><p></p></td>
+<td><p>Adds an object.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_object_prospect" title="matrxs.world_builder.WorldBuilder.add_object_prospect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_object_prospect</span></code></a>(self, location, name, …)</p></td>
-<td><p></p></td>
+<td><p>Adds an object’s prospect.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_room" title="matrxs.world_builder.WorldBuilder.add_room"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_room</span></code></a>(self, top_left_location, width, …)</p></td>
-<td><p></p></td>
+<td><p>Adding a room.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_smoke_area" title="matrxs.world_builder.WorldBuilder.add_smoke_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_smoke_area</span></code></a>(self, top_left_location, …)</p></td>
-<td><p></p></td>
+<td><p>Adding a smoke area.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#matrxs.world_builder.WorldBuilder.add_team" title="matrxs.world_builder.WorldBuilder.add_team"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_team</span></code></a>(self, agent_brains, tuple], …[, …])</p></td>
 <td><p>Adds a group of agents as a single team (meaning that their ‘team’ property all have the given team name).</p></td>
@@ -564,23 +548,27 @@ Should be of the same size as <cite>locations</cite>.</p>
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_multiple_agents">
 <code class="sig-name descname">add_multiple_agents</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">agents</em>, <em class="sig-param">locations</em>, <em class="sig-param">custom_properties=None</em>, <em class="sig-param">sense_capabilities=None</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">agent_speeds_in_ticks=None</em>, <em class="sig-param">teams=None</em>, <em class="sig-param">visualize_sizes=None</em>, <em class="sig-param">visualize_shapes=None</em>, <em class="sig-param">visualize_colours=None</em>, <em class="sig-param">visualize_opacities=None</em>, <em class="sig-param">visualize_depths=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_multiple_agents" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Adding multiple agents to the world.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>agents</strong></dt><dd></dd>
-<dt><strong>locations</strong></dt><dd></dd>
-<dt><strong>custom_properties</strong></dt><dd></dd>
-<dt><strong>sense_capabilities</strong></dt><dd></dd>
-<dt><strong>customizable_properties</strong></dt><dd></dd>
-<dt><strong>is_traversable</strong></dt><dd></dd>
-<dt><strong>agent_speeds_in_ticks</strong></dt><dd></dd>
-<dt><strong>teams</strong></dt><dd></dd>
-<dt><strong>visualize_sizes</strong></dt><dd></dd>
-<dt><strong>visualize_shapes</strong></dt><dd></dd>
-<dt><strong>visualize_colours</strong></dt><dd></dd>
-<dt><strong>visualize_opacities</strong></dt><dd></dd>
-<dt><strong>visualize_depths</strong></dt><dd></dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agents</strong> – </p></li>
+<li><p><strong>locations</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+<li><p><strong>sense_capabilities</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>agent_speeds_in_ticks</strong> – </p></li>
+<li><p><strong>teams</strong> – </p></li>
+<li><p><strong>visualize_sizes</strong> – </p></li>
+<li><p><strong>visualize_shapes</strong> – </p></li>
+<li><p><strong>visualize_colours</strong> – </p></li>
+<li><p><strong>visualize_opacities</strong> – </p></li>
+<li><p><strong>visualize_depths</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -588,47 +576,249 @@ Should be of the same size as <cite>locations</cite>.</p>
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_agent_prospect">
 <code class="sig-name descname">add_agent_prospect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">location</em>, <em class="sig-param">agent</em>, <em class="sig-param">probability</em>, <em class="sig-param">name='Agent'</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">sense_capability=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">team=None</em>, <em class="sig-param">agent_speed_in_ticks=None</em>, <em class="sig-param">possible_actions=None</em>, <em class="sig-param">is_movable=None</em>, <em class="sig-param">visualize_size=None</em>, <em class="sig-param">visualize_shape=None</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">visualize_opacity=None</em>, <em class="sig-param">visualize_depth=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_agent_prospect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Add an agent’s prospect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> – </p></li>
+<li><p><strong>agent</strong> – </p></li>
+<li><p><strong>probability</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>sense_capability</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>team</strong> – </p></li>
+<li><p><strong>agent_speed_in_ticks</strong> – </p></li>
+<li><p><strong>possible_actions</strong> – </p></li>
+<li><p><strong>is_movable</strong> – </p></li>
+<li><p><strong>visualize_size</strong> – </p></li>
+<li><p><strong>visualize_shape</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>visualize_opacity</strong> – </p></li>
+<li><p><strong>visualize_depth</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_object">
 <code class="sig-name descname">add_object</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">location</em>, <em class="sig-param">name</em>, <em class="sig-param">callable_class=None</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">is_movable=None</em>, <em class="sig-param">visualize_size=None</em>, <em class="sig-param">visualize_shape=None</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">visualize_depth=None</em>, <em class="sig-param">visualize_opacity=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_object" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adds an object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>callable_class</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>is_movable</strong> – </p></li>
+<li><p><strong>visualize_size</strong> – </p></li>
+<li><p><strong>visualize_shape</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>visualize_depth</strong> – </p></li>
+<li><p><strong>visualize_opacity</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_object_prospect">
 <code class="sig-name descname">add_object_prospect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">location</em>, <em class="sig-param">name</em>, <em class="sig-param">probability</em>, <em class="sig-param">callable_class=None</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">visualize_size=None</em>, <em class="sig-param">visualize_shape=None</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">visualize_depth=None</em>, <em class="sig-param">visualize_opacity=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_object_prospect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adds an object’s prospect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>probability</strong> – </p></li>
+<li><p><strong>callable_class</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>visualize_size</strong> – </p></li>
+<li><p><strong>visualize_shape</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>visualize_depth</strong> – </p></li>
+<li><p><strong>visualize_opacity</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_multiple_objects">
 <code class="sig-name descname">add_multiple_objects</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">locations</em>, <em class="sig-param">names=None</em>, <em class="sig-param">callable_classes=None</em>, <em class="sig-param">custom_properties=None</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">visualize_sizes=None</em>, <em class="sig-param">visualize_shapes=None</em>, <em class="sig-param">visualize_colours=None</em>, <em class="sig-param">visualize_depths=None</em>, <em class="sig-param">visualize_opacities=None</em>, <em class="sig-param">is_movable=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_multiple_objects" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adding multiple objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>locations</strong> – </p></li>
+<li><p><strong>names</strong> – </p></li>
+<li><p><strong>callable_classes</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>visualize_sizes</strong> – </p></li>
+<li><p><strong>visualize_shapes</strong> – </p></li>
+<li><p><strong>visualize_colours</strong> – </p></li>
+<li><p><strong>visualize_depths</strong> – </p></li>
+<li><p><strong>visualize_opacities</strong> – </p></li>
+<li><p><strong>is_movable</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_human_agent">
 <code class="sig-name descname">add_human_agent</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">location</em>, <em class="sig-param">agent</em>, <em class="sig-param">name='HumanAgent'</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">sense_capability=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">team=None</em>, <em class="sig-param">agent_speed_in_ticks=None</em>, <em class="sig-param">possible_actions=None</em>, <em class="sig-param">is_movable=None</em>, <em class="sig-param">visualize_size=None</em>, <em class="sig-param">visualize_shape=None</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">visualize_depth=None</em>, <em class="sig-param">visualize_opacity=None</em>, <em class="sig-param">usrinp_action_map=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_human_agent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adding a human agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> – </p></li>
+<li><p><strong>agent</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>sense_capability</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>team</strong> – </p></li>
+<li><p><strong>agent_speed_in_ticks</strong> – </p></li>
+<li><p><strong>possible_actions</strong> – </p></li>
+<li><p><strong>is_movable</strong> – </p></li>
+<li><p><strong>visualize_size</strong> – </p></li>
+<li><p><strong>visualize_shape</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>visualize_depth</strong> – </p></li>
+<li><p><strong>visualize_opacity</strong> – </p></li>
+<li><p><strong>usrinp_action_map</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_area">
 <code class="sig-name descname">add_area</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">top_left_location</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">name</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">visualize_opacity=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_area" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adding an area.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top_left_location</strong> – </p></li>
+<li><p><strong>width</strong> – </p></li>
+<li><p><strong>height</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>visualize_opacity</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_smoke_area">
 <code class="sig-name descname">add_smoke_area</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">top_left_location</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">name</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">smoke_thickness_multiplier=1.0</em>, <em class="sig-param">visualize_depth=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_smoke_area" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adding a smoke area.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top_left_location</strong> – </p></li>
+<li><p><strong>width</strong> – </p></li>
+<li><p><strong>height</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>smoke_thickness_multiplier</strong> – </p></li>
+<li><p><strong>visualize_depth</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_line">
 <code class="sig-name descname">add_line</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">start</em>, <em class="sig-param">end</em>, <em class="sig-param">name</em>, <em class="sig-param">callable_class=None</em>, <em class="sig-param">customizable_properties=None</em>, <em class="sig-param">is_traversable=None</em>, <em class="sig-param">is_movable=None</em>, <em class="sig-param">visualize_size=None</em>, <em class="sig-param">visualize_shape=None</em>, <em class="sig-param">visualize_colour=None</em>, <em class="sig-param">visualize_depth=None</em>, <em class="sig-param">visualize_opacity=None</em>, <em class="sig-param">**custom_properties</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_line" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adding a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – </p></li>
+<li><p><strong>end</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>callable_class</strong> – </p></li>
+<li><p><strong>customizable_properties</strong> – </p></li>
+<li><p><strong>is_traversable</strong> – </p></li>
+<li><p><strong>is_movable</strong> – </p></li>
+<li><p><strong>visualize_size</strong> – </p></li>
+<li><p><strong>visualize_shape</strong> – </p></li>
+<li><p><strong>visualize_colour</strong> – </p></li>
+<li><p><strong>visualize_depth</strong> – </p></li>
+<li><p><strong>visualize_opacity</strong> – </p></li>
+<li><p><strong>custom_properties</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_room">
 <code class="sig-name descname">add_room</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">top_left_location</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">name</em>, <em class="sig-param">door_locations=None</em>, <em class="sig-param">with_area_tiles=False</em>, <em class="sig-param">doors_open=False</em>, <em class="sig-param">wall_custom_properties=None</em>, <em class="sig-param">wall_customizable_properties=None</em>, <em class="sig-param">area_custom_properties=None</em>, <em class="sig-param">area_customizable_properties=None</em>, <em class="sig-param">area_visualize_colour=None</em>, <em class="sig-param">area_visualize_opacity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_room" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adding a room.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>top_left_location</strong> – </p></li>
+<li><p><strong>width</strong> – </p></li>
+<li><p><strong>height</strong> – </p></li>
+<li><p><strong>name</strong> – </p></li>
+<li><p><strong>door_locations</strong> – </p></li>
+<li><p><strong>with_area_tiles</strong> – </p></li>
+<li><p><strong>doors_open</strong> – </p></li>
+<li><p><strong>wall_custom_properties</strong> – </p></li>
+<li><p><strong>wall_customizable_properties</strong> – </p></li>
+<li><p><strong>area_custom_properties</strong> – </p></li>
+<li><p><strong>area_customizable_properties</strong> – </p></li>
+<li><p><strong>area_visualize_colour</strong> – </p></li>
+<li><p><strong>area_visualize_opacity</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

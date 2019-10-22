@@ -50,6 +50,9 @@ class GridWorld:
         self.__message_buffer = {}  # dictionary of messages that need to be send to agents, with receiver ids as keys
 
     def initialize(self):
+        """
+        Initializing the gridworld.
+        """
         # Only initialize when we did not already do so
         if not self.__is_initialized:
 
@@ -79,6 +82,9 @@ class GridWorld:
                 print(f"@{os.path.basename(__file__)}: Initialized the GridWorld.")
 
     def run(self):
+        """
+        Running the simulation.
+        """
         self.initialize()
 
         if self.__verbose:
@@ -90,6 +96,9 @@ class GridWorld:
             thread.start()
 
     def get_env_object(self, requested_id, obj_type=None):
+        """
+        Get the object belonging to the requested id.
+        """
         obj = None
 
         if requested_id in self.registered_agents.keys():
@@ -190,6 +199,9 @@ class GridWorld:
         return success
 
     def add_to_grid(self, grid_obj):
+        """
+        Add an object to the grid.
+        """
         if isinstance(grid_obj, EnvObject):
             loc = grid_obj.location
             if self.grid[loc[1], loc[0]] is not None:
@@ -283,6 +295,9 @@ class GridWorld:
                             f"occupied by intraversable object {intraversable_objs} at location {obj_loc}")
 
     def __step(self):
+        """
+        Do a step.
+        """
 
         # Check if we are done based on our global goal assessment function
         self.is_done = self.__check_simulation_goal()
@@ -414,6 +429,9 @@ class GridWorld:
         return self.is_done, self.__curr_tick_duration
 
     def __check_simulation_goal(self):
+        """
+        Check the simulation goal.
+        """
 
         if self.simulation_goal is not None:
             if isinstance(self.simulation_goal, list):
@@ -440,6 +458,10 @@ class GridWorld:
                 f"Program is to heavy to run real time")
 
     def __update_grid(self):
+        """
+        Update the grid.
+        """
+
         self.grid = np.array([[None for _ in range(self.shape[0])] for _ in range(self.shape[1])])
         for obj_id, obj in self.environment_objects.items():
             self.add_to_grid(obj)
@@ -469,6 +491,10 @@ class GridWorld:
         return state
 
     def __get_agent_state(self, agent_obj: AgentBody):
+        """
+        Get the state that the agent is in.
+        """
+
         agent_loc = agent_obj.location
         sense_capabilities = agent_obj.sense_capability.get_capabilities()
         objs_in_range = OrderedDict()
@@ -496,6 +522,9 @@ class GridWorld:
         return state
 
     def __check_action_is_possible(self, agent_id, action_name, action_kwargs):
+        """
+        Check whether the action is possible.
+        """
         # If the action_name is None, the agent idles
         if action_name is None:
             result = ActionResult(ActionResult.IDLE_ACTION, succeeded=True)
@@ -532,7 +561,14 @@ class GridWorld:
         return result
 
     def __perform_action(self, agent_id, action_name, action_kwargs):
+        """
+        Perform an action.
 
+        :param agent_id:
+        :param action_name:
+        :param action_kwargs:
+        :return:
+        """
         # Check if the action will succeed
         result = self.__check_action_is_possible(agent_id, action_name, action_kwargs)
 
@@ -572,6 +608,11 @@ class GridWorld:
         return result
 
     def __update_agent_location(self, agent_id):
+        """
+        Update the location of the agent.
+        :param agent_id:
+        :return:
+        """
         # Get current location of the agent
         loc = self.registered_agents[agent_id].location
         # Check if that spot in our list that represents the grid, is None or a list of other objects
@@ -584,6 +625,9 @@ class GridWorld:
         self.registered_agents[agent_id].location = loc
 
     def __update_obj_location(self, obj_id):
+        """
+        Update the location of the object.
+        """
         loc = self.environment_objects[obj_id].location
         if self.grid[loc[1], loc[0]] is not None:
             self.grid[loc[1], loc[0]].append(obj_id)
@@ -591,10 +635,15 @@ class GridWorld:
             self.grid[loc[1], loc[0]] = [obj_id]
 
     def __warn(self, warn_str):
+        """
+        Returns a warning.
+        """
         return f"[@{self.current_nr_ticks}] {warn_str}"
 
     def __initial_visualisation(self):
-
+        """
+        Perform the initial visualisation of the process.
+        """
         # Perform the initial visualisation of the process is set and the boolean for running it is true
         if self.__run_visualization_server and self.__visualisation_process is None:
             # Loop through all agents, apply their observe to get their state for the gui
@@ -614,6 +663,9 @@ class GridWorld:
             self.__visualizer._update_guis(tick=self.current_nr_ticks, agents=self.registered_agents, tick_speed= self.tick_duration)
 
     def __start_visualisation_server(self):
+        """
+        Start the visualisation server.
+        """
         # bool to denote whether we succeeded in starting the visualisation server
         succeeded = True
 
