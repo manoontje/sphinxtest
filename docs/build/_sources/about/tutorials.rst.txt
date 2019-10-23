@@ -4,4 +4,6 @@
 Tutorials
 =========
 
-Once MATRXS tutorials are available, you can find them here.
+- :ref:`Creating your MATRXS world`
+
+Once more MATRXS tutorials are available, you can find them here.

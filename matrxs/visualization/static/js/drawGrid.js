@@ -379,7 +379,8 @@ function drawSim(grid_size, state, curr_tick, animateMovement) {
             }
 
             if(obj['isAgent']){
-                 ctx.fillText(obj['name'], x+18, y - 3);
+                ctx.fillStyle = "#e30202"
+                ctx.fillText(obj['name'], x+18, y - 3);
              }
 
         })

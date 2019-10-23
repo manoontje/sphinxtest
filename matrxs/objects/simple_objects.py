@@ -1,3 +1,5 @@
+import json
+
 from matrxs.objects.env_object import EnvObject
 
 
@@ -17,6 +19,14 @@ class SquareBlock(EnvObject):
 
         super().__init__(name=name, location=location, is_traversable=False, visualize_shape=0,
                          class_callable=SquareBlock, visualize_opacity=1.0)
+
+    def toJSON(self):
+        """
+        A function to convert the class in such a way to make it json serializable.
+        :return:
+        """
+        return json.dumps(self, default=lambda o: o.__dict__,
+                            sort_keys=True, indent=4)
 
 
 class Door(EnvObject):

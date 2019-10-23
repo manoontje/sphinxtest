@@ -83,7 +83,7 @@ class EnvObject:
 
         # Make customizable_properties mutable if not given.
         if customizable_properties is None:
-            self.customizable_properties = []
+            self.customizable_properties = {}
         else:
             self.customizable_properties = customizable_properties
 
