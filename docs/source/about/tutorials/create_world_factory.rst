@@ -94,4 +94,4 @@ Now run the main file to see the scene below.
 
 .. image:: images/tutorial_worlds.png
   :width: 400
-  :alt: Alternative text
+  :alt: An image showing the world created in this tutorial.

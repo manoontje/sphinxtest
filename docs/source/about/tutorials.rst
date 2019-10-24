@@ -8,6 +8,8 @@ Learn the basics
 ----------------
 
 - :ref:`Creating your MATRXS world`
+- :ref:`Adding objects`
+
 
 
 BW4T
