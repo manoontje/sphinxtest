@@ -51,7 +51,7 @@ class BW4TAgentBrain(AgentBrain):
 
 
         moves = [MoveNorth.__name__,  MoveEast.__name__, MoveSouth.__name__, MoveWest.__name__]
-        move_action = random.choices(moves, weights=[2,1,2,1], k=1)
+        move_action = random.choices(moves, weights=[1,1,1,1], k=1)
         print(move_action)
 
         keys = state.keys()
@@ -66,39 +66,26 @@ class BW4TAgentBrain(AgentBrain):
                 elif 'door' in k:
                     rooms[room_name] = {"door_id": k, "is_open": state[k]['is_open']}
 
-
-
         if self.agent_properties['location'] == (11,5):
             room = rooms['red_room']
             door = room['door_id']
-            if room['is_open'] == True:
-                return CloseDoorAction.__name__, {'door_range': 1, 'object_id': door}
-            else:
-                return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
+            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
 
         elif self.agent_properties['location'] == (8,5):
             room = rooms['blue_room']
             door = room['door_id']
-            if room['is_open'] == True:
-                return CloseDoorAction.__name__, {'door_range': 1, 'object_id': door}
-            else:
-                return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
+            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
 
         elif self.agent_properties['location'] == (8,14):
             room = rooms['yellow_room']
             door = room['door_id']
-            if room['is_open'] == True:
-                return CloseDoorAction.__name__, {'door_range': 1, 'object_id': door}
-            else:
-                return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
+                #return CloseDoorAction.__name__, {'door_range': 1, 'object_id': door}
+            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
 
         elif self.agent_properties['location'] == (11,14):
             room = rooms['green_room']
             door = room['door_id']
-            if room['is_open'] == True:
-                return CloseDoorAction.__name__, {'door_range': 1, 'object_id': door}
-            else:
-                return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
+            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
 
         return move_action[0], {}
 

@@ -1,7 +1,7 @@
 import random
 
 from matrxs.actions.move_actions import MoveNorth, MoveEast, MoveSouth, MoveWest
-from matrxs.agents.agent_brain import AgentBrain
+from matrxs.agents.agent_brain import AgentBrain, AreaTile
 from matrxs.agents.bw4t_brain import BW4TAgentBrain
 from matrxs.agents.human_agent_brain import HumanAgentBrain
 from matrxs.agents.patrolling_agent import PatrollingAgentBrain
@@ -15,7 +15,7 @@ def create_factory():
     autonomous_agent_1 = BW4TAgentBrain(waypoints=[(random.randrange(0, 20), random.randrange(0, 20)), (random.randrange(0, 20), random.randrange(0, 20))])
     autonomous_agent_2 = BW4TAgentBrain(waypoints=[(random.randrange(0, 20), random.randrange(0, 20)), (random.randrange(0, 20), random.randrange(0, 20))])
 
-    factory.add_agent([9, 10], autonomous_agent_1, name="Bot1",
+    factory.add_agent([9, 6], autonomous_agent_1, name="Bot1",
                       visualize_shape='img', has_menu=True, img_name="explorervehicle.png")
 
     factory.add_agent([11, 11], autonomous_agent_2, name="Bot2",
@@ -40,5 +40,11 @@ def create_factory():
     factory.add_room([12, 12], 5, 5, name="green_room", door_locations=[(12, 14)])
     factory.add_object((15, 13), SquareBlock((15, 13)).toJSON(), is_traversable=True, visualize_colour="#60bf2c")
     factory.add_object((15, 14), SquareBlock((15, 14)).toJSON(), is_traversable=True, visualize_colour="#60bf2c")
+
+    #Drop-off area
+    factory.add_object((16,0), AreaTile((16,0)).toJSON(),visualize_colour="#808080")
+    factory.add_object((17,0), AreaTile((17,0)).toJSON(),visualize_colour="#808080")
+    factory.add_object((18,0), AreaTile((18,0)).toJSON(),visualize_colour="#808080")
+    factory.add_object((19,0), AreaTile((19,0)).toJSON(),visualize_colour="#808080")
 
     return factory

@@ -128,6 +128,14 @@ class AreaTile(EnvObject):
                          is_traversable=True, is_movable=False, class_callable=AreaTile,
                          visualize_depth=visualize_depth, visualize_opacity=visualize_opacity)
 
+    def toJSON(self):
+        """
+        A function to convert the class in such a way to make it json serializable.
+        :return:
+        """
+        return json.dumps(self, default=lambda o: o.__dict__,
+                            sort_keys=True, indent=4)
+
 
 class SmokeTile(AreaTile):
     """

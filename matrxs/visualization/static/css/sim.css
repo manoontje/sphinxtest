@@ -31,6 +31,7 @@ header{
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  display: inline-block;
 }
 
 /* Links inside the navbar */
@@ -42,6 +43,14 @@ header{
   cursor:pointer;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.logo {
+    float: left;
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+    height: 50px;
 }
 
 .navbar a {

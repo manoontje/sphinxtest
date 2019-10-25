@@ -10,7 +10,7 @@
 .. figure:: /_static/images/tno_banner.png
    :width: 150%
 
-MATRXS's documentation
+MATRXS' documentation
 ======================
 
 Welcome! This is the documentation for Man-Agent Teaming; Rapid eXperimentation Software (MATRXS).
