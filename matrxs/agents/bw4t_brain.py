@@ -4,17 +4,19 @@ from matrxs.agents.agent_brain import AgentBrain, OpenDoorAction, CloseDoorActio
 from matrxs.utils.agent_utils.navigator import Navigator, MoveEast, MoveNorth, MoveSouth, MoveWest
 from matrxs.utils.agent_utils.state_tracker import StateTracker
 
+import re
+
 door_range = 10
 
 class BW4TAgentBrain(AgentBrain):
     """This is the BW4TAgentBrain class.
     """
 
-    def __init__(self, waypoints):
+    def __init__(self):
         super().__init__()
         self.state_tracker = None
         self.navigator = None
-        self.waypoints = waypoints
+        self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "return_block"]
 
     def initialize(self):
         """
@@ -27,7 +29,7 @@ class BW4TAgentBrain(AgentBrain):
         self.navigator = Navigator(agent_id=self.agent_id, action_set=self.action_set,
                                    algorithm=Navigator.A_STAR_ALGORITHM)
 
-        self.navigator.add_waypoints(self.waypoints, is_circular=True)
+
 
     def filter_observations(self, state):
         """
@@ -49,45 +51,50 @@ class BW4TAgentBrain(AgentBrain):
         :return:
         """
 
+        self.current_goal = self.goal_cycle[0]
+        print(self.current_goal)
 
-        moves = [MoveNorth.__name__,  MoveEast.__name__, MoveSouth.__name__, MoveWest.__name__]
-        move_action = random.choices(moves, weights=[1,1,1,1], k=1)
-        print(move_action)
+        objects = list(state.keys())
+        doors = [obj for obj in objects
+                 if 'class_inheritance' in state[obj] and state[obj]['class_inheritance'][0] == "Door"]
+        door_locations = []
+        door_ids = []
+        for door in doors:
+            door_ids.append(door)
+            door_location = state[door]['location']
+            door_locations.append(door_location)
 
-        keys = state.keys()
-        rooms = {}
+        if self.current_goal == "find_room":
+            self.waypoints = door_locations
+            self.navigator.add_waypoints(self.waypoints, is_circular=True)
+            move_action = self.navigator.get_move_action(self.state_tracker)
+            return move_action, {}
+
+        if self.current_goal == "open_door":
+            pass
+        if self.current_goal == "search_room":
+            pass
+        if self.current_goal == "grab_block":
+            pass
+        if self.current_goal == "return_block":
+            pass
+
+        return MoveSouth.__name__, {}
 
 
-        for k in keys:
-            if 'room' in k:
-                room_name = k.split(" - ")[0]
-                if room_name not in rooms:
-                    rooms[room_name] = None
-                elif 'door' in k:
-                    rooms[room_name] = {"door_id": k, "is_open": state[k]['is_open']}
 
-        if self.agent_properties['location'] == (11,5):
-            room = rooms['red_room']
-            door = room['door_id']
-            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
+        # self.send_message(message_content={"room": {"name":"green_room", "room_contents": []}, "pickup": "square_block_124"}, to_id=None)
+        #
+        # self.received_messages
+        #
+        # self.current_goal = "search_room"
+        #
+        # if self.current_goal == "sr":
+        #     pass
+        # elif self.current_goal == "drop":
+        #     pass
 
-        elif self.agent_properties['location'] == (8,5):
-            room = rooms['blue_room']
-            door = room['door_id']
-            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
 
-        elif self.agent_properties['location'] == (8,14):
-            room = rooms['yellow_room']
-            door = room['door_id']
-                #return CloseDoorAction.__name__, {'door_range': 1, 'object_id': door}
-            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
-
-        elif self.agent_properties['location'] == (11,14):
-            room = rooms['green_room']
-            door = room['door_id']
-            return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door}
-
-        return move_action[0], {}
 
 
 

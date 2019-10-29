@@ -12,7 +12,7 @@ Learn the basics
 
 - :ref:`Creating your MATRXS world`
 - :ref:`Adding objects`
-- Implementing an agent brain
+- :ref:`Implementing an agent brain`
 
 
 BW4T
