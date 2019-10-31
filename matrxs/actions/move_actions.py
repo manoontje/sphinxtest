@@ -236,3 +236,18 @@ class MoveNorthWest(Move):
         super().__init__()
         self.dx = -1
         self.dy = -1
+
+
+class StandStill(Move):
+    """
+    The class for standing still.
+    """
+
+    def __init__(self):
+        """
+        Standing still
+        """
+        super().__init__()
+        self.dx = -0
+        self.dy = +0
+

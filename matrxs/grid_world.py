@@ -558,6 +558,7 @@ class GridWorld:
                           f"possible to perform by agent {agent_id}.")
             result = ActionResult(ActionResult.UNKNOWN_ACTION, succeeded=False)
 
+        print("This is the result", result)
         return result
 
     def __perform_action(self, agent_id, action_name, action_kwargs):

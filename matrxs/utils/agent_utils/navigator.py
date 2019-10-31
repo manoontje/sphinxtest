@@ -1,4 +1,5 @@
 import heapq
+import time
 from collections import OrderedDict
 
 import numpy as np
@@ -67,7 +68,7 @@ class Navigator:
         return [(k, wp.location) for k, wp in self.__waypoints.items() if not wp.is_visited()]
 
     def get_current_waypoint(self):
-        wp = self.__current_waypoint()
+        wp = self.__waypoints[self.__current_waypoint]
         return wp.location
 
     def get_move_action(self, state_tracker: StateTracker):

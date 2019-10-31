@@ -962,12 +962,13 @@ class WorldBuilder:
 
     def add_room(self, top_left_location, width, height, name, door_locations=None, with_area_tiles=False,
                  doors_open=False,
-                 wall_custom_properties=None, wall_customizable_properties=None,
-                 area_custom_properties=None, area_customizable_properties=None,
+                 room_custom_properties=None, room_customizable_properties=None,
                  area_visualize_colour=None, area_visualize_opacity=None):
         """
         Adding a room.
 
+        :param room_custom_properties:
+        :param room_customizable_properties:
         :param top_left_location:
         :param width:
         :param height:
@@ -975,10 +976,6 @@ class WorldBuilder:
         :param door_locations:
         :param with_area_tiles:
         :param doors_open:
-        :param wall_custom_properties:
-        :param wall_customizable_properties:
-        :param area_custom_properties:
-        :param area_customizable_properties:
         :param area_visualize_colour:
         :param area_visualize_opacity:
         :return:
@@ -991,8 +988,6 @@ class WorldBuilder:
 
         # Check if the with_area boolean is True when any area properties are given
         if with_area_tiles is False and (
-                area_custom_properties is not None or
-                area_customizable_properties is not None or
                 area_visualize_colour is not None or
                 area_visualize_opacity is not None):
             warnings.warn(f"While adding room {name}: The boolean with_area_tiles is set to {with_area_tiles} while "
@@ -1033,13 +1028,14 @@ class WorldBuilder:
         # Add all walls
         names = [f"{name} - wall@{loc}" for loc in all_]
         self.add_multiple_objects(locations=all_, names=names, callable_classes=Wall,
-                                  custom_properties=wall_custom_properties,
-                                  customizable_properties=wall_customizable_properties)
+                                  custom_properties=room_custom_properties,
+                                  customizable_properties=room_customizable_properties)
 
         # Add all doors
         for door_loc in door_locations:
             self.add_object(location=door_loc, name=f"{name} - door@{door_loc}", callable_class=Door,
-                            is_open=doors_open)
+                            is_open=doors_open, custom_properties=room_custom_properties,
+                            customizable_properties=room_customizable_properties)
 
         # Add all area tiles if required
         if with_area_tiles:
@@ -1047,13 +1043,10 @@ class WorldBuilder:
             area_width = width - 1
             area_height = height - 1
 
-            # If properties happens to be none, set it to empty dict
-            if area_custom_properties is None:
-                area_custom_properties = {}
-
             self.add_area(top_left_location=area_top_left, width=area_width, height=area_height, name=f"{name}_area",
                           visualize_colour=area_visualize_colour, visualize_opacity=area_visualize_opacity,
-                          customizable_properties=area_customizable_properties, **area_custom_properties)
+                          customizable_properties=room_customizable_properties,
+                          custom_properties=room_custom_properties)
 
 
     def __create_world(self):

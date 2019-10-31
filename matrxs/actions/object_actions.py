@@ -211,11 +211,13 @@ class GrabObject(Action):
 
         # Check if object is in range
         if object_id not in objects_in_range:
+            print(GrabObjectResult.NOT_IN_RANGE)
             return GrabObjectResult(GrabObjectResult.NOT_IN_RANGE, False)
 
         # Check if object_id is the id of an agent
         if object_id in grid_world.registered_agents.keys():
             # If it is an agent at that location, grabbing is not possible
+            print(GrabObjectResult.RESULT_AGENT)
             return GrabObjectResult(GrabObjectResult.RESULT_AGENT, False)
 
         # Check if it is an object
@@ -223,15 +225,19 @@ class GrabObject(Action):
             env_obj = grid_world.environment_objects[object_id]  # Environment object
             # Check if the object is not carried by another agent
             if len(env_obj.carried_by) != 0:
+                print(GrabObjectResult.RESULT_OBJECT_CARRIED)
                 return GrabObjectResult(GrabObjectResult.RESULT_OBJECT_CARRIED.replace("{AGENT_ID}",
                                                                                               str(env_obj.carried_by)),
                                                False)
             elif not env_obj.properties["is_movable"]:
+                print(GrabObjectResult.RESULT_OBJECT_UNMOVABLE)
                 return GrabObjectResult(GrabObjectResult.RESULT_OBJECT_UNMOVABLE, False)
             else:
                 # Success
-                return GrabObjectResult(GrabObjectResult.RESULT_SUCCESS, False)
+                print("SUCCES")
+                return GrabObjectResult(GrabObjectResult.RESULT_SUCCESS, True)
         else:
+            print(GrabObjectResult.RESULT_UNKNOWN_OBJECT_TYPE)
             return GrabObjectResult(GrabObjectResult.RESULT_UNKNOWN_OBJECT_TYPE, False)
 
 
@@ -431,7 +437,7 @@ class DropObject(Action):
 
         # TODO: incorporate is_possible check from DropAction.mutate is_possible here
 
-        return True, DropObjectResult(DropObjectResult.RESULT_SUCCESS, True)
+        return DropObjectResult(DropObjectResult.RESULT_SUCCESS, True)
 
 
 class DropObjectResult(ActionResult):
