@@ -1,6 +1,7 @@
 import random
 
 from matrxs.actions.move_actions import MoveNorth, MoveEast, MoveSouth, MoveWest
+from matrxs.actions.object_actions import GrabObject
 from matrxs.agents.agent_brain import AgentBrain, AreaTile
 from matrxs.agents.bw4t_brain import BW4TAgentBrain
 from matrxs.agents.grabbing_agent import GrabbingAgentBrain
@@ -16,6 +17,19 @@ def create_factory():
     autonomous_agent_1 = BW4TAgentBrain()
     autonomous_agent_2 = BW4TAgentBrain()
 
+    human_agent = HumanAgentBrain()
+
+    usrinp_action_map = {
+        'w': MoveNorth.__name__,
+        'd': MoveEast.__name__,
+        's': MoveSouth.__name__,
+        'a': MoveWest.__name__,
+        'p': GrabObject.__name__
+    }
+
+    factory.add_human_agent([1,1], human_agent, name="Sam",
+                            usrinp_action_map=usrinp_action_map, visualize_shape='img',
+                            img_name="fireman.png")
 
     factory.add_agent([11,9], autonomous_agent_1, name="Bot1",
                       visualize_shape='img', has_menu=True, img_name="explorervehicle.png")

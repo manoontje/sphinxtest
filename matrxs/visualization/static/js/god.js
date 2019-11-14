@@ -51,7 +51,7 @@ $(document).ready(function(){
     socket.on('update', function(data){
          console.log("Received an update from the server:", data);
 
-           var rangeslider = document.getElementById("sliderRange");
+        var rangeslider = document.getElementById("sliderRange");
         var slider_output = document.getElementById("tickspeed");
         slider_output.innerHTML = rangeslider.value;
 

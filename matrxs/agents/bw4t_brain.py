@@ -33,7 +33,7 @@ class BW4TAgentBrain(AgentBrain):
 
         self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "to_dropoff" ,"drop_block", "done"]
 
-        self.block_orders = ['blue', 'green', 'green', 'red']
+        self.block_orders = ['yellow', 'green', 'blue', 'green', 'red']
 
 
 
@@ -200,27 +200,13 @@ class BW4TAgentBrain(AgentBrain):
 
     def check_for_update(self, current_order):
         for message in self.received_messages:
-            print(message.content['id'])
-            print(current_order)
             if current_order in message.content['id']:
-                print('hierzooo')
                 self.block_orders.pop(0)
                 if len(self.block_orders) > 0:
                     current_order = self.block_orders[0]
                 else:
                     StandStill.__name__, {}
 
-
-    # self.send_message(message_content={"room": {"name":"green_room", "room_contents": []}, "pickup": "square_block_124"}, to_id=None)
-    #
-    # self.received_messages
-    #
-    # self.current_goal = "search_room"
-    #
-    # if self.current_goal == "sr":
-    #     pass
-    # elif self.current_goal == "drop":
-    #     pass
 
 
 

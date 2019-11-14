@@ -13,6 +13,80 @@
         <canvas id="grid" width="400" height="400"></canvas>
 
         <span style="display:none" id="id">{{ id }}</span>
+
+    <div class="navbar">
+            <img class="logo" src="https://i.imgur.com/fmjC2J9.png">
+
+            <button class="play menuButton">&#9654;</button>
+            <button class="pause menuButton">&#9208;</button>
+            <button class="hamburger menuButton">&#9776;</button>
+            <button class="cross menuButton">&#735;</button>
+            <button class="zoomin menuButton">+</button>
+            <button class="zoomout menuButton">-</button>
+
+            <a href="http://localhost:3000/god">God view</a>
+
+            <a id="chat-button" type="button" class="open-button" onclick="openForm()" style="cursor:pointer">Chat</a>
+
+            <form class="rangeslider" >
+                 <input action="/god/tick_speed" type="range" min="0" max="1" step= "0.1" value= "0.5"
+                     class="tickslider" id="sliderRange" name="tickslider" method="POST">
+                <p> <span class="tickvalue" id="tickspeed" name="tickspeed" style="color:white" method="POST"></span></p>
+            </form>
+
+
+        </div>
+
+
+<!--    <button id="chat-button" type="button" class="open-button" onclick="openForm()">Chat</button>-->
+     <div class="chat-popup" id="myForm">
+
+        <div class="form-container">
+            <h1>Chat</h1>
+            <label for="msg"><b>Message</b></label>
+            <textarea id="messageId" class="msg-block" placeholder="Type message.." name="msg" required></textarea>
+
+            <button type="submit" class="send-button" onclick="sendChat()">Send</button>
+            <button type="button" class="btn-cancel" onclick="closeForm()">Close</button>
+        </div>
+    </div>
+
+    <div class= "chat-box" id="chat_screen">
+        <p id="textmessage">Use the chat to see messages here!</p>
+        <button type="button" class="clear-button" onclick="clearChat()">Clear chat</button>
+    </div>
+
+    <div class="zoom"></div>
+
+    <script>
+        var chat_message = document.getElementById("messageId").value;
+        var chat_now = document.getElementById("textmessage");
+
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+            <!--document.getElementById("chat-button").style.display = "none";-->
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+            document.getElementById("chat-button").style.display = "block";
+        }
+
+        function clearChat() {
+            document.getElementById("textmessage").style.display = "none";
+            chat_now.innerHTML = "";
+        }
+
+        function sendChat() {
+            chat_message = document.getElementById("messageId").value;
+            document.getElementById("textmessage").style.display = "block";
+            var user_str = "User: ";
+            chat_now.innerHTML = chat_now.innerHTML + "<br />" +  user_str.bold() + chat_message;
+            document.getElementById("messageId").value = '';
+        }
+
+
+    </script>
     </body>
 
     <script type="text/javascript" src="/static/dist/jquery/jquery-1.4.2.min.js"></script>

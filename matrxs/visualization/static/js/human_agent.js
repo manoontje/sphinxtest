@@ -6,6 +6,7 @@
 
 var doVisualUpdates = true;
 var isFirstCall=true;
+var pause = false;
 
 /**
  * Check if the current tab is in focus or not
@@ -24,6 +25,14 @@ $(document).ready(function(){
     // make connection with python server via socket to get messages only for the human agent
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
 
+    $(".pause").click(function() {
+        pause = true;
+    });
+
+    $(".play").click(function() {
+        pause = false;
+    });
+
     /**
      * Event handler for new connections.
      */
@@ -41,10 +50,37 @@ $(document).ready(function(){
      * receive an update from the python server
      */
     socket.on('update', function(data){
+        var rangeslider = document.getElementById("sliderRange");
+        var slider_output = document.getElementById("tickspeed");
+        slider_output.innerHTML = rangeslider.value;
+
+        rangeslider.oninput = function() {
+            slider_output.innerHTML = this.value;
+            console.log("PRINT", JSON.stringify(slider_output.innerHTML));
+            }
+
+        $.ajax({
+          type: "POST",
+          contentType: "application/json",
+          url: "/god/tick_speed",
+          traditional: "true",
+          data: JSON.stringify(slider_output.innerHTML),
+          dataType: "json",
+          success: function(data){
+            console.log("Your tick speed is " + data);
+            },
+          error: function(data) {
+            console.log("ERROR, data is: " + data.text);
+            }
+          });
+
+          
         if (!doVisualUpdates) {
             console.log("Chrome in background, skipping");
             return;
         }
+
+
 
         // unpack received data
         grid_size = data.params.grid_size;
@@ -60,8 +96,17 @@ $(document).ready(function(){
             }
         // draw the grid again
         requestAnimationFrame(function() {
-            doTick(grid_size, state, tick, vis_bg_clr, vis_bg_img, agent_info);
             console.log("h_agent: ", String(agent_info))
+            if(pause){
+
+            }
+            else{
+                data.params.tick_speed = slider_output.innerHTML;
+                tick_speed = data.params.tick_speed;
+                doTick(grid_size, state, tick, tick_speed, vis_bg_clr,vis_bg_img, parsedGifs, agent_info);}
+                console.log("Tick speed is ", tick_speed);
+        });
+
         });
     });
 
