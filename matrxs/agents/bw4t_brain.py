@@ -9,6 +9,7 @@ import re
 door_range = 10
 cycle = 0
 
+
 class BW4TAgentBrain(AgentBrain):
     """This is the BW4TAgentBrain class.
     """
@@ -32,6 +33,9 @@ class BW4TAgentBrain(AgentBrain):
 
         self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "to_dropoff" ,"drop_block", "done"]
 
+        self.block_orders = ['red', 'blue', 'red']
+
+
 
 
     def filter_observations(self, state):
@@ -41,11 +45,19 @@ class BW4TAgentBrain(AgentBrain):
         :return:
         """
         new_state = state.copy()
-        for k, obj in state.items():
-            new_state.pop(k)
+        closed_room_colors = []
 
-        self.state_tracker.update(state)
-        return state
+        for k, obj in state.items():
+            if 'door@' in k and obj.get('is_open') is False:
+                color = k.split('_', 1)[0]
+                closed_room_colors.append(color)
+        for k, obj in state.items():
+            for color in closed_room_colors:
+                if (color in k) and ('doormat' not in k) and ('block' in k):
+                    new_state.pop(k)
+
+        self.state_tracker.update(new_state)
+        return new_state
 
     def decide_on_action(self, state):
         """
@@ -57,7 +69,15 @@ class BW4TAgentBrain(AgentBrain):
         self.current_goal = self.goal_cycle[0]
         print(self.current_goal)
 
+        if len(self.block_orders) > 0:
+            current_order = self.block_orders[0]
+        else:
+            return StandStill.__name__, {}
 
+        this_agent = self.agent_id
+        for k, obj in state.items():
+            if 'Bot' in k and this_agent not in k:
+                other_agent = k
 
         objects = list(state.keys())
         doors = [obj for obj in objects
@@ -96,48 +116,60 @@ class BW4TAgentBrain(AgentBrain):
         for block in blocks:
             if blocks[block]['location'] in return_area_locations:
                 blocks_delivered.append(block)
-        print("Lengtes ", len(blocks_delivered), len(block_ids))
 
         # Navigating to a room
         if self.current_goal == "find_room":
-            # Setting location that are in front of a door
+            # Setting location that is in front of a door
             self.navigator.reset_full()
-            doormat_waypoint = doormat_locations[cycle]
-            self.navigator.add_waypoint(doormat_waypoint)
-            move_action = self.navigator.get_move_action(self.state_tracker)
+            for doormat in doormats:
+                doormat_id = doormats[doormat]['doormat_id']
+                if current_order in doormat_id:
+                    doormat_waypoint = doormats[doormat]['location']
+                    self.navigator.add_waypoint(doormat_waypoint)
+                    move_action = self.navigator.get_move_action(self.state_tracker)
 
             # Hacky way of going to the door that has not been opened yet.
-            current_waypoint = doormat_waypoint
-            print(self.agent_properties['location'], current_waypoint)
-            if self.agent_properties['location'] == current_waypoint:
-                self.goal_cycle.pop(0)
-                print(self.goal_cycle, doormat_waypoint)
-                return StandStill.__name__, {}
+                    current_waypoint = doormat_waypoint
+                    print(self.agent_properties['location'], current_waypoint)
+                    if self.agent_properties['location'] == current_waypoint:
+                        self.goal_cycle.pop(0)
+                        print(self.goal_cycle, doormat_waypoint)
             return move_action, {}
 
         if self.current_goal == "open_door":
-            door_id = door_ids[cycle]
-            print("location is ", self.agent_properties['location'])
+            # self.send_message("taking {}".format(current_order), other_agent)
+            # for message in self.received_messages:
+            #     if current_order in message.content:
+            #         self.block_orders.pop(0)
+            #         return StandStill.__name__, {}
+            for door in door_ids:
+                if current_order in door:
+                    door_id = door
             if state[door_id]['is_open'] == True:
                 self.goal_cycle.pop(0)
             return OpenDoorAction.__name__, {'door_range': 1, 'object_id': door_id}
 
         if self.current_goal == "search_room":
-            if self.agent_properties['location'] == block_locations[cycle]:
+            for block in blocks:
+                if current_order in blocks[block]['block_id'] and blocks[block]['location'] not in return_area_locations:
+                    block_location = blocks[block]['location']
+            if self.agent_properties['location'] == block_location:
                 self.goal_cycle.pop(0)
                 return StandStill.__name__, {}
             else:
                 self.navigator.reset_full()
-                self.waypoints = block_locations[cycle]
+                self.waypoints = block_location
                 self.navigator.add_waypoint(self.waypoints)
                 move_action = self.navigator.get_move_action(self.state_tracker)
                 return move_action, {}
 
         if self.current_goal == "grab_block":
+
+            for block in blocks:
+                if current_order in blocks[block]['block_id'] and blocks[block]['location'] not in return_area_locations:
+                    block_id = blocks[block]['block_id']
             self.goal_cycle.pop(0)
-            block_id = block_ids[cycle]
-            print(block_id)
-            return GrabObject.__name__, {'grab_range': 1, 'object_id' : block_ids[cycle], 'max_objects': 1}
+            return GrabObject.__name__, {'grab_range': 1, 'object_id' : block_id, 'max_objects': 1}
 
         if self.current_goal == "to_dropoff":
             self.navigator.reset_full()
@@ -151,22 +183,18 @@ class BW4TAgentBrain(AgentBrain):
             return move_action, {}
 
         if self.current_goal == "drop_block":
-            if len(blocks_delivered) == len(block_ids):
+            self.goal_cycle.pop(0)
+            self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "to_dropoff", "drop_block",
+                                   "done"]
+            cycle += 1
+            if cycle == len(door_ids):
+                cycle = 0
 
-                return StandStill.__name__, {}
+            if len(self.block_orders) > 0:
+                self.block_orders.pop(0)
             else:
-                self.goal_cycle.pop(0)
-                self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "to_dropoff", "drop_block", "done"]
-                cycle += 1
-                if cycle == len(door_ids):
-                    cycle = 0
+                pass
             return DropObject.__name__, {}
-
-
-
-
-
-
 
         return StandStill.__name__, {}
 
