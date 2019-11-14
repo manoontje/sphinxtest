@@ -56,7 +56,7 @@ Sections
    sections/objects.rst
    sections/simgoals.rst
    sections/utils.rst
-   sections/visuals.rst
+..   sections/visuals.rst
 
 
 .. only:: builder_html and (not singlehtml)
@@ -65,7 +65,7 @@ Sections
 
       .. container:: descr
 
-         .. figure:: /_static/images/world_scrshot.jpg
+         .. figure:: /_static/images/worlds_banner.jpg
             :target: sections/worlds.html
 
          :ref:`Worlds`
@@ -73,7 +73,7 @@ Sections
 
       .. container:: descr
 
-         .. figure:: /_static/images/agentbrain.jpg
+         .. figure:: /_static/images/brains_banner.jpg
             :target: sections/brains.html
 
          :ref:`Brains`
@@ -81,7 +81,7 @@ Sections
 
       .. container:: descr
 
-         .. figure:: /_static/images/vormen.jpg
+         .. figure:: /_static/images/shape_banner.jpg
             :target: sections/objects.html
 
          :ref:`Object placement`
@@ -89,7 +89,7 @@ Sections
 
       .. container:: descr
 
-         .. figure:: /_static/images/think_robot.jpg
+         .. figure:: /_static/images/action_banner.jpg
             :target: sections/actions.html
 
          :ref:`Actions`
@@ -97,7 +97,7 @@ Sections
 
       .. container:: descr
 
-         .. figure:: /_static/images/finish.jpg
+         .. figure:: /_static/images/goal_banner.jpg
             :target: sections/simgoals.html
 
          :ref:`Simulation goals`
@@ -105,18 +105,17 @@ Sections
 
       .. container:: descr
 
-         .. figure:: /_static/images/utilities.jpg
+         .. figure:: /_static/images/utils_banner.jpg
             :target: sections/utils.html
 
          :ref:`Utils`
             Useful functions.
 
-      .. container:: descr
+..      .. container:: descr
 
-         .. figure:: /_static/images/server.jpg
+..         .. figure:: /_static/images/server.jpg
             :target: sections/visuals.html
-
-         :ref:`Visualization`
+           :ref:`Visualization`
             Visualization by using a Flask server.
 
 

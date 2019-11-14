@@ -103,7 +103,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../objects.html">Object placement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../simgoals.html">Simulation goals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visuals.html">Visualization</a></li>
 </ul>
 
             
@@ -794,11 +793,13 @@ Should be of the same size as <cite>locations</cite>.</p>
 
 <dl class="method">
 <dt id="matrxs.world_builder.WorldBuilder.add_room">
-<code class="sig-name descname">add_room</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">top_left_location</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">name</em>, <em class="sig-param">door_locations=None</em>, <em class="sig-param">with_area_tiles=False</em>, <em class="sig-param">doors_open=False</em>, <em class="sig-param">wall_custom_properties=None</em>, <em class="sig-param">wall_customizable_properties=None</em>, <em class="sig-param">area_custom_properties=None</em>, <em class="sig-param">area_customizable_properties=None</em>, <em class="sig-param">area_visualize_colour=None</em>, <em class="sig-param">area_visualize_opacity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_room" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_room</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">top_left_location</em>, <em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">name</em>, <em class="sig-param">door_locations=None</em>, <em class="sig-param">with_area_tiles=False</em>, <em class="sig-param">doors_open=False</em>, <em class="sig-param">room_custom_properties=None</em>, <em class="sig-param">room_customizable_properties=None</em>, <em class="sig-param">area_visualize_colour=None</em>, <em class="sig-param">area_visualize_opacity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#matrxs.world_builder.WorldBuilder.add_room" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adding a room.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>room_custom_properties</strong> – </p></li>
+<li><p><strong>room_customizable_properties</strong> – </p></li>
 <li><p><strong>top_left_location</strong> – </p></li>
 <li><p><strong>width</strong> – </p></li>
 <li><p><strong>height</strong> – </p></li>
@@ -806,10 +807,6 @@ Should be of the same size as <cite>locations</cite>.</p>
 <li><p><strong>door_locations</strong> – </p></li>
 <li><p><strong>with_area_tiles</strong> – </p></li>
 <li><p><strong>doors_open</strong> – </p></li>
-<li><p><strong>wall_custom_properties</strong> – </p></li>
-<li><p><strong>wall_customizable_properties</strong> – </p></li>
-<li><p><strong>area_custom_properties</strong> – </p></li>
-<li><p><strong>area_customizable_properties</strong> – </p></li>
 <li><p><strong>area_visualize_colour</strong> – </p></li>
 <li><p><strong>area_visualize_opacity</strong> – </p></li>
 </ul>
