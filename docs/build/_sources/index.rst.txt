@@ -59,57 +59,57 @@ Sections
 ..   sections/visuals.rst
 
 
-.. only:: builder_html and (not singlehtml)
+.. .. only:: builder_html and (not singlehtml)
 
-   .. container:: tocdescr
+.. container:: tocdescr
 
-      .. container:: descr
+  .. container:: descr
 
-         .. figure:: /_static/images/worlds_banner.jpg
-            :target: sections/worlds.html
+     .. figure:: /_static/images/worlds_banner.jpg
+        :target: sections/worlds.html
 
-         :ref:`Worlds`
-            Learn MATRXS' way of creating worlds.
+     :ref:`Worlds`
+        Learn MATRXS' way of creating worlds.
 
-      .. container:: descr
+  .. container:: descr
 
-         .. figure:: /_static/images/brains_banner.jpg
-            :target: sections/brains.html
+     .. figure:: /_static/images/brains_banner.jpg
+        :target: sections/brains.html
 
-         :ref:`Brains`
-           Check this section for a piece of the agents' minds.
+     :ref:`Brains`
+       Check this section for a piece of the agents' minds.
 
-      .. container:: descr
+  .. container:: descr
 
-         .. figure:: /_static/images/shape_banner.jpg
-            :target: sections/objects.html
+     .. figure:: /_static/images/shape_banner.jpg
+        :target: sections/objects.html
 
-         :ref:`Object placement`
-            Make the world more worldlike by placing objects in it.
+     :ref:`Object placement`
+        Make the world more worldlike by placing objects in it.
 
-      .. container:: descr
+  .. container:: descr
 
-         .. figure:: /_static/images/action_banner.jpg
-            :target: sections/actions.html
+     .. figure:: /_static/images/action_banner.jpg
+        :target: sections/actions.html
 
-         :ref:`Actions`
-            Agents can perform actions.
+     :ref:`Actions`
+        Agents can perform actions.
 
-      .. container:: descr
+  .. container:: descr
 
-         .. figure:: /_static/images/goal_banner.jpg
-            :target: sections/simgoals.html
+     .. figure:: /_static/images/goal_banner.jpg
+        :target: sections/simgoals.html
 
-         :ref:`Simulation goals`
-            A certain goal is set for the simulation to end.
+     :ref:`Simulation goals`
+        A certain goal is set for the simulation to end.
 
-      .. container:: descr
+  .. container:: descr
 
-         .. figure:: /_static/images/utils_banner.jpg
-            :target: sections/utils.html
+     .. figure:: /_static/images/utils_banner.jpg
+        :target: sections/utils.html
 
-         :ref:`Utils`
-            Useful functions.
+     :ref:`Utils`
+        Useful functions.
 
 ..      .. container:: descr
 
