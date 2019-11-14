@@ -180,7 +180,6 @@ class AppFlask:
         def get_tick_speed():
             # USE SOCKET IPV AJAX
             speed = request.form.get('tickspeed')
-            print("speed is ", speed)
             #else:
                 #speed = 0.5
             return jsonify(speed)

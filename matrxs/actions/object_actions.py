@@ -234,7 +234,6 @@ class GrabObject(Action):
                 return GrabObjectResult(GrabObjectResult.RESULT_OBJECT_UNMOVABLE, False)
             else:
                 # Success
-                print("SUCCES")
                 return GrabObjectResult(GrabObjectResult.RESULT_SUCCESS, True)
         else:
             print(GrabObjectResult.RESULT_UNKNOWN_OBJECT_TYPE)

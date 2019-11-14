@@ -21,8 +21,8 @@ def create_factory():
                       visualize_shape='img', has_menu=True, img_name="explorervehicle.png")
 
 
-    # factory.add_agent([15, 18], autonomous_agent_2, name="Bot2",
-    #                    visualize_shape='img', has_menu=True, img_name="explorervehicle.png")
+    factory.add_agent([15, 18], autonomous_agent_2, name="Bot2",
+                      visualize_shape='img', has_menu=True, img_name="explorervehicle.png")
 
     #Initialize blue room
     factory.add_room([3, 3], 5, 5, name="blue_room", door_locations=[(7, 5)],

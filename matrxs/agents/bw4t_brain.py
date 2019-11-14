@@ -33,7 +33,7 @@ class BW4TAgentBrain(AgentBrain):
 
         self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "to_dropoff" ,"drop_block", "done"]
 
-        self.block_orders = ['red', 'blue', 'red']
+        self.block_orders = ['blue', 'green', 'green', 'red']
 
 
 
@@ -67,7 +67,6 @@ class BW4TAgentBrain(AgentBrain):
         """
         global cycle
         self.current_goal = self.goal_cycle[0]
-        print(self.current_goal)
 
         if len(self.block_orders) > 0:
             current_order = self.block_orders[0]
@@ -117,6 +116,8 @@ class BW4TAgentBrain(AgentBrain):
             if blocks[block]['location'] in return_area_locations:
                 blocks_delivered.append(block)
 
+        self.check_for_update(current_order)
+
         # Navigating to a room
         if self.current_goal == "find_room":
             # Setting location that is in front of a door
@@ -130,18 +131,14 @@ class BW4TAgentBrain(AgentBrain):
 
             # Hacky way of going to the door that has not been opened yet.
                     current_waypoint = doormat_waypoint
-                    print(self.agent_properties['location'], current_waypoint)
                     if self.agent_properties['location'] == current_waypoint:
+                        self.send_message(message_content={"id": doormat_id},
+                                          to_id=other_agent)
                         self.goal_cycle.pop(0)
-                        print(self.goal_cycle, doormat_waypoint)
+
             return move_action, {}
 
         if self.current_goal == "open_door":
-            # self.send_message("taking {}".format(current_order), other_agent)
-            # for message in self.received_messages:
-            #     if current_order in message.content:
-            #         self.block_orders.pop(0)
-            #         return StandStill.__name__, {}
             for door in door_ids:
                 if current_order in door:
                     door_id = door
@@ -196,20 +193,34 @@ class BW4TAgentBrain(AgentBrain):
                 pass
             return DropObject.__name__, {}
 
+
+
         return StandStill.__name__, {}
 
 
+    def check_for_update(self, current_order):
+        for message in self.received_messages:
+            print(message.content['id'])
+            print(current_order)
+            if current_order in message.content['id']:
+                print('hierzooo')
+                self.block_orders.pop(0)
+                if len(self.block_orders) > 0:
+                    current_order = self.block_orders[0]
+                else:
+                    StandStill.__name__, {}
 
-        # self.send_message(message_content={"room": {"name":"green_room", "room_contents": []}, "pickup": "square_block_124"}, to_id=None)
-        #
-        # self.received_messages
-        #
-        # self.current_goal = "search_room"
-        #
-        # if self.current_goal == "sr":
-        #     pass
-        # elif self.current_goal == "drop":
-        #     pass
+
+    # self.send_message(message_content={"room": {"name":"green_room", "room_contents": []}, "pickup": "square_block_124"}, to_id=None)
+    #
+    # self.received_messages
+    #
+    # self.current_goal = "search_room"
+    #
+    # if self.current_goal == "sr":
+    #     pass
+    # elif self.current_goal == "drop":
+    #     pass
 
 
 

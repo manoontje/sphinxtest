@@ -224,7 +224,6 @@ class Visualizer:
                                                       "running or has crashed. Please start this first by running /visualisation/"
                                                       "server.py")
 
-        print("geprinte tick data", r.request)
 
         if r.json() == {}:
             self.__tick_duration = {}

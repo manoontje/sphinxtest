@@ -366,8 +366,6 @@ class GridWorld:
         # update the visualizations of all (human)agents and god
         self.__visualizer._update_guis(tick=self.current_nr_ticks,agents=self.registered_agents, tick_speed= self.tick_duration)
 
-        print("Tick duration is ", self.tick_duration)
-
 
         # Perform the actions in the order of the action_buffer (which is filled in order of registered agents
         for agent_id, action in action_buffer.items():
@@ -557,8 +555,6 @@ class GridWorld:
             warnings.warn(f"The action with name {action_name} was not found when checking whether this action is "
                           f"possible to perform by agent {agent_id}.")
             result = ActionResult(ActionResult.UNKNOWN_ACTION, succeeded=False)
-
-        print("This is the result", result)
         return result
 
     def __perform_action(self, agent_id, action_name, action_kwargs):
