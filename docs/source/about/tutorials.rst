@@ -7,7 +7,7 @@ Tutorials
 If you are wondering how to start using MATRXS or just want to get some hands-on experience, the following tutorials
 might be where you want to start.
 
-Learn the basics
+The basics
 ----------------
 
 - :ref:`Creating your MATRXS world`
@@ -15,9 +15,13 @@ Learn the basics
 - :ref:`Implementing an agent brain`
 
 
-BW4T
+BlocksWorld in MATRXS
 ----
 
-- Tasking in BW4T
+Inspired by `BlocksWorld for Teams (BW4T) <https://github.com/eishub/BW4T>`_ the tutorials in this section serve as
+examples of scenarios that simulate teaming tasks in a block world.
+
+- :ref:`Part 1: Setting up the skeleton`
+- :ref:`Part 2: Under construction`
 
 Once more MATRXS tutorials are available, you can find them here.

@@ -4,7 +4,6 @@ from matrxs.actions.move_actions import MoveNorth, MoveEast, MoveSouth, MoveWest
 from matrxs.actions.object_actions import GrabObject
 from matrxs.agents.agent_brain import AgentBrain, AreaTile
 from matrxs.agents.bw4t_brain import BW4TAgentBrain
-from matrxs.agents.grabbing_agent import GrabbingAgentBrain
 from matrxs.agents.human_agent_brain import HumanAgentBrain
 from matrxs.agents.patrolling_agent import PatrollingAgentBrain
 from matrxs.objects.simple_objects import SquareBlock, Door

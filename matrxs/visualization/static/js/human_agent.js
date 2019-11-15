@@ -74,7 +74,7 @@ $(document).ready(function(){
             }
           });
 
-          
+
         if (!doVisualUpdates) {
             console.log("Chrome in background, skipping");
             return;
