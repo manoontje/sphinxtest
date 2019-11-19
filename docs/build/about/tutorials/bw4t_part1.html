@@ -210,6 +210,11 @@ We can divide the separate actions an agent has to perform in this task as follo
 </div>
 <div class="section" id="filtering-observations">
 <h2>Filtering observations<a class="headerlink" href="#filtering-observations" title="Permalink to this headline">¶</a></h2>
+<p>Depending on what you want your agents to be able to perceive, the method for filtering observations can be implemented.
+In the case of this BlocksWorld task, we assume the only constraint is that agents cannot see into rooms if the door has not been
+opened. The idea of the method is that an adapted copy of the current state gets returned as the next state. This adaptation
+is, in this case, the removal of items within a room of which the door has not been opened yet. If the door has been opened,
+the items within the room become known to the agent(s) and stay in their memory of the state.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_observations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Filtering the agent&#39;s observations.</span>
@@ -235,146 +240,12 @@ We can divide the separate actions an agent has to perform in this task as follo
 </div>
 <div class="section" id="action-execution">
 <h2>Action execution<a class="headerlink" href="#action-execution" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decide_on_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-       <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Decision of which action to perform.</span>
-<span class="sd">       :param state:</span>
-<span class="sd">       :return:</span>
-<span class="sd">       &quot;&quot;&quot;</span>
-       <span class="k">global</span> <span class="n">cycle</span>
-       <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-       <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_orders</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-           <span class="n">current_order</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block_orders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-       <span class="k">else</span><span class="p">:</span>
-           <span class="k">return</span> <span class="n">StandStill</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{}</span>
-
-       <span class="n">this_agent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_id</span>
-       <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-           <span class="k">if</span> <span class="s1">&#39;Bot&#39;</span> <span class="ow">in</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">this_agent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
-               <span class="n">other_agent</span> <span class="o">=</span> <span class="n">k</span>
-
-       <span class="n">objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-       <span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span>
-                <span class="k">if</span> <span class="s1">&#39;class_inheritance&#39;</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="ow">and</span> <span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">][</span><span class="s1">&#39;class_inheritance&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Door&quot;</span><span class="p">]</span>
-       <span class="n">door_locations</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="n">door_ids</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="k">for</span> <span class="n">door</span> <span class="ow">in</span> <span class="n">doors</span><span class="p">:</span>
-           <span class="n">door_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">door</span><span class="p">)</span>
-           <span class="n">door_location</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">door</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
-           <span class="n">door_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">door_location</span><span class="p">)</span>
-
-       <span class="n">doormats</span> <span class="o">=</span> <span class="p">{}</span>
-       <span class="n">doormat_locations</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
-           <span class="k">if</span> <span class="s1">&#39;doormat&#39;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
-               <span class="n">doormats</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;doormat_id&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]}</span>
-               <span class="n">doormat_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">])</span>
-
-       <span class="n">blocks</span> <span class="o">=</span> <span class="p">{}</span>
-       <span class="n">block_locations</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="n">block_ids</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
-           <span class="k">if</span> <span class="s1">&#39;block&#39;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
-               <span class="n">blocks</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;block_id&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]}</span>
-               <span class="n">block_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">])</span>
-               <span class="n">block_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-
-       <span class="n">return_area_ids</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="n">return_area_locations</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
-           <span class="k">if</span> <span class="s1">&#39;drop&#39;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
-               <span class="n">return_area_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-               <span class="n">return_area_locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">obj</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">])</span>
-
-       <span class="n">blocks_delivered</span> <span class="o">=</span> <span class="p">[]</span>
-       <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
-           <span class="k">if</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">return_area_locations</span><span class="p">:</span>
-               <span class="n">blocks_delivered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
-
-       <span class="bp">self</span><span class="o">.</span><span class="n">check_for_update</span><span class="p">(</span><span class="n">current_order</span><span class="p">)</span>
-
-       <span class="c1"># Navigating to a room</span>
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">==</span> <span class="s2">&quot;find_room&quot;</span><span class="p">:</span>
-           <span class="c1"># Setting location that is in front of a door</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">reset_full</span><span class="p">()</span>
-           <span class="k">for</span> <span class="n">doormat</span> <span class="ow">in</span> <span class="n">doormats</span><span class="p">:</span>
-               <span class="n">doormat_id</span> <span class="o">=</span> <span class="n">doormats</span><span class="p">[</span><span class="n">doormat</span><span class="p">][</span><span class="s1">&#39;doormat_id&#39;</span><span class="p">]</span>
-               <span class="k">if</span> <span class="n">current_order</span> <span class="ow">in</span> <span class="n">doormat_id</span><span class="p">:</span>
-                   <span class="n">doormat_waypoint</span> <span class="o">=</span> <span class="n">doormats</span><span class="p">[</span><span class="n">doormat</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
-                   <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">add_waypoint</span><span class="p">(</span><span class="n">doormat_waypoint</span><span class="p">)</span>
-                   <span class="n">move_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">get_move_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_tracker</span><span class="p">)</span>
-
-           <span class="c1"># Hacky way of going to the door that has not been opened yet.</span>
-                   <span class="n">current_waypoint</span> <span class="o">=</span> <span class="n">doormat_waypoint</span>
-                   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_properties</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">current_waypoint</span><span class="p">:</span>
-                       <span class="bp">self</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">message_content</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">doormat_id</span><span class="p">},</span>
-                                         <span class="n">to_id</span><span class="o">=</span><span class="n">other_agent</span><span class="p">)</span>
-                       <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-           <span class="k">return</span> <span class="n">move_action</span><span class="p">,</span> <span class="p">{}</span>
-
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">==</span> <span class="s2">&quot;open_door&quot;</span><span class="p">:</span>
-           <span class="k">for</span> <span class="n">door</span> <span class="ow">in</span> <span class="n">door_ids</span><span class="p">:</span>
-               <span class="k">if</span> <span class="n">current_order</span> <span class="ow">in</span> <span class="n">door</span><span class="p">:</span>
-                   <span class="n">door_id</span> <span class="o">=</span> <span class="n">door</span>
-           <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="n">door_id</span><span class="p">][</span><span class="s1">&#39;is_open&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-           <span class="k">return</span> <span class="n">OpenDoorAction</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;door_range&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;object_id&#39;</span><span class="p">:</span> <span class="n">door_id</span><span class="p">}</span>
-
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">==</span> <span class="s2">&quot;search_room&quot;</span><span class="p">:</span>
-           <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
-               <span class="k">if</span> <span class="n">current_order</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;block_id&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">return_area_locations</span><span class="p">:</span>
-                   <span class="n">block_location</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
-           <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_properties</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">block_location</span><span class="p">:</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-               <span class="k">return</span> <span class="n">StandStill</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{}</span>
-           <span class="k">else</span><span class="p">:</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">reset_full</span><span class="p">()</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">block_location</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">add_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span>
-               <span class="n">move_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">get_move_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_tracker</span><span class="p">)</span>
-               <span class="k">return</span> <span class="n">move_action</span><span class="p">,</span> <span class="p">{}</span>
-
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">==</span> <span class="s2">&quot;grab_block&quot;</span><span class="p">:</span>
-
-           <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
-               <span class="k">if</span> <span class="n">current_order</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;block_id&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">return_area_locations</span><span class="p">:</span>
-                   <span class="n">block_id</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="n">block</span><span class="p">][</span><span class="s1">&#39;block_id&#39;</span><span class="p">]</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-           <span class="k">return</span> <span class="n">GrabObject</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;grab_range&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;object_id&#39;</span> <span class="p">:</span> <span class="n">block_id</span><span class="p">,</span> <span class="s1">&#39;max_objects&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">==</span> <span class="s2">&quot;to_dropoff&quot;</span><span class="p">:</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">reset_full</span><span class="p">()</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span> <span class="o">=</span> <span class="n">return_area_locations</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">add_waypoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span>
-           <span class="n">move_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">navigator</span><span class="o">.</span><span class="n">get_move_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_tracker</span><span class="p">)</span>
-           <span class="n">current_waypoint</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span>
-           <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_properties</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">current_waypoint</span><span class="p">:</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-               <span class="k">return</span> <span class="n">StandStill</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{}</span>
-           <span class="k">return</span> <span class="n">move_action</span><span class="p">,</span> <span class="p">{}</span>
-
-       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_goal</span> <span class="o">==</span> <span class="s2">&quot;drop_block&quot;</span><span class="p">:</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-           <span class="bp">self</span><span class="o">.</span><span class="n">goal_cycle</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;find_room&quot;</span><span class="p">,</span> <span class="s2">&quot;open_door&quot;</span><span class="p">,</span> <span class="s2">&quot;search_room&quot;</span><span class="p">,</span> <span class="s2">&quot;grab_block&quot;</span><span class="p">,</span> <span class="s2">&quot;to_dropoff&quot;</span><span class="p">,</span> <span class="s2">&quot;drop_block&quot;</span><span class="p">,</span>
-                                  <span class="s2">&quot;done&quot;</span><span class="p">]</span>
-           <span class="n">cycle</span> <span class="o">+=</span> <span class="mi">1</span>
-           <span class="k">if</span> <span class="n">cycle</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">door_ids</span><span class="p">):</span>
-               <span class="n">cycle</span> <span class="o">=</span> <span class="mi">0</span>
-
-           <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_orders</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-               <span class="bp">self</span><span class="o">.</span><span class="n">block_orders</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-           <span class="k">else</span><span class="p">:</span>
-               <span class="k">pass</span>
-           <span class="k">return</span> <span class="n">DropObject</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{}</span>
-
-
-
-       <span class="k">return</span> <span class="n">StandStill</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="p">{}</span>
-</pre></div>
-</div>
-<p>Under construction…</p>
+<p>The main part wanting to implement a BlocksWorld scenario is, of course, knowing how to implement agents’ behaviour. The
+behaviour is implemented in the method ‘decide_on_action’. In this method, we define all objects that are of interest to
+an agent’s actions. We also provide other practicalities, such as keeping track of the current goal and of the other
+agent(s). The method returns the action the agent should perform at the current time point in the simulation, followed by
+any variable values, if needed. In the next part of this tutorial series, you can find how exactly the currently discussed
+BlocksWorld agent brain has been implemented.</p>
 </div>
 </div>
 

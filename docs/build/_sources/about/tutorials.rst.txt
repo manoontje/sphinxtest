@@ -22,6 +22,6 @@ Inspired by `BlocksWorld for Teams (BW4T) <https://github.com/eishub/BW4T>`_ the
 examples of scenarios that simulate teaming tasks in a block world.
 
 - :ref:`Part 1: Setting up the skeleton`
-- :ref:`Part 2: Under construction`
+- :ref:`Part 2: Action plan`
 
 Once more MATRXS tutorials are available, you can find them here.
