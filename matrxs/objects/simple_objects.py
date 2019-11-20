@@ -26,7 +26,7 @@ class Door(EnvObject):
     A class representing the door object.
     """
 
-    def __init__(self, location, is_open, name="Door", open_colour="#006400", closed_colour="#640000"):
+    def __init__(self, location, is_open, name="Door", open_colour="#006400", closed_colour="#640000", **kwargs):
         """
         Door base object, can be used to define rooms. An example of an object that is and ordinary EnvObject but has
         a method on which two Actions depend; OpenDoorAction and CloseDoorAction. This method alters the is_traversable
@@ -55,7 +55,7 @@ class Door(EnvObject):
         is_traversable = self.is_open
 
         super().__init__(location=location, name=name, is_traversable=is_traversable, visualize_colour=current_color,
-                         is_open=self.is_open, class_callable=Door, customizable_properties=['is_open'])
+                         is_open=self.is_open, class_callable=Door, customizable_properties=['is_open'], **kwargs)
 
     def open_door(self):
         """
@@ -91,7 +91,7 @@ class Wall(EnvObject):
     A class representing the wall object.
     """
 
-    def __init__(self, location, name="Wall", visualize_colour="#000000"):
+    def __init__(self, location, name="Wall", visualize_colour="#000000", **kwargs):
         """
         A simple Wall object. Is not traversable, the colour can be set but has otherwise the default EnvObject property
         values.
@@ -100,7 +100,7 @@ class Wall(EnvObject):
         """
         is_traversable = False  # All walls are always not traversable
         super().__init__(name=name, location=location, visualize_colour=visualize_colour,
-                         is_traversable=is_traversable, class_callable=Wall)
+                         is_traversable=is_traversable, class_callable=Wall, **kwargs)
 
 
 class AreaTile(EnvObject):

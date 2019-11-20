@@ -9,9 +9,11 @@ from matrxs.agents.patrolling_agent import PatrollingAgentBrain
 from matrxs.objects.simple_objects import SquareBlock, Door
 from matrxs.world_builder import WorldBuilder
 
+w = 20
+h = 20
 
 def create_factory():
-    factory = WorldBuilder(shape=[20, 20])
+    factory = WorldBuilder(shape=[w, h])
 
     autonomous_agent_1 = BW4TAgentBrain()
     autonomous_agent_2 = BW4TAgentBrain()
@@ -69,9 +71,8 @@ def create_factory():
     factory.add_object((15, 13), "green_block", is_traversable=True, visualize_colour="#60bf2c")
     factory.add_object((15, 14), "green_block", is_traversable=True, visualize_colour="#60bf2c")
     #Drop-off area
-    factory.add_object((16,0), "dropoff", visualize_colour="#808080", callable_class=AreaTile)
-    factory.add_object((17,0), "dropoff", visualize_colour="#808080", callable_class=AreaTile)
-    factory.add_object((18,0), "dropoff", visualize_colour="#808080", callable_class=AreaTile)
-    factory.add_object((19,0), "dropoff", visualize_colour="#808080", callable_class=AreaTile)
+    order_length = autonomous_agent_1.get_order_length()
+    for i in range(1, order_length+1):
+        factory.add_object((w-i,0), "dropoff", visualize_colour="#808080", callable_class=AreaTile)
 
     return factory

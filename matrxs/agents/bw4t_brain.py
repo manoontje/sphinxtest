@@ -18,7 +18,7 @@ class BW4TAgentBrain(AgentBrain):
         super().__init__()
         self.state_tracker = None
         self.navigator = None
-
+        self.block_orders = ['yellow', 'green', 'blue', 'green', 'red']
 
     def initialize(self):
         """
@@ -206,6 +206,9 @@ class BW4TAgentBrain(AgentBrain):
                     current_order = self.block_orders[0]
                 else:
                     StandStill.__name__, {}
+
+    def get_order_length(self):
+        return len(self.block_orders)
 
 
 
