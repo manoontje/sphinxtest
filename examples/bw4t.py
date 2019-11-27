@@ -3,20 +3,26 @@ import random
 from matrxs.actions.move_actions import MoveNorth, MoveEast, MoveSouth, MoveWest
 from matrxs.actions.object_actions import GrabObject
 from matrxs.agents.agent_brain import AgentBrain, AreaTile
-from matrxs.agents.bw4t_brain import BW4TAgentBrain
+from matrxs.agents.bw4t_brain_coloredrooms import BW4TAgentBrain_colored
+from matrxs.agents.bw4t_brain_random import BW4TAgentBrain_random
 from matrxs.agents.human_agent_brain import HumanAgentBrain
 from matrxs.agents.patrolling_agent import PatrollingAgentBrain
 from matrxs.objects.simple_objects import SquareBlock, Door
+from matrxs.sim_goals.sim_goal import DeliveredBlocksGoal
 from matrxs.world_builder import WorldBuilder
 
 w = 20
 h = 20
 
 def create_factory():
-    factory = WorldBuilder(shape=[w, h])
+    factory = WorldBuilder(shape=[w, h], simulation_goal=DeliveredBlocksGoal(block_sequence=BW4TAgentBrain_random.block_orders))
 
-    autonomous_agent_1 = BW4TAgentBrain()
-    autonomous_agent_2 = BW4TAgentBrain()
+
+    # autonomous_agent_1 = BW4TAgentBrain_colored()
+    # autonomous_agent_2 = BW4TAgentBrain_colored()
+
+    autonomous_agent_1 = BW4TAgentBrain_random()
+    autonomous_agent_2 = BW4TAgentBrain_random()
 
     human_agent = HumanAgentBrain()
 
@@ -41,23 +47,25 @@ def create_factory():
 
     #Initialize blue room
     factory.add_room([3, 3], 5, 5, name="blue_room", door_locations=[(7, 5)],
-                     room_custom_properties={'in_front_of_door': (8,5)})
+                     room_custom_properties={'in_front_of_door': (8,5), 'object_locations': [(4,6), (5, 6)]})
     factory.add_object((8,5), "blue_doormat", is_traversable= True, visualize_colour="#2e86c1",
                        visualize_opacity=0.5)
     factory.add_object((4, 6), "blue_block_1", is_traversable=True, visualize_colour="#2e86c1")
-    factory.add_object((5, 5), "blue_block_2", is_traversable=True, visualize_colour="#2e86c1")
+    factory.add_object((5, 6), "red_block_3", is_traversable=True, visualize_colour="#e30202")
+
 
     #Initialize red room
     factory.add_room([12, 3], 5, 5, name="red_room", door_locations=[(12, 5)],
-                     room_custom_properties={'in_front_of_door': (11,5)})
+                     room_custom_properties={'in_front_of_door': (11,5), 'object_locations': [(13,4), (14, 5), (15,6)]})
     factory.add_object((11, 5), "red_doormat", is_traversable=True, visualize_colour="#e30202",
                        visualize_opacity=0.5)
     factory.add_object((13, 4), "red_block_1", is_traversable=True, visualize_colour="#e30202")
     factory.add_object((15, 6), "red_block_2", is_traversable=True, visualize_colour="#e30202")
+    factory.add_object((14, 5), "green_block", is_traversable=True, visualize_colour="#60bf2c")
 
     #Initialize yellow room
     factory.add_room([3, 12], 5, 5, name="yellow_room", door_locations=[(7, 14)],
-                     room_custom_properties={'in_front_of_door': (8,14)})
+                     room_custom_properties={'in_front_of_door': (8,14), 'object_locations': [(5,14), (4,13)]})
     factory.add_object((8, 14), "yellow_doormat", is_traversable=True, visualize_colour="#fac800",
                        visualize_opacity=0.5)
     factory.add_object((5, 14), "yellow_block", is_traversable=True, visualize_colour="#fac800")
@@ -65,7 +73,7 @@ def create_factory():
 
     #Initialize green room
     factory.add_room([12, 12], 5, 5, name="green_room", door_locations=[(12, 14)],
-                     room_custom_properties={'in_front_of_door': (11,14)})
+                     room_custom_properties={'in_front_of_door': (11,14), 'object_locations': [(15,13), (15,14)]})
     factory.add_object((11, 14), "green_doormat", is_traversable=True, visualize_colour="#60bf2c",
                        visualize_opacity=0.5)
     factory.add_object((15, 13), "green_block", is_traversable=True, visualize_colour="#60bf2c")

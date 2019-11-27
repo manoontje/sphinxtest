@@ -10,7 +10,7 @@ door_range = 10
 cycle = 0
 
 
-class BW4TAgentBrain(AgentBrain):
+class BW4TAgentBrain_colored(AgentBrain):
     """This is the BW4TAgentBrain class.
     """
 
@@ -19,6 +19,7 @@ class BW4TAgentBrain(AgentBrain):
         self.state_tracker = None
         self.navigator = None
         self.block_orders = ['yellow', 'green', 'blue', 'green', 'red']
+        self.nr_blocks_delivered = 0
 
     def initialize(self):
         """
@@ -115,6 +116,7 @@ class BW4TAgentBrain(AgentBrain):
         for block in blocks:
             if blocks[block]['location'] in return_area_locations:
                 blocks_delivered.append(block)
+                self.nr_blocks_delivered += 1
 
         self.check_for_update(current_order)
 
