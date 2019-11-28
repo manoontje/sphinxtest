@@ -71,13 +71,14 @@ class DeliveredBlocksGoal(SimulationGoal):
         self.block_sequence = block_sequence
 
     def goal_reached(self, grid_world):
-        # kan niet bij brein, dus alles uit grid world lezen
-        nr_blocks_delivered =
-        if self.block_sequence == nr_blocks_delivered:
+        nr_blocks_delivered = grid_world.nr_blocks_delivered
+        if len(self.block_sequence) == nr_blocks_delivered:
+            print("We are done")
             self.is_done = True
         else:
             self.is_done = False
         return self.is_done
 
     def get_progress(self, grid_world):
-        return min(1.0, BW4TAgentBrain_colored.nr_blocks_delivered / len(self.block_sequence))
+        print("Progress is ", min(1.0, grid_world.nr_blocks_delivered / len(self.block_sequence)))
+        return min(1.0, grid_world.nr_blocks_delivered / len(self.block_sequence))

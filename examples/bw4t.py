@@ -14,8 +14,10 @@ from matrxs.world_builder import WorldBuilder
 w = 20
 h = 20
 
+block_sequence = BW4TAgentBrain_random().block_orders
+
 def create_factory():
-    factory = WorldBuilder(shape=[w, h], simulation_goal=DeliveredBlocksGoal(block_sequence=BW4TAgentBrain_random.block_orders))
+    factory = WorldBuilder(shape=[w, h], simulation_goal=DeliveredBlocksGoal(block_sequence=block_sequence))
 
 
     # autonomous_agent_1 = BW4TAgentBrain_colored()

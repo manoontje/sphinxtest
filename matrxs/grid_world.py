@@ -48,6 +48,7 @@ class GridWorld:
         self.__visualizer = None  # Placeholder for the Visualizer class
         self.__is_initialized = False  # Whether this GridWorld is already initialized
         self.__message_buffer = {}  # dictionary of messages that need to be send to agents, with receiver ids as keys
+        self.nr_blocks_delivered = 0 # for BW4T task, number of blocks delivered in delivery area
 
     def initialize(self):
         """
@@ -569,12 +570,14 @@ class GridWorld:
         # Check if the action will succeed
         result = self.__check_action_is_possible(agent_id, action_name, action_kwargs)
 
+
         # If it will succeed, perform it.
         if result.succeeded:
 
             # If the action is None, nothing has to change in the world
             if action_name is None:
                 return result
+
 
             # Get action class
             action_class = self.__all_actions[action_name]
@@ -600,6 +603,9 @@ class GridWorld:
 
             # Update the grid
             self.__update_agent_location(agent_id)
+
+            if action_name == 'DropObject':
+                self.nr_blocks_delivered += 1
 
         # Whether the action succeeded or not, we return the result
         return result

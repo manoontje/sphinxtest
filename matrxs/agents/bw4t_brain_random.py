@@ -19,7 +19,7 @@ class BW4TAgentBrain_random(AgentBrain):
         super().__init__()
         self.state_tracker = None
         self.navigator = None
-        self.block_orders = ['yellow', 'green', 'red']
+        self.block_orders = ['blue', 'yellow', 'green', 'red']
 
 
     def initialize(self):
@@ -34,6 +34,8 @@ class BW4TAgentBrain_random(AgentBrain):
                                    algorithm=Navigator.A_STAR_ALGORITHM)
 
         self.goal_cycle = ["find_room", "open_door", "search_room", "grab_block", "to_dropoff" ,"drop_block", "done"]
+
+        self.block_orders = ['blue', 'yellow', 'green', 'red']
 
 
 
@@ -91,10 +93,6 @@ class BW4TAgentBrain_random(AgentBrain):
         doormat_locations = self.find_doors(state)[1]
         delivery_area = self.determine_delivery_locations(state)
         known_blocks = self.determine_known_content(state, delivery_area)
-
-        print(this_agent, self.current_goal)
-        print(known_blocks)
-        print()
 
         # Navigating to a room
         if self.current_goal == "find_room":
