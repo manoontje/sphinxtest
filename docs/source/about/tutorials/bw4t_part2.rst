@@ -1,7 +1,7 @@
-.. _Part 2: Action plan
+.. _Part 2: BW4T action plan
 
 
-Part 2: Action plan
+Part 2: BW4T action plan
 ==========================
 In deciding what action to perform, the agent loops through a list of actions that are needed to complete the task.
 During the execution of these actions, the agent also keeps track of what other agents might be doing, so that the same

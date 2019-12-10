@@ -164,8 +164,18 @@
   <div class="section" id="implementing-an-agent-brain">
 <h1>Implementing an agent brain<a class="headerlink" href="#implementing-an-agent-brain" title="Permalink to this headline">¶</a></h1>
 <p>Agent brains in MATRXS are used to give meaning to the actions an agent takes in the environment. By implementing an
-agent brain, the logic and decision processes of the agent are determined.</p>
-<p>UNDER CONSTRUCTION…</p>
+agent brain, the logic and decision processes of the agent are determined. You can decide what action the agent will take
+given a certain situation by creating a new behavior class based on the AgentBrain class.</p>
+<p>The most important methods for users that want to create a variation on an AgentBrain are <em>initialize</em>,
+<em>filter_observations</em>, and <em>decide_on_action</em>. The initialization of the brain is needed as this is what connects the
+agent’s behavior to the grid world. The agent is, most likely, not an all-knowing being, so by filtering some objects/agents
+from the environment, a more realistic representation of the world as is known to the agent can be created. For example,
+when a door to a room is closed, the agent probably is not able to know what is inside the room unless the door was open
+before. In this case, everything behind a door that has never been opened before should be filtered out of the state.
+Lastly, every action that the agents takes is determined in <em>decide_on_action</em>. Depending on the context, this method returns
+an action (moving, picking up, etc.) for every situation the agent can find itself in.</p>
+<p>For examples of how to implement a new agent brain, you can take a look at the tutorials about <a class="reference internal" href="bw4t_part1.html#part-1-bw4t-skeleton"><span class="std std-ref">BW4T</span></a>. Here, all assets of
+creating an agent’s brain are implemented and examples are shown.</p>
 </div>
 
 

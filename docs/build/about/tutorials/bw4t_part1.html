@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Part 1: Setting up the skeleton &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
+  <title>Part 1: BW4T skeleton &mdash; MATRXS 0.0.1 Manual 0.0.1 documentation</title>
   
 
   
@@ -142,7 +142,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Part 1: Setting up the skeleton</li>
+      <li>Part 1: BW4T skeleton</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -161,8 +161,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="part-1-setting-up-the-skeleton">
-<h1>Part 1: Setting up the skeleton<a class="headerlink" href="#part-1-setting-up-the-skeleton" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="part-1-bw4t-skeleton">
+<h1>Part 1: BW4T skeleton<a class="headerlink" href="#part-1-bw4t-skeleton" title="Permalink to this headline">¶</a></h1>
 <p>In this series of tutorials, we will create the scenario of two agents co-operating to find, grab and deliver a certain sequence
 of blocks. The two agents are autonomous, thus no human agents are involved in these tutorials. We will cover the implementation
 of the block-gathering agent brain, and handle the communication between the two agents. Basic actions like building a
@@ -170,7 +170,9 @@ world and adding objects and agents to the world are assumed to be prior knowled
 <p>In this scenario, there are 4 rooms, each containing a certain color of blocks. Each room contains one door. The agents
 cannot see what is inside a room before the door is opened. Together, the agents have to deliver a sequence of blocks
 to a designated delivery area. The sequence is specified by the user. Once all blocks in the sequence have successfully
-been delivered, the simulation is over.</p>
+been delivered, the simulation is over. Another version of this scenario is when the rooms contain several blocks which do
+not have the same color. This requires some tweaking of the situation described in this tutorial. Check the MATRXS repository
+for an example of ‘randomly’ colored blocks in rooms.</p>
 <p>The image below shows what the scene created during the tutorial looks like. Having trouble building this world? Check
 the basic tutorials <a class="reference internal" href="create_world_factory.html#creating-your-matrxs-world"><span class="std std-ref">Creating your MATRXS world</span></a> and <a class="reference internal" href="adding_objects.html#adding-objects"><span class="std std-ref">Adding objects</span></a>. Important for this particular solution
 to solving the block sequence delivery is to name the rooms in the scenario according to the color of blocks the room

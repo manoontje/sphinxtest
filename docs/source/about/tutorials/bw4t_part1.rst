@@ -1,7 +1,7 @@
-.. _Part 1: Setting up the skeleton
+.. _Part 1: BW4T skeleton
 
 
-Part 1: Setting up the skeleton
+Part 1: BW4T skeleton
 ===============================
 
 In this series of tutorials, we will create the scenario of two agents co-operating to find, grab and deliver a certain sequence
@@ -12,7 +12,9 @@ world and adding objects and agents to the world are assumed to be prior knowled
 In this scenario, there are 4 rooms, each containing a certain color of blocks. Each room contains one door. The agents
 cannot see what is inside a room before the door is opened. Together, the agents have to deliver a sequence of blocks
 to a designated delivery area. The sequence is specified by the user. Once all blocks in the sequence have successfully
-been delivered, the simulation is over.
+been delivered, the simulation is over. Another version of this scenario is when the rooms contain several blocks which do
+not have the same color. This requires some tweaking of the situation described in this tutorial. Check the MATRXS repository
+for an example of 'randomly' colored blocks in rooms.
 
 The image below shows what the scene created during the tutorial looks like. Having trouble building this world? Check
 the basic tutorials :ref:`Creating your MATRXS world` and :ref:`Adding objects`. Important for this particular solution
